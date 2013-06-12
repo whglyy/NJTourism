@@ -615,7 +615,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				42F76069173BC4A5000A9AC8 /* SuningFramework */,
+				42F76069173BC4A5000A9AC8 /* NJTourismFramework */,
 				1F5BF9DD173BCDF500B12EAA /* Application */,
 			);
 			path = Classes;
@@ -824,7 +824,7 @@
 				42E675C61758994A006BAD7D /* AuthNavigationBar.m */,
 			);
 			name = AuthManager;
-			path = ../../SuningFramework/Global/AuthManager;
+			path = ../../NJTourismFramework/Global/AuthManager;
 			sourceTree = "<group>";
 		};
 		42E675C917589C76006BAD7D /* contact */ = {
@@ -862,7 +862,7 @@
 			path = AddressBook;
 			sourceTree = "<group>";
 		};
-		42F76069173BC4A5000A9AC8 /* SuningFramework */ = {
+		42F76069173BC4A5000A9AC8 /* NJTourismFramework */ = {
 			isa = PBXGroup;
 			children = (
 				42F7606A173BC4A5000A9AC8 /* Common */,
@@ -871,8 +871,8 @@
 				42F76131173BC4A5000A9AC8 /* Global */,
 				42F7615E173BC4A5000A9AC8 /* ThirdPart */,
 			);
-			name = SuningFramework;
-			path = ../../SuningFramework;
+			name = NJTourismFramework;
+			path = ../../NJTourismFramework;
 			sourceTree = "<group>";
 		};
 		42F7606A173BC4A5000A9AC8 /* Common */ = {
@@ -1863,9 +1863,9 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Vendor/libidn\"",
-					"\"$(SRCROOT)/Classes/SuningFramework/Component/MobClick\"",
-					"\"$(SRCROOT)/Classes/SuningFramework/Component/ZBarSDK\"",
-					"\"$(SRCROOT)/../SuningFramework/Component/MobClick\"",
+					"\"$(SRCROOT)/Classes/NJTourismFramework/Component/MobClick\"",
+					"\"$(SRCROOT)/Classes/NJTourismFramework/Component/ZBarSDK\"",
+					"\"$(SRCROOT)/../NJTourismFramework/Component/MobClick\"",
 				);
 				PRODUCT_NAME = NJTourism;
 				PROVISIONING_PROFILE = "";
@@ -1889,9 +1889,9 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Vendor/libidn\"",
-					"\"$(SRCROOT)/Classes/SuningFramework/Component/MobClick\"",
-					"\"$(SRCROOT)/Classes/SuningFramework/Component/ZBarSDK\"",
-					"\"$(SRCROOT)/../SuningFramework/Component/MobClick\"",
+					"\"$(SRCROOT)/Classes/NJTourismFramework/Component/MobClick\"",
+					"\"$(SRCROOT)/Classes/NJTourismFramework/Component/ZBarSDK\"",
+					"\"$(SRCROOT)/../NJTourismFramework/Component/MobClick\"",
 				);
 				PRODUCT_NAME = NJTourism;
 				PROVISIONING_PROFILE = "";
