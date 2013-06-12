@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/Cloud_code/!svn/ver/15576/SuningIM/iPhone/branches/SuningIM/Extensions/XEP-0045/MemoryStorage
+END
+XMPPRoomMessageMemoryStorageObject.h
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/Cloud_code/!svn/ver/15576/SuningIM/iPhone/branches/SuningIM/Extensions/XEP-0045/MemoryStorage/XMPPRoomMessageMemoryStorageObject.h
+END
+XMPPRoomMemoryStorage.h
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/Cloud_code/!svn/ver/15576/SuningIM/iPhone/branches/SuningIM/Extensions/XEP-0045/MemoryStorage/XMPPRoomMemoryStorage.h
+END
+XMPPRoomMessageMemoryStorageObject.m
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/svn/Cloud_code/!svn/ver/15576/SuningIM/iPhone/branches/SuningIM/Extensions/XEP-0045/MemoryStorage/XMPPRoomMessageMemoryStorageObject.m
+END
+XMPPRoomOccupantMemoryStorageObject.h
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/Cloud_code/!svn/ver/15576/SuningIM/iPhone/branches/SuningIM/Extensions/XEP-0045/MemoryStorage/XMPPRoomOccupantMemoryStorageObject.h
+END
+XMPPRoomMemoryStorage.m
+K 25
+svn:wc:ra_dav:version-url
+V 122
+/svn/Cloud_code/!svn/ver/15576/SuningIM/iPhone/branches/SuningIM/Extensions/XEP-0045/MemoryStorage/XMPPRoomMemoryStorage.m
+END
+XMPPRoomOccupantMemoryStorageObject.m
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/svn/Cloud_code/!svn/ver/15576/SuningIM/iPhone/branches/SuningIM/Extensions/XEP-0045/MemoryStorage/XMPPRoomOccupantMemoryStorageObject.m
+END
