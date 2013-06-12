@@ -1,9 +1,9 @@
 //
 //  ToolBarTextField.m
-//  SuningEBuy
+//  FatFist
 //
-//  Created by 刘坤 on 11-11-2.
-//  Copyright (c) 2011年 __MyCompanyName__. All rights reserved.
+//  Created by lyywhg on 11-11-2.
+//  Copyright (c) 2011年 FatFist. All rights reserved.
 //
 
 #import "ToolBarTextField.h"

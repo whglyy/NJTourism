@@ -1,9 +1,9 @@
 //
 //  ImageViewTextField.h
-//  SuningEBuy
+//  FatFist
 //
 //  Created by cw on 12-3-20.
-//  Copyright (c) 2012年 sn. All rights reserved.
+//  Copyright (c) 2012年 FatFist. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

@@ -2,8 +2,8 @@
 //  HttpConstant.h
 //  Common Application
 //
-//  Created by wangrui on 11/25/11.
-//  Copyright (c) 2011 suning. All rights reserved.
+//  Created by lyywhg on 11/25/11.
+//  Copyright (c) 2011 FatFist. All rights reserved.
 //
 
 

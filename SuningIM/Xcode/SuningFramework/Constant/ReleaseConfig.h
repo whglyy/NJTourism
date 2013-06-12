@@ -1,9 +1,9 @@
 //
-//  SuningEBuyConfig.h
-//  SuningEBuy
+//  FatFistConfig.h
+//  FatFist
 //
 //  Created by  on 12-9-21.
-//  Copyright (c) 2012年 Suning. All rights reserved.
+//  Copyright (c) 2012年 FatFist. All rights reserved.
 
 //----------------------------------------------------------------------------------------------
 
@@ -41,11 +41,6 @@
 //----------------------------------------------------------------------------------------------
 /*3、打印开关控制*/
 
-#if DEBUG
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
-#else
-static const int ddLogLevel = LOG_LEVEL_OFF;
-#endif
 //----------------------------------------------------------------------------------------------
 
 
@@ -59,7 +54,7 @@ static const int ddLogLevel = LOG_LEVEL_OFF;
 
 #define kDownloadChannelAppStore                @"app store"
 #define kDownloadChannel91Helper                @"http://zs.91.com/"
-#define kDownloadChannelSuningAppStore          @"Suning App Store"
+#define kDownloadChannelFatFistAppStore          @"FatFist App Store"
 #define kDownloadChannelBeijingYiXun            @"BeiJingYiXun"
 #define kDownloadChannelWeiFeng                 @"WeiFeng"
 #define kDownloadChannelTongBuTui               @"TongBuTui"

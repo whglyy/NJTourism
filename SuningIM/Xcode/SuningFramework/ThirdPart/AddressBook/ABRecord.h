@@ -47,7 +47,7 @@
 
 /*
  Notes：
- added by shasha for IM contact record status
+ added by lyywhg for IM contact record status
  */
 @property (nonatomic, assign) int  *status;
 

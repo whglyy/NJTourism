@@ -1,11 +1,10 @@
 //
 //  PathConstant.h
-//  reader4iphone
+//  FatFist
 //
 //  Created by shahsa on 13-3-18.
-//  Copyright (c) 2012年 suning. All rights reserved.
+//  Copyright (c) 2012年 FatFist. All rights reserved.
 
-#import "UserCenter.h"
 
 /**数据库文件存取路径~/Library/Cache/Download/[userId] */
 static NSString *_DatabaseDirectory;

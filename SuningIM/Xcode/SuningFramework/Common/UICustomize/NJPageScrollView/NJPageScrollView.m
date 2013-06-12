@@ -1,9 +1,9 @@
 //
 //  NJPageScrollView.m
-//  SuningEBuy
+//  FatFist
 //
-//  Created by 刘坤 on 12-4-25.
-//  Copyright (c) 2012年 Suning. All rights reserved.
+//  Created by lyywhg on 12-4-25.
+//  Copyright (c) 2012年 FatFist. All rights reserved.
 //
 
 #import "NJPageScrollView.h"
@@ -253,7 +253,7 @@
 - (void)setFrameForPage:(UIView *)page atIndex:(NSInteger)index
 {
     /*
-     刘坤 2012-6-6修改，默认设置页面大小为scrollView的大小
+     lyywhg 2012-6-6修改，默认设置页面大小为scrollView的大小
      
      */
 //	CGRect frame = page.frame;

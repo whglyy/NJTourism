@@ -2,8 +2,8 @@
 //  NSObject+GlobalDataManage.m
 //  TempleteProject
 //
-//  Created by shasha on 13-3-19.
-//  Copyright (c) 2013年 shasha. All rights reserved.
+//  Created by lyywhg on 13-3-19.
+//  Copyright (c) 2013年 lyywhg. All rights reserved.
 //
 
 #import "NSObject+GlobalDataManage.h"
@@ -18,10 +18,6 @@
 - (UserInfoDTO *)user
 {
     return [UserCenter defaultCenter].userInfoDTO;
-}
-
-- (SettingsDTO *)settings{
-    return [ModulePluginManager currentManager].settingDTO;
 }
 
 @end

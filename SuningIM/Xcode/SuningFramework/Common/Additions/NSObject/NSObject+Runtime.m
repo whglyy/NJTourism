@@ -1,9 +1,9 @@
 //
 //  NSObject+Runtime.m
-//  SuningPan
+//  FatFist
 //
-//  Created by shasha on 13-4-8.
-//  Copyright (c) 2013年 suning. All rights reserved.
+//  Created by lyywhg on 13-4-8.
+//  Copyright (c) 2013年 FatFist. All rights reserved.
 //
 
 #import "NSObject+Runtime.h"

@@ -1,14 +1,14 @@
 //
 //  SNPopoverCommonViewController.h
-//  SuningEBuy
+//  FatFist
 //
-//  Created by 刘坤 on 12-8-30.
-//  Copyright (c) 2012年 Suning. All rights reserved.
+//  Created by lyywhg on 12-8-30.
+//  Copyright (c) 2012年 FatFist. All rights reserved.
 //
 /*!
  @header      SNPopoverCommonViewController
  @abstract    用于在SNPopoverController中展示的viewController的父类
- @author      刘坤
+ @author      lyywhg
  @version     v1.0.002  12-9-3
  */
 

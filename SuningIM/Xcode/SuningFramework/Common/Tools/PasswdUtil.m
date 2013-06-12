@@ -1,9 +1,9 @@
 //
 //  PasswdUtil.m
-//  SubookDRM
+//  FatFist
 //
-//  Created by wangrui on 8/25/12.
-//  Copyright (c) 2012 suning. All rights reserved.
+//  Created by lyywhg on 8/25/12.
+//  Copyright (c) 2012 FatFist. All rights reserved.
 //
 
 #import "PasswdUtil.h"

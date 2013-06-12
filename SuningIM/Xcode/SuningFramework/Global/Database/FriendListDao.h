@@ -1,6 +1,6 @@
 //
 //  FriendListDao.h
-//  SuningIM
+//  FatFist
 //
 //  Created by lyywhg on 13-5-29.
 //

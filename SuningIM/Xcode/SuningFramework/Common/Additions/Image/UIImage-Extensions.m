@@ -2,8 +2,8 @@
 //  UIImage-Extensions.m
 //  WingLetter
 //
-//  Created by zhaojw on 10-8-29.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Created by lyywhg on 10-8-29.
+//  Copyright 2010 FatFist. All rights reserved.
 //
 
 //

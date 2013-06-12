@@ -1,9 +1,9 @@
 //
 //  MsgHelper.c
-//  SuningEBuy
+//  FatFist
 //
-//  Created by 刘坤 on 12-9-5.
-//  Copyright (c) 2012年 Suning. All rights reserved.
+//  Created by lyywhg on 12-9-5.
+//  Copyright (c) 2012年 FatFist. All rights reserved.
 //
 
 #include <stdio.h>

@@ -2,7 +2,7 @@
 //  CommonViewController.h
 //  WingLetter
 //
-//  Created by zhaojw on 10-10-11.
+//  Created by lyywhg on 10-10-11.
 //  Copyright 2010 Wingletter. All rights reserved.
 //
 

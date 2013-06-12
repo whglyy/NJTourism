@@ -2,11 +2,11 @@
 //  TableConstant.h
 //  BlueBoxDemo
 //
-//  Created by 刘坤 on 12-7-28.
-//  Copyright (c) 2012年 Suning. All rights reserved.
+//  Created by lyywhg on 12-7-28.
+//  Copyright (c) 2012年 FatFist. All rights reserved.
 //
 
-#define kDatabaseFileName           @"suningYunPan.sqlite"
+#define kDatabaseFileName           @"FatFist.sqlite"
 
 #define kFilesTableName             @"FILE_TABLE"
 #define kUploadFileTableName        @"UPLOAD_TABLE"

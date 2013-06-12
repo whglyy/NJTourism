@@ -1,7 +1,7 @@
 /*!
  @header      BBScrollViewController.h
  @abstract    可横向滑动的类似与淘宝首页的选项卡控制器
- @author      刘坤
+ @author      lyywhg
  @version     12-12-21
  @discussion  设置viewControllers的值即可自动进行刷新，
               viewControllers使用KVO监听机制， 对数组更改时需要用如下方法：

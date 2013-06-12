@@ -1,6 +1,6 @@
 //
 //  ChatRecordListDao.m
-//  SuningIM
+//  FatFist
 //
 //  Created by lyywhg on 13-6-5.
 //

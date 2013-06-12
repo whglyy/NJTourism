@@ -2,13 +2,13 @@
 //  BBAlertView.h
 //  BlueBoxDemo
 //
-//  Created by 刘坤 on 12-6-21.
-//  Copyright (c) 2012年 Suning. All rights reserved.
+//  Created by lyywhg on 12-6-21.
+//  Copyright (c) 2012年 FatFist. All rights reserved.
 //
 /*!
  @header      BBAlertView
  @abstract    自定义的AlertView
- @author      刘坤
+ @author      lyywhg
  @version     v2.0  12-11-5
  @discussion  这是一个自定义的AlertView，类似于系统的UIAlertView,好处是可以自定义UI,
  1、实现时采用了新创建的window, 可使改控件不至于被其他view挡住。
@@ -99,7 +99,7 @@ typedef void (^BBBasicBlock)(void);
 /*!
  @abstract      点击取消按钮的回调
  @discussion    如果你不想用代理的方式来进行回调，可使用该方法
- http://www.suning.com
+ http://www.FatFist.com
  ftp://192.168.10.19
  mailto:1043048769@qq.com
  file://index.html

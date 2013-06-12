@@ -1,9 +1,9 @@
 //
 //  BaseHttpDTO.m
-//  SuningEMall
+//  FatFist
 //
-//  Created by Wang Jia on 11-1-9.
-//  Copyright 2011 IBM. All rights reserved.
+//  Created by lyywhg on 11-1-9.
+//  Copyright 2011 FatFist. All rights reserved.
 //
 
 #import "BaseHttpDTO.h"

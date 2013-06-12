@@ -3,7 +3,7 @@
 //  
 //
 //  Created by Hubert Ryan on 11-6-23.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 FatFist. All rights reserved.
 //
 
 #import "AuthManagerNavViewController.h"
@@ -13,7 +13,7 @@
 #import "LoginViewEXController.h"
 
 //因只需要一个array就可以了，故使用一个static变量
-//刘坤修改于12-10-31
+//lyywhg修改于12-10-31
 static NSArray *loginAuthClassArray = nil;
  
 @implementation AuthManagerNavViewController

@@ -1,9 +1,9 @@
 //
 //  EGOImageViewEx.h
-//  WingletterIOS
+//  FatFist
 //
 //  Created by Hubert Ryan on 11-5-24.
-//  Copyright 2011 suning. All rights reserved.
+//  Copyright 2011 FatFist. All rights reserved.
 //
 
 #import "EGOImageView.h"

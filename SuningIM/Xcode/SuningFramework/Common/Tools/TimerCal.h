@@ -1,9 +1,9 @@
 //
 //  TimerCal.h
-//  SuningPan
+//  FatFist
 //
 //  Created by lyywhg on 13-3-29.
-//  Copyright (c) 2013年 sn. All rights reserved.
+//  Copyright (c) 2013年 FatFist. All rights reserved.
 //
 
 //  时间转化器

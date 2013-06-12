@@ -1,9 +1,9 @@
 //
 //  PlaceholderTextView.h
-//  SuningEBuy
+//  FatFist
 //
-//  Created by 刘坤 on 11-12-10.
-//  Copyright (c) 2011年 Suning. All rights reserved.
+//  Created by lyywhg on 11-12-10.
+//  Copyright (c) 2011年 FatFist. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

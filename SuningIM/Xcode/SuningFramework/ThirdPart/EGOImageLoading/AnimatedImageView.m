@@ -2,8 +2,8 @@
 //  AnimatedImageView.h
 //  TestGIF
 //
-//  Created by wangrui on 12-2-25.
-//  Copyright 2011 suning. All rights reserved.
+//  Created by lyywhg on 12-2-25.
+//  Copyright 2011 FatFist. All rights reserved.
 //
 
 #import "AnimatedImageView.h"

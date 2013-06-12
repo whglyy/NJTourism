@@ -1,9 +1,9 @@
 //
 //  NetworkReach.h
-//  Dtouching
+//  FatFist
 //
-//  Created by 刘坤 on 12-5-12.
-//  Copyright (c) 2012年 Suning. All rights reserved.
+//  Created by lyywhg on 12-5-12.
+//  Copyright (c) 2012年 FatFist. All rights reserved.
 //
 
 
@@ -13,7 +13,7 @@
 /**
  @header   NetworkReach
  @abstract 获取网络状态，提示网络异常
- @author   刘坤
+ @author   lyywhg
  @version  1.0  2012/5/12 Creation
  */
 @interface NetworkReach : NSObject

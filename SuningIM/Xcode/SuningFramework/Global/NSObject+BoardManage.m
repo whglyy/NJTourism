@@ -1,9 +1,9 @@
 //
 //  NSObject+BoardManage.m
-//  SuningEBuy
+//  FatFist
 //
 //  Created by  liukun on 13-2-21.
-//  Copyright (c) 2013年 Suning. All rights reserved.
+//  Copyright (c) 2013年 FatFist. All rights reserved.
 //
 
 #import "NSObject+BoardManage.h"

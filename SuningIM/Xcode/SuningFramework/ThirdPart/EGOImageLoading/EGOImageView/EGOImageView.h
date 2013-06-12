@@ -23,7 +23,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 //
-//  v1.0.001  12-8-28 刘坤
+//  v1.0.001  12-8-28 lyywhg
 
 #import <UIKit/UIKit.h>
 #import "EGOImageLoader.h"
@@ -45,7 +45,7 @@ typedef enum
 	id<EGOImageViewDelegate> delegate;
     BOOL _hasBorder;
     
-    //刘坤，2012-6-8， 添加是否将图片显示圆角
+    //lyywhg，2012-6-8， 添加是否将图片显示圆角
     BOOL isRoundCorner_;
     NSInteger imageCornerRadius_;
 }

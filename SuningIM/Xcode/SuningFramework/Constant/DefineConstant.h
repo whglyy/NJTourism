@@ -1,8 +1,8 @@
 /**
  DefineConstant.h
  Created by liukun.
- Modified by shasha on 13-4-2
- Copyright (c) 2013年 suning. All rights reserved.
+ Modified by lyywhg on 13-4-2
+ Copyright (c) 2013年 FatFist. All rights reserved.
  */
 
 #ifndef DEFINE_CONSTANT_H

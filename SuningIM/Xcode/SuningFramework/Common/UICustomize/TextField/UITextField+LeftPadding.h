@@ -1,9 +1,9 @@
 //
 //  UITextField+LeftPadding.h
-//  SuningEBuy
+//  FatFist
 //
-//  Created by wangrui on 11/1/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Created by lyywhg on 11/1/11.
+//  Copyright 2011 FatFist. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

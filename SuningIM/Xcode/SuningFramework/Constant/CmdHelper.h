@@ -1,13 +1,13 @@
 //
 //  CmdHelper.h
-//  SuningEBuy
+//  FatFist
 //
-//  Created by 刘坤 on 12-9-5.
-//  Copyright (c) 2012年 Suning. All rights reserved.
+//  Created by lyywhg on 12-9-5.
+//  Copyright (c) 2012年 FatFist. All rights reserved.
 //
 
-#ifndef SuningEBuy_CmdHelper_h
-#define SuningEBuy_CmdHelper_h
+#ifndef FatFistEBuy_CmdHelper_h
+#define FatFistEBuy_CmdHelper_h
 
 //通过cmdCode判断是否需要登录
 bool CC_Login_Contain(int cmdCode);

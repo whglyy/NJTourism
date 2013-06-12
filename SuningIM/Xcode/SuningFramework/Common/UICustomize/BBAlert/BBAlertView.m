@@ -2,8 +2,8 @@
 //  BBAlertView.m
 //  BlueBoxDemo
 //
-//  Created by 刘坤 on 12-6-21.
-//  Copyright (c) 2012年 Suning. All rights reserved.
+//  Created by lyywhg on 12-6-21.
+//  Copyright (c) 2012年 FatFist. All rights reserved.
 //
 
 #import "BBAlertView.h"

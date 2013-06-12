@@ -1,9 +1,9 @@
 //
 //  DatabaseManager.h
-//  SuningFutureStore
+//  FatFist
 //
-//  Created by Wang Jia on 10-10-31.
-//  Copyright 2010 IBM. All rights reserved.
+//  Created by lyywhg on 10-10-31.
+//  Copyright 2010 FatFist. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

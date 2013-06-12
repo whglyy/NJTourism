@@ -1,9 +1,9 @@
 //
 //  SNPopoverNavController.h
-//  SuningEBuy
+//  FatFist
 //
-//  Created by 刘坤 on 12-8-30.
-//  Copyright (c) 2012年 Suning. All rights reserved.
+//  Created by lyywhg on 12-8-30.
+//  Copyright (c) 2012年 FatFist. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

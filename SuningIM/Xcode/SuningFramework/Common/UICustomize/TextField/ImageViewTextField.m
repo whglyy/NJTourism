@@ -1,9 +1,9 @@
 //
 //  ImageViewTextField.m
-//  SuningEBuy
+//  FatFist
 //
 //  Created by lanfeng on 12-3-20.
-//  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
+//  Copyright (c) 2012年 FatFist. All rights reserved.
 //
 
 #import "ImageViewTextField.h"

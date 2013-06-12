@@ -1,8 +1,8 @@
 //
 //  TabBarViewController.h
-//  SuningIM
+//  FatFist
 //
-//  Created by shasha on 13-5-24.
+//  Created by lyywhg on 13-5-24.
 //
 //
 

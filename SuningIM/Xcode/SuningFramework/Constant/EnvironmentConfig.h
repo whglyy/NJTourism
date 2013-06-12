@@ -1,8 +1,8 @@
 //
 //  HttpConstant.h
-//  SuningFutureStoreVersion2
+//  FatFist
 //
-//  Created by Wang Jia on 10-11-28.
+//  Created by lyywhg on 10-11-28.
 //  Copyright 2010 IBM. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 #pragma mark -  NetWorkVisible Test Address
 #pragma mark    网络畅通测试地址
-#define	kNetworkTestAddress						@"http://www.suning.com"
+#define	kNetworkTestAddress						@"http://www.FatFist.com"
 //===============================================================================
 
 #pragma mark -  Umeng AppKey
@@ -29,31 +29,31 @@
 
 #ifdef kSitTest
 
-#define kHostAddressForHttp                     @"http://sitappserver.cnsuning.com"
-#define kHostAddressForHttps                    @"https://sitappserver.cnsuning.com"
+#define kHostAddressForHttp                     @"http://sitappserver.FatFist.com"
+#define kHostAddressForHttps                    @"https://sitappserver.FatFist.com"
 
 
 #elif kPreTest
 
-#define kHostAddressForHttp						@"http://imapp.suning.com"
-#define kHostAddressForHttps					@"https://imapp.suning.com"
+#define kHostAddressForHttp						@"http://imapp.FatFist.com"
+#define kHostAddressForHttps					@"https://imapp.FatFist.com"
 
 #elif kDevTest
 
-#define kHostAddressForHttp						@"http://imapp.suning.com"
+#define kHostAddressForHttp						@"http://imapp.FatFist.com"
 
-#define kHostAddressForHttps					@"https://imapp.suning.com"
+#define kHostAddressForHttps					@"https://imapp.FatFist.com"
 
 #elif kReleaseH
 
 
-#define kHostAddressForHttp					    @"http://imapp.suning.com"
-#define kHostAddressForHttps					@"https://imapp.suning.com"
+#define kHostAddressForHttp					    @"http://imapp.FatFist.com"
+#define kHostAddressForHttps					@"https://imapp.FatFist.com"
 
 #else 
 
-#define kHostAddressForHttp					    @"http://imapp.suning.com"
-#define kHostAddressForHttps					@"https://imapp.suning.com"
+#define kHostAddressForHttp					    @"http://imapp.FatFist.com"
+#define kHostAddressForHttps					@"https://imapp.FatFist.com"
 
 #endif
 

@@ -2,7 +2,7 @@
 //  NSString-NULL.h
 //  WingLetter
 //
-//  Created by zhaojw on 10-9-23.
+//  Created by lyywhg on 10-9-23.
 //  Copyright 2010 Wingletter. All rights reserved.
 //
 

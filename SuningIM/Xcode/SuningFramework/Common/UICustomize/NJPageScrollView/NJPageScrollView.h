@@ -1,9 +1,9 @@
 //
 //  NJPageScrollView.h
-//  SuningEBuy
+//  FatFist
 //
-//  Created by 刘坤 on 12-4-25.
-//  Copyright (c) 2012年 Suning. All rights reserved.
+//  Created by lyywhg on 12-4-25.
+//  Copyright (c) 2012年 FatFist. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -11,7 +11,7 @@
 /*!
  @header      NJPageScrollView.h
  @abstract    用于横向滚屏翻页的可重用的Scroll View
- @author      刘坤
+ @author      lyywhg
  */
 
 @protocol NJPageScrollViewDataSource;

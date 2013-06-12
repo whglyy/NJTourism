@@ -10,7 +10,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SettingsDTO.h"
 
 #define  dUID            NSStringFromSelector(@selector(uid))
 #define  dUserId            NSStringFromSelector(@selector(userId))
@@ -28,9 +27,6 @@
 #define dAutoLogin                  NSStringFromSelector(@selector(autoLogin))
 #define dIsUpdate             NSStringFromSelector(@selector(isUpdate))
 #define dVersionUpdateCancel   NSStringFromSelector(@selector(versionUpdateCancel))
-
-//判断会话列表是否变化
-#define dIsChatInfoChanged    NSStringFromSelector(@selector(isChatInfoChanged))
 
 @interface Config : NSObject {
     

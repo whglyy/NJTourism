@@ -2,8 +2,8 @@
 //  MessageCenter.h
 //  BlueBoxDemo
 //
-//  Created by shasha on 13-3-18.
-//  Copyright (c) 2012年 Suning. All rights reserved.
+//  Created by lyywhg on 13-3-18.
+//  Copyright (c) 2012年 FatFist. All rights reserved.
 //
 /**
  用于Notification Name的的定义，工程中的每一个Notification都必须在此定义并说明。

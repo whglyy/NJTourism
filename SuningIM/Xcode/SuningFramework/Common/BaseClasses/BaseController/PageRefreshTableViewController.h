@@ -1,9 +1,9 @@
 //
 //  PageRefreshTableViewController.h
-//  SuningEBuy
+//  FatFist
 //
-//  Created by zhaojw on 9/23/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Created by lyywhg on 9/23/11.
+//  Copyright (c) 2011 FatFist. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

@@ -1,9 +1,9 @@
 //
 //  DataService.h
-//  SuningSC
+//  FatFist
 //
-//  Created by shasha on 13-3-26.
-//  Copyright (c) 2013年 shasha. All rights reserved.
+//  Created by lyywhg on 13-3-26.
+//  Copyright (c) 2013年 FatFist. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

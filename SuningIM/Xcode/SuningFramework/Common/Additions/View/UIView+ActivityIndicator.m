@@ -1,9 +1,9 @@
 //
 //  UIView+ActivityIndicator.m
-//  Wingletter5
+//  FatFist
 //
 //  Created by Hubert Ryan on 11-6-10.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 FatFist. All rights reserved.
 //
 
 #import "UIView+ActivityIndicator.h"

@@ -2,8 +2,8 @@
 //  NSObject+GlobalDataManage.h
 //  TempleteProject
 //
-//  Created by shasha on 13-3-19.
-//  Copyright (c) 2013年 shasha. All rights reserved.
+//  Created by lyywhg on 13-3-19.
+//  Copyright (c) 2013年 lyywhg. All rights reserved.
 //
 
 /*!
@@ -23,5 +23,4 @@
 //当前用户
 - (UserInfoDTO *)user;
 
-- (SettingsDTO *)settings;
 @end

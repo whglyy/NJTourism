@@ -1,9 +1,9 @@
 //
 //  BBScrollViewController.m
-//  SuningEBuy
+//  FatFist
 //
 //  Created by  liukun on 12-12-21.
-//  Copyright (c) 2012年 Suning. All rights reserved.
+//  Copyright (c) 2012年 FatFist. All rights reserved.
 //
 
 #import "BBScrollViewController.h"

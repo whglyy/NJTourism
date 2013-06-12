@@ -1,9 +1,9 @@
 //
 //  SystemInfo.h
-//  BlueBoxDemo
+//  FatFist
 //
-//  Created by 刘坤 on 12-6-19.
-//  Copyright (c) 2012年 Suning. All rights reserved.
+//  Created by lyywhg on 12-6-19.
+//  Copyright (c) 2012年 FatFist. All rights reserved.
 //
 
 
@@ -11,7 +11,7 @@
  
  @header   SystemInfo
  @abstract 系统信息描述类
- @author   刘坤
+ @author   lyywhg
  @version  1.0  2012/6/19 Creation
  */
 

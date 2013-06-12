@@ -1,6 +1,4 @@
 #import "TabBarViewController.h"
-#import "XmppManager.h"
-
 
 @class JIDSettingsViewController;
 
@@ -12,8 +10,6 @@
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
 @property (nonatomic, strong) IBOutlet TabBarViewController *rootViewController;
-
-@property (nonatomic, strong) XmppManager *xmppManager;
 
 + (AppDelegate *)currentAppDelegate;
 

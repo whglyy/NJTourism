@@ -1,9 +1,9 @@
 //
 //  NSString+DES.m
-//  SuningEBuy
+//  FatFist
 //
 //  Created by  liukun on 12-11-15.
-//  Copyright (c) 2012年 Suning. All rights reserved.
+//  Copyright (c) 2012年 FatFist. All rights reserved.
 //
 
 #import "NSString+DES.h"

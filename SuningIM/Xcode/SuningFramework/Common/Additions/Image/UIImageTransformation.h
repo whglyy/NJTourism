@@ -1,6 +1,6 @@
 
 /**
- * Copyright (c) 2012－3－21 suning zhaofk
+ * Copyright (c) 2012－3－21 FatFist zhaofk
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -36,7 +36,7 @@
 /*
  author：zhaofk
  date:2012-03-21
- work:suningEbuy for image transfamation
+ work:FatFist for image transfamation
  param:
  1 (CGSize)targetSize the targetSize that you want to transformation
  2 (UIImage)image the UIImage that you want to change

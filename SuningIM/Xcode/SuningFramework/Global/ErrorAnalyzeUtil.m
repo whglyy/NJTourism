@@ -1,9 +1,9 @@
 //
 //  ErrorAnalyzeUtil.m
-//  SuningPan
+//  FatFist
 //
-//  Created by shasha on 13-5-12.
-//  Copyright (c) 2013年 suning. All rights reserved.
+//  Created by lyywhg on 13-5-12.
+//  Copyright (c) 2013年 FatFist. All rights reserved.
 //
 
 #import "ErrorAnalyzeUtil.h"

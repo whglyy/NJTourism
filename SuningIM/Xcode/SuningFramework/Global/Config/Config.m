@@ -55,7 +55,6 @@
                                      @"",                            dLastUserId,
                                      [NSNumber numberWithBool:NO],   dAutoLogin,
                                      @"0",                           dVersionUpdateCancel,
-                                     [NSNumber numberWithInt:AddNewChatRecord2ChatRecordListType],     dIsChatInfoChanged,
                                      nil]];
     
 	return self;
