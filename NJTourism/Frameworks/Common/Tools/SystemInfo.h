@@ -2,18 +2,9 @@
 //  SystemInfo.h
 //  FatFist
 //
-//  Created by lyywhg on 12-6-19.
-//  Copyright (c) 2012年 FatFist. All rights reserved.
+//  Created by lyywhg on 13-5-24.
 //
-
-
-/*!
- 
- @header   SystemInfo
- @abstract 系统信息描述类
- @author   lyywhg
- @version  1.0  2012/6/19 Creation
- */
+//
 
 #import <Foundation/Foundation.h>
 

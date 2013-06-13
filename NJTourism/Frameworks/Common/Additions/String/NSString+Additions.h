@@ -1,9 +1,9 @@
 //
 //  NSStringAdditions.h
-//  Weibo
+//  FatFist
 //
-//  Created by junmin liu on 10-9-29.
-//  Copyright 2010 Openlab. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <Foundation/Foundation.h>

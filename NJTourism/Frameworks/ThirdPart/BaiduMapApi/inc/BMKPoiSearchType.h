@@ -1,10 +1,10 @@
-/*
- *  BMKPoiSearchType.h
- *  BMapKit
- *
- *  Copyright 2011 Baidu Inc. All rights reserved.
- *
- */
+//
+//  BMKPoiSearchType.h
+//  FatFist
+//
+//  Created by lyywhg on 13-5-24.
+//
+//
 
 #import <CoreLocation/CoreLocation.h>
 #import <Foundation/Foundation.h>

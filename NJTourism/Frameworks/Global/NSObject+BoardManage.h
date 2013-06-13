@@ -2,9 +2,10 @@
 //  NSObject+BoardManage.h
 //  FatFist
 //
-//  Created by  liukun on 13-2-21.
-//  Copyright (c) 2013年 FatFist. All rights reserved.
+//  Created by lyywhg on 13-5-24.
 //
+//
+
 /*!
  
  @header   NSObject+BoardManage

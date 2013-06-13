@@ -1,9 +1,10 @@
-/*! \file BMKGeometry.h
- *  BMapKit
- *
- *  Copyright 2011 Baidu Inc. All rights reserved.
- *
- */
+//
+//  BMKGeometry.h
+//  FatFist
+//
+//  Created by lyywhg on 13-5-24.
+//
+//
 
 #import <CoreGraphics/CoreGraphics.h>
 #import <CoreLocation/CoreLocation.h>

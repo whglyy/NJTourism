@@ -2,8 +2,9 @@
 //  FatFistConfig.h
 //  FatFist
 //
-//  Created by  on 12-9-21.
-//  Copyright (c) 2012年 FatFist. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
+//
 
 //----------------------------------------------------------------------------------------------
 

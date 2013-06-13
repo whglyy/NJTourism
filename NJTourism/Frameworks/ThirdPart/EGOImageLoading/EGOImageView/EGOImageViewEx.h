@@ -2,8 +2,8 @@
 //  EGOImageViewEx.h
 //  FatFist
 //
-//  Created by Hubert Ryan on 11-5-24.
-//  Copyright 2011 FatFist. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import "EGOImageView.h"

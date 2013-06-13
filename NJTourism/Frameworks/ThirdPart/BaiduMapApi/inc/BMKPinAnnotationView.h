@@ -1,10 +1,10 @@
-/*
- *  BMKPinAnnotationView.h
- *  BMapKit
- *
- *  Copyright 2011 Baidu Inc. All rights reserved.
- *
- */
+//
+//  BMKPinAnnotationView.h
+//  FatFist
+//
+//  Created by lyywhg on 13-5-24.
+//
+//
 
 #import "BMKAnnotationView.h"
 

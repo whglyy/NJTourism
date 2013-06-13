@@ -1,9 +1,9 @@
 //
 //  ASIHTTPRequestConfig.h
-//  Part of ASIHTTPRequest -> http://allseeing-i.com/ASIHTTPRequest
+//  FatFist
 //
-//  Created by Ben Copsey on 14/12/2009.
-//  Copyright 2009 All-Seeing Interactive. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 

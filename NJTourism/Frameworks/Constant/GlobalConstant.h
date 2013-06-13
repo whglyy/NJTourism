@@ -1,9 +1,10 @@
-/*!
- @header
- @abstract 常用公共资源的constant类，主要用于存放公共组件的rect或者公共图片的imageName；
- @author   莎莎
- @version  1.0  2013/3/18 Creation
- */
+//
+//
+//  FatFist
+//
+//  Created by lyywhg on 13-5-24.
+//
+//
  
 
 //=================================常用资源名信息==============================//

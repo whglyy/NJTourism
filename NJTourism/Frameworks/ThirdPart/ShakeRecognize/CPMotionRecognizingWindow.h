@@ -1,6 +1,10 @@
-
-//  Created by Yang Meyer on 03.02.12.
-//  Copyright (c) 2012 compeople. All rights reserved.
+//
+//
+//  FatFist
+//
+//  Created by lyywhg on 13-5-24.
+//
+//
 
 #import <UIKit/UIKit.h>
 

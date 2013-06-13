@@ -1,10 +1,10 @@
-/*
- *  BMapKit.h
- *  BMapKit
- *
- *  Copyright 2011 Baidu Inc. All rights reserved.
- *
- */
+//
+//  BMapKit.h
+//  FatFist
+//
+//  Created by lyywhg on 13-5-24.
+//
+//
 
 #import "BMKMapManager.h"
 #import "BMKGeneralDelegate.h"

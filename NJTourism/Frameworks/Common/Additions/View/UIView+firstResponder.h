@@ -1,8 +1,9 @@
 //
 //  UIView+firstResponder.h
-//  Color Calc
+//  FatFist
 //
-//  Created by Johnnie Walker on 25/01/2010.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <UIKit/UIKit.h>

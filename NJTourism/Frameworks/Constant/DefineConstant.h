@@ -1,9 +1,10 @@
-/**
- DefineConstant.h
- Created by liukun.
- Modified by lyywhg on 13-4-2
- Copyright (c) 2013年 FatFist. All rights reserved.
- */
+//
+//
+//  FatFist
+//
+//  Created by lyywhg on 13-5-24.
+//
+//
 
 #ifndef DEFINE_CONSTANT_H
 #define DEFINE_CONSTANT_H  1

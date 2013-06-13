@@ -1,10 +1,11 @@
-/*
- *  BMKOverlayView.h
- *  BMapKit
- *
- *  Copyright 2011 Baidu Inc. All rights reserved.
- *
- */
+//
+//  BMKOverlayView.h
+//  FatFist
+//
+//  Created by lyywhg on 13-5-24.
+//
+//
+
 #import <UIKit/UIKit.h>
 
 #import "BMKGeometry.h"

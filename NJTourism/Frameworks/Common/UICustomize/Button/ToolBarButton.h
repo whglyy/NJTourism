@@ -2,8 +2,8 @@
 //  ToolBarButton.h
 //  FatFist
 //
-//  Created by lyywhg on 11/3/11.
-//  Copyright 2011 FatFist. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <UIKit/UIKit.h>

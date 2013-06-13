@@ -1,9 +1,9 @@
 //
 //  LeveyTabBarControllerViewController.h
-//  LeveyTabBarController
+//  FatFist
 //
-//  Created by Levey Zhu on 12/15/10.
-//  Copyright 2010 VanillaTech. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <UIKit/UIKit.h>

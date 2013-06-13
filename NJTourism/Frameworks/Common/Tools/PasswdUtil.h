@@ -2,8 +2,8 @@
 //  PasswdUtil.h
 //  FatFist
 //
-//  Created by lyywhg on 8/25/12.
-//  Copyright (c) 2012 FatFist. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <Foundation/Foundation.h>

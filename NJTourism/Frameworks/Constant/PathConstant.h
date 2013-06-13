@@ -2,9 +2,9 @@
 //  PathConstant.h
 //  FatFist
 //
-//  Created by shahsa on 13-3-18.
-//  Copyright (c) 2012年 FatFist. All rights reserved.
-
+//  Created by lyywhg on 13-5-24.
+//
+//
 
 /**数据库文件存取路径~/Library/Cache/Download/[userId] */
 static NSString *_DatabaseDirectory;

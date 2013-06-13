@@ -1,10 +1,10 @@
-/*
- *  BMKTypes.h
- *  BMapKit
- *
- *  Copyright 2011 Baidu Inc. All rights reserved.
- *
- */
+//
+//  BMKTypes.h
+//  FatFist
+//
+//  Created by lyywhg on 13-5-24.
+//
+//
 
 #import <UIKit/UIKit.h>
 

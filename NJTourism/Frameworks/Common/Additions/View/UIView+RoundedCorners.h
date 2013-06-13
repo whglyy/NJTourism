@@ -1,9 +1,9 @@
 //
 //  UIView+RoundedCorners.h
-//  UIViewRoundedCorners
+//  FatFist
 //
-//  Created by Vashishtha Jogi on 11/20/11.
-//  Copyright (c) 2011 Vashishtha Jogi. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <UIKit/UIKit.h>

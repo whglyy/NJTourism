@@ -1,10 +1,10 @@
-/*
- *  BMKSearch.h
- *  BMapKit
- *
- *  Copyright 2011 Baidu Inc. All rights reserved.
- *
- */
+//
+//  BMKSearch.h
+//  FatFist
+//
+//  Created by lyywhg on 13-5-24.
+//
+//
 
 #import <Foundation/Foundation.h>
 #import "BMKGeometry.h"

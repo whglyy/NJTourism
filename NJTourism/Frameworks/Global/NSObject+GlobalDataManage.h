@@ -1,9 +1,9 @@
 //
 //  NSObject+GlobalDataManage.h
-//  FatFish
+//  FatFist
 //
-//  Created by lyywhg on 13-3-19.
-//  Copyright (c) 2013年 FatFish. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 /*!

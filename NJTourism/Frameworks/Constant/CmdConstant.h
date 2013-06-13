@@ -1,9 +1,9 @@
 //
 //  HttpConstant.h
-//  Common Application
+//  FatFist
 //
-//  Created by lyywhg on 11/25/11.
-//  Copyright (c) 2011 FatFist. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 

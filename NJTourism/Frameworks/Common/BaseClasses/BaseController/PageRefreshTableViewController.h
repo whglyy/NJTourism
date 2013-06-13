@@ -2,8 +2,8 @@
 //  PageRefreshTableViewController.h
 //  FatFist
 //
-//  Created by lyywhg on 9/23/11.
-//  Copyright (c) 2011 FatFist. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <UIKit/UIKit.h>

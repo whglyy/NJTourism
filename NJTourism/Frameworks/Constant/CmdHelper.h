@@ -2,8 +2,8 @@
 //  CmdHelper.h
 //  FatFist
 //
-//  Created by lyywhg on 12-9-5.
-//  Copyright (c) 2012年 FatFist. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #ifndef FatFistEBuy_CmdHelper_h

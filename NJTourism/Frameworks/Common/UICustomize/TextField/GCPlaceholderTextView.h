@@ -1,9 +1,9 @@
 //
 //  GCPlaceholderTextView.h
-//  GCLibrary
+//  FatFist
 //
-//  Created by Guillaume Campagna on 10-11-16.
-//  Copyright 2010 LittleKiwi. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <UIKit/UIKit.h>

@@ -1,8 +1,9 @@
 //
 //  BMKAnnotation.h
-//  BMapKit
+//  FatFist
 //
-//  Copyright 2011 Baidu Inc. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <CoreGraphics/CoreGraphics.h>

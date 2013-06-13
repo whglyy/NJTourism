@@ -1,14 +1,10 @@
 //
 //  ImageManipulator.h
+//  FatFist
 //
-//  Class for manipulating images.
+//  Created by lyywhg on 13-5-24.
 //
-//  Created by Björn Sållarp on 2008-09-11.
-//  Copyright 2008 Björn Sållarp. All rights reserved.
 //
-//  Read my blog @ http://blog.sallarp.com
-//
-// Updated on 2009-04-05
 
 #import <UIKit/UIKit.h>
 

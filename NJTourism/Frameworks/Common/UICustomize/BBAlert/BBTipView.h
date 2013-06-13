@@ -1,10 +1,11 @@
 //
 //  BBTipView.h
-//  BlueBoxDemo
+//  FatFist
 //
-//  Created by lyywhg on 12-7-28.
-//  Copyright (c) 2012年 FatFist. All rights reserved.
+//  Created by lyywhg on 13-5-24.
 //
+//
+
 /*!
  @header      BBTipView
  @abstract    提示信息的view

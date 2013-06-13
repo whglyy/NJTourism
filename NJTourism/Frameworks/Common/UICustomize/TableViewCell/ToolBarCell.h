@@ -2,8 +2,8 @@
 //  ToolBarCell.h
 //  FatFist
 //
-//  Created by lyywhg on 11-11-3.
-//  Copyright (c) 2011年 FatFist. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <UIKit/UIKit.h>

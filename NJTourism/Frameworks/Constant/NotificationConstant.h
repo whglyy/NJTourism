@@ -1,10 +1,11 @@
 //
 //  MessageCenter.h
-//  BlueBoxDemo
+//  FatFist
 //
-//  Created by lyywhg on 13-3-18.
-//  Copyright (c) 2012年 FatFist. All rights reserved.
+//  Created by lyywhg on 13-5-24.
 //
+//
+
 /**
  用于Notification Name的的定义，工程中的每一个Notification都必须在此定义并说明。
  */

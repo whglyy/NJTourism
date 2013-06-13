@@ -1,9 +1,9 @@
 //
 //  AnimatedImageView.h
-//  TestGIF
+//  FatFist
 //
-//  Created by lyywhg on 12-2-25.
-//  Copyright 2011 FatFist. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <UIKit/UIKit.h>

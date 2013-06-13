@@ -1,9 +1,9 @@
 //
 //  FMDatabaseAdditions.h
-//  fmkit
+//  FatFist
 //
-//  Created by August Mueller on 10/30/05.
-//  Copyright 2005 Flying Meat Inc.. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <Foundation/Foundation.h>

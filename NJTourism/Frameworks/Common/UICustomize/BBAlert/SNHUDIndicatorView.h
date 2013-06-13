@@ -2,8 +2,8 @@
 //  SNHUDIndicatorView.h
 //  FatFist
 //
-//  Created by lyywhg on 13-4-24.
-//  Copyright (c) 2013年 FatFist. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <Foundation/Foundation.h>

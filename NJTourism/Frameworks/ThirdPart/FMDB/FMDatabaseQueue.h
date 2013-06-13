@@ -1,9 +1,9 @@
 //
 //  FMDatabasePool.h
-//  fmdb
+//  FatFist
 //
-//  Created by August Mueller on 6/22/11.
-//  Copyright 2011 Flying Meat Inc. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <Foundation/Foundation.h>

@@ -1,14 +1,10 @@
 //
 //  ASIDataCompressor.h
-//  Part of ASIHTTPRequest -> http://allseeing-i.com/ASIHTTPRequest
+//  FatFist
 //
-//  Created by Ben Copsey on 17/08/2010.
-//  Copyright 2010 All-Seeing Interactive. All rights reserved.
+//  Created by lyywhg on 13-5-24.
 //
-
-// This is a helper class used by ASIHTTPRequest to handle deflating (compressing) data in memory and on disk
-// You may also find it helpful if you need to deflate data and files yourself - see the class methods below
-// Most of the zlib stuff is based on the sample code by Mark Adler available at http://zlib.net
+//
 
 #import <Foundation/Foundation.h>
 #import <zlib.h>

@@ -1,9 +1,9 @@
 //
 //  ASINetworkQueue.h
-//  Part of ASIHTTPRequest -> http://allseeing-i.com/ASIHTTPRequest
+//  FatFist
 //
-//  Created by Ben Copsey on 07/11/2008.
-//  Copyright 2008-2009 All-Seeing Interactive. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <Foundation/Foundation.h>

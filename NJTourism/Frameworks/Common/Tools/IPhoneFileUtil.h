@@ -1,9 +1,9 @@
 //
 //  IPhoneFileUtil.h
-//  
+//  FatFist
 //
-//  Created by lyywhg on 06/11/2012.
-//  Copyright 2012 sn. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <Foundation/Foundation.h>

@@ -2,8 +2,8 @@
 //  Command.h
 //  FatFist
 //
-//  Created by  liukun on 12-11-16.
-//  Copyright (c) 2012年 FatFist. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <Foundation/Foundation.h>

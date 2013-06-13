@@ -2,8 +2,8 @@
 //  TimerCal.h
 //  FatFist
 //
-//  Created by lyywhg on 13-3-29.
-//  Copyright (c) 2013年 FatFist. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 //  时间转化器

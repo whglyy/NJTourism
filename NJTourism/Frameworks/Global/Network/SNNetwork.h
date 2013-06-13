@@ -1,9 +1,9 @@
 //
 //  SNNetwork.h
-//  TempleteProject
+//  FatFist
 //
-//  Created by lyywhg on 13-3-25.
-//  Copyright (c) 2013年 lyywhg. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <Foundation/Foundation.h>

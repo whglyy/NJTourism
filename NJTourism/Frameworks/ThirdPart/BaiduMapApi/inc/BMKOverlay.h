@@ -1,10 +1,10 @@
-/*
- *  BMKOverlay.h
- *  BMapKit
- *
- *  Copyright 2011 Baidu Inc. All rights reserved.
- *
- */
+//
+//  BMKOverlay.h
+//  FatFist
+//
+//  Created by lyywhg on 13-5-24.
+//
+//
 
 #import "BMKAnnotation.h"
 #import "BMKTypes.h"

@@ -1,9 +1,9 @@
 //
 //  UIView+Appear.h
-//  RoundedPopup
+//  FatFist
 //
-//  Created by Jeff Hodnett on 09/11/10.
-//  Copyright 2010 Applausible. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <UIKit/UIKit.h>

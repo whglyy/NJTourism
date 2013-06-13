@@ -1,10 +1,11 @@
 //
 //  UIImage-Extensions.h
-//  WingLetter
+//  FatFist
 //
-//  Created by lyywhg on 10-8-29.
-//  Copyright 2010 FatFist. All rights reserved.
+//  Created by lyywhg on 13-5-24.
 //
+//
+
 /*!
  @header      UIImage-Extensions
  @abstract    UIImage的类别

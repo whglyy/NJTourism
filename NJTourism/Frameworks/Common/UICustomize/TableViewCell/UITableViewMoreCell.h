@@ -2,8 +2,8 @@
 //  UITableViewMoreCell.h
 //  FatFist
 //
-//  Created by lyywhg on 10/4/11.
-//  Copyright (c) 2011 FatFist. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <Foundation/Foundation.h>

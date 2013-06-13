@@ -1,12 +1,9 @@
 //
 //  Config.m
-//  
+//  FatFist
 //
-//  Created by     on 2010-4-18
-//  Email:   --- at--- gmail.com
-//  MSN:     --- at--- tom.com
-//  Web Home:       
-//  Copyright 2010   .All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <Foundation/Foundation.h>

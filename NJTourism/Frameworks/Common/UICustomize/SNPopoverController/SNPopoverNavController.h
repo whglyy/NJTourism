@@ -2,8 +2,8 @@
 //  SNPopoverNavController.h
 //  FatFist
 //
-//  Created by lyywhg on 12-8-30.
-//  Copyright (c) 2012年 FatFist. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <UIKit/UIKit.h>

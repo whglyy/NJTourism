@@ -1,10 +1,10 @@
-/*
- *  BMKPolyline.h
- *  BMapKit
- *
- *  Copyright 2011 Baidu Inc. All rights reserved.
- *
- */
+//
+//  BMKPolyline.h
+//  FatFist
+//
+//  Created by lyywhg on 13-5-24.
+//
+//
 
 #import "BMKMultiPoint.h"
 #import "BMKOverlay.h"

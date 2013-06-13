@@ -1,11 +1,10 @@
-/*
- *  BMKPointAnnotation.h
- *  BMapKit
- *
- *  Copyright 2011 Baidu Inc. All rights reserved.
- *
- */
-
+//
+//  BMKPointAnnotation.h
+//  FatFist
+//
+//  Created by lyywhg on 13-5-24.
+//
+//
 
 #import <Foundation/Foundation.h>
 #import "BMKShape.h"

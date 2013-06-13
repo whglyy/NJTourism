@@ -1,9 +1,9 @@
 //
 //  NSString_SEL.h
-//  Deblock
+//  FatFist
 //
-//  Created by Maarten Billemont on 06/10/09.
-//  Copyright 2009 lhunath (Maarten Billemont). All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <Foundation/Foundation.h>

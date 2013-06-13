@@ -2,8 +2,8 @@
 //  HttpConstant.h
 //  FatFist
 //
-//  Created by lyywhg on 10-11-28.
-//  Copyright 2010 IBM. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import "ReleaseConfig.h"

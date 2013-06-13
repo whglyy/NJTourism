@@ -2,8 +2,8 @@
 //  DatabaseManager.h
 //  FatFist
 //
-//  Created by lyywhg on 10-10-31.
-//  Copyright 2010 FatFist. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <Foundation/Foundation.h>

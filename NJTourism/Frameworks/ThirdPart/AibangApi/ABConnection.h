@@ -1,9 +1,9 @@
 //
 //  ABConnection.h
-//  AibangApi
+//  FatFist
 //
-//  Created by Liujun Deng on 12-4-10.
-//  Copyright (c) 2012年 aibang.com. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <UIKit/UIKit.h>

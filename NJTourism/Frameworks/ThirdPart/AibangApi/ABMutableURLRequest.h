@@ -1,9 +1,9 @@
 //
 //  ABMutableURLRequest.h
-//  aiguang
+//  FatFist
 //
-//  Created by mac on 11-10-25.
-//  Copyright 2011年 aibang.com. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <Foundation/Foundation.h>

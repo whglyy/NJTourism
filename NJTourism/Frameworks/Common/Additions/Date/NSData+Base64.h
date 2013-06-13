@@ -1,4 +1,10 @@
-// http://www.cocoadev.com/index.pl?BaseSixtyFour
+//
+//
+//  FatFist
+//
+//  Created by lyywhg on 13-5-24.
+//
+//
 
 @interface NSData (Base64)
 

@@ -1,23 +1,10 @@
 //
 //  BBAlertView.h
-//  BlueBoxDemo
+//  FatFist
 //
-//  Created by lyywhg on 12-6-21.
-//  Copyright (c) 2012年 FatFist. All rights reserved.
+//  Created by lyywhg on 13-5-24.
 //
-/*!
- @header      BBAlertView
- @abstract    自定义的AlertView
- @author      lyywhg
- @version     v2.0  12-11-5
- @discussion  这是一个自定义的AlertView，类似于系统的UIAlertView,好处是可以自定义UI,
- 1、实现时采用了新创建的window, 可使改控件不至于被其他view挡住。
- 2、有一个保存alertView的栈，可同时弹出多个alertView，切不会因此重叠
- 3、12-11-5 ,添加字段判断在确定后是否应该消失
- 4、12-11-15, 添加可以设置文本对齐方式的属性
- 5、12-11-17, 添加大数据量文本的兼容
- 6、13-01-15, 添加NSObject注入方法
- */
+//
 
 #import <UIKit/UIKit.h>
 

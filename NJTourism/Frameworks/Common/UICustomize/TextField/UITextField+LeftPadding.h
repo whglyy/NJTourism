@@ -2,8 +2,8 @@
 //  UITextField+LeftPadding.h
 //  FatFist
 //
-//  Created by lyywhg on 11/1/11.
-//  Copyright 2011 FatFist. All rights reserved.
+//  Created by lyywhg on 13-5-24.
+//
 //
 
 #import <UIKit/UIKit.h>
