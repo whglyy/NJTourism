@@ -1,0 +1,31 @@
+//
+// Prefix header for all source files of the 'iPhoneXMPP' target in the 'iPhoneXMPP' project
+//
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iPhone SDK 3.0 and later."
+#endif
+
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "Constant.h"
+#import <QuartzCore/QuartzCore.h>
+#import "Config.h"
+#import "ASIHTTPRequest.h"
+#import "ASIFormDataRequest.h"
+#import "Additions.h"
+#import "SystemInfo.h"
+#import "BBAlertView.h"
+#import "CommonViewController.h"
+#import "NSObject+BoardManage.h"
+#import "NSObject+GlobalDataManage.h"
+#import "JSONKit.h"
+#endif
+
+
+
+
+
