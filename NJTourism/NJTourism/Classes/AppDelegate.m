@@ -13,20 +13,24 @@
 
 @implementation AppDelegate
 
-@synthesize window = _window;
-@synthesize viewController = _viewController;
+- (UIWindow *)window
+{
+    if (!_window)
+    {
+        _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    }
+    return _window;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	
+{	
 	BusListViewController *frontViewController = [[BusListViewController alloc] initWithNibName:@"BusListViewController" bundle:nil];
 	RearViewController *rearViewController = [[RearViewController alloc] initWithNibName:@"RearViewController" bundle:nil];
     
-	
 	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
 	
 	RevealController *revealController = [[RevealController alloc] initWithFrontViewController:navigationController rearViewController:rearViewController];
+    revealController.view.backgroundColor = [UIColor orangeColor];
 	
 	self.window.rootViewController = revealController;
 	[self.window makeKeyAndVisible];
@@ -40,21 +44,6 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-	// Use this method to release shared resources, save user data, invalidate timers, and store
-	// enough application state information to restore your application to its current state in case
-	// it is terminated later.
-	//
-	// If your application supports background execution,
-	// called instead of applicationWillTerminate: when the user quits.
-	
-    
-	if ([application respondsToSelector:@selector(setKeepAliveTimeout:handler:)])
-	{
-		[application setKeepAliveTimeout:600 handler:^{
-						
-			// Do other keep alive stuff here.
-		}];
-	}
 }
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {

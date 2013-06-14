@@ -25,7 +25,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSMainNibFile</key>
-	<string></string>
+	<string>MainWindow</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>voip</string>

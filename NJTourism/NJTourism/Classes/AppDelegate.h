@@ -11,7 +11,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (retain, nonatomic) UIWindow *window;
-@property (retain, nonatomic) RevealController *viewController;
+@property (retain, nonatomic) RevealController *revealVC;
 
 + (AppDelegate *)currentAppDelegate;
 

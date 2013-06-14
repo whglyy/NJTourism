@@ -68,6 +68,7 @@
 		1FAC52FD173CF53D00EA2BD8 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAC52FC173CF53900EA2BD8 /* CoreText.framework */; };
 		1FAC52FF173CF6A800EA2BD8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAC52FE173CF6A400EA2BD8 /* MessageUI.framework */; };
 		1FAC5301173CF76300EA2BD8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAC5300173CF75F00EA2BD8 /* CoreMotion.framework */; };
+		1FEB2544176B52BB00C93780 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FEB2543176B52BB00C93780 /* MainWindow.xib */; };
 		1FF3963F176B480700DBB52A /* ZUUIRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3963E176B480700DBB52A /* ZUUIRevealController.m */; };
 		1FF39643176B486C00DBB52A /* RevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF39642176B486C00DBB52A /* RevealController.m */; };
 		1FF39647176B498D00DBB52A /* RearViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FF39644176B498D00DBB52A /* RearViewController.xib */; };
@@ -338,6 +339,7 @@
 		1FAC52FC173CF53900EA2BD8 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		1FAC52FE173CF6A400EA2BD8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		1FAC5300173CF75F00EA2BD8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		1FEB2543176B52BB00C93780 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		1FF3963D176B480700DBB52A /* ZUUIRevealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZUUIRevealController.h; sourceTree = "<group>"; };
 		1FF3963E176B480700DBB52A /* ZUUIRevealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZUUIRevealController.m; sourceTree = "<group>"; };
 		1FF39641176B486C00DBB52A /* RevealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RevealController.h; sourceTree = "<group>"; };
@@ -893,6 +895,7 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				1FEB2543176B52BB00C93780 /* MainWindow.xib */,
 				28A0AAE50D9B0CCF005BE974 /* NJTourism_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -1812,6 +1815,7 @@
 				1F5FAC53176AFEE30029CB4F /* WeatherViewController.xib in Resources */,
 				1F5FAC58176AFEF30029CB4F /* SettingViewController.xib in Resources */,
 				1FF39647176B498D00DBB52A /* RearViewController.xib in Resources */,
+				1FEB2544176B52BB00C93780 /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
