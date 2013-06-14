@@ -25,11 +25,13 @@
 #pragma mark callback handler
 -(void)handleData:(NSData*)data WithConnection:(ABConnection*)connection
 {
+    NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
+    id jsonDic = [jsonString JSONValue];
     
-    if (delegate && [delegate respondsToSelector:@selector(requestDidFinishWithData:aibangApi:)])
+    if (delegate && [delegate respondsToSelector:@selector(requestDidFinishWithDictionary:aibangApi:)])
     {
-        [delegate performSelector:@selector(requestDidFinishWithData:aibangApi:) withObject:data withObject:self];
+        [delegate performSelector:@selector(requestDidFinishWithDictionary:aibangApi:) withObject:jsonDic withObject:self];
     }
 }
 -(void) handleError:(NSError*)error WithConnection:(ABConnection*)connection

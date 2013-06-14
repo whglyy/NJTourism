@@ -45,10 +45,9 @@
     // Do any additional setup after loading the view from its nib.
 }
 
--(void) requestDidFinishWithData:(NSData*)data aibangApi:(id)aibangApi
+-(void) requestDidFinishWithDictionary:(NSDictionary *)dict aibangApi:(id)aibangApi
 {
-    DLog(@"msg_lyywhg:r~data%@", data);
-    NSString* result1 = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+    DLog(@"msg_lyywhg:r~data%@", dict);
 }
 -(void) requestDidFailedWithError:(NSError*)error aibangApi:(id)aibangApi
 {

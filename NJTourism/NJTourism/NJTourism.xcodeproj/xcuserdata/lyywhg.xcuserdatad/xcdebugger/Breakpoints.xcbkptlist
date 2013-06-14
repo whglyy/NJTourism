@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/BusListViewController.m"
-         timestampString = "392884140.917409"
+         timestampString = "392886372.573237"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "55"
-         endingLineNumber = "55"
+         startingLineNumber = "54"
+         endingLineNumber = "54"
          landmarkName = "-requestDidFailedWithError:aibangApi:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -21,13 +21,35 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/BusListViewController.m"
-         timestampString = "392884160.409613"
+         timestampString = "392886372.573237"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "52"
-         endingLineNumber = "52"
-         landmarkName = "-requestDidFinishWithData:aibangApi:"
+         startingLineNumber = "51"
+         endingLineNumber = "51"
+         landmarkName = "-requestDidFinishWithDictionary:aibangApi:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../Frameworks/ThirdPart/AibangApi/AibangApi.m"
+         timestampString = "392886076.418532"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "30"
+         endingLineNumber = "30"
+         landmarkName = "-handleData:WithConnection:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
+   <ExceptionBreakpoints>
+      <ExceptionBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         scope = "0"
+         stopOnStyle = "0">
+      </ExceptionBreakpoint>
+   </ExceptionBreakpoints>
 </Bucket>

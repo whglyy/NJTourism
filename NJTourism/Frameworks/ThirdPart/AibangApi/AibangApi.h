@@ -10,8 +10,8 @@
 
 NSString *APPKEY;
 @protocol AibangApiDelegate <NSObject>
--(void) requestDidFinishWithData:(NSData*)data aibangApi:(id)aibangApi;
--(void) requestDidFailedWithError:(NSError*)error aibangApi:(id)aibangApi; 
+- (void)requestDidFinishWithDictionary:(NSDictionary *)dic aibangApi:(id)aibangApi;
+- (void)requestDidFailedWithError:(NSError *)error aibangApi:(id)aibangApi;
 @end
 
 @interface AibangApi : NSObject{
