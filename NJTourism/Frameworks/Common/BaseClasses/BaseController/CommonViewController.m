@@ -5,66 +5,48 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "TPKeyboardAvoidingTableView.h"
 #import "CommonViewController.h"
 #import "MBProgressHUD.h"
-
 @implementation CommonViewController
-
 @synthesize  tableView = _tableView;
-
 @synthesize  groupTableView = _groupTableView;
-
 @synthesize tpTableView = _tpTableView;
-
 @synthesize  dlgTimer = _dlgTimer;
-
 @synthesize pageInTime = _pageInTime;
-
 + (id)controller
 {
     return [[self alloc] init];
 }
-
 - (id)init{
 	
     self = [super init];
 	
     if (self) {
 		
-
     }
     return self;
 }
 
-
-
 - (void)dealloc {
     
     [_dlgTimer invalidate];
-
     [self dismissAllCustomAlerts];
 	
 }
 
-
 - (void)viewWillAppear:(BOOL)animated{
-
     [super viewWillAppear:animated];
 }
-
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
 }
-
 - (void)loadView
 {
 	[super loadView];
     self.view.backgroundColor = [UIColor clearColor];
 }
-
 - (void)setDlgTimer:(NSTimerHelper *)dlgTimer
 {
     if (dlgTimer != _dlgTimer) {
@@ -72,7 +54,6 @@
         _dlgTimer = dlgTimer;
     }
 }
-
 - (void)displayOverFlowActivityView:(NSString*)indiTitle{
 	
 	[self.view showHUDIndicatorViewAtCenter:indiTitle];
@@ -86,7 +67,6 @@
 	return;
 	
 }
-
 - (void)displayOverFlowActivityView:(NSString *)indiTitle maxShowTime:(CGFloat)time
 {
     [self.view showHUDIndicatorViewAtCenter:indiTitle];
@@ -104,7 +84,6 @@
 	return;
 }
 
-
 - (void)displayOverFlowActivityView{
 	
 	[self.view showHUDIndicatorViewAtCenter:L(@"loading...")];
@@ -118,7 +97,6 @@
 	return;
 	
 }
-
 - (void)displayOverFlowActivityView:(NSString*)indiTitle yOffset:(CGFloat)y{
 	
 	[self.view showHUDIndicatorViewAtCenter:indiTitle yOffset:y];
@@ -132,12 +110,10 @@
 	return;
 	
 }
-
 - (void)timeOutRemoveHUDView
 {
     [self.view hideHUDIndicatorViewAtCenter];
 }
-
 
 - (void)timerOutRemoveOverFlowActivityView
 {
@@ -148,7 +124,6 @@
 	
 	
 }
-
 - (void)removeOverFlowActivityView
 {
     [self.view hideHUDIndicatorViewAtCenter];
@@ -156,30 +131,25 @@
     [_dlgTimer invalidate];
 	
 }
-
 - (void)presentSheet:(NSString*)indiTitle
 {
 	
     [self.view showTipViewAtCenter:indiTitle];
 }
-
 - (void)presentSuccessLogoSheet:(NSString*)indiTitle{
 	
     [self.view showSuccessTipViewAtCenter:indiTitle];
 }
-
 - (void)presentFailLogoSheet:(NSString*)indiTitle{
 	
     [self.view showFailTipViewAtCenter:indiTitle];
 }
-
 
 - (void)presentSheet:(NSString*)indiTitle posY:(CGFloat)y{
 	
     [self.view showTipViewAtCenter:indiTitle posY:y];
     
 }
-
 - (void)presentCustomDlg:(NSString*)indiTitle{
 	
     BBAlertView *alert = [[BBAlertView alloc] initWithStyle:BBAlertViewStyleDefault
@@ -191,16 +161,13 @@
                                           otherButtonTitles:nil];
     [alert show];
 
-
 }
-
 
 - (void)viewDidDisappear:(BOOL)animated{
         
     [super viewDidDisappear:animated];
     
 }
-
 - (UITableView *)tableView{
 	
 	if(!_tableView){
@@ -228,7 +195,6 @@
 	
 	return _tableView;
 }
-
 - (UITableView *)groupTableView{
 	
 	if(!_groupTableView){
@@ -256,7 +222,6 @@
 	
 	return _groupTableView;
 }
-
 - (TPKeyboardAvoidingTableView *)tpTableView
 {
 	if(!_tpTableView)
@@ -284,22 +249,18 @@
 	return _tpTableView;
 }
 
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
 	return 0;
 }
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
 	return 0;	
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	return nil;
 }
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -310,7 +271,6 @@
     
     // Release any cached data, images, etc. that aren't in use.
 }
-
 - (void)presentModalViewController:(UIViewController *)modalViewController animated:(BOOL)animated
 {
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 5.0) {
@@ -319,5 +279,4 @@
         [super presentModalViewController:modalViewController animated:animated];
     }
 }
-
 @end

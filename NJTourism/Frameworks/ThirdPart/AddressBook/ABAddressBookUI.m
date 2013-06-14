@@ -5,41 +5,31 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "ABAddressBookUI.h"
 #import <AddressBookUI/ABAddressFormatting.h>
-
 @implementation ABAddressBook (UserInterface)
-
 - (ABPeoplePickerNavigationController *) peoplePicker
 {
     ABPeoplePickerNavigationController * controller = [[ABPeoplePickerNavigationController alloc] init];
     controller.addressBook = self.addressBookRef;
     return ( [controller autorelease] );
 }
-
 - (ABNewPersonViewController *) viewControllerForNewPerson
 {
     ABNewPersonViewController * controller = [[ABNewPersonViewController alloc] init];
     controller.addressBook = self.addressBookRef;
     return ( [controller autorelease] );
 }
-
 @end
-
 @implementation ABGroup (UserInterface)
-
 - (ABNewPersonViewController *) viewControllerForNewPerson
 {
     ABNewPersonViewController * controller = [[ABNewPersonViewController alloc] init];
     controller.parentGroup = self.recordRef;
     return ( [controller autorelease] );
 }
-
 @end
-
 @implementation ABPerson (UserInterface)
-
 - (ABMultiValue *) localizedAddressStringsWithCountryName: (BOOL) addCountryName
 {
     ABMultiValue * addresses = [self valueForProperty: kABPersonAddressProperty];
@@ -59,7 +49,6 @@
     
     return ( [result autorelease] );
 }
-
 - (NSString *) localizedAddressStringForLabel: (NSString *) label addCountryName: (BOOL) addCountryName
 {
     ABMultiValue * addresses = [self valueForProperty: kABPersonAddressProperty];
@@ -80,12 +69,10 @@
     
     return ( ABCreateStringWithAddressDictionary([addresses valueAtIndex: i], addCountryName) );
 }
-
 - (ABPersonViewController *) viewController
 {
     ABPersonViewController * controller = [[ABPersonViewController alloc] init];
     controller.displayedPerson = self.recordRef;
     return ( [controller autorelease] );
 }
-
 @end

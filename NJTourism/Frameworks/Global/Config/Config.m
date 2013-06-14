@@ -6,32 +6,23 @@
 //
 //
 
-
 #import "NSString+SEL.h"
-
 @implementation Config
-
 @synthesize defaults;
 @dynamic uid;
 @dynamic userId;
-
 @dynamic password;
 @dynamic savePassword;
-
 @dynamic mySettingsDTO;
-
 @dynamic everLaunched;
 @dynamic firstLaunch;
-
 @dynamic currentFilesCount;
 @dynamic haveSettedBoxPwd;
 @dynamic lastUserId;
 @dynamic autoLogin;
 @dynamic isUpdate;
 @dynamic versionUpdateCancel;
-
 @dynamic isChatInfoChanged;
-
 -(id) init {
 	
     if(!(self = [super init]))
@@ -56,7 +47,6 @@
     
 	return self;
 }
-
 -(void) dealloc
 {
     self.defaults = nil;
@@ -74,8 +64,6 @@
     self.isChatInfoChanged = nil;
 }
 
-
-
 +(Config *) currentConfig {
     
     static Config *instance;
@@ -86,7 +74,6 @@
     
     return instance;
 }
-
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
 	    
     if ([NSStringFromSelector(aSelector) hasPrefix:@"set"]){
@@ -96,7 +83,6 @@
     //DLog(@"methodSignatureForSelector 2\n");
     return [NSMethodSignature signatureWithObjCTypes:"@@:"];
 }
-
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation {
     
@@ -139,7 +125,5 @@
         
     }
 }
-
-
 
 @end

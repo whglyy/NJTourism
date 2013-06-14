@@ -5,28 +5,21 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "ASIFormDataRequest.h"
-
 
 // Private stuff
 @interface ASIFormDataRequest ()
 - (void)buildMultipartFormDataPostBody;
 - (void)buildURLEncodedPostBody;
 - (void)appendPostString:(NSString *)string;
-
 @property (retain) NSMutableArray *postData;
 @property (retain) NSMutableArray *fileData;
-
 #if DEBUG_FORM_DATA_REQUEST
 - (void)addToDebugBody:(NSString *)string;
 @property (retain, nonatomic) NSString *debugBodyString;
 #endif
-
 @end
-
 @implementation ASIFormDataRequest
-
 #pragma mark utilities
 - (NSString*)encodeURL:(NSString *)string
 {
@@ -36,14 +29,11 @@
 	}
 	return @"";
 }
-
 #pragma mark init / dealloc
-
 + (id)requestWithURL:(NSURL *)newURL
 {
 	return [[[self alloc] initWithURL:newURL] autorelease];
 }
-
 - (id)initWithURL:(NSURL *)newURL
 {
 	self = [super initWithURL:newURL];
@@ -52,7 +42,6 @@
         [self setRequestMethod:@"POST"];
 	return self;
 }
-
 - (void)dealloc
 {
 #if DEBUG_FORM_DATA_REQUEST
@@ -63,9 +52,7 @@
 	[fileData release];
 	[super dealloc];
 }
-
 #pragma mark setup request
-
 - (void)addPostValue:(id <NSObject>)value forKey:(NSString *)key
 {
 	if (!key) {
@@ -79,7 +66,6 @@
 	[keyValuePair setValue:[value description] forKey:@"value"];
 	[[self postData] addObject:keyValuePair];
 }
-
 - (void)setPostValue:(id <NSObject>)value forKey:(NSString *)key
 {
 	// Remove any existing value
@@ -94,12 +80,10 @@
 	[self addPostValue:value forKey:key];
 }
 
-
 - (void)addFile:(NSString *)filePath forKey:(NSString *)key
 {
 	[self addFile:filePath withFileName:nil andContentType:nil forKey:key];
 }
-
 - (void)addFile:(NSString *)filePath withFileName:(NSString *)fileName andContentType:(NSString *)contentType forKey:(NSString *)key
 {
 	BOOL isDirectory = NO;
@@ -107,24 +91,20 @@
 	if (!fileExists || isDirectory) {
 		[self failWithError:[NSError errorWithDomain:NetworkRequestErrorDomain code:ASIInternalErrorWhileBuildingRequestType userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"No file exists at %@",filePath],NSLocalizedDescriptionKey,nil]]];
 	}
-
 	// If the caller didn't specify a custom file name, we'll use the file name of the file we were passed
 	if (!fileName) {
 		fileName = [filePath lastPathComponent];
 	}
-
 	// If we were given the path to a file, and the user didn't specify a mime type, we can detect it from the file extension
 	if (!contentType) {
 		contentType = [ASIHTTPRequest mimeTypeForFileAtPath:filePath];
 	}
 	[self addData:filePath withFileName:fileName andContentType:contentType forKey:key];
 }
-
 - (void)setFile:(NSString *)filePath forKey:(NSString *)key
 {
 	[self setFile:filePath withFileName:nil andContentType:nil forKey:key];
 }
-
 - (void)setFile:(id)data withFileName:(NSString *)fileName andContentType:(NSString *)contentType forKey:(NSString *)key
 {
 	// Remove any existing value
@@ -138,12 +118,10 @@
 	}
 	[self addFile:data withFileName:fileName andContentType:contentType forKey:key];
 }
-
 - (void)addData:(NSData *)data forKey:(NSString *)key
 {
 	[self addData:data withFileName:@"file" andContentType:nil forKey:key];
 }
-
 - (void)addData:(id)data withFileName:(NSString *)fileName andContentType:(NSString *)contentType forKey:(NSString *)key
 {
 	if (![self fileData]) {
@@ -152,21 +130,17 @@
 	if (!contentType) {
 		contentType = @"application/octet-stream";
 	}
-
 	NSMutableDictionary *fileInfo = [NSMutableDictionary dictionaryWithCapacity:4];
 	[fileInfo setValue:key forKey:@"key"];
 	[fileInfo setValue:fileName forKey:@"fileName"];
 	[fileInfo setValue:contentType forKey:@"contentType"];
 	[fileInfo setValue:data forKey:@"data"];
-
 	[[self fileData] addObject:fileInfo];
 }
-
 - (void)setData:(NSData *)data forKey:(NSString *)key
 {
 	[self setData:data withFileName:@"file" andContentType:nil forKey:key];
 }
-
 - (void)setData:(id)data withFileName:(NSString *)fileName andContentType:(NSString *)contentType forKey:(NSString *)key
 {
 	// Remove any existing value
@@ -180,7 +154,6 @@
 	}
 	[self addData:data withFileName:fileName andContentType:contentType forKey:key];
 }
-
 - (void)buildPostBody
 {
 	if ([self haveBuiltPostBody]) {
@@ -204,7 +177,6 @@
 	} else {
 		[self buildMultipartFormDataPostBody];
 	}
-
 	[super buildPostBody];
 	
 #if DEBUG_FORM_DATA_REQUEST
@@ -212,7 +184,6 @@
 	[self setDebugBodyString:nil];
 #endif
 }
-
 
 - (void)buildMultipartFormDataPostBody
 {
@@ -247,7 +218,6 @@
 	// Adds files to upload
 	i=0;
 	for (NSDictionary *val in [self fileData]) {
-
 		[self appendPostString:[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n", [val objectForKey:@"key"], [val objectForKey:@"fileName"]]];
 		[self appendPostString:[NSString stringWithFormat:@"Content-Type: %@\r\n\r\n", [val objectForKey:@"contentType"]]];
 		
@@ -270,10 +240,8 @@
 	[self addToDebugBody:@"==== End of multipart/form-data body ====\r\n"];
 #endif
 }
-
 - (void)buildURLEncodedPostBody
 {
-
 	// We can't post binary data using application/x-www-form-urlencoded
 	if ([[self fileData] count] > 0) {
 		[self setPostFormat:ASIMultipartFormDataPostFormat];
@@ -287,9 +255,7 @@
 	
 	
 	NSString *charset = (NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding([self stringEncoding]));
-
 	[self addRequestHeader:@"Content-Type" value:[NSString stringWithFormat:@"application/x-www-form-urlencoded; charset=%@",charset]];
-
 	
 	NSUInteger i=0;
 	NSUInteger count = [[self postData] count]-1;
@@ -302,7 +268,6 @@
 	[self addToDebugBody:@"\r\n==== End of application/x-www-form-urlencoded body ====\r\n"]; 
 #endif
 }
-
 - (void)appendPostString:(NSString *)string
 {
 #if DEBUG_FORM_DATA_REQUEST
@@ -310,14 +275,12 @@
 #endif
 	[super appendPostData:[string dataUsingEncoding:[self stringEncoding]]];
 }
-
 #if DEBUG_FORM_DATA_REQUEST
 - (void)appendPostData:(NSData *)data
 {
 	[self addToDebugBody:[NSString stringWithFormat:@"[%lu bytes of data]",(unsigned long)[data length]]];
 	[super appendPostData:data];
 }
-
 - (void)appendPostDataFromFile:(NSString *)file
 {
 	NSError *err = nil;
@@ -327,10 +290,8 @@
 	} else {
 		[self addToDebugBody:[NSString stringWithFormat:@"[%llu bytes of data from file '%@']",fileSize,file]];
 	}
-
 	[super appendPostDataFromFile:file];
 }
-
 - (void)addToDebugBody:(NSString *)string
 {
 	if (string) {
@@ -338,9 +299,7 @@
 	}
 }
 #endif
-
 #pragma mark NSCopying
-
 - (id)copyWithZone:(NSZone *)zone
 {
 	ASIFormDataRequest *newRequest = [super copyWithZone:zone];
@@ -351,7 +310,6 @@
 	[newRequest setRequestMethod:[self requestMethod]];
 	return newRequest;
 }
-
 @synthesize postData;
 @synthesize fileData;
 @synthesize postFormat;

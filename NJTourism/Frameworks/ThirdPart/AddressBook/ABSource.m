@@ -6,17 +6,12 @@
 //
 //
 
-
 #import "ABSource.h"
-
 #import "ABAddressBook.h"
 #import "ABGroup.h"
-
 extern NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitialization> class );
 
-
 @implementation ABSource
-
 - (NSArray *) allGroups
 {
 	NSArray * groups = (NSArray *) ABAddressBookCopyArrayOfAllGroupsInSource( [ABAddressBook sharedAddressBook].addressBookRef, _ref );
@@ -31,5 +26,4 @@ extern NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitializa
     
     return ( result );
 }
-
 @end

@@ -5,11 +5,9 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <UIKit/UIKit.h>
 #import "EGOImageLoader.h"
 #import "AnimatedImageView.h"
-
 typedef enum
 {
     ImageAnimationNone = 0,
@@ -17,7 +15,6 @@ typedef enum
     ImageAnimationFlip,
     ImageAnimation3DMakeRotate
 }GOEForAnimation;
-
 @protocol EGOImageViewDelegate;
 @interface EGOImageView : AnimatedImageView<EGOImageLoaderObserver> {
 //@private
@@ -30,26 +27,19 @@ typedef enum
     BOOL isRoundCorner_;
     NSInteger imageCornerRadius_;
 }
-
 - (id)initWithPlaceholderImage:(UIImage*)anImage; // delegate:nil
 - (id)initWithPlaceholderImage:(UIImage*)anImage delegate:(id<EGOImageViewDelegate>)aDelegate;
-
 - (void)cancelImageLoad;
-
 @property(nonatomic,retain) NSURL* imageURL;
 @property(nonatomic,retain) UIImage* placeholderImage;
 @property(nonatomic,assign) id<EGOImageViewDelegate> delegate;
 @property(nonatomic,assign) BOOL hasBorder;
 @property(nonatomic,assign) BOOL isDataIntegrated;
-
 @property(nonatomic,assign) GOEForAnimation hasAnimateType;
 @property(nonatomic,assign) BOOL isRoundCorner;
 @property(nonatomic,assign) NSInteger imageCornerRadis;
-
 - (void)setHasBorder:(BOOL)aHasBorder;
-
 @end
-
 @protocol EGOImageViewDelegate<NSObject>
 @optional
 - (void)imageViewLoadedImage:(EGOImageView*)imageView;

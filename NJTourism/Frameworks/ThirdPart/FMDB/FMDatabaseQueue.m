@@ -5,10 +5,8 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "FMDatabaseQueue.h"
 #import "FMDatabase.h"
-
 /*
  
  Note: we call [self retain]; before using dispatch_sync, just incase 
@@ -18,9 +16,7 @@
  */
  
 @implementation FMDatabaseQueue
-
 @synthesize path = _path;
-
 + (id)databaseQueueWithPath:(NSString*)aPath {
     
     FMDatabaseQueue *q = [[self alloc] initWithPath:aPath];
@@ -29,7 +25,6 @@
     
     return q;
 }
-
 - (id)initWithPath:(NSString*)aPath {
     
     self = [super init];
@@ -52,7 +47,6 @@
     
     return self;
 }
-
 - (void)dealloc {
     
     FMDBRelease(_db);
@@ -66,7 +60,6 @@
     [super dealloc];
 #endif
 }
-
 - (void)close {
     FMDBRetain(self);
     dispatch_sync(_queue, ^() { 
@@ -76,7 +69,6 @@
     });
     FMDBRelease(self);
 }
-
 - (FMDatabase*)database {
     if (!_db) {
         _db = FMDBReturnRetained([FMDatabase databaseWithPath:_path]);
@@ -91,7 +83,6 @@
     
     return _db;
 }
-
 - (void)inDatabase:(void (^)(FMDatabase *db))block {
     FMDBRetain(self);
     
@@ -107,7 +98,6 @@
     
     FMDBRelease(self);
 }
-
 
 - (void)beginTransaction:(BOOL)useDeferred withBlock:(void (^)(FMDatabase *db, BOOL *rollback))block {
     FMDBRetain(self);
@@ -134,15 +124,12 @@
     
     FMDBRelease(self);
 }
-
 - (void)inDeferredTransaction:(void (^)(FMDatabase *db, BOOL *rollback))block {
     [self beginTransaction:YES withBlock:block];
 }
-
 - (void)inTransaction:(void (^)(FMDatabase *db, BOOL *rollback))block {
     [self beginTransaction:NO withBlock:block];
 }
-
 #if SQLITE_VERSION_NUMBER >= 3007000
 - (NSError*)inSavePoint:(void (^)(FMDatabase *db, BOOL *rollback))block {
     
@@ -172,5 +159,4 @@
     return err;
 }
 #endif
-
 @end

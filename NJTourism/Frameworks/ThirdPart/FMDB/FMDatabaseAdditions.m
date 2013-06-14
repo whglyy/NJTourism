@@ -5,16 +5,12 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "FMDatabase.h"
 #import "FMDatabaseAdditions.h"
-
 @interface FMDatabase (PrivateStuff)
 - (FMResultSet *)executeQuery:(NSString *)sql withArgumentsInArray:(NSArray*)arrayArgs orDictionary:(NSDictionary *)dictionaryArgs orVAList:(va_list)args;
 @end
-
 @implementation FMDatabase (FMDatabaseAdditions)
-
 #define RETURN_RESULT_FOR_QUERY_WITH_SELECTOR(type, sel)             \
 va_list args;                                                        \
 va_start(args, query);                                               \
@@ -26,35 +22,27 @@ type ret = [resultSet sel:0];                                        \
 [resultSet setParentDB:nil];                                         \
 return ret;
 
-
 - (NSString*)stringForQuery:(NSString*)query, ... {
     RETURN_RESULT_FOR_QUERY_WITH_SELECTOR(NSString *, stringForColumnIndex);
 }
-
 - (int)intForQuery:(NSString*)query, ... {
     RETURN_RESULT_FOR_QUERY_WITH_SELECTOR(int, intForColumnIndex);
 }
-
 - (long)longForQuery:(NSString*)query, ... {
     RETURN_RESULT_FOR_QUERY_WITH_SELECTOR(long, longForColumnIndex);
 }
-
 - (BOOL)boolForQuery:(NSString*)query, ... {
     RETURN_RESULT_FOR_QUERY_WITH_SELECTOR(BOOL, boolForColumnIndex);
 }
-
 - (double)doubleForQuery:(NSString*)query, ... {
     RETURN_RESULT_FOR_QUERY_WITH_SELECTOR(double, doubleForColumnIndex);
 }
-
 - (NSData*)dataForQuery:(NSString*)query, ... {
     RETURN_RESULT_FOR_QUERY_WITH_SELECTOR(NSData *, dataForColumnIndex);
 }
-
 - (NSDate*)dateForQuery:(NSString*)query, ... {
     RETURN_RESULT_FOR_QUERY_WITH_SELECTOR(NSDate *, dateForColumnIndex);
 }
-
 
 - (BOOL)tableExists:(NSString*)tableName {
     
@@ -70,7 +58,6 @@ return ret;
     
     return returnBool;
 }
-
 /*
  get table with list of tables: result colums: type[STRING], name[STRING],tbl_name[STRING],rootpage[INTEGER],sql[STRING]
  check if table exist in database  (patch from OZLB)
@@ -82,7 +69,6 @@ return ret;
     
     return rs;
 }
-
 /* 
  get table schema: result colums: cid[INTEGER], name,type [STRING], notnull[INTEGER], dflt_value[],pk[INTEGER]
 */
@@ -93,7 +79,6 @@ return ret;
     
     return rs;
 }
-
 
 - (BOOL)columnExists:(NSString*)tableName columnName:(NSString*)columnName {
     
@@ -117,7 +102,6 @@ return ret;
     
     return returnBool;
 }
-
 - (BOOL)validateSQL:(NSString*)sql error:(NSError**)error {
     sqlite3_stmt *pStmt = NULL;
     BOOL validationSucceeded = YES;
@@ -151,5 +135,4 @@ return ret;
     
     return validationSucceeded;
 }
-
 @end

@@ -5,15 +5,11 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "OHAttributedLabel.h"
 #import "NSAttributedString+Attributes.h"
-
 #define OHAttributedLabel_WarnAboutKnownIssues 1
-
 /////////////////////////////////////////////////////////////////////////////
 // MARK: Private Utility methods
-
 CGPoint CGPointFlipped(CGPoint point, CGRect bounds);
 CGRect CGRectFlipped(CGRect rect, CGRect bounds);
 NSRange NSRangeFromCFRange(CFRange range);
@@ -21,11 +17,9 @@ CGRect CTLineGetTypographicBoundsAsRect(CTLineRef line, CGPoint lineOrigin);
 CGRect CTRunGetTypographicBoundsAsRect(CTRunRef run, CTLineRef line, CGPoint lineOrigin);
 BOOL CTLineContainsCharactersFromStringRange(CTLineRef line, NSRange range);
 BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range);
-
 /////////////////////////////////////////////////////////////////////////////
 // MARK: -
 /////////////////////////////////////////////////////////////////////////////
-
 
 CTTextAlignment CTTextAlignmentFromUITextAlignment(UITextAlignment alignment) {
 	switch (alignment) {
@@ -36,7 +30,6 @@ CTTextAlignment CTTextAlignmentFromUITextAlignment(UITextAlignment alignment) {
 		default: return kCTNaturalTextAlignment;
 	}
 }
-
 CTLineBreakMode CTLineBreakModeFromUILineBreakMode(UILineBreakMode lineBreakMode) {
 	switch (lineBreakMode) {
 		case UILineBreakModeWordWrap: return kCTLineBreakByWordWrapping;
@@ -48,23 +41,19 @@ CTLineBreakMode CTLineBreakModeFromUILineBreakMode(UILineBreakMode lineBreakMode
 		default: return 0;
 	}
 }
-
 // Don't use this method for origins. Origins always depend on the height of the rect.
 CGPoint CGPointFlipped(CGPoint point, CGRect bounds) {
 	return CGPointMake(point.x, CGRectGetMaxY(bounds)-point.y);
 }
-
 CGRect CGRectFlipped(CGRect rect, CGRect bounds) {
 	return CGRectMake(CGRectGetMinX(rect),
 					  CGRectGetMaxY(bounds)-CGRectGetMaxY(rect),
 					  CGRectGetWidth(rect),
 					  CGRectGetHeight(rect));
 }
-
 NSRange NSRangeFromCFRange(CFRange range) {
 	return NSMakeRange(range.location, range.length);
 }
-
 // Font Metrics: http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/FontHandling/Tasks/GettingFontMetrics.html
 CGRect CTLineGetTypographicBoundsAsRect(CTLineRef line, CGPoint lineOrigin) {
 	CGFloat ascent = 0;
@@ -78,7 +67,6 @@ CGRect CTLineGetTypographicBoundsAsRect(CTLineRef line, CGPoint lineOrigin) {
 					  width,
 					  height);
 }
-
 CGRect CTRunGetTypographicBoundsAsRect(CTRunRef run, CTLineRef line, CGPoint lineOrigin) {
 	CGFloat ascent = 0;
 	CGFloat descent = 0;
@@ -93,26 +81,21 @@ CGRect CTRunGetTypographicBoundsAsRect(CTRunRef run, CTLineRef line, CGPoint lin
 					  width,
 					  height);
 }
-
 BOOL CTLineContainsCharactersFromStringRange(CTLineRef line, NSRange range) {
 	NSRange lineRange = NSRangeFromCFRange(CTLineGetStringRange(line));
 	NSRange intersectedRange = NSIntersectionRange(lineRange, range);
 	return (intersectedRange.length > 0);
 }
-
 BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
 	NSRange runRange = NSRangeFromCFRange(CTRunGetStringRange(run));
 	NSRange intersectedRange = NSIntersectionRange(runRange, range);
 	return (intersectedRange.length > 0);
 }
 
-
-
 /////////////////////////////////////////////////////////////////////////////
 // MARK: -
 // MARK: Private interface
 /////////////////////////////////////////////////////////////////////////////
-
 
 @interface OHAttributedLabel(/* Private */)
 -(NSTextCheckingResult*)linkAtCharacterIndex:(CFIndex)idx;
@@ -127,23 +110,17 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
 @end
 
 
-
-
-
 /////////////////////////////////////////////////////////////////////////////
 // MARK: -
 // MARK: Implementation
 /////////////////////////////////////////////////////////////////////////////
 
-
 @implementation OHAttributedLabel
-
 
 /////////////////////////////////////////////////////////////////////////////
 // MARK: -
 // MARK: Init/Dealloc
 /////////////////////////////////////////////////////////////////////////////
-
 - (void)commonInit
 {
 	customLinks = [[NSMutableArray alloc] init];
@@ -159,7 +136,6 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
 	self.contentMode = UIViewContentModeRedraw;
 	[self resetAttributedText];
 }
-
 - (id) initWithFrame:(CGRect)aFrame
 {
 	self = [super initWithFrame:aFrame];
@@ -168,7 +144,6 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
 	}
 	return self;
 }
-
 - (id)initWithCoder:(NSCoder *)decoder
 {
 	self = [super initWithCoder:decoder];
@@ -181,23 +156,16 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
 	}
 	return self;
 }
-
 -(void)dealloc
 {
-
 	[self resetTextFrame];
-
 	
-
 }
-
-
 
 /////////////////////////////////////////////////////////////////////////////
 // MARK: -
 // MARK: Links Mgmt
 /////////////////////////////////////////////////////////////////////////////
-
 -(void)addCustomLink:(NSURL*)linkUrl inRange:(NSRange)range {
 	NSTextCheckingResult* link = [NSTextCheckingResult linkCheckingResultWithRange:range URL:linkUrl];
 	[customLinks addObject:link];
@@ -207,7 +175,6 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
 	[customLinks removeAllObjects];
 	[self setNeedsDisplay];
 }
-
 -(NSMutableAttributedString*)attributedTextWithLinks {
 	NSMutableAttributedString* str = [self.attributedText mutableCopy];
 	if (!str) return nil;
@@ -254,7 +221,6 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
 	 }];
 	return str ;
 }
-
 -(NSTextCheckingResult*)linkAtCharacterIndex:(CFIndex)idx {
 	__block NSTextCheckingResult* foundResult = nil;
 	
@@ -284,7 +250,6 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
 	 }];
 	return foundResult;
 }
-
 -(NSTextCheckingResult*)linkAtPoint:(CGPoint)point {
 	static const CGFloat kVMargin = 5.f;
 	if (!CGRectContainsPoint(CGRectInset(drawingRect, 0, -kVMargin), point)) return nil;
@@ -316,7 +281,6 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
 	}
 	return nil;
 }
-
 -(UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
 	// never return self. always return the result of [super hitTest..].
 	// this takes userInteraction state, enabled, alpha values etc. into account
@@ -336,7 +300,6 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
 	}
 	return hitResult;
 }
-
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	UITouch* touch = [touches anyObject];
 	CGPoint pt = [touch locationInView:self];
@@ -348,7 +311,6 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
 	// we're using activeLink to draw a highlight in -drawRect:
 	[self setNeedsDisplay];
 }
-
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	UITouch* touch = [touches anyObject];
 	CGPoint pt = [touch locationInView:self];
@@ -356,7 +318,6 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
 	NSTextCheckingResult *linkAtTouchesEnded = [self linkAtPoint:pt];
 	
 	BOOL closeToStart = (abs(touchStartPoint.x - pt.x) < 10 && abs(touchStartPoint.y - pt.y) < 10);
-
 	// we can check on equality of the ranges themselfes since the data detectors create new results
 	if (activeLink && (NSEqualRanges(activeLink.range,linkAtTouchesEnded.range) || closeToStart)) {
 		BOOL openLink = (self.delegate && [self.delegate respondsToSelector:@selector(attributedLabel:shouldFollowLink:)])
@@ -364,30 +325,25 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
 		if (openLink) [[UIApplication sharedApplication] openURL:activeLink.URL];
 	}
 	
-
 	activeLink = nil;
 	[self setNeedsDisplay];
 }
-
 -(void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
 	
 	activeLink = nil;
 	[self setNeedsDisplay];
 }
 
-
 /////////////////////////////////////////////////////////////////////////////
 // MARK: -
 // MARK: Drawing Text
 /////////////////////////////////////////////////////////////////////////////
-
 -(void)resetTextFrame {
 	if (textFrame) {
 		CFRelease(textFrame);
 		textFrame = NULL;
 	}
 }
-
 - (void)drawTextInRect:(CGRect)aRect
 {
 	if (_attributedText) {
@@ -433,13 +389,11 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
 		}
 		
 		CTFrameDraw(textFrame, ctx);
-
 		CGContextRestoreGState(ctx);
 	} else {
 		[super drawTextInRect:aRect];
 	}
 }
-
 -(void)drawActiveLinkHighlightForRect:(CGRect)rect
 {
 	CGContextRef ctx = UIGraphicsGetCurrentContext();
@@ -492,27 +446,22 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
 	}
 	CGContextRestoreGState(ctx);
 }
-
 - (CGSize)sizeThatFits:(CGSize)size {
 	NSMutableAttributedString* attrStrWithLinks = [self attributedTextWithLinks];
 	if (!attrStrWithLinks) return CGSizeZero;
 	return [attrStrWithLinks sizeConstrainedToSize:size fitRange:NULL];
 }
 
-
 /////////////////////////////////////////////////////////////////////////////
 // MARK: -
 // MARK: Setters/Getters
 /////////////////////////////////////////////////////////////////////////////
-
 @synthesize linkColor, highlightedLinkColor, underlineLinks;
 @synthesize centerVertically, automaticallyAddLinksForType, onlyCatchTouchesOnLinks, extendBottomToFit;
 @synthesize delegate;
-
 /////////////////////////////////////////////////////////////////////////////
 // MARK: -
 /////////////////////////////////////////////////////////////////////////////
-
 -(void)resetAttributedText {
 	NSMutableAttributedString* mutAttrStr = [NSMutableAttributedString attributedStringWithString:self.text];
 	[mutAttrStr setFont:self.font];
@@ -522,7 +471,6 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
 	[mutAttrStr setTextAlignment:coreTextAlign lineBreakMode:coreTextLBMode];
 	self.attributedText = mutAttrStr;
 }
-
 -(NSAttributedString*)attributedText {
 	if (!_attributedText) {
 		[self resetAttributedText];
@@ -535,9 +483,7 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
 	[self setNeedsDisplay];
 }
 
-
 /////////////////////////////////////////////////////////////////////////////
-
 -(void)setText:(NSString *)text {
 	NSString* cleanedText = [[text stringByReplacingOccurrencesOfString:@"\r\n" withString:@"\n"]
 							 stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
@@ -573,29 +519,23 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
 	centerVertically = val;
 	[self setNeedsDisplay];
 }
-
 -(void)setAutomaticallyAddLinksForType:(NSTextCheckingTypes)types {
 	automaticallyAddLinksForType = types;
 	[self setNeedsDisplay];
 }
-
 -(void)setExtendBottomToFit:(BOOL)val {
 	extendBottomToFit = val;
 	[self setNeedsDisplay];
 }
-
 -(void)setNeedsDisplay {
 	[self resetTextFrame];
 	[super setNeedsDisplay];
 }
 
-
-
 /////////////////////////////////////////////////////////////////////////////
 // MARK: -
 // MARK: UILabel unsupported features/known issues warnings
 /////////////////////////////////////////////////////////////////////////////
-
 #if OHAttributedLabel_WarnAboutKnownIssues
 -(void)warnAboutKnownIssues_CheckLineBreakMode {
 	BOOL truncationMode = (self.lineBreakMode == UILineBreakModeHeadTruncation)
@@ -617,14 +557,11 @@ BOOL CTRunContainsCharactersFromStringRange(CTRunRef run, NSRange range) {
 	[super setAdjustsFontSizeToFitWidth:value];
 	[self warnAboutKnownIssues_CheckAdjustsFontSizeToFitWidth];
 }
-
 -(void)setNumberOfLines:(NSInteger)nbLines {
 	DLog(@"[OHAttributedLabel] Warning: the numberOfLines property is not yet supported by CoreText and OHAttributedLabel. (this property is ignored right now)");
 	DLog(@"                    This is a known issue (Help to solve this would be greatly appreciated).");
 	DLog(@"                    See https://github.com/AliSoftware/OHAttributedLabel/issues/34");
-
 	[super setNumberOfLines:nbLines];
 }
 #endif
-
 @end

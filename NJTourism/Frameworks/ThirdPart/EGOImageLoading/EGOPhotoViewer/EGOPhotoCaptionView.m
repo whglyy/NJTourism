@@ -5,13 +5,9 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "EGOPhotoCaptionView.h"
-
 #import <QuartzCore/QuartzCore.h>
-
 @implementation EGOPhotoCaptionView
-
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
 		
@@ -32,14 +28,12 @@
     }
     return self;
 }
-
 - (void)layoutSubviews{
 	
 	[self setNeedsDisplay];
 	_textLabel.frame = CGRectMake(20.0f, 0.0f, self.frame.size.width - 40.0f, 40.0f);
 	
 }
-
 - (void)drawRect:(CGRect)rect {
 	
 	CGContextRef ctx = UIGraphicsGetCurrentContext();
@@ -49,7 +43,6 @@
 	CGContextStrokePath(ctx);
 	
 }
-
 - (void)setCaptionText:(NSString*)text hidden:(BOOL)val{
 	
 	if (text == nil || [text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length == 0) {
@@ -66,7 +59,6 @@
 	
 	
 }
-
 - (void)setCaptionHidden:(BOOL)hidden{
 	if (_hidden==hidden) return;
 	
@@ -99,7 +91,6 @@
 		
 		CGFloat toolbarSize = UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ? 32.0f : 44.0f;
 		self.frame = CGRectMake(0.0f, self.superview.frame.size.height - (toolbarSize + self.frame.size.height), self.frame.size.width, self.frame.size.height);
-
 	}
 	
 	[UIView commitAnimations];
@@ -108,14 +99,11 @@
 	
 }
 
-
 #pragma mark -
 #pragma mark Dealloc
-
 - (void)dealloc {
 	_textLabel=nil;
     [super dealloc];
 }
-
 
 @end

@@ -5,22 +5,15 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "AnimatedImageView.h"
-
 @implementation AnimatedGifFrame
-
 @synthesize data, delay, disposalMethod, area, header;
 
-
-
 @end
-
 @implementation AnimatedImageView
 @synthesize GIF_frames;
 @synthesize imageFileName = _imageFileName;
 @synthesize imageFileData = _imageFileData;
-
 + (BOOL)isGifImage:(NSData*)imageData 
 {
 	const char* buf = (const char*)[imageData bytes];
@@ -32,7 +25,6 @@
     
 	return NO;
 }
-
 - (void)setImageFileName:(NSString *)imageFileName
 {
     if (imageFileName != _imageFileName) 
@@ -40,13 +32,11 @@
         
         
         _imageFileName = [imageFileName copy];
-
         NSString *fullImagePath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:_imageFileName];
         
         self.imageFileData = [NSData dataWithContentsOfFile:fullImagePath];
     }
 }
-
 - (void)setImageFileData:(NSData *)imageFileData
 {
     if (imageFileData.length < 4) 
@@ -72,25 +62,21 @@
         if (GIF_frames.count <= 0) 
         {
             self.image = [UIImage imageWithData:_imageFileData];
-
             return;
         }
         
         [self loadImageData];
     }
 }
-
 - (void)setGIF_frames:(NSMutableArray *)gifFrames
 {
 	
 	
-
     
 	GIF_frames = gifFrames;
 	
 	[self loadImageData];
 }
-
 - (void)loadImageData
 {
 	// Add all subframes to the animation
@@ -208,7 +194,6 @@
 	[self setImage:[overlayArray objectAtIndex:0]];
 	[self setAnimationImages:overlayArray];
 	
-
 	// Count up the total delay, since Cocoa doesn't do per frame delays.
 	double total = 0;
 	for (AnimatedGifFrame *frame in GIF_frames) 
@@ -225,7 +210,6 @@
 	
 	[self startAnimating];
 }
-
 	 
 - (void)decodeGIF:(NSData *)GIFData
 {
@@ -300,7 +284,6 @@
 		
     GIF_global = nil;
 }
-
 - (void)GIFReadExtensions
 {
 	// 21! But we still could have an Application Extension,
@@ -350,7 +333,6 @@
 		[GIF_buffer getBytes:cur length:1];
 	}	
 }
-
 - (void)GIFReadDescriptor
 {
     
@@ -465,7 +447,6 @@
 	// save the frame into the array of frames
 	frame.data = GIF_string;
 }
-
 - (BOOL)GIFGetBytes:(int)length
 {
     
@@ -487,7 +468,6 @@
         return NO;
 	}
 }
-
 - (BOOL)GIFSkipBytes: (int) length
 {
     
@@ -501,7 +481,6 @@
     	return NO;
     }
 }
-
 - (NSData*)getFrameAsDataAtIndex:(int)index
 {
     
@@ -514,7 +493,6 @@
 		return nil;
 	}
 }
-
 - (UIImage*)getFrameAsImageAtIndex:(int)index 
 {
     
@@ -528,6 +506,5 @@
     
     return image;
 }
-
 
 @end

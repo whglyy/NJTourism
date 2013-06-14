@@ -5,10 +5,8 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "SystemInfo.h"
 #import "AppDelegate.h"
-
 #include <sys/types.h>
 #include <sys/sysctl.h>
 #include <stdio.h>
@@ -24,19 +22,12 @@
 #include <net/if.h>
 #include <errno.h>
 #include <net/if_dl.h>
-
 static SystemInfo *instance = nil;
-
 @interface SystemInfo()
 
-
-
 @end
-
 /*********************************************************************/
-
 @implementation SystemInfo
-
 #pragma mark -
 #pragma mark notifications
 - (id)init {
@@ -54,7 +45,6 @@ static SystemInfo *instance = nil;
     }
     return self;
 }
-
 - (void)postDismissCleanup {
 	
 	[[NSNotificationCenter defaultCenter] removeObserver:self
@@ -65,26 +55,21 @@ static SystemInfo *instance = nil;
                                                   object:nil];
 	
 }
-
 - (void)keyboardDidShow:(NSNotification*)notification {
 	
 	isKeyboardShowing_ = YES;
 }
-
 - (void)keyboardWillHide:(NSNotification*)notification {
 	
 	
 	isKeyboardShowing_ = NO;
 }
-
 + (BOOL)isKeyboardShowing
 {
     return [SystemInfo sharedInstance]->isKeyboardShowing_;
 }
-
 #pragma mark -
 #pragma mark single methods
-
 + (SystemInfo *)sharedInstance
 {
     @synchronized(self){
@@ -94,7 +79,6 @@ static SystemInfo *instance = nil;
     }
     return instance;
 }
-
 + (id)allocWithZone:(NSZone *)zone
 {
     @synchronized(self)
@@ -110,13 +94,10 @@ static SystemInfo *instance = nil;
 }
 
 
-
-
 - (void)dealloc {
     [self postDismissCleanup];
    
 }
-
 + (BOOL)isIosVersionBelow5
 {
     if ([[SystemInfo iosVersion] floatValue] < 5.0) {
@@ -124,12 +105,10 @@ static SystemInfo *instance = nil;
     }
     return NO;
 }
-
 + (NSString *)iosVersion
 {
     return [[UIDevice currentDevice] systemVersion];
 }
-
 + (NSString *)platform
 {
     size_t size;
@@ -146,7 +125,6 @@ static SystemInfo *instance = nil;
     
     return platform;
 }
-
 + (NSString *)platformString
 {
     NSString *platform = [SystemInfo platform];
@@ -197,7 +175,6 @@ static SystemInfo *instance = nil;
     return platform;
     
 }
-
 //获取系统当前时间
 + (NSString *)systemTimeInfo{
     
@@ -212,16 +189,13 @@ static SystemInfo *instance = nil;
     return currentDateString;
     
 }
-
 #pragma mark -
 #pragma mark software version
-
 + (NSString *)softwareVersion
 {
     NSString *version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
     return [NSString stringWithFormat:@"%@", version];
 }
-
 + (BOOL)is_iPhone_5
 {
     if ([UIScreen mainScreen].bounds.size.height == 568.0f) {
@@ -230,12 +204,9 @@ static SystemInfo *instance = nil;
         return NO;
     }
 }
-
 #pragma mark -
 #pragma mark jailbreaker
-
 static const char * __jb_app = NULL;
-
 + (BOOL)isJailBroken
 {
 	static const char * __jb_apps[] =
@@ -275,7 +246,6 @@ static const char * __jb_app = NULL;
 	
     return NO;
 }
-
 + (NSString *)jailBreaker
 {
 	if ( __jb_app )
@@ -287,6 +257,5 @@ static const char * __jb_app = NULL;
 		return @"";
 	}
 }
-
 
 @end

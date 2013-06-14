@@ -5,12 +5,8 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "ToolBarTextField.h"
-
 @implementation ToolBarTextField
-
-
 
 - (id)init
 {
@@ -22,7 +18,6 @@
     }
     return self;
 }
-
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
@@ -33,7 +28,6 @@
     }
     return self;
 }
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -44,14 +38,12 @@
     }
     return self;
 }
-
 - (void)dealloc
 {
     TT_RELEASE_SAFELY(_keyboardDoneButtonBar);
     
     
 }
-
 -(UIToolbar*)keyboardDoneButtonBar{
     
     if(!_keyboardDoneButtonBar){
@@ -85,7 +77,6 @@
     
     return _keyboardDoneButtonBar;
 }
-
 - (void)DoneClicked:(id)sender
 {
     if ([toolBarDelegate_ conformsToProtocol:@protocol(ToolBarTextFieldDelegate)])
@@ -104,7 +95,6 @@
         [self resignFirstResponder];
     }
 }
-
 - (void)CancelClicked:(id)sender
 {
     if ([toolBarDelegate_ conformsToProtocol:@protocol(ToolBarTextFieldDelegate)])
@@ -117,6 +107,5 @@
     [self resignFirstResponder];
     
 }
-
 
 @end

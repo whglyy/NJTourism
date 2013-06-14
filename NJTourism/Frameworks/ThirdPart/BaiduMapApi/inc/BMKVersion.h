@@ -5,9 +5,7 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <UIKit/UIKit.h>
-
 
 /*****更新日志：*****
  V0.1.0： 测试版
@@ -49,7 +47,6 @@
  优化了必须使用-all_load才可以使用库的bug
  废弃udid的获取
 *********************/
-
 /**
  *获取当前地图API的版本号
  *return  返回当前API的版本号

@@ -5,13 +5,9 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "EGOPhotoScrollView.h"
-
 @implementation EGOPhotoScrollView
-
 @synthesize canZoom = _canZoom;
-
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
 		
@@ -34,7 +30,6 @@
     }
     return self;
 }
-
 - (void)setCanZoom:(BOOL)canZoom
 {
     _canZoom = canZoom;
@@ -46,16 +41,13 @@
 		self.minimumZoomScale = 1.0f;
     }
 }
-
 - (void)zoomRectWithCenter:(CGPoint)center{
 	
 	if (self.zoomScale > 1.0f) {
-
 		[((EGOPhotoImageView*)self.superview) killScrollViewZoom];
 	
 		return;
 	}
-
 	CGRect rect;
 	rect.size = CGSizeMake(self.frame.size.width / EGOPV_ZOOM_SCALE, self.frame.size.height / EGOPV_ZOOM_SCALE);
 	rect.origin.x = MAX((center.x - (rect.size.width / 2.0f)), 0.0f);		
@@ -85,29 +77,22 @@
 			rect.origin.y += (borderY/EGOPV_ZOOM_SCALE);
 			
 		} else {
-
 			rect.origin.y -= ((borderY/EGOPV_ZOOM_SCALE) + rect.size.height);
 			
 		}
 		
 	}
-
 	[self zoomToRect:rect animated:YES];	
-
 }
-
 - (void)toggleBars{
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"EGOPhotoViewToggleBars" object:nil];
 }
 
-
 #pragma mark -
 #pragma mark Touches
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
 	[super touchesBegan:touches withEvent:event];
 }
-
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
 	[super touchesEnded:touches withEvent:event];
 	UITouch *touch = [touches anyObject];
@@ -122,13 +107,10 @@
 	}
 }
 
-
 #pragma mark -
 #pragma mark Dealloc
-
 - (void)dealloc {
     [super dealloc];
 }
-
 
 @end

@@ -5,12 +5,9 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "SNNetwork.h"
 #pragma mark -
-
 @implementation NSObject(SNRequestResponder)
-
 - (BOOL)isRequestResponder
 {
 	if ( [self respondsToSelector:@selector(handleRequest:)] )
@@ -20,7 +17,6 @@
 	
 	return NO;
 }
-
 - (SNRequest *)GET:(NSString *)url
 {
 	if ( [self isRequestResponder] )
@@ -35,7 +31,6 @@
 		return nil;
 	}
 }
-
 - (SNRequest *)GET:(NSString *)url params:(NSDictionary *)kvs{
     
     if ( [self isRequestResponder] )
@@ -50,7 +45,6 @@
 		return nil;
 	}
 }
-
 - (SNRequest *)GET:(NSString *)url ToPath:(NSString *)path{
     if ( [self isRequestResponder] )
 	{
@@ -64,8 +58,6 @@
 		return nil;
 	}
 }
-
-
 
 - (SNRequest *)POST:(NSString *)url text:(NSString *)text
 {
@@ -81,7 +73,6 @@
 		return nil;
 	}
 }
-
 - (SNRequest *)POST:(NSString *)url data:(NSData *)data
 {
 	if ( [self isRequestResponder] )
@@ -96,7 +87,6 @@
 		return nil;
 	}
 }
-
 - (SNRequest *)POST:(NSString *)url dict:(NSDictionary *)kvs
 {
 	if ( [self isRequestResponder] )
@@ -111,7 +101,6 @@
 		return nil;
 	}
 }
-
 - (SNRequest *)POST:(NSString *)url params:(id)first, ...
 {
 	NSMutableDictionary * dict = [NSMutableDictionary dictionary];
@@ -146,7 +135,6 @@
 		return nil;
 	}
 }
-
 - (SNRequest *)POST:(NSString *)url files:(NSDictionary *)files
 {
 	if ( [self isRequestResponder] )
@@ -161,7 +149,6 @@
 		return nil;
 	}
 }
-
 - (SNRequest *)POST:(NSString *)url files:(NSDictionary *)files dict:(NSDictionary *)kvs
 {
 	if ( [self isRequestResponder] )
@@ -176,7 +163,6 @@
 		return nil;
 	}
 }
-
 - (SNRequest *)POST:(NSString *)url files:(NSDictionary *)files params:(id)first, ...
 {
 	NSMutableDictionary * dict = [NSMutableDictionary dictionary];
@@ -215,7 +201,6 @@
 		return nil;
 	}
 }
-
 - (BOOL)requestingURL
 {
 	if ( [self isRequestResponder] )
@@ -227,7 +212,6 @@
 		return NO;
 	}
 }
-
 - (BOOL)requestingURL:(NSString *)url
 {
 	if ( [self isRequestResponder] )
@@ -239,7 +223,6 @@
 		return NO;
 	}
 }
-
 - (BOOL)requestingCmd:(E_CMDCODE)cmdCode
 {
 	if ( [self isRequestResponder] )
@@ -251,22 +234,18 @@
 		return NO;
 	}
 }
-
 - (NSArray *)requests
 {
 	return [SNRequestQueue requests:nil byResponder:self];
 }
-
 - (NSArray *)requests:(NSString *)url
 {
 	return [SNRequestQueue requests:url byResponder:self];
 }
-
 - (NSArray *)requestsOfCmd:(E_CMDCODE)cmdCode
 {
     return [SNRequestQueue requestsCmd:cmdCode byResponder:self];
 }
-
 - (void)cancelRequests
 {
 	if ( [self isRequestResponder] )
@@ -274,7 +253,6 @@
 		[SNRequestQueue cancelRequestByResponder:self];
 	}
 }
-
 - (void)cancelRequestByCmdCode:(E_CMDCODE)cmdCode
 {
     if ( [self isRequestResponder] )
@@ -288,7 +266,6 @@
         }
 	}
 }
-
 - (void)cancelRequestByUrl:(NSString *)url
 {
     if ( [self isRequestResponder] )
@@ -303,35 +280,26 @@
 	}
 }
 
-
 - (void)handleRequest:(SNRequest *)request
 {
     //Children complete
 }
-
 @end
-
 #pragma mark -
-
 @implementation SNRequest
-
 @synthesize state = _state;
 @synthesize errorCode = _errorCode;
 @synthesize responders = _responders;
 @synthesize userInfo = _userInfo;
-
 @synthesize whenUpdate = _whenUpdate;
-
 @synthesize initTimeStamp = _initTimeStamp;
 @synthesize sendTimeStamp = _sendTimeStamp;
 @synthesize recvTimeStamp = _recvTimeStamp;
 @synthesize doneTimeStamp = _doneTimeStamp;
-
 @synthesize timeCostPending;	// 排队等待耗时
 @synthesize timeCostOverDNS;	// 网络连接耗时（DNS）
 @synthesize timeCostRecving;	// 网络收包耗时
 @synthesize timeCostOverAir;	// 网络整体耗时
-
 @synthesize created;
 @synthesize sending;
 @synthesize recving;
@@ -340,18 +308,15 @@
 //@synthesize cancelled;
 @synthesize sendProgressed = _sendProgressed;
 @synthesize recvProgressed = _recvProgressed;
-
 @synthesize uploadPercent;
 @synthesize uploadBytes;
 @synthesize uploadTotalBytes;
 @synthesize downloadPercent;
 @synthesize downloadBytes;
 @synthesize downloadTotalBytes;
-
 @synthesize jsonItems = _jsonItems;
 @synthesize cmdCode = _cmdCode;
 @synthesize postDataDic = _postDataDic;
-
 - (id)initWithURL:(NSURL *)newURL
 {
 	self = [super initWithURL:newURL];
@@ -378,7 +343,6 @@
     
 	return self;
 }
-
 - (NSString *)description
 {
 	return [NSString stringWithFormat:@"%@ %@, state ==> %d, %d/%d",
@@ -386,12 +350,10 @@
 			self.state,
 			[self uploadBytes], [self downloadBytes]];
 }
-
 - (id)jsonItems
 {
     return [[self responseString] objectFromJSONString];
 }
-
 - (void)dealloc
 {
 	self.whenUpdate = nil;
@@ -412,7 +374,6 @@
 	
 	[super dealloc];
 }
-
 - (CGFloat)uploadPercent
 {
 	NSUInteger bytes1 = self.uploadBytes;
@@ -420,7 +381,6 @@
 	
 	return bytes2 ? ((CGFloat)bytes1 / (CGFloat)bytes2) : 0.0f;
 }
-
 - (NSUInteger)uploadBytes
 {
 	if ( [self.requestMethod isEqualToString:@"GET"] )
@@ -434,7 +394,6 @@
 	
 	return 0;
 }
-
 - (NSUInteger)uploadTotalBytes
 {
 	if ( [self.requestMethod isEqualToString:@"GET"] )
@@ -448,7 +407,6 @@
 	
 	return 0;
 }
-
 - (CGFloat)downloadPercent
 {
 	NSUInteger bytes1 = self.downloadBytes;
@@ -456,22 +414,18 @@
 	
 	return bytes2 ? ((CGFloat)bytes1 / (CGFloat)bytes2) : 0.0f;
 }
-
 - (NSUInteger)downloadBytes
 {
 	return [[self rawResponseData] length];
 }
-
 - (NSUInteger)downloadTotalBytes
 {
 	return self.contentLength;
 }
-
 - (BOOL)is:(NSString *)text
 {
 	return [[self.url absoluteString] isEqualToString:text];
 }
-
 - (void)callResponders
 {
 	for ( NSObject * responder in _responders )
@@ -482,7 +436,6 @@
 		}
 	}
 }
-
 - (void)forwardResponder:(NSObject *)obj
 {
 	if ( [obj respondsToSelector:@selector(handleRequest:)] )
@@ -490,7 +443,6 @@
         [obj performSelector:@selector(handleRequest:) withObject:self];
 	}
 }
-
 - (void)changeState:(NSUInteger)state
 {
 	if ( state != _state )
@@ -521,7 +473,6 @@
 		}
 	}
 }
-
 - (void)updateSendProgress
 {
 	_sendProgressed = YES;
@@ -535,7 +486,6 @@
 	
 	_sendProgressed = NO;
 }
-
 - (void)updateRecvProgress
 {
 	if (_state == SNRequestState_Success ||
@@ -557,68 +507,55 @@
 	
 	_recvProgressed = NO;
 }
-
 - (NSTimeInterval)timeCostPending
 {
 	return _sendTimeStamp - _initTimeStamp;
 }
-
 - (NSTimeInterval)timeCostOverDNS
 {
 	return _recvTimeStamp - _sendTimeStamp;
 }
-
 - (NSTimeInterval)timeCostRecving
 {
 	return _doneTimeStamp - _recvTimeStamp;
 }
-
 - (NSTimeInterval)timeCostOverAir
 {
 	return _doneTimeStamp - _sendTimeStamp;
 }
-
 - (BOOL)created
 {
 	return SNRequestState_Created == _state ? YES : NO;
 }
-
 - (BOOL)sending
 {
 	return SNRequestState_Sending == _state ? YES : NO;
 }
-
 - (BOOL)recving
 {
 	return SNRequestState_Recving == _state ? YES : NO;
 }
-
 - (BOOL)succeed
 {
 	return SNRequestState_Success == _state ? YES : NO;
 }
-
 - (BOOL)failed
 {
 	return SNRequestState_Failed == _state ? YES : NO;
 }
-
 - (BOOL)cancelled
 {
 	return SNRequestState_Cancel == _state ? YES : NO;
 }
-
 - (BOOL)hasResponder:(id)responder
 {
 	return [_responders containsObject:responder];
 }
-
 - (void)addResponder:(id)responder
 {
 	[_responders addObject:responder];
     [responder release];
 }
-
 - (void)removeResponder:(id)responder
 {
     if ([_responders containsObject:responder]) {
@@ -626,7 +563,6 @@
         [_responders removeObject:responder];
     }
 }
-
 - (void)removeAllResponders
 {
     for (NSObject *obj in _responders)
@@ -636,51 +572,37 @@
 	[_responders removeAllObjects];
 }
 
-
-
 @end
 
-
 #pragma mark -
-
 @implementation SNRequestQueue
-
 @synthesize merge = _merge;
 @synthesize online = _online;
-
 @synthesize	blackListEnable = _blackListEnable;
 @synthesize	blackListTimeout = _blackListTimeout;
 @synthesize	blackList = _blackList;
-
 @synthesize bytesUpload = _bytesUpload;
 @synthesize bytesDownload = _bytesDownload;
-
 @synthesize delay = _delay;
 @synthesize requests = _requests;
-
 @synthesize whenCreate = _whenCreate;
 @synthesize whenUpdate = _whenUpdate;
-
 + (BOOL)isReachableViaWIFI
 {
 	return YES;
 }
-
 + (BOOL)isReachableViaWLAN
 {
 	return YES;
 }
-
 + (BOOL)isNetworkInUse
 {
 	return ([[SNRequestQueue sharedInstance].requests count] > 0) ? YES : NO;
 }
-
 + (NSUInteger)bandwidthUsedPerSecond
 {
 	return [ASIHTTPRequest averageBandwidthUsedPerSecond];
 }
-
 + (SNRequestQueue *)sharedInstance
 {
 	static SNRequestQueue * __sharedInstance = nil;
@@ -699,7 +621,6 @@
 	
 	return (SNRequestQueue *)__sharedInstance;
 }
-
 - (id)init
 {
 	self = [super init];
@@ -717,7 +638,6 @@
 	
 	return self;
 }
-
 - (void)setOnline:(BOOL)en
 {
 	_online = en;
@@ -727,7 +647,6 @@
 		[self cancelAllRequests];
 	}
 }
-
 - (void)dealloc
 {
 	[self cancelAllRequests];
@@ -743,7 +662,6 @@
     
 	[super dealloc];
 }
-
 - (BOOL)checkResourceBroken:(NSString *)url
 {
 	if ( _blackListEnable )
@@ -761,12 +679,10 @@
     
 	return NO;
 }
-
 + (SNRequest *)GET:(NSString *)url
 {
 	return [[SNRequestQueue sharedInstance] GET:url sync:NO];
 }
-
 - (SNRequest *)GET:(NSString *)url sync:(BOOL)sync
 {
     url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -838,12 +754,10 @@
 	return [request autorelease];
 }
 
-
 + (SNRequest *)GET:(NSString *)url params:(NSDictionary *)kvs
 {
 	return [[SNRequestQueue sharedInstance] GET:url params:kvs sync:NO];
 }
-
 - (SNRequest *)GET:(NSString *)url params:(NSDictionary *)kvs sync:(BOOL)sync
 {
     NSString *absoluteUrl = [url stringByAddingQueryDictionary:kvs];
@@ -919,11 +833,9 @@
 	return [request autorelease];
 }
 
-
 + (SNRequest *)GET:(NSString *)url ToPath:(NSString *)path{
 	return [[SNRequestQueue sharedInstance] GET:url ToPath:path sync:NO];
 }
-
 - (SNRequest *)GET:(NSString *)url ToPath:(NSString *)path sync:(BOOL)sync
 {
     NSString *absoluteUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
@@ -993,12 +905,10 @@
 	
 	return [request autorelease];
 }
-
 + (SNRequest *)POST:(NSString *)url data:(NSData *)data
 {
 	return [[SNRequestQueue sharedInstance] POST:url data:data sync:NO];
 }
-
 - (SNRequest *)POST:(NSString *)url data:(NSData *)data sync:(BOOL)sync
 {
 	if ( NO == _online )
@@ -1051,12 +961,10 @@
 	
 	return [request autorelease];
 }
-
 + (SNRequest *)POST:(NSString *)url params:(NSDictionary *)kvs
 {
 	return [[SNRequestQueue sharedInstance] POST:url params:kvs sync:NO];
 }
-
 - (SNRequest *)POST:(NSString *)url params:(NSDictionary *)kvs sync:(BOOL)sync
 {
 	if ( NO == _online )
@@ -1118,17 +1026,14 @@
 	
 	return [request autorelease];
 }
-
 + (SNRequest *)POST:(NSString *)url files:(NSDictionary *)files
 {
 	return [[SNRequestQueue sharedInstance] POST:url files:files params:nil sync:NO];
 }
-
 + (SNRequest *)POST:(NSString *)url files:(NSDictionary *)files params:(NSDictionary *)kvs
 {
 	return [[SNRequestQueue sharedInstance] POST:url files:files params:kvs sync:NO];
 }
-
 - (SNRequest *)POST:(NSString *)url files:(NSDictionary *)files params:(NSDictionary *)kvs sync:(BOOL)sync
 {
 	if ( NO == _online )
@@ -1228,12 +1133,10 @@
     
 	return [request autorelease];
 }
-
 + (BOOL)requesting:(NSString *)url
 {
 	return [[SNRequestQueue sharedInstance] requesting:url];
 }
-
 - (BOOL)requesting:(NSString *)url
 {
 	for ( SNRequest * request in _requests )
@@ -1246,12 +1149,10 @@
     
 	return NO;
 }
-
 + (BOOL)requesting:(NSString *)url byResponder:(id)responder
 {
 	return [[SNRequestQueue sharedInstance] requesting:url byResponder:responder];
 }
-
 - (BOOL)requesting:(NSString *)url byResponder:(id)responder
 {
 	for ( SNRequest * request in _requests )
@@ -1267,12 +1168,10 @@
     
 	return NO;
 }
-
 + (BOOL)requestingCmd:(E_CMDCODE)cmd byResponder:(id)responder
 {
     return [[SNRequestQueue sharedInstance] requestingCmd:cmd byResponder:responder];
 }
-
 - (BOOL)requestingCmd:(E_CMDCODE)cmdCode byResponder:(id)responder
 {
     for (SNRequest * request in _requests )
@@ -1288,12 +1187,10 @@
     
 	return NO;
 }
-
 + (NSArray *)requests:(NSString *)url
 {
 	return [[SNRequestQueue sharedInstance] requests:url];
 }
-
 - (NSArray *)requests:(NSString *)url
 {
 	NSMutableArray * array = [NSMutableArray array];
@@ -1308,12 +1205,10 @@
 	
 	return array;
 }
-
 + (NSArray *)requests:(NSString *)url byResponder:(id)responder
 {
 	return [[SNRequestQueue sharedInstance] requests:url byResponder:responder];
 }
-
 - (NSArray *)requests:(NSString *)url byResponder:(id)responder
 {
 	NSMutableArray * array = [NSMutableArray array];
@@ -1331,12 +1226,10 @@
     
 	return array;
 }
-
 + (NSArray *)requestsCmd:(E_CMDCODE)cmd byResponder:(id)responder
 {
     return [[SNRequestQueue sharedInstance] requestsOfCmd:cmd byResponder:responder];
 }
-
 - (NSArray *)requestsOfCmd:(E_CMDCODE)cmdCode byResponder:(id)responder
 {
     NSMutableArray * array = [NSMutableArray array];
@@ -1354,12 +1247,10 @@
     
 	return array;
 }
-
 + (void)cancelRequest:(SNRequest *)request
 {
 	[[SNRequestQueue sharedInstance] cancelRequest:request];
 }
-
 - (void)cancelRequest:(SNRequest *)request
 {
 	[NSObject cancelPreviousPerformRequestsWithTarget:request selector:@selector(startAsynchronous) object:nil];
@@ -1381,12 +1272,10 @@
 		[_requests removeObject:request];
 	}
 }
-
 + (void)cancelRequestByResponder:(id)responder
 {
 	[[SNRequestQueue sharedInstance] cancelRequestByResponder:responder];
 }
-
 - (void)cancelRequestByResponder:(id)responder
 {
 	if ( nil == responder )
@@ -1411,12 +1300,10 @@
 		}
 	}
 }
-
 + (void)cancelAllRequests
 {
 	[[SNRequestQueue sharedInstance] cancelAllRequests];
 }
-
 - (void)cancelAllRequests
 {
 	for ( SNRequest * request in _requests )
@@ -1424,22 +1311,18 @@
 		[self cancelRequest:request];
 	}
 }
-
 + (void)blockURL:(NSString *)url
 {
 	[[SNRequestQueue sharedInstance] blockURL:url];
 }
-
 - (void)blockURL:(NSString *)url
 {
 	[_blackList setObject:[NSDate date] forKey:url];
 }
-
 + (void)unblockURL:(NSString *)url
 {
 	[[SNRequestQueue sharedInstance] unblockURL:url];
 }
-
 - (void)unblockURL:(NSString *)url
 {
 	if ( [_blackList objectForKey:url] )
@@ -1448,15 +1331,12 @@
 		[_blackList setObject:date forKey:url];
 	}
 }
-
 - (NSArray *)requests
 {
 	return _requests;
 }
-
 #pragma mark -
 #pragma mark ASIHTTPRequestDelegate
-
 - (void)requestStarted:(ASIHTTPRequest *)request
 {
 	if ( NO == [request isKindOfClass:[SNRequest class]] )
@@ -1472,7 +1352,6 @@
 		self.whenUpdate( networkRequest );
 	}
 }
-
 - (void)request:(ASIHTTPRequest *)request didReceiveResponseHeaders:(NSDictionary *)responseHeaders
 {
 	if ( NO == [request isKindOfClass:[SNRequest class]] )
@@ -1486,7 +1365,6 @@
 		self.whenUpdate( networkRequest );
 	}
 }
-
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
 	_bytesDownload += [[request rawResponseData] length];
@@ -1526,7 +1404,6 @@
 		self.whenUpdate( networkRequest );
 	}
 }
-
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
 	if ( NO == [request isKindOfClass:[SNRequest class]] )
@@ -1552,7 +1429,6 @@
 		self.whenUpdate( networkRequest );
 	}
 }
-
 
 - (void)logRequestInfo:(SNRequest *)networkRequest{
     
@@ -1602,22 +1478,17 @@
         DLog( @"%@",log);
     
 }
-
 #pragma mark -
-
 
 - (void)authenticationNeededForRequest:(ASIHTTPRequest *)request
 {
 	[self requestFailed:request];
 }
-
 - (void)proxyAuthenticationNeededForRequest:(ASIHTTPRequest *)request
 {
 	[self requestFailed:request];
 }
-
 #pragma mark -
-
 // Called when the request receives some data - bytes is the length of that data
 - (void)request:(ASIHTTPRequest *)request didReceiveBytes:(long long)bytes
 {
@@ -1627,7 +1498,6 @@
 	SNRequest * networkRequest = (SNRequest *)request;
 	[networkRequest updateRecvProgress];
 }
-
 // Called when the request sends some data
 // The first 32KB (128KB on older platforms) of data sent is not included in this amount because of limitations with the CFNetwork API
 // bytes may be less than zero if a request needs to remove upload progress (probably because the request needs to run again)
@@ -1639,7 +1509,6 @@
 	SNRequest * networkRequest = (SNRequest *)request;
 	[networkRequest updateSendProgress];
 }
-
 // Called when a request needs to change the length of the content to download
 - (void)request:(ASIHTTPRequest *)request incrementDownloadSizeBy:(long long)newLength
 {
@@ -1649,7 +1518,6 @@
 	SNRequest * networkRequest = (SNRequest *)request;
 	[networkRequest updateRecvProgress];
 }
-
 // Called when a request needs to change the length of the content to upload
 // newLength may be less than zero when a request needs to remove the size of the internal buffer from progress tracking
 - (void)request:(ASIHTTPRequest *)request incrementUploadSizeBy:(long long)newLength
@@ -1660,7 +1528,5 @@
 	SNRequest * networkRequest = (SNRequest *)request;
 	[networkRequest updateSendProgress];
 }
-
-
 
 @end

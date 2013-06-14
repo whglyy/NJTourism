@@ -5,24 +5,18 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "ToolBarButton.h"
-
 @implementation ToolBarButton
-
 
 - (void)dealloc
 {
-
     TT_RELEASE_SAFELY(_inputView);
     TT_RELEASE_SAFELY(_inputAccessoryView);
     
     TT_RELEASE_SAFELY(_nomalBgColor);
     TT_RELEASE_SAFELY(_activeBgColor);
     
-
 }
-
 - (id)init
 {
     self = [super init];
@@ -36,7 +30,6 @@
     
     return self;
 }
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -50,7 +43,6 @@
     
     return self;
 }
-
 + (id)buttonWithType:(UIButtonType)buttonType
 {
     id newInstance = [self buttonWithType:buttonType];
@@ -61,7 +53,6 @@
     
     return newInstance;
 }
-
 - (UIToolbar *)aboveViewToolBar
 {
     if (!_aboveViewToolBar)
@@ -95,7 +86,6 @@
     
     return _aboveViewToolBar;
 }
-
 - (void)cancelClicked:(id)sender
 {
     if ([_delegate respondsToSelector:@selector(cancelButtonClicked:)]) 
@@ -105,7 +95,6 @@
     
     [self resignFirstResponder];
 }
-
 - (void)doneClicked:(id)sender
 {
     if ([_delegate respondsToSelector:@selector(doneButtonClicked:)])
@@ -115,7 +104,6 @@
     
     [self resignFirstResponder];
 }
-
 - (void)buttonTapped:(id)sender
 {
     
@@ -128,7 +116,6 @@
         [self becomeFirstResponder];
     }
 }
-
 - (void)setNomalBgColor:(UIColor *)nomalBgColor
 {
     if (nomalBgColor != _nomalBgColor) {
@@ -136,7 +123,6 @@
         self.backgroundColor = _nomalBgColor;
     }
 }
-
 - (BOOL)canBecomeFirstResponder
 {
     if (_activeBgColor) {
@@ -144,7 +130,6 @@
     }
     return YES;
 }
-
 - (BOOL)canResignFirstResponder
 {
     if (_nomalBgColor) {
@@ -152,5 +137,4 @@
     }
     return YES;
 }
-
 @end

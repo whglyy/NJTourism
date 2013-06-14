@@ -5,17 +5,11 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "NSString+MD5.h"
-
 #import <CommonCrypto/CommonDigest.h>
-
 /*CC_MD5_DIGEST_LENGTH*/
-
 #define  MD5_LENGTH   32
-
 @implementation NSString (NSString_MD5)
-
 + (NSString*)md5HexDigest:(NSString*)input {
     const char* str = [input UTF8String];
     unsigned char result[CC_MD5_DIGEST_LENGTH];
@@ -27,12 +21,9 @@
     }
     return ret;
 }
-
 @end
 
-
 @implementation NSData (MD5)
-
 - (NSString *)md5HexDigest
 {
     const char *cStr = [self bytes];
@@ -48,5 +39,4 @@
     }
     return ret;
 }
-
 @end

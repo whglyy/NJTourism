@@ -5,12 +5,8 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "keyboardNumberPadReturnTextField.h"
-
 @implementation keyboardNumberPadReturnTextField
-
-
 
 - (void)dealloc
 {
@@ -21,7 +17,6 @@
         
    
 }
-
 - (UIButton *)doneButton
 {
     if (_doneButton == nil)
@@ -42,19 +37,16 @@
     }
     return _doneButton;
 }
-
 - (void)setup 
 {
     self.keyboardType = UIKeyboardTypeNumberPad;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
     
 }
-
 - (void)setKeyboardType:(UIKeyboardType)keyboardType
 {
     [super setKeyboardType:UIKeyboardTypeNumberPad];
 }
-
 - (id)init
 {
     self = [super init];
@@ -65,7 +57,6 @@
     }
     return self;
 }
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -76,7 +67,6 @@
     }
     return self;
 }
-
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
@@ -87,7 +77,6 @@
     }
     return self;
 }
-
 - (void)addDoneButtonToKeyboard
 {
     UIWindow *tempWindow = [[[UIApplication sharedApplication] windows] objectAtIndex:1];
@@ -109,7 +98,6 @@
         
     }
 }
-
 - (void)keyboardDidShow:(NSNotification *)note
 {
     //create custom button
@@ -124,7 +112,6 @@
         
     }
 }
-
 - (void)doneButtonPressed:(id)sender
 {
     if ([_doneButtonDelegate conformsToProtocol:@protocol(KeyboardDoneTappedDelegate)])
@@ -144,7 +131,6 @@
     }
     
 }
-
 - (BOOL)canBecomeFirstResponder
 {
     NSArray *windows = [[UIApplication sharedApplication] windows];
@@ -168,7 +154,6 @@
     }
     return YES;
 }
-
 - (BOOL)canResignFirstResponder
 {
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(keyboardDidShow:) object:nil];
@@ -176,9 +161,6 @@
     
     return YES;
 }
-
-
-
 
 
 @end

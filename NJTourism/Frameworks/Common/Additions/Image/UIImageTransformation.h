@@ -6,14 +6,11 @@
 //
 //
 
-
 #import <UIKit/UIKit.h>
-
 @interface UIImageTransformation : UIImage{
     
     
 }
-
 
 /*
  author：zhaofk
@@ -25,7 +22,5 @@
  return:
  1 new image that after transaction
  */
-
 - (UIImage*)imageByScalingAndCroppingForSize:(CGSize)targetSize image:(UIImage*)image;
-
 @end

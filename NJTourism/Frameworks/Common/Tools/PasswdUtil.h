@@ -5,13 +5,10 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <Foundation/Foundation.h>
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonCryptor.h>
-
 @interface PasswdUtil : NSObject
-
 /*!
  * @abstract
  * 给指定的密码进行加密，采用的是PBEWITHMD5andDES算法
@@ -29,7 +26,6 @@
  * 加密后的密文(十六进制字符串)
  */
 + (NSString *)encryptData:(NSData *)data forUser:(NSString *)userID;
-
 /*!
  * @abstract
  * 将加密后的密码进行解密，采用的是PBEWITHMD5andDES算法

@@ -5,14 +5,9 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "EGOImageViewEx.h"
 
-
 @implementation EGOImageViewEx
-
-
-
 
 
 - (id)init {
@@ -22,7 +17,6 @@
     }
     return self;
 }
-
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -30,7 +24,6 @@
     }
     return self;
 }
-
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event{
 	
 	
@@ -40,7 +33,6 @@
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
 	
 }
-
 //捕获手指拿开消息
 - (void) touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event{
 	
@@ -51,7 +43,6 @@
 		}		
 	}
 }
-
 - (void)setImageURL:(NSURL *)aURL
 {
     if (aURL == nil) {
@@ -92,21 +83,18 @@
 	}
 }
 
-
 - (void)imageLoaderDidLoad:(NSNotification *)notification
 {
     [self.activityView stopAnimating];
     
     [super imageLoaderDidLoad:notification];
 }
-
 - (void)imageLoaderDidFailToLoad:(NSNotification *)notification
 {
     [self.activityView stopAnimating];
     
     [super imageLoaderDidFailToLoad:notification];
 }
-
 - (UIActivityIndicatorView *)activityView
 {
     if (!_activityView)
@@ -121,7 +109,5 @@
     }
     return _activityView;
 }
-
-
 
 @end

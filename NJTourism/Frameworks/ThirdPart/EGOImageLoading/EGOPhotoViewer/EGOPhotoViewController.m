@@ -5,9 +5,7 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "EGOPhotoViewController.h"
-
 @interface EGOPhotoViewController (Private)
 - (void)loadScrollViewWithPage:(NSInteger)page;
 - (void)layoutScrollViewSubviews;
@@ -22,26 +20,20 @@
 - (void)autosizePopoverToImageSize:(CGSize)imageSize photoImageView:(EGOPhotoImageView*)photoImageView;
 @end
 
-
 @implementation EGOPhotoViewController
-
 @synthesize scrollView=_scrollView;
 @synthesize photoSource=_photoSource; 
 @synthesize photoViews=_photoViews;
 @synthesize _fromPopover;
-
 - (id)initWithPhoto:(id<EGOPhoto>)aPhoto {
 	return [self initWithPhotoSource:[[[EGOQuickPhotoSource alloc] initWithPhotos:[NSArray arrayWithObjects:aPhoto,nil]] autorelease]];
 }
-
 - (id)initWithImage:(UIImage*)anImage {
 	return [self initWithPhoto:[[[EGOQuickPhoto alloc] initWithImage:anImage] autorelease]];
 }
-
 - (id)initWithImageURL:(NSURL*)anImageURL {
 	return [self initWithPhoto:[[[EGOQuickPhoto alloc] initWithImageURL:anImageURL] autorelease]];
 }
-
 - (id)initWithPhotoSource:(id <EGOPhotoSource> )aSource{
 	if (self = [super init]) {
 		
@@ -57,7 +49,6 @@
 	
 	return self;
 }
-
 - (id)initWithPopoverController:(id)aPopoverController photoSource:(id <EGOPhotoSource>)aPhotoSource {
 	if (self = [self initWithPhotoSource:aPhotoSource]) {
 		_popover = aPopoverController;
@@ -66,10 +57,8 @@
 	return self;
 }
 
-
 #pragma mark -
 #pragma mark View Controller Methods
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
@@ -94,7 +83,6 @@
 		_scrollView.showsHorizontalScrollIndicator=NO;
 		_scrollView.backgroundColor = self.view.backgroundColor;
 		[self.view addSubview:_scrollView];
-
 	}
 	
 	if (!_captionView) {
@@ -114,7 +102,6 @@
 	self.photoViews = views;
 	[views release];
 
-
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 30200
 	if ([self.photoSource numberOfPhotos] == 1 && UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) {
 		
@@ -128,9 +115,7 @@
 	}
 #endif
 	
-
 }
-
 - (void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
 	
@@ -192,7 +177,6 @@
 		self.navigationController.toolbar.barStyle = UIBarStyleBlack;
 		self.navigationController.toolbar.translucent = YES;
 	}
-
 	
 	[self setupToolbar];
 	[self setupScrollViewContentSize];
@@ -203,7 +187,6 @@
 	}
 	
 }
-
 - (void)viewWillDisappear:(BOOL)animated{
 	[super viewWillDisappear:animated];
 	
@@ -234,7 +217,6 @@
 	}
 	
 }
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 30200
@@ -246,7 +228,6 @@
    	return (UIInterfaceOrientationIsLandscape(interfaceOrientation) || interfaceOrientation == UIInterfaceOrientationPortrait);
 	
 }
-
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
 	_rotating = YES;
 	
@@ -267,7 +248,6 @@
 	}
 	
 }
-
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
 	
 	for (EGOPhotoImageView *view in self.photoViews){
@@ -277,7 +257,6 @@
 	}
 		
 }
-
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
 	
 	[self setupScrollViewContentSize];
@@ -293,15 +272,12 @@
 	_rotating = NO;
 	
 }
-
 - (void)done:(id)sender {
 	[self dismissModalViewControllerAnimated:YES];
 }
-
 - (void)setupToolbar {
 	
 	[self setupViewForPopover];
-
 	if(_popover && [self.photoSource numberOfPhotos] == 1) {
 		[self.navigationController setToolbarHidden:YES animated:NO];
 		return;
@@ -336,7 +312,6 @@
 			self.navigationItem.rightBarButtonItem = scaleButton;
 			[scaleButton release];
 		}		
-
 		
 		UIBarButtonItem *left = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"egopv_left.png"] style:UIBarButtonItemStylePlain target:self action:@selector(moveBack:)];
 		UIBarButtonItem *right = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"egopv_right.png"] style:UIBarButtonItemStylePlain target:self action:@selector(moveForward:)];
@@ -368,11 +343,8 @@
                                    action:@selector(done:)];
     self.navigationItem.leftBarButtonItem = leftButton;
     TT_RELEASE_SAFELY(leftButton)
-
 	
 }
-
-
 
 - (NSInteger)currentPhotoIndex{
 	
@@ -380,19 +352,15 @@
 	
 }
 
-
 #pragma mark -
 #pragma mark Popver ContentSize Observing
-
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{	
 	[self setupScrollViewContentSize];
 	[self layoutScrollViewSubviews];
 }
 
-
 #pragma mark -
 #pragma mark Bar/Caption Methods
-
 - (void)setStatusBarHidden:(BOOL)hidden animated:(BOOL)animated{
 	if (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad) return; 
 	
@@ -405,9 +373,7 @@
 		[[UIApplication sharedApplication] setStatusBarHidden:hidden animated:animated];
 #endif
 	}
-
 }
-
 - (void)setBarsHidden:(BOOL)hidden animated:(BOOL)animated{
 	if (hidden&&_barsHidden) return;
 	
@@ -458,15 +424,12 @@
 	_barsHidden=hidden;
 	
 }
-
 - (void)toggleBarsNotification:(NSNotification*)notification{
 	[self setBarsHidden:!_barsHidden animated:YES];
 }
 
-
 #pragma mark -
 #pragma mark FullScreen Methods
-
 - (void)setupViewForPopover{
 	
 	if (!_popoverOverlay && _popover && [self.photoSource numberOfPhotos] == 1) {
@@ -500,7 +463,6 @@
 	}
 	
 }
-
 - (CATransform3D)transformForCurrentOrientation{
 	
 	UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
@@ -521,7 +483,6 @@
 	}
 	
 }
-
 - (void)toggleFullScreen:(id)sender{
 	
 	_fullScreen = !_fullScreen;
@@ -581,7 +542,6 @@
 	[UIView commitAnimations];
 	
 }
-
 - (void)fullScreenAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context{
 	
 	if (finished) {
@@ -621,11 +581,8 @@
 	
 }
 
-
-
 #pragma mark -
 #pragma mark Photo View Methods
-
 - (void)photoViewDidFinishLoading:(NSNotification*)notification{
 	if (notification == nil) return;
 	
@@ -639,22 +596,18 @@
 		[self setViewState];
 	}
 }
-
 - (NSInteger)centerPhotoIndex{
 	
 	CGFloat pageWidth = self.scrollView.frame.size.width;
 	return floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
 	
 }
-
 - (void)moveForward:(id)sender{
 	[self moveToPhotoAtIndex:[self centerPhotoIndex]+1 animated:NO];	
 }
-
 - (void)moveBack:(id)sender{
 	[self moveToPhotoAtIndex:[self centerPhotoIndex]-1 animated:NO];
 }
-
 - (void)setViewState {	
 	
 	if (_leftButton) {
@@ -703,13 +656,11 @@
 #endif
 	
 }
-
 - (void)moveToPhotoAtIndex:(NSInteger)index animated:(BOOL)animated {
 	NSAssert(index < [self.photoSource numberOfPhotos] && index >= 0, @"Photo index passed out of bounds");
 	
 	_pageIndex = index;
 	[self setViewState];
-
 	[self enqueuePhotoViewAtIndex:index];
 	
 	[self loadScrollViewWithPage:index-1];
@@ -732,7 +683,6 @@
 	} 	
 	
 }
-
 - (void)layoutScrollViewSubviews{
 	
 	NSInteger _index = [self currentPhotoIndex];
@@ -770,7 +720,6 @@
 	}
 	
 }
-
 - (void)setupScrollViewContentSize{
 	
 	CGFloat toolbarSize = _popover ? 0.0f : self.navigationController.toolbar.frame.size.height;	
@@ -783,9 +732,7 @@
 	}
 	
 	_captionView.frame = CGRectMake(0.0f, self.view.bounds.size.height - (toolbarSize + 40.0f), self.view.bounds.size.width, 40.0f);
-
 }
-
 - (void)enqueuePhotoViewAtIndex:(NSInteger)theIndex{
 	
 	NSInteger count = 0;
@@ -803,7 +750,6 @@
 	}	
 	
 }
-
 - (EGOPhotoImageView*)dequeuePhotoView{
 	
 	NSInteger count = 0;
@@ -819,7 +765,6 @@
 	return nil;
 	
 }
-
 - (void)loadScrollViewWithPage:(NSInteger)page {
 	
     if (page < 0) return;
@@ -864,10 +809,8 @@
 	photoView.frame = frame;
 }
 
-
 #pragma mark -
 #pragma mark UIScrollView Delegate Methods
-
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 	
@@ -877,7 +820,6 @@
 	}
 	
 	if (_pageIndex != _index && !_rotating) {
-
 		[self setBarsHidden:YES animated:YES];
 		_pageIndex = _index;
 		[self setViewState];
@@ -889,7 +831,6 @@
 	}
 		
 }
-
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 	
 	NSInteger _index = [self centerPhotoIndex];
@@ -898,33 +839,26 @@
 	}
 	
 	[self moveToPhotoAtIndex:_index animated:YES];
-
 }
-
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
 	[self layoutScrollViewSubviews];
 }
 
-
 #pragma mark -
 #pragma mark Actions
-
 - (void)doneSavingImage{
 	DLog(@"done saving image");
 }
-
 - (void)savePhoto{
 	
 	UIImageWriteToSavedPhotosAlbum(((EGOPhotoImageView*)[self.photoViews objectAtIndex:_pageIndex]).imageView.image, nil, nil, nil);
 	
 }
-
 - (void)copyPhoto{
 	
 	[[UIPasteboard generalPasteboard] setData:UIImagePNGRepresentation(((EGOPhotoImageView*)[self.photoViews objectAtIndex:_pageIndex]).imageView.image) forPasteboardType:@"public.png"];
 	
 }
-
 - (void)emailPhoto{
 	
 	MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
@@ -942,7 +876,6 @@
 	[mailViewController release];
 	
 }
-
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error{
 	
 	[self dismissModalViewControllerAnimated:YES];
@@ -957,10 +890,8 @@
 	
 }
 
-
 #pragma mark -
 #pragma mark UIActionSheet Methods
-
 - (void)actionButtonHit:(id)sender{
 	
 	UIActionSheet *actionSheet;
@@ -999,7 +930,6 @@
 	[actionSheet release];
 	
 }
-
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
 	
 	[self setBarsHidden:NO animated:YES];
@@ -1015,14 +945,11 @@
 	}
 }
 
-
 #pragma mark -
 #pragma mark Memory
-
 - (void)didReceiveMemoryWarning{
 	[super didReceiveMemoryWarning];
 }
-
 - (void)viewDidUnload{
 	
 	self.photoViews=nil;
@@ -1030,7 +957,6 @@
 	_captionView=nil;
 	
 }
-
 - (void)dealloc {
 	
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -1044,6 +970,5 @@
 	
     [super dealloc];
 }
-
 
 @end

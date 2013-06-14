@@ -5,10 +5,8 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <Foundation/Foundation.h>
 #import "ASICacheDelegate.h"
-
 @interface ASIDownloadCache : NSObject <ASICacheDelegate> {
 	
 	// The default cache policy for this cache
@@ -26,19 +24,15 @@
 	// When YES, the cache will look for cache-control / pragma: no-cache headers, and won't reuse store responses if it finds them
 	BOOL shouldRespectCacheControlHeaders;
 }
-
 // Returns a static instance of an ASIDownloadCache
 // In most circumstances, it will make sense to use this as a global cache, rather than creating your own cache
 // To make ASIHTTPRequests use it automatically, use [ASIHTTPRequest setDefaultCache:[ASIDownloadCache sharedCache]];
 + (id)sharedCache;
-
 // A helper function that determines if the server has requested data should not be cached by looking at the request's response headers
 + (BOOL)serverAllowsResponseCachingForRequest:(ASIHTTPRequest *)request;
-
 // A list of file extensions that we know won't be readable by a webview when accessed locally
 // If we're asking for a path to cache a particular url and it has one of these extensions, we change it to '.html'
 + (NSArray *)fileExtensionsToHandleAsHTML;
-
 @property (assign, nonatomic) ASICachePolicy defaultCachePolicy;
 @property (retain, nonatomic) NSString *storagePath;
 @property (retain) NSRecursiveLock *accessLock;

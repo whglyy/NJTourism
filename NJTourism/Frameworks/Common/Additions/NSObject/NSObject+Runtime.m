@@ -5,11 +5,8 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "NSObject+Runtime.h"
-
 @implementation NSObject (Runtime)
-
 - (NSArray *)getPropertiesNameList{
     NSMutableArray *nameArr = [[NSMutableArray alloc] init];
     unsigned int outCount, i;
@@ -32,7 +29,6 @@
     free(properties);
     return nameArr;
 }
-
 - (NSMutableDictionary *)getAllPropertyDic{
     NSMutableDictionary *propertiesDic = [[NSMutableDictionary alloc] init];
     unsigned int outCount, i;
@@ -69,5 +65,4 @@
     free(properties);
     return propertiesDic;
 }
-
 @end

@@ -5,23 +5,15 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "AppDelegate.h"
-
 #import "DAO.h"
-
 @interface AppDelegate()
-
 @end
-
 @implementation AppDelegate
-
 @synthesize window;
 @synthesize rootViewController;
-
 #pragma mark-
 #pragma mark Init & Add
-
 #pragma mark-
 #pragma mark
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -33,12 +25,10 @@
             
     return YES;
 }
-
 + (AppDelegate *)currentAppDelegate
 {
 	return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
-
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
@@ -49,7 +39,6 @@
 	// If your application supports background execution,
 	// called instead of applicationWillTerminate: when the user quits.
 	
-
     
 	if ([application respondsToSelector:@selector(setKeepAliveTimeout:handler:)])
 	{
@@ -59,12 +48,9 @@
 		}];
 	}
 }
-
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
 }
-
-
 
 
 @end

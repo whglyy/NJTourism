@@ -5,12 +5,9 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "StrikeThroughLabel.h"
-
 @implementation StrikeThroughLabel
 @synthesize isWithStrikeThrough = isWithStrikeThrough_;
-
 
 - (id)init
 {
@@ -32,15 +29,12 @@
     return self;
 }
 
-
-
 - (void)setText:(NSString *)text
 {
     [super setText:text];
     
     [self setNeedsDisplay];
 }
-
 - (void)drawRect:(CGRect)rect
 {
     [super drawRect:rect];
@@ -66,5 +60,4 @@
     }
     
 }
-
 @end

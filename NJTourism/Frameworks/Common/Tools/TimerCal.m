@@ -5,11 +5,8 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "TimerCal.h"
-
 @implementation TimerCal
-
 + (NSString *)TimerString:(float)fTimer
 {
     int iHour = fTimer / 3600;
@@ -27,5 +24,4 @@
     }
     return nil;
 }
-
 @end

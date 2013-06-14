@@ -5,38 +5,30 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <Foundation/Foundation.h>
-
-
 
 /**
  * Doxygen does not handle categories very well, so please refer to the .m file in general
  * for the documentation that is reflected on api.three20.info.
  */
 @interface NSString (Additions)
-
 + (NSString *)generateGuid;
 /**
  * Determines if the string contains only whitespace and newlines.
  */
 - (BOOL)isWhitespaceAndNewlines;
-
 /**
  * Determines if the string is empty or contains only whitespace.
  */
 - (BOOL)isEmptyOrWhitespace;
-
 /**
  * Parses a URL query string into a dictionary.
  */
 - (NSDictionary*)queryDictionaryUsingEncoding:(NSStringEncoding)encoding;
-
 /**
  * Parses a URL, adds query parameters to its query, and re-encodes it as a new URL.
  */
 - (NSString*)stringByAddingQueryDictionary:(NSDictionary*)query;
-
 /**
  * Compares two strings expressing software versions.
  *
@@ -71,12 +63,9 @@
  */
 - (NSComparisonResult)versionStringCompare:(NSString *)other;
 
-
-
 - (CGSize)heightWithFont:(UIFont*)withFont 
                     width:(float)width 
                 linebreak:(UILineBreakMode)lineBreakMode;
-
 
 /**
  * Calculate the md5 hash of this string using CC_MD5.
@@ -85,16 +74,11 @@
  */
 @property (nonatomic, readonly) NSString* md5Hash;
 
-
 - (NSString *)replacedWhiteSpacsByString:(NSString *)replaceString;
 
-
 - (NSString *)trim;
-
 - (NSString *)formatJSON;
-
 - (BOOL)eq:(NSString *)str;
-
 /*!
  @method
  @abstract 单位转换
@@ -103,7 +87,6 @@
  @result nsstring  --B --kB --MB --GB
  */
 + (NSString *)bytesToAvaiUnit:(long long int) bytes;
-
 /*!
  @method
  @abstract   获取当前时间
@@ -111,7 +94,6 @@
  @result     NSString  @"yyyy'-'MM'-'dd HH:mm:ss"
  */
 + (NSString *)getFormatTimeString;
-
 /*!
  @method
  @abstract   获取当前日期
@@ -119,7 +101,6 @@
  @result     NSString  @"yyyy'-'MM'-'dd "
  */
 + (NSString *)getFormatDateString;
-
 /*!
  @method
  @abstract   获取当前时间戳
@@ -127,8 +108,6 @@
  @result     NSString 当前时间戳带有小数点后6位数的字符串
  */ 
 + (NSString *)getFormatTimeStampString;
-
 - (NSString *)URLEncoding;
 - (NSString *)URLDecoding;
-
 @end

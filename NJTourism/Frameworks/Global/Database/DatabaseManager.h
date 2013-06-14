@@ -5,9 +5,7 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <Foundation/Foundation.h>
-
 @class FMDatabaseQueue;
 @interface DatabaseManager : NSObject 
 {
@@ -19,21 +17,13 @@
     
     FMDatabaseQueue *_databaseQueue;
 }
-
 @property (nonatomic, copy) NSString *writablePath;
-
 @property (nonatomic, retain) FMDatabaseQueue *databaseQueue;
-
 + (DatabaseManager*)currentManager;
-
 - (BOOL)isDatabaseOpened;
-
 - (void)openDataBase;
-
 - (void)closeDataBase;
 
-
 + (void)releaseManager;
-
 
 @end

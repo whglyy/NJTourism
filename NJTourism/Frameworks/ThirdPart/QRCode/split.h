@@ -5,12 +5,9 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #ifndef __SPLIT_H__
 #define __SPLIT_H__
-
 #include "qrencode.h"
-
 /**
  * Split the input string (null terminated) into QRinput.
  * @param string input string
@@ -24,5 +21,4 @@
  */
 extern int Split_splitStringToQRinput(const char *string, QRinput *input,
 		QRencodeMode hint, int casesensitive);
-
 #endif /* __SPLIT_H__ */

@@ -5,10 +5,8 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-
 ///离线地图搜索城市记录结构
 @interface BMKOLSearchRecord : NSObject
 {
@@ -22,9 +20,7 @@
 @property (nonatomic) int size;
 ///城市ID
 @property (nonatomic) int cityID;
-
 @end
-
 
 ///离线地图更新信息
 @interface BMKOLUpdateElement : NSObject
@@ -54,6 +50,4 @@
 @property (nonatomic) BOOL update;
 ///城市中心点
 @property (nonatomic) CLLocationCoordinate2D pt;
-
 @end
-

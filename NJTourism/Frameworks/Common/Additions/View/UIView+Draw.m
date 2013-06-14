@@ -5,33 +5,26 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "UIView+Draw.h"
-
 CGPoint demoLGStart(CGRect bounds)
 {
 	return CGPointMake(bounds.origin.x, bounds.origin.y + bounds.size.height * 0.25);
 }
 
-
 CGPoint demoLGEnd(CGRect bounds)
 {
 	return CGPointMake(bounds.origin.x, bounds.origin.y + bounds.size.height * 0.75);
 }
-
 CGPoint demoRGCenter(CGRect bounds)
 {
 	return CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds));
 }
-
 CGFloat demoRGInnerRadius(CGRect bounds)
 {
 	CGFloat r = bounds.size.width < bounds.size.height ? bounds.size.width : bounds.size.height;
 	return r * 0.125;
 }
-
 @implementation UIView (TKCategory)
-
 
 // Returns an appropriate starting point for the demonstration of a linear gradient
 /*- (CGPoint) demoLGStart:(CGRect)bounds{
@@ -39,7 +32,6 @@ CGFloat demoRGInnerRadius(CGRect bounds)
  }
  
  */
-
 + (void) drawLinearGradientInRect:(CGRect)rect colors:(CGFloat[])colours{
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
@@ -65,14 +57,11 @@ CGFloat demoRGInnerRadius(CGRect bounds)
 	
 }
 
-
-
 + (void) drawRoundRectangleInRect:(CGRect)rect withRadius:(CGFloat)radius color:(UIColor*)color{
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	[color set];
 	
 	CGRect rrect = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height );
-
 	CGFloat minx = CGRectGetMinX(rrect), midx = CGRectGetMidX(rrect), maxx = CGRectGetMaxX(rrect);
 	CGFloat miny = CGRectGetMinY(rrect), midy = CGRectGetMidY(rrect), maxy = CGRectGetMaxY(rrect);
 	CGContextMoveToPoint(context, minx, midy);
@@ -83,8 +72,6 @@ CGFloat demoRGInnerRadius(CGRect bounds)
 	CGContextClosePath(context);
 	CGContextDrawPath(context, kCGPathFill);
 }
-
-
 
 
 + (void) drawLineInRect:(CGRect)rect colors:(CGFloat[])colors {
@@ -110,7 +97,6 @@ CGFloat demoRGInnerRadius(CGRect bounds)
 	CGContextSetRGBStrokeColor(context, colors[0], colors[1], colors[2], colors[3]);
 	CGContextSetLineCap(context,cap);
 	CGContextSetLineWidth(context, lineWidth);
-
 	CGContextMoveToPoint(context, rect.origin.x, rect.origin.y);
 	CGContextAddLineToPoint(context,rect.origin.x+rect.size.width, rect.origin.y+rect.size.height);
 	CGContextStrokePath(context);
@@ -119,7 +105,5 @@ CGFloat demoRGInnerRadius(CGRect bounds)
 	CGContextRestoreGState(context);
 	
 }
-
-
 
 @end

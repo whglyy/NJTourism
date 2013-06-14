@@ -5,9 +5,7 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "MBProgressHUD.h"
-
 
 #if __has_feature(objc_arc)
 	#define MB_AUTORELEASE(exp) exp
@@ -19,14 +17,11 @@
 	#define MB_RETAIN(exp) [exp retain]
 #endif
 
-
 static const CGFloat kPadding = 4.f;
 static const CGFloat kLabelFontSize = 16.f;
 static const CGFloat kDetailsLabelFontSize = 12.f;
 
-
 @interface MBProgressHUD ()
-
 - (void)setupLabels;
 - (void)registerForKVO;
 - (void)unregisterFromKVO;
@@ -45,15 +40,12 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 - (void)launchExecution;
 - (void)deviceOrientationDidChange:(NSNotification *)notification;
 - (void)hideDelayed:(NSNumber *)animated;
-
 @property (MB_STRONG) UIView *indicator;
 @property (MB_STRONG) NSTimer *graceTimer;
 @property (MB_STRONG) NSTimer *minShowTimer;
 @property (MB_STRONG) NSDate *showStarted;
 @property (assign) CGSize size;
-
 @end
-
 
 @implementation MBProgressHUD {
 	BOOL useAnimation;
@@ -65,9 +57,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	BOOL isFinished;
 	CGAffineTransform rotationTransform;
 }
-
 #pragma mark - Properties
-
 @synthesize animationType;
 @synthesize delegate;
 @synthesize opacity;
@@ -93,16 +83,13 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 @synthesize detailsLabelText;
 @synthesize progress;
 @synthesize size;
-
 #pragma mark - Class methods
-
 + (MBProgressHUD *)showHUDAddedTo:(UIView *)view animated:(BOOL)animated {
 	MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:view];
 	[view addSubview:hud];
 	[hud show:animated];
 	return MB_AUTORELEASE(hud);
 }
-
 + (BOOL)hideHUDForView:(UIView *)view animated:(BOOL)animated {
 	MBProgressHUD *hud = [MBProgressHUD HUDForView:view];
 	if (hud != nil) {
@@ -112,7 +99,6 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	}
 	return NO;
 }
-
 + (NSUInteger)hideAllHUDsForView:(UIView *)view animated:(BOOL)animated {
 	NSArray *huds = [self allHUDsForView:view];
 	for (MBProgressHUD *hud in huds) {
@@ -121,7 +107,6 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	}
 	return [huds count];
 }
-
 + (MBProgressHUD *)HUDForView:(UIView *)view {
 	MBProgressHUD *hud = nil;
 	NSArray *subviews = view.subviews;
@@ -133,7 +118,6 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	}
 	return hud;
 }
-
 + (NSArray *)allHUDsForView:(UIView *)view {
 	NSMutableArray *huds = [NSMutableArray array];
 	NSArray *subviews = view.subviews;
@@ -145,9 +129,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	}
 	return [NSArray arrayWithArray:huds];
 }
-
 #pragma mark - Lifecycle
-
 - (id)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
 	if (self) {
@@ -170,7 +152,6 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		self.square = NO;
 		self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin 
 								| UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-
 		// Transparent background
 		self.opaque = NO;
 		self.backgroundColor = [UIColor clearColor];
@@ -187,7 +168,6 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	}
 	return self;
 }
-
 - (id)initWithView:(UIView *)view {
 	NSAssert(view, @"View must not be nil.");
 	id me = [self initWithFrame:view.bounds];
@@ -197,11 +177,9 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	}
 	return me;
 }
-
 - (id)initWithWindow:(UIWindow *)window {
 	return [self initWithView:window];
 }
-
 - (void)dealloc {
 	[self unregisterFromNotifications];
 	[self unregisterFromKVO];
@@ -218,9 +196,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	[super dealloc];
 #endif
 }
-
 #pragma mark - Show & hide
-
 - (void)show:(BOOL)animated {
 	useAnimation = animated;
 	// If the grace time is set postpone the HUD display
@@ -234,7 +210,6 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		[self showUsingAnimation:useAnimation];
 	}
 }
-
 - (void)hide:(BOOL)animated {
 	useAnimation = animated;
 	// If the minShow time is set, calculate how long the hud was shown,
@@ -250,17 +225,13 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	// ... otherwise hide the HUD immediately
 	[self hideUsingAnimation:useAnimation];
 }
-
 - (void)hide:(BOOL)animated afterDelay:(NSTimeInterval)delay {
 	[self performSelector:@selector(hideDelayed:) withObject:[NSNumber numberWithBool:animated] afterDelay:delay];
 }
-
 - (void)hideDelayed:(NSNumber *)animated {
 	[self hide:[animated boolValue]];
 }
-
 #pragma mark - Timer callbacks
-
 - (void)handleGraceTimer:(NSTimer *)theTimer {
 	// Show the HUD only if the task is still running
 	if (taskInProgress) {
@@ -268,13 +239,10 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		[self showUsingAnimation:useAnimation];
 	}
 }
-
 - (void)handleMinShowTimer:(NSTimer *)theTimer {
 	[self hideUsingAnimation:useAnimation];
 }
-
 #pragma mark - Internal show & hide operations
-
 - (void)showUsingAnimation:(BOOL)animated {
 	self.alpha = 0.0f;
 	if (animated && animationType == MBProgressHUDAnimationZoom) {
@@ -295,7 +263,6 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		self.alpha = 1.0f;
 	}
 }
-
 - (void)hideUsingAnimation:(BOOL)animated {
 	// Fade out
 	if (animated && showStarted) {
@@ -317,11 +284,9 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	}
 	self.showStarted = nil;
 }
-
 - (void)animationFinished:(NSString *)animationID finished:(BOOL)finished context:(void*)context {
 	[self done];
 }
-
 - (void)done {
 	isFinished = YES;
 	self.alpha = 0.0f;
@@ -332,9 +297,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		[self removeFromSuperview];
 	}
 }
-
 #pragma mark - Threading
-
 - (void)showWhileExecuting:(SEL)method onTarget:(id)target withObject:(id)object animated:(BOOL)animated {
 	methodForExecution = method;
 	targetForExecution = MB_RETAIN(target);
@@ -345,7 +308,6 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	// Show HUD view
 	[self show:animated];
 }
-
 - (void)launchExecution {
 	@autoreleasepool {
 #pragma clang diagnostic push
@@ -358,7 +320,6 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		[self performSelectorOnMainThread:@selector(cleanUp) withObject:nil waitUntilDone:NO];
 	}
 }
-
 - (void)cleanUp {
 	taskInProgress = NO;
 	self.indicator = nil;
@@ -368,9 +329,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 #endif
 	[self hide:useAnimation];
 }
-
 #pragma mark - UI
-
 - (void)setupLabels {
 	label = [[UILabel alloc] initWithFrame:self.bounds];
 	label.adjustsFontSizeToFitWidth = NO;
@@ -394,7 +353,6 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	detailsLabel.text = self.detailsLabelText;
 	[self addSubview:detailsLabel];
 }
-
 - (void)updateIndicators {
 	
 	BOOL isActivityIndicator = [indicator isKindOfClass:[UIActivityIndicatorView class]];
@@ -429,9 +387,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		self.indicator = nil;
 	}
 }
-
 #pragma mark - Layout
-
 - (void)layoutSubviews {
 	
 	CGRect bounds = self.bounds;
@@ -452,7 +408,6 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	if (labelSize.height > 0.f && indicatorF.size.height > 0.f) {
 		totalSize.height += kPadding;
 	}
-
 	CGFloat remainingHeight = bounds.size.height - totalSize.height - kPadding - 4 * margin; 
 	CGSize maxSize = CGSizeMake(maxWidth, remainingHeight);
 	CGSize detailsLabelSize = [detailsLabel.text sizeWithFont:detailsLabel.font 
@@ -512,9 +467,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	
 	self.size = totalSize;
 }
-
 #pragma mark BG Drawing
-
 - (void)drawRect:(CGRect)rect {
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();
@@ -554,26 +507,21 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	CGContextClosePath(context);
 	CGContextFillPath(context);
 }
-
 #pragma mark - KVO
-
 - (void)registerForKVO {
 	for (NSString *keyPath in [self observableKeypaths]) {
 		[self addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:NULL];
 	}
 }
-
 - (void)unregisterFromKVO {
 	for (NSString *keyPath in [self observableKeypaths]) {
 		[self removeObserver:self forKeyPath:keyPath];
 	}
 }
-
 - (NSArray *)observableKeypaths {
 	return [NSArray arrayWithObjects:@"mode", @"customView", @"labelText", @"labelFont", 
 			@"detailsLabelText", @"detailsLabelFont", @"progress", nil];
 }
-
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 	if (![NSThread isMainThread]) {
 		[self performSelectorOnMainThread:@selector(updateUIForKeypath:) withObject:keyPath waitUntilDone:NO];
@@ -581,7 +529,6 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		[self updateUIForKeypath:keyPath];
 	}
 }
-
 - (void)updateUIForKeypath:(NSString *)keyPath {
 	if ([keyPath isEqualToString:@"mode"] || [keyPath isEqualToString:@"customView"]) {
 		[self updateIndicators];
@@ -602,19 +549,15 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	[self setNeedsLayout];
 	[self setNeedsDisplay];
 }
-
 #pragma mark - Notifications
-
 - (void)registerForNotifications {
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc addObserver:self selector:@selector(deviceOrientationDidChange:) 
 			   name:UIDeviceOrientationDidChangeNotification object:nil];
 }
-
 - (void)unregisterFromNotifications {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
 - (void)deviceOrientationDidChange:(NSNotification *)notification { 
 	UIView *superview = self.superview;
 	if (!superview) {
@@ -626,7 +569,6 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		[self setNeedsDisplay];
 	}
 }
-
 - (void)setTransformForCurrentOrientation:(BOOL)animated {	
 	// Stay in sync with the superview
 	if (self.superview) {
@@ -655,41 +597,31 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		[UIView commitAnimations];
 	}
 }
-
 @end
-
 
 @implementation MBRoundProgressView {
 	float _progress;
 	BOOL _annular;
 }
-
 #pragma mark - Accessors
-
 - (float)progress {
 	return _progress;
 }
-
 - (void)setProgress:(float)progress {
 	_progress = progress;
 	[self setNeedsDisplay];
 }
-
 - (BOOL)isAnnular {
 	return _annular;
 }
-
 - (void)setAnnular:(BOOL)annular {
 	_annular = annular;
 	[self setNeedsDisplay];
 }
-
 #pragma mark - Lifecycle
-
 - (id)init {
 	return [self initWithFrame:CGRectMake(0.f, 0.f, 37.f, 37.f)];
 }
-
 - (id)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
 	if (self) {
@@ -700,9 +632,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	}
 	return self;
 }
-
 #pragma mark - Drawing
-
 - (void)drawRect:(CGRect)rect {
 	
 	CGRect allRect = self.bounds;
@@ -749,5 +679,4 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		CGContextFillPath(context);
 	}
 }
-
 @end

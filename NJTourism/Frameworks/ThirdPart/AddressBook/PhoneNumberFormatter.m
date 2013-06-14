@@ -5,21 +5,16 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "PhoneNumberFormatter.h"
-
 @interface PhoneNumberFormatter(Private)
 - (NSString *)parseString:(NSString *)input;
 - (NSString *)parseStringStartingWithOne:(NSString *)input;
 - (NSString *)parsePartialStringStartingWithOne:(NSString *)input;
 - (NSString *)parseLastSevenDigits:(NSString *)basicNumber;
-
 - (NSString *)stripNonDigits:(NSString *)input;
 - (NSUInteger)formattedNewLocationFromOldFormatted:(NSString *)formattedOld formattedNew:(NSString *)formattedNew formattedOldLocation:(NSUInteger)formattedOldLocation lengthAdded:(NSUInteger)lengthAdded;
 @end
-
 @implementation PhoneNumberFormatter
-
 - (NSString *)stringForObjectValue:(id)anObject {
   if (![anObject isKindOfClass:[NSString class]]) return nil;
   if ([anObject length] < 1) return nil;
@@ -27,7 +22,6 @@
   NSCharacterSet *doNotWant = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
   NSString *unformatted = [[(NSString *)anObject componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @""];
   if (unformatted.length == 0) return nil;
-
   NSString *firstNumber = [unformatted substringToIndex:1],
            *output;
   
@@ -38,18 +32,15 @@
   }
   return output;
 }
-
 - (BOOL)getObjectValue:(id *)anObject forString:(NSString *)string errorDescription:(NSString **)error {
   *anObject = (id)[self stripNonDigits:string];
   return YES;
 }
-
 - (NSString *)stripNonDigits:(NSString *)input
 {
   NSCharacterSet *doNotWant = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
   return [[input componentsSeparatedByCharactersInSet: doNotWant] componentsJoinedByString: @""];
 }
-
 - (NSUInteger)formattedNewLocationFromOldFormatted:(NSString *)formattedOld formattedNew:(NSString *)formattedNew formattedOldLocation:(NSUInteger)formattedOldLocation lengthAdded:(NSUInteger)lengthAdded
 {
   NSUInteger unformattedLocationOld = [[self stripNonDigits:[formattedOld substringToIndex:formattedOldLocation]] length];
@@ -67,7 +58,6 @@
   
   return formattedLocationNew;
 }
-
 - (BOOL)isPartialStringValid:(NSString **)partialStringPtr proposedSelectedRange:(NSRangePointer)proposedSelRangePtr originalString:(NSString *)origString originalSelectedRange:(NSRange)origSelRange errorDescription:(NSString **)error
 {
   NSString *formattedOld      = origString;
@@ -91,7 +81,6 @@
   
   return NO;
 }
-
 - (NSString *)parseLastSevenDigits:(NSString *)input {
   NSString *output;
   NSMutableString *obj = [NSMutableString stringWithString:input];
@@ -104,7 +93,6 @@
   }
   return output;
 }
-
 - (NSString *)parseString:(NSString *)input {
   NSMutableString *obj = [NSMutableString stringWithString:input];
   NSString *output;
@@ -121,7 +109,6 @@
   }
   return output;
 }
-
 - (NSString *)parsePartialStringStartingWithOne:(NSString *)input {
   NSMutableString *partialAreaCode = [NSMutableString stringWithString:[input substringFromIndex:1]];
   NSUInteger numSpaces = 3 - partialAreaCode.length, i;
@@ -131,7 +118,6 @@
   }
   return [NSString stringWithFormat:@"1 (%@)", partialAreaCode];
 }
-
 - (NSString *)parseStringStartingWithOne:(NSString *)input {
   NSUInteger len = input.length;
   NSString *output;
@@ -148,13 +134,10 @@
   
   return output;
 }
-
 @end
-
 void Init_PhoneNumberFormatter(void);
 void Init_PhoneNumberFormatter(void)
 {
   // Do nothing. This function is required by the MacRuby runtime when this
   // file is compiled as a C extension bundle.
 }
-

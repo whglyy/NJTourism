@@ -5,16 +5,12 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "QRCodeGenerator.h"
 #import "qrencode.h"
-
 enum {
 	qr_margin = 3
 };
-
 @implementation QRCodeGenerator
-
 + (void)drawQRCode:(QRcode *)code context:(CGContextRef)ctx size:(CGFloat)size {
 	unsigned char *data = 0;
 	int width;
@@ -36,7 +32,6 @@ enum {
 	}
 	CGContextFillPath(ctx);
 }
-
 + (UIImage *)qrImageForString:(NSString *)string imageSize:(CGFloat)size {
 	if (![string length]) {
 		return nil;
@@ -70,5 +65,4 @@ enum {
 	
 	return qrImage;
 }
-
 @end

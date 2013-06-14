@@ -5,7 +5,6 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 /*!
  @header      BBTipView
  @abstract    提示信息的view
@@ -14,7 +13,6 @@
               v1.0.002  13－4－24 modified by sasha
  */
 #import <UIKit/UIKit.h>
-
 @interface BBTipView : UIView
 {
     @private
@@ -26,19 +24,16 @@
     CGFloat _posY;
     BOOL    _dimBackground;
 }
-
 /*!
  @property      showTime
  @abstract      展示的时间，可设置
  */
 @property (nonatomic, assign) CGFloat showTime;
-
 /*!
  @property      dimBackground
  @abstract      是否显示背景渐变色
  */
 @property (nonatomic, assign) BOOL dimBackground;
-
 
 /*!
  @method        initWithView:message:posY:
@@ -49,7 +44,6 @@
  @result        BBTipView的对象
  */
 - (id)initWithView:(UIView *)view message:(NSString *)message posY:(CGFloat)posY;
-
 /*!
  @method        initWithView:message:posY:
  @abstract      初始化方法
@@ -64,18 +58,15 @@
           logoView:(UIImage *)logoImage
               posY:(CGFloat)posY;
 
-
 /*!
  @method        show
  @abstract      弹出
  */
 - (void)show;
-
 /*!
  @method        dismiss:
  @abstract      消失
  @param         animation 消失时是否使用动画
  */
 - (void)dismiss:(BOOL)animation;
-
 @end

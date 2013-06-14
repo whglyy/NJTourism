@@ -5,13 +5,9 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "ImageViewTextField.h"
 
-
 @implementation ImageViewTextField
-
-
 
 
 - (id)init
@@ -24,7 +20,6 @@
     }
     return self;
 }
-
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
@@ -35,7 +30,6 @@
     }
     return self;
 }
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -46,8 +40,6 @@
     }
     return self;
 }
-
-
 
 
 -(UIView *)showImageList{
@@ -106,7 +98,6 @@
     }
     return _showImageList;
 }
-
 #pragma mark - imageView CloseBtn imageAndButtonView
 -(UIImageView *)imageView{
     if(nil == _imageView){        
@@ -114,7 +105,6 @@
     }
     return _imageView;
 }
-
 -(UIButton *)closeBtn{
     if (nil == _closeBtn) 
     {
@@ -127,14 +117,12 @@
     return  _closeBtn;
     
 }
-
 -(UIView *)imageAndButtonView{
     if (nil == _imageAndButtonView) {
         _imageAndButtonView = [[UIView alloc]init];
     }
     return _imageAndButtonView;
 }
-
 -(UIImageView *)separatorLine{
     
     if (nil == _separatorLine) {
@@ -151,7 +139,6 @@
     
     return _imageConbineView;
 }
-
 
 #pragma mark
 - (void)setItemByImage:(UIImage *)image{
@@ -191,7 +178,6 @@
     [super setNeedsLayout];
 }
 
-
 -(void)layoutSubviews{
     
     [super layoutSubviews];
@@ -206,7 +192,6 @@
     self.showImageList.frame = CGRectMake(0, 0, 320, 75);
     
 }
-
 
 -(UIView *)takePhotoAndShare{
     if (nil == _takePhotoAndShare) {
@@ -248,7 +233,6 @@
     
     return _takePhotoAndShare;
 }
-
 -(void)deletePhoto:(id)sender{
     //通过获取点击button的下标定位应该被删除的照片
     int index = 0;
@@ -272,7 +256,6 @@
     [super setNeedsLayout];
     
 }
-
 #pragma mark - ImageViewTextFieldDelegate method
 - (void)CameraClicked:(id)sender
 {
@@ -292,7 +275,6 @@
         [self resignFirstResponder];
     }
 }
-
 
 - (void)ShareClicked:(id)sender
 {
@@ -314,5 +296,4 @@
     }
     
 }
-
 @end

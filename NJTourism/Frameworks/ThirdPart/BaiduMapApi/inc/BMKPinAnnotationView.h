@@ -5,9 +5,7 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "BMKAnnotationView.h"
-
 
 enum {
     BMKPinAnnotationColorRed = 0,
@@ -15,7 +13,6 @@ enum {
     BMKPinAnnotationColorPurple
 };
 typedef NSUInteger BMKPinAnnotationColor;
-
 ///提供类似大头针效果的annotation view
 @interface BMKPinAnnotationView : BMKAnnotationView
 {
@@ -28,6 +25,4 @@ typedef NSUInteger BMKPinAnnotationColor;
 ///动画效果
 @property (nonatomic) BOOL animatesDrop;
 
-
 @end
-

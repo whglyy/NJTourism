@@ -5,10 +5,8 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <CoreLocation/CoreLocation.h>
 #import <Foundation/Foundation.h>
-
 ///城市列表信息类
 @interface BMKCityListInfo : NSObject
 {
@@ -19,9 +17,7 @@
 @property (nonatomic, retain) NSString* city;
 ///该城市所含搜索结果数目
 @property (nonatomic) int num;
-
 @end
-
 
 ///POI信息类
 @interface BMKPoiInfo : NSObject
@@ -54,8 +50,6 @@
 @property (nonatomic) CLLocationCoordinate2D pt;
 @end
 
-
-
 ///POI搜索结果类
 @interface BMKPoiResult : NSObject
 {
@@ -79,9 +73,7 @@
 @property (nonatomic, retain) NSArray* poiInfoList;
 ///城市列表，成员是BMKCityListInfo
 @property (nonatomic, retain) NSArray* cityList;		
-
 @end
-
 
 ///Suggestion结果类
 @interface BMKSuggestionResult : NSObject 
@@ -89,8 +81,6 @@
     NSArray* _keyList;
     NSArray* _cityList;
 }
-
 @property (nonatomic, retain) NSArray* keyList; ///key列表，成员是NSString
 @property (nonatomic, retain) NSArray* cityList; ///city列表，成员是NSString
 @end
-

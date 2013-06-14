@@ -5,25 +5,19 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "ASIDataDecompressor.h"
 #import "ASIHTTPRequest.h"
-
 #define DATA_CHUNK_SIZE 262144 // Deal with gzipped data in 256KB chunks
-
 @interface ASIDataDecompressor ()
 + (NSError *)inflateErrorWithCode:(int)code;
 @end;
-
 @implementation ASIDataDecompressor
-
 + (id)decompressor
 {
 	ASIDataDecompressor *decompressor = [[[self alloc] init] autorelease];
 	[decompressor setupStream];
 	return decompressor;
 }
-
 - (void)dealloc
 {
 	if (streamReady) {
@@ -31,7 +25,6 @@
 	}
 	[super dealloc];
 }
-
 - (NSError *)setupStream
 {
 	if (streamReady) {
@@ -50,7 +43,6 @@
 	streamReady = YES;
 	return nil;
 }
-
 - (NSError *)closeStream
 {
 	if (!streamReady) {
@@ -64,14 +56,12 @@
 	}
 	return nil;
 }
-
 - (NSData *)uncompressBytes:(Bytef *)bytes length:(NSUInteger)length error:(NSError **)err
 {
 	if (length == 0) return nil;
 	
 	NSUInteger halfLength = length/2;
 	NSMutableData *outputData = [NSMutableData dataWithLength:length+halfLength];
-
 	int status;
 	
 	zStream.next_in = bytes;
@@ -105,7 +95,6 @@
 	return outputData;
 }
 
-
 + (NSData *)uncompressData:(NSData*)compressedData error:(NSError **)err
 {
 	NSError *theError = nil;
@@ -118,11 +107,9 @@
 	}
 	return outputData;
 }
-
 + (BOOL)uncompressDataFromFile:(NSString *)sourcePath toFile:(NSString *)destinationPath error:(NSError **)err
 {
 	NSFileManager *fileManager = [[[NSFileManager alloc] init] autorelease];
-
 	// Create an empty file at the destination path
 	if (![fileManager createFileAtPath:destinationPath contents:[NSData data] attributes:nil]) {
 		if (err) {
@@ -144,9 +131,7 @@
 	NSInteger readLength;
 	NSError *theError = nil;
 	
-
 	ASIDataDecompressor *decompressor = [ASIDataDecompressor decompressor];
-
 	NSInputStream *inputStream = [NSInputStream inputStreamWithFileAtPath:sourcePath];
 	[inputStream open];
 	NSOutputStream *outputStream = [NSOutputStream outputStreamToFileAtPath:destinationPath append:NO];
@@ -169,7 +154,6 @@
 		if (!readLength) {
 			break;
 		}
-
 		// Attempt to inflate the chunk of data
 		outputData = [decompressor uncompressBytes:inputData length:readLength error:&theError];
 		if (theError) {
@@ -196,7 +180,6 @@
 	
 	[inputStream close];
 	[outputStream close];
-
 	NSError *error = [decompressor closeStream];
 	if (error) {
 		if (err) {
@@ -204,15 +187,12 @@
 		}
 		return NO;
 	}
-
 	return YES;
 }
-
 
 + (NSError *)inflateErrorWithCode:(int)code
 {
 	return [NSError errorWithDomain:NetworkRequestErrorDomain code:ASICompressionError userInfo:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"Decompression of data failed with code %i",code],NSLocalizedDescriptionKey,nil]];
 }
-
 @synthesize streamReady;
 @end

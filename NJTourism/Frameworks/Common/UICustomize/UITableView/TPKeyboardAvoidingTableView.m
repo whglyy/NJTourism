@@ -5,20 +5,15 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "TPKeyboardAvoidingTableView.h"
-
 #define _UIKeyboardFrameEndUserInfoKey (&UIKeyboardFrameEndUserInfoKey != NULL ? UIKeyboardFrameEndUserInfoKey : @"UIKeyboardBoundsUserInfoKey")
-
 @interface TPKeyboardAvoidingTableView ()
 - (UIView*)findFirstResponderBeneathView:(UIView*)view;
 - (UIEdgeInsets)contentInsetForKeyboard;
 - (CGFloat)idealOffsetForView:(UIView *)view withSpace:(CGFloat)space;
 - (CGRect)keyboardRect;
 @end
-
 @implementation TPKeyboardAvoidingTableView
-
 - (void)setup {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
@@ -27,7 +22,6 @@
     }
     _priorInset = self.contentInset;
 }
-
 - (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style
 {
     if (self = [super initWithFrame:frame style:style]) 
@@ -38,7 +32,6 @@
     
     return self;
 }
-
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
     
@@ -46,35 +39,29 @@
     {
         [self setup];
     }
-
     return self;
     
 }
-
 -(void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
  
 }
-
 -(void)setFrame:(CGRect)frame {
     [super setFrame:frame];
     if ( _keyboardVisible ) {
         self.contentInset = [self contentInsetForKeyboard];
     }
 }
-
 -(void)setContentSize:(CGSize)contentSize {
     [super setContentSize:contentSize];
     if ( _keyboardVisible ) {
         self.contentInset = [self contentInsetForKeyboard];
     }
 }
-
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     [[self findFirstResponderBeneathView:self] resignFirstResponder];
     [super touchesEnded:touches withEvent:event];
 } 
-
 - (void)keyboardWillShow:(NSNotification*)notification {
     _keyboardRect = [[[notification userInfo] objectForKey:_UIKeyboardFrameEndUserInfoKey] CGRectValue];
     _keyboardVisible = YES;
@@ -97,7 +84,6 @@
     
     [UIView commitAnimations];
 }
-
 - (void)keyboardWillHide:(NSNotification*)notification {
     _keyboardRect = CGRectZero;
     _keyboardVisible = NO;
@@ -109,7 +95,6 @@
     self.contentInset = _priorInset;
     [UIView commitAnimations];
 }
-
 - (UIView*)findFirstResponderBeneathView:(UIView*)view {
     // Search recursively for first responder
     for ( UIView *childView in view.subviews ) {
@@ -119,14 +104,12 @@
     }
     return nil;
 }
-
 - (UIEdgeInsets)contentInsetForKeyboard {
     UIEdgeInsets newInset = self.contentInset;
     CGRect keyboardRect = [self keyboardRect];
     newInset.bottom = keyboardRect.size.height - ((keyboardRect.origin.y+keyboardRect.size.height) - (self.bounds.origin.y+self.bounds.size.height));
     return newInset;
 }
-
 -(CGFloat)idealOffsetForView:(UIView *)view withSpace:(CGFloat)space {
     
     // Convert the rect to get the view's distance from the top of the scrollView.
@@ -154,7 +137,6 @@
     
     return offset;
 }
-
 -(void)adjustOffsetToIdealIfNeeded {
     
     // Only do this if the keyboard is already visible
@@ -166,7 +148,6 @@
     
     [self setContentOffset:idealOffset animated:YES];                
 }
-
 - (CGRect)keyboardRect {
     CGRect keyboardRect = [self convertRect:_keyboardRect fromView:nil];
     if ( keyboardRect.origin.y == 0 ) {
@@ -175,5 +156,4 @@
     }
     return keyboardRect;
 }
-
 @end

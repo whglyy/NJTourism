@@ -6,10 +6,8 @@
 //
 //
 
-
 #import <Foundation/Foundation.h>
 @class Reachability;
-
 /**
  @header   NetworkReach
  @abstract 获取网络状态，提示网络异常
@@ -18,13 +16,11 @@
  */
 @interface NetworkReach : NSObject
 
-
 @property (nonatomic, readonly) BOOL isNetReachable;
 @property (nonatomic, readonly) BOOL isHostReach;
 @property (nonatomic, readonly) BOOL isInternetReach;
 @property (nonatomic, readonly) BOOL isWifiReach;
 @property (nonatomic, readonly) NSInteger reachableCount;
-
 /*!
  @method
  @abstract NetworkReach 初始化方法
@@ -37,5 +33,4 @@
  @discussion  提示：NotReachable
  */
 - (void)showNetworkAlertMessage;
-
 @end

@@ -5,14 +5,10 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "UIView+ActivityIndicator.h"
 #import "SNHUDIndicatorView.h"
 
-
-
 @implementation UIView (UIViewUtils)
-
 
 - (LoadingHUDView*)createActivityViewAtCenter:(UIActivityIndicatorViewStyle)style title:(NSString*)indiTitle
 {
@@ -30,13 +26,10 @@
     return HUD;
 }
 
-
 - (LoadingHUDView*)createActivityViewAtCenter:(UIActivityIndicatorViewStyle)style
 {
 	return [self createActivityViewAtCenter:style title:@"Loading..."];
 }
-
-
 
 - (LoadingHUDView*)getActivityViewAtCenter
 {
@@ -48,7 +41,6 @@
         return nil;
     }
 }
-
 - (void)showActivityViewAtCenter
 {
     LoadingHUDView* activityView = [self getActivityViewAtCenter];
@@ -62,7 +54,6 @@
 	[activityView startAnimating];
     
 }
-
 - (void)showActivityViewAtCenter:(NSString*)indiTitle
 {
     LoadingHUDView* activityView = [self getActivityViewAtCenter];
@@ -76,7 +67,6 @@
 	[activityView startAnimating];
     
 }
-
 - (void)hideActivityViewAtCenter
 {
     LoadingHUDView* activityView = [self getActivityViewAtCenter];
@@ -85,7 +75,6 @@
 	
            
 }
-
 
 - (void)showTipViewAtCenter:(NSString*)indiTitle posY:(CGFloat)y{
 	
@@ -100,10 +89,8 @@
     activityView.tag = toolViewTag;
     
     [activityView show];
-
 	
 }
-
 - (void)showTipViewAtCenter:(NSString*)indiTitle{
 	
 	BBTipView *activityView = [self getTipView];
@@ -119,7 +106,6 @@
     [activityView show];
 	
 }
-
 - (void)showSuccessTipViewAtCenter:(NSString*)indiTitle{
 	
 	BBTipView *activityView = [self getTipView];
@@ -138,7 +124,6 @@
     [activityView show];
 	
 }
-
 - (void)showFailTipViewAtCenter:(NSString*)indiTitle{
 	
 	BBTipView *activityView = [self getTipView];
@@ -157,7 +142,6 @@
     [activityView show];
 	
 }
-
 - (void)hideTipView{
 	
 	
@@ -166,7 +150,6 @@
 	[activityView dismiss:YES];  
 		
 }
-
 
 - (BBTipView *)getTipView
 {
@@ -182,10 +165,8 @@
     }
 }
 
-
 #pragma mark -
 #pragma mark hud
-
 - (void)showHUDIndicatorViewAtCenter:(NSString *)indiTitle
 {
     MBProgressHUD *hud = [self getHUDIndicatorViewAtCenter];
@@ -201,7 +182,6 @@
         hud.labelText = indiTitle;
     }
 }
-
 
 - (void)showHUDIndicatorViewAtCenter:(NSString *)indiTitle yOffset:(CGFloat)y
 {
@@ -221,7 +201,6 @@
 	
 	
 }
-
 - (void)hideHUDIndicatorViewAtCenter
 {
     MBProgressHUD *hud = [self getHUDIndicatorViewAtCenter];
@@ -232,7 +211,6 @@
     
     [hud hide:YES];
 }
-
 - (MBProgressHUD *)createHUDIndicatorViewAtCenter:(NSString *)indiTitle yOffset:(CGFloat)y
 {
     MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self];
@@ -247,7 +225,6 @@
     hud.tag = hudViewTag;
     return hud;
 }
-
 - (MBProgressHUD *)getHUDIndicatorViewAtCenter
 {
     UIView *view = [self viewWithTag:hudViewTag];
@@ -261,6 +238,5 @@
         return nil;
     }
 }
-
 
 @end

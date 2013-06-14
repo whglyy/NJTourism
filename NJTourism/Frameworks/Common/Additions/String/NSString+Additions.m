@@ -5,11 +5,8 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "NSString+Additions.h"
-
 @implementation NSString (Additions)
-
 + (NSString *)generateGuid {
 	CFUUIDRef	uuidObj = CFUUIDCreate(nil);//create a new UUID
 	//get the string representation of the UUID
@@ -17,7 +14,6 @@
 	CFRelease(uuidObj);
 	return uuidString;
 }
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)isWhitespaceAndNewlines {
 	NSCharacterSet* whitespace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
@@ -30,13 +26,11 @@
 	return YES;
 }
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (BOOL)isEmptyOrWhitespace {
 	return !self.length ||
 	![self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length;
 }
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // Copied and pasted from http://www.mail-archive.com/cocoa-dev@lists.apple.com/msg28175.html
 - (NSDictionary*)queryDictionaryUsingEncoding:(NSStringEncoding)encoding {
@@ -60,7 +54,6 @@
 	return [NSDictionary dictionaryWithDictionary:pairs];
 }
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (NSString*)stringByAddingQueryDictionary:(NSDictionary*)query {
 	NSMutableArray* pairs = [NSMutableArray array];
@@ -80,7 +73,6 @@
 		return [self stringByAppendingFormat:@"&%@", params];
 	}
 }
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (NSComparisonResult)versionStringCompare:(NSString *)other {
@@ -115,13 +107,11 @@
 	return [oneAlpha compare:twoAlpha];
 }
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (NSString*)md5Hash 
 {
 	return [NSString md5HexDigest:self];
 }
-
 
 - (CGSize)heightWithFont:(UIFont*)withFont 
                    width:(float)width 
@@ -130,11 +120,9 @@
 	
 	
 	CGSize suggestedSize = [self sizeWithFont:withFont constrainedToSize:CGSizeMake(width, FLT_MAX) lineBreakMode:lineBreakMode];
-
 	
 	return suggestedSize;
 }
-
 - (NSString *)replacedWhiteSpacsByString:(NSString *)replaceString{
     
     if (IsNilOrNull(self) || IsNilOrNull(replaceString) ) {
@@ -148,13 +136,11 @@
     return replace;
     
 }
-
 - (NSString *)trim
 {
     NSString *trimStr = [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     return trimStr;
 }
-
 - (NSString *)formatJSON
 {
     int indentLevel = 0;
@@ -240,12 +226,10 @@
     
     return [[NSString alloc] initWithData:buf encoding:NSUTF8StringEncoding];
 }
-
 - (BOOL)eq:(NSString *)str
 {
     return [self isEqualToString:str];
 }
-
 
 //单位转换
 + (NSString *)bytesToAvaiUnit:(long long int) bytes
@@ -267,7 +251,6 @@
 		return [NSString stringWithFormat:@"%.3fGB", (double)bytes / (1024 * 1024 * 1024)];
 	}
 }
-
 + (NSString *)getFormatTimeString{
     NSDate *timeNow = [NSDate date];
     NSDateFormatter *formmater = [[NSDateFormatter alloc]init];
@@ -276,7 +259,6 @@
     NSString *timeStr = [formmater stringFromDate:timeNow];
     return timeStr;
 }
-
 + (NSString *)getFormatDateString{
     NSDate *timeNow = [NSDate date];
     NSDateFormatter *formmater = [[NSDateFormatter alloc]init];
@@ -286,7 +268,6 @@
     return timeStr;
 }
 
-
 + (NSString *)getFormatTimeStampString{
     
     NSDate *timeNow = [NSDate date];
@@ -294,7 +275,6 @@
                         [timeNow timeIntervalSince1970]];
     return timeSp;
 }
-
 - (NSString *)URLEncoding
 {
 	NSString * result = (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes( kCFAllocatorDefault,
@@ -304,7 +284,6 @@
 																			kCFStringEncodingUTF8 );
 	return result ;
 }
-
 - (NSString *)URLDecoding
 {
 	NSMutableString * string = [NSMutableString stringWithString:self];
@@ -314,6 +293,5 @@
 								 range:NSMakeRange(0, [string length])];
     return [string stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
-
 
 @end

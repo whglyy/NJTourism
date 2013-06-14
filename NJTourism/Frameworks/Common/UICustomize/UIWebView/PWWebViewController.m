@@ -5,19 +5,13 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "PWWebViewController.h"
-
 @interface PWWebViewController (Private)
-
 // This is used internally to check if the forward/back buttons are enabled
 - (void)checkNavigationStatus;
-
 @end
 
-
 @implementation PWWebViewController
-
 - (id)initWithRequest:(NSURLRequest *)request
 {
     if (self = [super init]) {
@@ -29,7 +23,6 @@
     }
     return self;
 }
-
 
 - (id)initWithRequestUrl:(NSString *)url query:(NSDictionary*)query  {
 	
@@ -71,7 +64,6 @@
     return self;	
 }
 
-
 - (id)initWithRequestUrl:(NSString *)url
 {
     if (self = [super init]) {
@@ -94,7 +86,6 @@
     return self;	
 	
 }
-
 - (void)loadView
 {
 	// Loads correctly setup view. We setup the view in portrait mode and it get's transformed by the auto resizing.
@@ -158,41 +149,32 @@
 	// Assign buttons to toolbar
 	_toolbar.items = [NSArray arrayWithObjects:_actionButton, _flexibleSpace, _backButton, _flexibleSpace, _forwardButton, _flexibleSpace, _reloadButton, nil];
 }
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait ||
 			interfaceOrientation == UIInterfaceOrientationLandscapeLeft ||
 			interfaceOrientation == UIInterfaceOrientationLandscapeRight);
 }
-
 - (void)viewDidUnload
 {
 	// Save last request
-
 	_request = _webView.request;
 	
 	
 }
 
-
-
 #pragma mark -
 #pragma mark Accessors
-
 - (UIWebView *)webView
 {
 	return _webView;
 }
-
 - (UIToolbar *)toolbar
 {
 	return _toolbar;
 }
-
 #pragma mark -
 #pragma mark Button actions
-
 - (void)showAvailableActions
 {
 	// Create action sheet without any buttons
@@ -215,14 +197,11 @@
 	// Assign tag, show it from toolbar and release it
 	actionSheet.tag = kPWWebViewControllerActionSheetTag;
 	[actionSheet showFromToolbar:_toolbar];
-
 }
-
 - (void)reload
 {
 	[self.webView reload];
 }
-
 - (void)goBack
 {
 	if (self.webView.canGoBack == YES) {
@@ -233,7 +212,6 @@
 		[self checkNavigationStatus];
 	}
 }
-
 - (void)goForward
 {
 	if (self.webView.canGoForward == YES) {
@@ -244,15 +222,12 @@
 		[self checkNavigationStatus];
 	}
 }
-
 #pragma mark -
 #pragma mark UIWebViewDelegate
-
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
 	return YES;
 }
-
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
 	// Change toolbar items
@@ -261,7 +236,6 @@
 	// Set title
 	self.title = NSLocalizedString(@"loading...", nil);
 }
-
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
 	// Change toolbar items
@@ -274,7 +248,6 @@
 	// Check if forward/back buttons are available
 	[self checkNavigationStatus];
 }
-
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
 	// Change toolbar items
@@ -295,10 +268,8 @@
 //	[alertView show];
 //	[alertView release];
 }
-
 #pragma mark -
 #pragma mark UIActionSheetDelegate
-
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 	if (actionSheet.tag == kPWWebViewControllerActionSheetTag && buttonIndex != actionSheet.cancelButtonIndex) {
@@ -316,10 +287,8 @@
 		}
 	}
 }
-
 #pragma mark -
 #pragma mark MFMailComposeViewControllerDelegate
-
 - (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
 {
 	if (result == MFMailComposeResultFailed && error != nil) {
@@ -336,15 +305,12 @@
 	// Hide controller
 	[controller dismissModalViewControllerAnimated:YES];
 }
-
 #pragma mark -
 #pragma mark Private methods
-
 - (void)checkNavigationStatus
 {
 	// Check if we can go forward or back
 	_backButton.enabled = self.webView.canGoBack;
 	_forwardButton.enabled = self.webView.canGoForward;
 }
-
 @end

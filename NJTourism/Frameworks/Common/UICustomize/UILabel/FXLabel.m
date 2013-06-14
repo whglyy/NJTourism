@@ -5,20 +5,14 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "FXLabel.h"
 
-
 @interface FXLabel ()
-
 @property (nonatomic, assign) NSUInteger minSamples;
 @property (nonatomic, assign) NSUInteger maxSamples;
-
 @end
 
-
 @implementation FXLabel
-
 @synthesize shadowBlur;
 @synthesize innerShadowOffset;
 @synthesize innerShadowColor;
@@ -29,7 +23,6 @@
 @synthesize minSamples;
 @synthesize maxSamples;
 @synthesize textInsets;
-
 - (void)setDefaults
 {
     gradientStartPoint = CGPointMake(0.5f, 0.0f);
@@ -42,7 +35,6 @@
     }
     oversampling = minSamples;
 }
-
 - (id)initWithFrame:(CGRect)frame
 {
     if ((self = [super initWithFrame:frame]))
@@ -52,7 +44,6 @@
     }
     return self;
 }
-
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if ((self = [super initWithCoder:aDecoder]))
@@ -61,7 +52,6 @@
     }
     return self;
 }
-
 - (void)setInnerShadowOffset:(CGSize)offset
 {
     if (!CGSizeEqualToSize(innerShadowOffset, offset))
@@ -70,7 +60,6 @@
         [self setNeedsDisplay];
     }
 }
-
 - (void)setInnerShadowColor:(UIColor *)color
 {
     if (innerShadowColor != color)
@@ -80,12 +69,10 @@
         [self setNeedsDisplay];
     }
 }
-
 - (UIColor *)gradientStartColor
 {
     return [gradientColors count]? [gradientColors objectAtIndex:0]: nil;
 }
-
 - (void)setGradientStartColor:(UIColor *)color
 {
     if (color == nil)
@@ -104,12 +91,10 @@
         AH_RELEASE(colors);
     }
 }
-
 - (UIColor *)gradientEndColor
 {
     return [gradientColors lastObject];
 }
-
 - (void)setGradientEndColor:(UIColor *)color
 {
     if (color == nil)
@@ -128,7 +113,6 @@
         AH_RELEASE(colors);
     }
 }
-
 - (void)setGradientColors:(NSArray *)colors
 {
     if (gradientColors != colors)
@@ -138,7 +122,6 @@
         [self setNeedsDisplay];
     }
 }
-
 - (void)setOversampling:(NSUInteger)samples
 {
     samples = MIN(maxSamples, MAX(minSamples, samples));
@@ -148,7 +131,6 @@
         [self setNeedsDisplay];
     }
 }
-
 - (void)setTextInsets:(UIEdgeInsets)insets
 {
     if (!UIEdgeInsetsEqualToEdgeInsets(textInsets, insets))
@@ -157,7 +139,6 @@
         [self setNeedsDisplay];
     }
 }
-
 - (void)getComponents:(CGFloat *)rgba forColor:(CGColorRef)color
 {
     CGColorSpaceModel model = CGColorSpaceGetModel(CGColorGetColorSpace(color));
@@ -191,7 +172,6 @@
         }
     }
 }
-
 - (UIColor *)color:(CGColorRef)a blendedWithColor:(CGColorRef)b
 {
     CGFloat aRGBA[4];
@@ -205,7 +185,6 @@
                             blue:source * aRGBA[2] + dest * bRGBA[2]
                            alpha:bRGBA[3] + (1.0f - bRGBA[3]) * aRGBA[3]];
 }
-
 - (void)drawRect:(CGRect)rect
 {
     //get drawing context
@@ -403,12 +382,10 @@
         [image drawInRect:rect];
     }
 }
-
 - (void)dealloc
 {
     AH_RELEASE(innerShadowColor);
     AH_RELEASE(gradientColors);
     AH_SUPER_DEALLOC;
 }
-
 @end

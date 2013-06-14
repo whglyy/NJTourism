@@ -5,13 +5,10 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "EGOImageLoader.h"
 #import "EGOImageLoadConnection.h"
 #import "EGOCache.h"
-
 static EGOImageLoader* __imageLoader;
-
 inline static NSString* keyForURL(NSURL* url, NSString* style) {
 	if(style) {
 		return [NSString stringWithFormat:@"EGOImageLoader-%u-%u", [[url description] hash], [style hash]];
@@ -19,7 +16,6 @@ inline static NSString* keyForURL(NSURL* url, NSString* style) {
 		return [NSString stringWithFormat:@"EGOImageLoader-%u", [[url description] hash]];
 	}
 }
-
 #if __EGOIL_USE_BLOCKS
 	#define kNoStyle @"EGOImageLoader-nostyle"
 	#define kCompletionsKey @"completions"
@@ -27,21 +23,17 @@ inline static NSString* keyForURL(NSURL* url, NSString* style) {
 	#define kStylerQueue _operationQueue
 	#define kCompletionsQueue dispatch_get_main_queue()
 #endif
-
 #if __EGOIL_USE_NOTIF
 	#define kImageNotificationLoaded(s) [@"kEGOImageLoaderNotificationLoaded-" stringByAppendingString:keyForURL(s, nil)]
 	#define kImageNotificationLoadFailed(s) [@"kEGOImageLoaderNotificationLoadFailed-" stringByAppendingString:keyForURL(s, nil)]
 #endif
-
 @interface EGOImageLoader ()
 #if __EGOIL_USE_BLOCKS
 - (void)handleCompletionsForConnection:(EGOImageLoadConnection*)connection image:(UIImage*)image error:(NSError*)error;
 #endif
 @end
-
 @implementation EGOImageLoader
 @synthesize currentConnections=_currentConnections;
-
 + (EGOImageLoader*)sharedImageLoader {
 	@synchronized(self) {
 		if(!__imageLoader) {
@@ -51,7 +43,6 @@ inline static NSString* keyForURL(NSURL* url, NSString* style) {
 	
 	return __imageLoader;
 }
-
 - (id)init {
 	if((self = [super init])) {
 		connectionsLock = [[NSLock alloc] init];
@@ -66,13 +57,11 @@ inline static NSString* keyForURL(NSURL* url, NSString* style) {
 	
 	return self;
 }
-
 - (EGOImageLoadConnection*)loadingConnectionForURL:(NSURL*)aURL {
 	EGOImageLoadConnection* connection = [[self.currentConnections objectForKey:aURL] retain];
 	if(!connection) return nil;
 	else return [connection autorelease];
 }
-
 - (void)cleanUpConnection:(EGOImageLoadConnection*)connection {
 	if(!connection.imageURL) return;
 	
@@ -83,26 +72,21 @@ inline static NSString* keyForURL(NSURL* url, NSString* style) {
 	self.currentConnections = [[currentConnections copy] autorelease];
 	[connectionsLock unlock];	
 }
-
 - (void)clearCacheForURL:(NSURL*)aURL {
 	[self clearCacheForURL:aURL style:nil];
 }
-
 - (void)clearCacheForURL:(NSURL*)aURL style:(NSString*)style {
 	[[EGOCache currentCache] removeCacheForKey:keyForURL(aURL, style)];
 }
-
 - (BOOL)isLoadingImageURL:(NSURL*)aURL {
 	return [self loadingConnectionForURL:aURL] ? YES : NO;
 }
-
 - (void)cancelLoadForURL:(NSURL*)aURL {
 	EGOImageLoadConnection* connection = [self loadingConnectionForURL:aURL];
 	[NSObject cancelPreviousPerformRequestsWithTarget:connection selector:@selector(start) object:nil];
 	[connection cancel];
 	[self cleanUpConnection:connection];
 }
-
 - (EGOImageLoadConnection*)loadImageForURL:(NSURL*)aURL {
 	EGOImageLoadConnection* connection;
 	
@@ -121,7 +105,6 @@ inline static NSString* keyForURL(NSURL* url, NSString* style) {
 		return connection;
 	}
 }
-
 #if __EGOIL_USE_NOTIF
 - (void)loadImageForURL:(NSURL*)aURL observer:(id<EGOImageLoaderObserver>)observer {
 	if(!aURL) return;
@@ -133,10 +116,8 @@ inline static NSString* keyForURL(NSURL* url, NSString* style) {
 	if([observer respondsToSelector:@selector(imageLoaderDidFailToLoad:)]) {
 		[[NSNotificationCenter defaultCenter] addObserver:observer selector:@selector(imageLoaderDidFailToLoad:) name:kImageNotificationLoadFailed(aURL) object:self];
 	}
-
 	[self loadImageForURL:aURL];
 }
-
 - (NSData*)dataForURL:(NSURL*)aURL shouldLoadWithObserver:(id<EGOImageLoaderObserver>)observer
 {
 	if(!aURL) return nil;
@@ -150,26 +131,20 @@ inline static NSString* keyForURL(NSURL* url, NSString* style) {
 		return nil;
 	}
 }
-
 - (void)removeObserver:(id<EGOImageLoaderObserver>)observer {
 	[[NSNotificationCenter defaultCenter] removeObserver:observer name:nil object:self];
 }
-
 - (void)removeObserver:(id<EGOImageLoaderObserver>)observer forURL:(NSURL*)aURL {
 	[[NSNotificationCenter defaultCenter] removeObserver:observer name:kImageNotificationLoaded(aURL) object:self];
 	[[NSNotificationCenter defaultCenter] removeObserver:observer name:kImageNotificationLoadFailed(aURL) object:self];
 }
-
 #endif
-
 #if __EGOIL_USE_BLOCKS
 - (void)loadImageForURL:(NSURL*)aURL completion:(void (^)(UIImage* image, NSURL* imageURL, NSError* error))completion {
 	[self loadImageForURL:aURL style:nil styler:nil completion:completion];
 }
-
 - (void)loadImageForURL:(NSURL*)aURL style:(NSString*)style styler:(UIImage* (^)(UIImage* image))styler completion:(void (^)(UIImage* image, NSURL* imageURL, NSError* error))completion {
 	UIImage* anImage = [[EGOCache currentCache] imageForKey:keyForURL(aURL,style)];
-
 	if(anImage) {
 		completion(anImage, aURL, nil);
 	} else if(!anImage && styler && style && (anImage = [[EGOCache currentCache] imageForKey:keyForURL(aURL,nil)])) {
@@ -190,7 +165,6 @@ inline static NSString* keyForURL(NSURL* url, NSString* style) {
 		if(!handler) {
 			handler = [[NSMutableDictionary alloc] initWithCapacity:2];
 			[connection.handlers setObject:handler forKey:handlerKey];
-
 			[handler setObject:[NSMutableArray arrayWithCapacity:1] forKey:kCompletionsKey];
 			if(styler) {
 				UIImage* (^stylerCopy)(UIImage* image) = [styler copy];
@@ -206,14 +180,11 @@ inline static NSString* keyForURL(NSURL* url, NSString* style) {
 	}
 }
 #endif
-
 - (BOOL)hasLoadedImageURL:(NSURL*)aURL {
 	return [[EGOCache currentCache] hasCacheForKey:keyForURL(aURL,nil)];
 }
-
 #pragma mark -
 #pragma mark URL Connection delegate methods
-
 - (void)imageLoadConnectionDidFinishLoading:(EGOImageLoadConnection *)connection 
 {
     
@@ -248,7 +219,6 @@ inline static NSString* keyForURL(NSURL* url, NSString* style) {
         NSInteger realDataLength = [responseData length];
         
         NSInteger contentLength = 0;
-
         if ([httpResponse respondsToSelector:@selector(allHeaderFields)]) 
         {
             NSDictionary *httpHeader = [httpResponse allHeaderFields];
@@ -288,10 +258,8 @@ inline static NSString* keyForURL(NSURL* url, NSString* style) {
 	}
 	
 	
-
 	[self cleanUpConnection:connection];
 }
-
 - (void)imageLoadConnection:(EGOImageLoadConnection *)connection didFailWithError:(NSError *)error {
 	[currentConnections removeObjectForKey:connection.imageURL];
 	self.currentConnections = [[currentConnections copy] autorelease];
@@ -307,14 +275,11 @@ inline static NSString* keyForURL(NSURL* url, NSString* style) {
 	#if __EGOIL_USE_BLOCKS
 	[self handleCompletionsForConnection:connection image:nil error:error];
 	#endif
-
 	[self cleanUpConnection:connection];
 }
-
 #if __EGOIL_USE_BLOCKS
 - (void)handleCompletionsForConnection:(EGOImageLoadConnection*)connection image:(UIImage*)image error:(NSError*)error {
 	if([connection.handlers count] == 0) return;
-
 	NSURL* imageURL = connection.imageURL;
 	
 	void (^callCompletions)(UIImage* anImage, NSArray* completions) = ^(UIImage* anImage, NSArray* completions) {
@@ -340,9 +305,7 @@ inline static NSString* keyForURL(NSURL* url, NSString* style) {
 	}
 }
 #endif
-
 #pragma mark -
-
 - (void)dealloc {
 	#if __EGOIL_USE_BLOCKS
 		dispatch_release(_operationQueue), _operationQueue = nil;
@@ -353,5 +316,4 @@ inline static NSString* keyForURL(NSURL* url, NSString* style) {
 	[connectionsLock release], connectionsLock = nil;
 	[super dealloc];
 }
-
 @end

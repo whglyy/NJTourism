@@ -5,14 +5,10 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "EGOPhotoImageView.h"
-
 #define ZOOM_VIEW_TAG 0x101
-
 @interface RotateGesture : UIRotationGestureRecognizer {}
 @end
-
 @implementation RotateGesture
 - (BOOL)canBePreventedByGestureRecognizer:(UIGestureRecognizer*)gesture{
 	return NO;
@@ -22,7 +18,6 @@
 }
 @end
 
-
 @interface EGOPhotoImageView (Private)
 - (void)layoutScrollViewAnimated:(BOOL)animated;
 - (void)handleFailedImage;
@@ -30,14 +25,11 @@
 - (CABasicAnimation*)fadeAnimation;
 @end
 
-
 @implementation EGOPhotoImageView 
-
 @synthesize photo=_photo;
 @synthesize imageView=_imageView;
 @synthesize scrollView=_scrollView;
 @synthesize loading=_loading;
-
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
 		
@@ -54,7 +46,6 @@
 		_scrollView = [scrollView retain];
         _scrollView.canZoom = NO;
 		[scrollView release];
-
 		UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.bounds];
 		imageView.opaque = YES;
 		imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -77,7 +68,6 @@
 	}
     return self;
 }
-
 - (void)layoutSubviews{
 	[super layoutSubviews];
 		
@@ -86,7 +76,6 @@
 	}
 	
 }
-
 - (void)setPhoto:(id <EGOPhoto>)aPhoto{
 	
 	if (!aPhoto) return; 
@@ -112,7 +101,6 @@
 			NSError *error = nil;
 			NSDictionary *attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:[self.photo.URL path] error:&error];
 			NSInteger fileSize = [[attributes objectForKey:NSFileSize] integerValue];
-
 			if (fileSize >= 1048576 && [[[UIDevice currentDevice] systemVersion] floatValue] >= 4.0) {
 								
 				dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
@@ -141,7 +129,6 @@
 				self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:self.photo.URL]];
 				
 			}
-
 #else
 			self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:self.photo.URL]];
 #endif
@@ -183,10 +170,8 @@
 	
 	[self layoutScrollViewAnimated:NO];
 }
-
 - (void)setupImageViewWithImage:(UIImage*)aImage {	
 	if (!aImage) return; 
-
 	_loading = NO;
 	[_activityView stopAnimating];
 	self.imageView.image = aImage; 
@@ -198,14 +183,12 @@
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"EGOPhotoDidFinishLoading" object:[NSDictionary dictionaryWithObjectsAndKeys:self.photo, @"photo", [NSNumber numberWithBool:NO], @"failed", nil]];
 	
 }
-
 - (void)prepareForReusue{
 	
 	//  reset view
 	self.tag = -1;
 	
 }
-
 - (void)handleFailedImage{
 	
 	self.imageView.image = kEGOPhotoErrorPlaceholder;
@@ -218,10 +201,8 @@
 	
 }
 
-
 #pragma mark -
 #pragma mark Parent Controller Fading
-
 - (void)fadeView{
 	
 	self.backgroundColor = [UIColor clearColor];
@@ -238,21 +219,16 @@
 	
 	
 }
-
 - (void)resetBackgroundColors{
 	
 	self.backgroundColor = [UIColor blackColor];
 	self.superview.backgroundColor = self.backgroundColor;
 	self.superview.superview.backgroundColor = self.backgroundColor;
-
 }
-
 
 #pragma mark -
 #pragma mark Layout
-
 - (void)rotateToOrientation:(UIInterfaceOrientation)orientation{
-
 	if (self.scrollView.zoomScale > 1.0f) {
 		
 		CGFloat height, width;
@@ -266,9 +242,7 @@
 		
 	}
 }
-
 - (void)layoutScrollViewAnimated:(BOOL)animated{
-
 	if (animated) {
 		[UIView beginAnimations:nil context:NULL];
 		[UIView setAnimationDuration:0.0001];
@@ -292,12 +266,10 @@
 	self.scrollView.contentOffset = CGPointMake(0.0f, 0.0f);
 	self.imageView.frame = self.scrollView.bounds;
 
-
 	if (animated) {
 		[UIView commitAnimations];
 	}
 }
-
 - (CGSize)sizeForPopover{
 	
 	CGSize popoverSize = EGOPV_MAX_POPOVER_SIZE;
@@ -342,10 +314,8 @@
 	
 }
 
-
 #pragma mark -
 #pragma mark Animation
-
 - (CABasicAnimation*)fadeAnimation{
 	
 	CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
@@ -357,10 +327,8 @@
 	return animation;
 }
 
-
 #pragma mark -
 #pragma mark EGOImageLoader Callbacks
-
 - (void)imageLoaderDidLoad:(NSNotification*)notification {	
 	
 	if ([notification userInfo] == nil) return;
@@ -370,7 +338,6 @@
 	[self setupImageViewWithImage:[UIImage imageWithData:imageData]];
 	
 }
-
 - (void)imageLoaderDidFailToLoad:(NSNotification*)notification {
 	
 	if ([notification userInfo] == nil) return;
@@ -380,10 +347,8 @@
 	
 }
 
-
 #pragma mark -
 #pragma mark UIScrollView Delegate Methods
-
 - (void)killZoomAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context{
 	
 	if([finished boolValue]){
@@ -395,16 +360,13 @@
 	}
 	
 }
-
 - (void)killScrollViewZoom{
 	
 	if (!self.scrollView.zoomScale > 1.0f) return;
-
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.3];
 	[UIView setAnimationDidStopSelector:@selector(killZoomAnimationDidStop:finished:context:)];
 	[UIView setAnimationDelegate:self];
-
 	CGFloat hfactor = self.imageView.image.size.width / self.frame.size.width;
 	CGFloat vfactor = self.imageView.image.size.height / self.frame.size.height;
 	
@@ -415,17 +377,13 @@
 		
 	CGFloat leftOffset = (self.frame.size.width - newWidth) / 2;
 	CGFloat topOffset = (self.frame.size.height - newHeight) / 2;
-
 	self.scrollView.frame = CGRectMake(leftOffset, topOffset, newWidth, newHeight);
 	self.imageView.frame = self.scrollView.bounds;
 	[UIView commitAnimations];
-
 }
-
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{
 	return [self.scrollView viewWithTag:ZOOM_VIEW_TAG];
 }
-
 - (CGRect)frameToFitCurrentView{
 	
 	CGFloat heightFactor = self.imageView.image.size.height / self.frame.size.height;
@@ -442,7 +400,6 @@
 	return rect;
 	
 }
-
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale{
 			
 	if (scrollView.zoomScale > 1.0f) {		
@@ -468,7 +425,6 @@
 		if (!CGRectEqualToRect(frame, self.scrollView.frame)) {		
 			
 			CGFloat offsetY, offsetX;
-
 			if (frame.origin.y < self.scrollView.frame.origin.y) {
 				offsetY = self.scrollView.contentOffset.y - (self.scrollView.frame.origin.y - frame.origin.y);
 			} else {				
@@ -480,24 +436,19 @@
 			} else {				
 				offsetX = self.scrollView.contentOffset.x - (frame.origin.x - self.scrollView.frame.origin.x);
 			}
-
 			if (offsetY < 0) offsetY = 0;
 			if (offsetX < 0) offsetX = 0;
 			
 			self.scrollView.contentOffset = CGPointMake(offsetX, offsetY);
 		}
-
 	} else {
 		[self layoutScrollViewAnimated:YES];
 	}
 }	
 
-
 #pragma mark -
 #pragma mark RotateGesture
-
 - (void)rotate:(UIRotationGestureRecognizer*)gesture{
-
 	if (gesture.state == UIGestureRecognizerStateBegan) {
 		
 		[self.layer removeAllAnimations];
@@ -507,7 +458,6 @@
 	} else if (gesture.state == UIGestureRecognizerStateChanged) {
 		
 		self.layer.transform = CATransform3DMakeRotation((_beginRadians + gesture.rotation), 0.0f, 0.0f, 1.0f);
-
 	} else {
 		
 		CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform"];
@@ -520,10 +470,8 @@
 		[self.layer addAnimation:animation forKey:@"RotateAnimation"];
 		
 	} 
-
 	
 }
-
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
 	
 	if (flag) {
@@ -541,10 +489,8 @@
 	
 }
 
-
 #pragma mark -
 #pragma mark Dealloc
-
 - (void)dealloc {
 	
 	if (_photo) {
@@ -560,6 +506,5 @@
     [super dealloc];
 	
 }
-
 
 @end

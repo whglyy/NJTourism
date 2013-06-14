@@ -5,42 +5,29 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "BBScrollViewController.h"
 #import "objc/runtime.h"
-
 @interface BBScrollViewController()
-
 @property (nonatomic, retain) UIPageControl *pageControl;
 @property (nonatomic, retain) UIView *pageControlBG;
-
 - (void)registKVO;
 - (void)unRegistKVO;
-
 - (void)didScrollFromPage:(NSInteger)oldPage toPage:(NSInteger)page;
-
 @end
-
 /*********************************************************************/
-
 @implementation BBScrollViewController
-
 @synthesize pageControl = _pageControl;
 @synthesize pageControlBG = _pageControlBG;
-
 @synthesize currentPage = _currentPage;
 @synthesize viewControllers = _viewControllers;
-
 - (void)dealloc
 {
-
     
     self.viewControllers = nil;
     
     [self unRegistKVO];
   
 }
-
 - (id)init
 {
     self = [super init];
@@ -49,7 +36,6 @@
     }
     return self;
 }
-
 - (void)loadView
 {
     [super loadView];
@@ -67,7 +53,6 @@
 	}
     [self.view addSubview:_scrollView];
 }
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -77,7 +62,6 @@
     [self.view insertSubview:self.pageControlBG belowSubview:self.pageControl];
     
 }
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -88,7 +72,6 @@
         [controller viewAppear];
     }
 }
-
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -99,16 +82,13 @@
         [controller viewDisappear];
     }
 }
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 #pragma mark -
 #pragma mark views
-
 - (CGRect)pageControlFrame
 {
     CGSize size = [self.pageControl sizeForNumberOfPages:[self.viewControllers count]];
@@ -117,7 +97,6 @@
     CGFloat y = appFrame.size.height - STATUSBAR_HEIGHT - UITABBAR_HEIGHT - 12;
     return CGRectMake(x, y, size.width, 10);
 }
-
 - (UIPageControl *)pageControl
 {
     if (!_pageControl) {
@@ -129,7 +108,6 @@
     return _pageControl;
     
 }
-
 - (UIView *)pageControlBG
 {
     if (!_pageControlBG) {
@@ -144,16 +122,13 @@
     }
     return _pageControlBG;
 }
-
 #pragma mark -
 #pragma mark KVO
-
 
 - (NSArray *)observeKeyPathList
 {
     return [NSArray arrayWithObjects:@"currentPage", @"viewControllers", nil];
 }
-
 - (void)registKVO
 {
     
@@ -167,7 +142,6 @@
               options:NSKeyValueObservingOptionNew
               context:NULL];
 }
-
 - (void)unRegistKVO
 {
     for (NSString *keyPath in [self observeKeyPathList])
@@ -176,7 +150,6 @@
                   forKeyPath:keyPath];
     }
 }
-
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
@@ -186,7 +159,6 @@
     {
         NSInteger oldPage = [[change objectForKey:NSKeyValueChangeOldKey] integerValue];
         [self didScrollFromPage:oldPage toPage:_currentPage];
-
         self.pageControl.currentPage = self.currentPage;
         
         CGFloat pageWidth = [[UIScreen mainScreen] bounds].size.width;
@@ -197,10 +169,8 @@
         [self reloadViewControllers];
     }
 }
-
 #pragma mark -
 #pragma mark reload view Controllers
-
 - (void)reloadViewControllers
 {
     NSInteger pageCount = [self.viewControllers count];
@@ -210,15 +180,12 @@
     self.pageControlBG.frame = CGRectMake(_pageControl.left -10, _pageControl.top, _pageControl.width+20, _pageControl.height);
     [_scrollView reloadData];
 }
-
 #pragma mark -
 #pragma mark NJPageScrollView Delegate And Datasource
-
 - (id)findControllerOfView:(UIView *)view {
     // convenience function for casting and to "mask" the recursive function
     return [self traverseResponderChainForUIViewController:view];
 }
-
 - (id)traverseResponderChainForUIViewController:(id)view
 {
     id nextResponder = [view nextResponder];
@@ -230,12 +197,10 @@
         return nil;
     }
 }
-
 - (NSInteger)numberOfPagesInPageScrollView:(NJPageScrollView *)pageScrollView
 {
     return [self.viewControllers count];
 }
-
 - (NJPageScrollViewCell *)pageScrollView:(NJPageScrollView *)pageScrollView
                              cellForPage:(NSInteger)page
 {
@@ -280,7 +245,6 @@
     
     return cell;
 }
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat pageWidth = [[UIScreen mainScreen] bounds].size.width;
@@ -301,10 +265,8 @@
     }
     
 }
-
 #pragma mark -
 #pragma mark BBScrollPage
-
 - (void)didScrollFromPage:(NSInteger)oldPage toPage:(NSInteger)page
 {
     
@@ -321,26 +283,18 @@
     }
     
 }
-
 @end
-
-
 
 /*********************************************************************/
 
-
 @implementation UIViewController(BBScroll)
-
 @dynamic bbScrollController;
-
 - (void)setBbScrollController:(BBScrollViewController *)bbScrollController
 {
     objc_setAssociatedObject(self, "BBScroll", bbScrollController, OBJC_ASSOCIATION_ASSIGN);
 }
-
 - (BBScrollViewController *)bbScrollController
 {
     return objc_getAssociatedObject(self, "BBScroll");
 }
-
 @end

@@ -5,15 +5,12 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "NSAttributedString+Attributes.h"
-
 
 /////////////////////////////////////////////////////////////////////////////
 // MARK: -
 // MARK: NS(Mutable)AttributedString Additions
 /////////////////////////////////////////////////////////////////////////////
-
 @implementation NSAttributedString (OHCommodityConstructors)
 +(id)attributedStringWithString:(NSString*)string {
 	return string ? [[self alloc] initWithString:string] : nil;
@@ -21,7 +18,6 @@
 +(id)attributedStringWithAttributedString:(NSAttributedString*)attrStr {
 	return attrStr ? [[self alloc] initWithAttributedString:attrStr] : nil;
 }
-
 -(CGSize)sizeConstrainedToSize:(CGSize)maxSize {
 	return [self sizeConstrainedToSize:maxSize fitRange:NULL];
 }
@@ -36,10 +32,7 @@
 @end
 
 
-
-
 @implementation NSMutableAttributedString (OHCommodityStyleModifiers)
-
 -(void)setFont:(UIFont*)font {
 	[self setFontName:font.fontName size:font.pointSize];
 }
@@ -70,12 +63,10 @@
 	CTFontRef aFont = CTFontCreateWithFontDescriptor(desc, size, NULL);
 	CFRelease(desc);
 	if (!aFont) return;
-
 	[self removeAttribute:(NSString*)kCTFontAttributeName range:range]; // Work around for Apple leak
 	[self addAttribute:(NSString*)kCTFontAttributeName value:(__bridge id)aFont range:range];
 	CFRelease(aFont);
 }
-
 -(void)setTextColor:(UIColor*)color {
 	[self setTextColor:color range:NSMakeRange(0,[self length])];
 }
@@ -84,7 +75,6 @@
 	[self removeAttribute:(NSString*)kCTForegroundColorAttributeName range:range]; // Work around for Apple leak
 	[self addAttribute:(NSString*)kCTForegroundColorAttributeName value:(id)color.CGColor range:range];
 }
-
 -(void)setTextIsUnderlined:(BOOL)underlined {
 	[self setTextIsUnderlined:underlined range:NSMakeRange(0,[self length])];
 }
@@ -96,7 +86,6 @@
 	[self removeAttribute:(NSString*)kCTUnderlineStyleAttributeName range:range]; // Work around for Apple leak
 	[self addAttribute:(NSString*)kCTUnderlineStyleAttributeName value:[NSNumber numberWithInt:style] range:range];
 }
-
 -(void)setTextBold:(BOOL)isBold range:(NSRange)range {
 	NSUInteger startPoint = range.location;
 	NSRange effectiveRange;
@@ -122,7 +111,6 @@
 		startPoint = NSMaxRange(effectiveRange);
 	} while(startPoint<NSMaxRange(range));
 }
-
 -(void)setTextAlignment:(CTTextAlignment)alignment lineBreakMode:(CTLineBreakMode)lineBreakMode {
 	[self setTextAlignment:alignment lineBreakMode:lineBreakMode range:NSMakeRange(0,[self length])];
 }
@@ -137,7 +125,5 @@
 	[self addAttribute:(NSString*)kCTParagraphStyleAttributeName value:(__bridge id)aStyle range:range];
 	CFRelease(aStyle);
 }
-
 @end
-
 

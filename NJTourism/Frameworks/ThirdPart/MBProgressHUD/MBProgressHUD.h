@@ -5,13 +5,10 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <CoreGraphics/CoreGraphics.h>
-
 @protocol MBProgressHUDDelegate;
-
 
 typedef enum {
 	/** Progress is shown using an UIActivityIndicatorView. This is the default. */
@@ -25,14 +22,12 @@ typedef enum {
 	/** Shows only labels */
 	MBProgressHUDModeText
 } MBProgressHUDMode;
-
 typedef enum {
 	/** Opacity animation */
 	MBProgressHUDAnimationFade,
 	/** Opacity + scale animation */
 	MBProgressHUDAnimationZoom
 } MBProgressHUDAnimation;
-
 
 #ifndef MB_STRONG
 #if __has_feature(objc_arc)
@@ -41,7 +36,6 @@ typedef enum {
 	#define MB_STRONG retain
 #endif
 #endif
-
 #ifndef MB_WEAK
 #if __has_feature(objc_arc_weak)
 	#define MB_WEAK weak
@@ -51,7 +45,6 @@ typedef enum {
 	#define MB_WEAK assign
 #endif
 #endif
-
 
 /** 
  * Displays a simple HUD window containing a progress indicator and two optional labels for short messages.
@@ -73,7 +66,6 @@ typedef enum {
  * - If also the detailsLabelText property is set then another label is placed below the first label.
  */
 @interface MBProgressHUD : UIView
-
 /**
  * Creates a new HUD, adds it to provided view and shows it. The counterpart to this method is hideHUDForView:animated:.
  * 
@@ -86,7 +78,6 @@ typedef enum {
  * @see animationType
  */
 + (MBProgressHUD *)showHUDAddedTo:(UIView *)view animated:(BOOL)animated;
-
 /**
  * Finds the tompost HUD subview and hides it. The counterpart to this method is showHUDAddedTo:animated:.
  *
@@ -99,7 +90,6 @@ typedef enum {
  * @see animationType
  */
 + (BOOL)hideHUDForView:(UIView *)view animated:(BOOL)animated;
-
 /**
  * Finds all the HUD subviews and hides them. 
  *
@@ -112,7 +102,6 @@ typedef enum {
  * @see animationType
  */
 + (NSUInteger)hideAllHUDsForView:(UIView *)view animated:(BOOL)animated;
-
 /**
  * Finds the topomost HUD subview and returns it. 
  *
@@ -120,7 +109,6 @@ typedef enum {
  * @return A reference to the last HUD subview discovered.
  */
 + (MBProgressHUD *)HUDForView:(UIView *)view;
-
 /**
  * Finds all HUD subviews and returns them.
  *
@@ -128,7 +116,6 @@ typedef enum {
  * @return All found HUD views (array of MBProgressHUD objects).
  */
 + (NSArray *)allHUDsForView:(UIView *)view;
-
 /** 
  * Display the HUD. You need to make sure that the main thread completes its run loop soon after this method call so
  * the user interface can be updated. Call this method when your task is already set-up to be executed in a new thread
@@ -140,7 +127,6 @@ typedef enum {
  * @see animationType
  */
 - (void)show:(BOOL)animated;
-
 /** 
  * Hide the HUD. This still calls the hudWasHidden: delegate. This is the counterpart of the hide: method. Use it to
  * hide the HUD when your task completes.
@@ -151,7 +137,6 @@ typedef enum {
  * @see animationType
  */
 - (void)hide:(BOOL)animated;
-
 /** 
  * Hide the HUD after a delay. This still calls the hudWasHidden: delegate. This is the counterpart of the hide: method. Use it to
  * hide the HUD when your task completes.
@@ -163,7 +148,6 @@ typedef enum {
  * @see animationType
  */
 - (void)hide:(BOOL)animated afterDelay:(NSTimeInterval)delay;
-
 /** 
  * Shows the HUD while a background task is executing in a new thread, then hides the HUD.
  *
@@ -177,7 +161,6 @@ typedef enum {
  * animations while disappearing.
  */
 - (void)showWhileExecuting:(SEL)method onTarget:(id)target withObject:(id)object animated:(BOOL)animated;
-
 /** 
  * A convenience constructor that initializes the HUD with the window's bounds. Calls the designated constructor with
  * window.bounds as the parameter.
@@ -186,7 +169,6 @@ typedef enum {
  * the HUD's superview (i.e., the window that the HUD will be added to).
  */
 - (id)initWithWindow:(UIWindow *)window;
-
 /**
  * A convenience constructor that initializes the HUD with the view's bounds. Calls the designated constructor with
  * view.bounds as the parameter
@@ -195,73 +177,61 @@ typedef enum {
  * the HUD's superview (i.e., the view that the HUD will be added to).
  */
 - (id)initWithView:(UIView *)view;
-
 /** 
  * MBProgressHUD operation mode. The default is MBProgressHUDModeIndeterminate.
  *
  * @see MBProgressHUDMode
  */
 @property (assign) MBProgressHUDMode mode;
-
 /**
  * The animation type that should be used when the HUD is shown and hidden. 
  *
  * @see MBProgressHUDAnimation
  */
 @property (assign) MBProgressHUDAnimation animationType;
-
 /**
  * The UIView (e.g., a UIIMageView) to be shown when the HUD is in MBProgressHUDModeCustomView.
  * For best results use a 37 by 37 pixel view (so the bounds match the build in indicator bounds). 
  */
 @property (MB_STRONG) UIView *customView;
-
 /** 
  * The HUD delegate object. 
  *
  * @see MBProgressHUDDelegate
  */
 @property (MB_WEAK) id<MBProgressHUDDelegate> delegate;
-
 /** 
  * An optional short message to be displayed below the activity indicator. The HUD is automatically resized to fit
  * the entire text. If the text is too long it will get clipped by displaying "..." at the end. If left unchanged or
  * set to @"", then no message is displayed.
  */
 @property (copy) NSString *labelText;
-
 /** 
  * An optional details message displayed below the labelText message. This message is displayed only if the labelText
  * property is also set and is different from an empty string (@""). The details text can span multiple lines. 
  */
 @property (copy) NSString *detailsLabelText;
-
 /** 
  * The opacity of the HUD window. Defaults to 0.9 (90% opacity). 
  */
 @property (assign) float opacity;
-
 /** 
  * The x-axis offset of the HUD relative to the centre of the superview. 
  */
 @property (assign) float xOffset;
-
 /** 
  * The y-ayis offset of the HUD relative to the centre of the superview. 
  */
 @property (assign) float yOffset;
-
 /**
  * The amounth of space between the HUD edge and the HUD elements (labels, indicators or custom views). 
  * Defaults to 20.0
  */
 @property (assign) float margin;
-
 /** 
  * Cover the HUD background view with a radial gradient. 
  */
 @property (assign) BOOL dimBackground;
-
 /*
  * Grace period is the time (in seconds) that the invoked method may be run without 
  * showing the HUD. If the task finishes befor the grace time runs out, the HUD will
@@ -272,14 +242,12 @@ typedef enum {
  * @see taskInProgress
  */
 @property (assign) float graceTime;
-
 /**
  * The minimum time (in seconds) that the HUD is shown. 
  * This avoids the problem of the HUD being shown and than instantly hidden.
  * Defaults to 0 (no minimum show time).
  */
 @property (assign) float minShowTime;
-
 /**
  * Indicates that the executed operation is in progress. Needed for correct graceTime operation.
  * If you don't set a graceTime (different than 0.0) this does nothing.
@@ -289,66 +257,51 @@ typedef enum {
  * functunality.
  */
 @property (assign) BOOL taskInProgress;
-
 /**
  * Removes the HUD from it's parent view when hidden. 
  * Defaults to NO. 
  */
 @property (assign) BOOL removeFromSuperViewOnHide;
-
 /** 
  * Font to be used for the main label. Set this property if the default is not adequate. 
  */
 @property (MB_STRONG) UIFont* labelFont;
-
 /** 
  * Font to be used for the details label. Set this property if the default is not adequate. 
  */
 @property (MB_STRONG) UIFont* detailsLabelFont;
-
 /** 
  * The progress of the progress indicator, from 0.0 to 1.0. Defaults to 0.0. 
  */
 @property (assign) float progress;
-
 /**
  * The minimum size of the HUD bezel. Defaults to CGSizeZero (no minimum size).
  */
 @property (assign) CGSize minSize;
-
 /**
  * Force the HUD dimensions to be equal if possible. 
  */
 @property (assign, getter = isSquare) BOOL square;
-
 @end
 
-
 @protocol MBProgressHUDDelegate <NSObject>
-
 @optional
-
 /** 
  * Called after the HUD was fully hidden from the screen. 
  */
 - (void)hudWasHidden:(MBProgressHUD *)hud;
-
 @end
-
 
 /**
  * A progress view for showing definite progress by filling up a circle (pie chart).
  */
 @interface MBRoundProgressView : UIView 
-
 /**
  * Progress (0.0 to 1.0)
  */
 @property (nonatomic, assign) float progress;
-
 /*
  * Display mode - NO = round or YES = annular. Defaults to round.
  */
 @property (nonatomic, assign, getter = isAnnular) BOOL annular;
-
 @end

@@ -6,23 +6,16 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "UIImage-Extensions.h"
-
 CGFloat DegreesToRadians(CGFloat degrees)
 {
     return degrees * M_PI / 180;
 }
-
 CGFloat RadiansToDegrees(CGFloat radians)
 {
     return radians * 180/M_PI;
 }
-
 @implementation UIImage (CS_Extensions)
-
-
-
 
 
 + (UIImage *)newImageFromResource:(NSString *)filename
@@ -34,8 +27,6 @@ CGFloat RadiansToDegrees(CGFloat radians)
     return image;
 }
 
-
-
 -(UIImage *)imageAtRect:(CGRect)rect
 {
 	
@@ -46,7 +37,6 @@ CGFloat RadiansToDegrees(CGFloat radians)
 	return subImage;
 	
 }
-
 - (UIImage *)imageByScalingProportionallyToMinimumSize:(CGSize)targetSize {
 	
 	UIImage *sourceImage = self;
@@ -107,7 +97,6 @@ CGFloat RadiansToDegrees(CGFloat radians)
 	
 	return newImage ;
 }
-
 
 - (UIImage *)imageByScalingProportionallyToSize:(CGSize)targetSize {
 	
@@ -170,13 +159,10 @@ CGFloat RadiansToDegrees(CGFloat radians)
 	return newImage ;
 }
 
-
 - (UIImage *)imageByScalingToSize:(CGSize)targetSize{
 
-
 	
 	
-
 	float actualHeight = self.size.height;
 	float actualWidth = self.size.width;
 	
@@ -234,8 +220,6 @@ CGFloat RadiansToDegrees(CGFloat radians)
 	return resized;
 }
 
-
-
 - (UIImage*)resizeImage:(CGSize)targetSize
 {
     // Resize image if needed.
@@ -246,7 +230,6 @@ CGFloat RadiansToDegrees(CGFloat radians)
     
     float scale;
     
-
     float numPixels = targetSize.width;
     
     if (width > numPixels || height > numPixels) {
@@ -283,12 +266,10 @@ CGFloat RadiansToDegrees(CGFloat radians)
         [self drawInRect:CGRectMake(0 - (width - numPixels) / 2, 0 - (height - numPixels) / 2, width, height)];
 		
         UIImage *resized = UIGraphicsGetImageFromCurrentImageContext();
-
         return resized;
     }
     return self;
 }
-
 
 - (UIImage *)imageByScalingToSize23:(CGSize)targetSize {
 	
@@ -328,12 +309,10 @@ CGFloat RadiansToDegrees(CGFloat radians)
 	return newImage ;
 }
 
-
 - (UIImage *)imageRotatedByRadians:(CGFloat)radians
 {
 	return [self imageRotatedByDegrees:RadiansToDegrees(radians)];
 }
-
 - (UIImage *)imageRotatedByDegrees:(CGFloat)degrees
 {   
 	// calculate the size of the rotated view's containing box for our drawing space
@@ -341,7 +320,6 @@ CGFloat RadiansToDegrees(CGFloat radians)
 	CGAffineTransform t = CGAffineTransformMakeRotation(DegreesToRadians(degrees));
 	rotatedViewBox.transform = t;
 	CGSize rotatedSize = rotatedViewBox.frame.size;
-
 	
 	// Create the bitmap context
 	UIGraphicsBeginImageContext(rotatedSize);
@@ -362,7 +340,6 @@ CGFloat RadiansToDegrees(CGFloat radians)
 	return newImage;
 	
 }
-
 + (UIImage *)streImageNamed:(NSString *)imageName
 {
     if (imageName == nil) {
@@ -372,7 +349,6 @@ CGFloat RadiansToDegrees(CGFloat radians)
     UIImage *streImage = [image stretchableImageWithLeftCapWidth:image.size.width/2 topCapHeight:image.size.height/2];
     return streImage;
 }
-
 + (UIImage *)streImageNamed:(NSString *)imageName capX:(CGFloat)x capY:(CGFloat)y
 {
     if (imageName == nil) {
@@ -382,5 +358,4 @@ CGFloat RadiansToDegrees(CGFloat radians)
     UIImage *streImage = [image stretchableImageWithLeftCapWidth:x topCapHeight:y];
     return streImage;
 }
-
 @end

@@ -5,11 +5,8 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-
 @implementation NSData (Base64)
-
 + (id)dataWithBase64EncodedString:(NSString *)string;
 {
 	if (string == nil)
@@ -36,7 +33,6 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 	if (bytes == NULL)
 		return nil;
 	NSUInteger length = 0;
-
 	NSUInteger i = 0;
 	while (YES)
 	{
@@ -75,12 +71,10 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 	realloc(bytes, length);
 	return [NSData dataWithBytesNoCopy:bytes length:length];
 }
-
 - (NSString *)base64Encoding;
 {
 	if ([self length] == 0)
 		return @"";
-
     char *characters = malloc((([self length] + 2) / 3) * 4);
 	if (characters == NULL)
 		return nil;
@@ -107,5 +101,4 @@ static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 	
 	return [[NSString alloc] initWithBytesNoCopy:characters length:length encoding:NSASCIIStringEncoding freeWhenDone:YES];
 }
-
 @end

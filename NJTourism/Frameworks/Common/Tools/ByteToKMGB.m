@@ -5,26 +5,20 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "ByteToKMGB.h"
-
 @implementation ByteToKMGB
-
 + (float)isGB:(unsigned long long)byte
 {    
     return (byte >> 30);
 }
-
 + (float)isMB:(unsigned long long)byte
 {
     return (byte >> 20);
 }
-
 + (float)isKB:(unsigned long long)byte
 {
     return (byte >> 10);
 }
-
 + (NSString *)Volumn:(unsigned long long)byte
 {
     unsigned long long igb = [ByteToKMGB isGB:byte];
@@ -57,5 +51,4 @@
     }
     return @"0B";
 }
-
 @end

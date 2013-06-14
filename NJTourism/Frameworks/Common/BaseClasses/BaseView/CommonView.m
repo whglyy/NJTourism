@@ -5,16 +5,12 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "CommonView.h"
-
 @implementation CommonView
-
 @synthesize tableView = _tableView;
 @synthesize groupTableView = _groupTableView;
 @synthesize tpTableView = _tpTableView;
 @synthesize owner = _owner;
-
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -24,15 +20,12 @@
     }
     return self;
 }
-
 - (id)init {
     self = [super init];
     if (self) {
-
     }
     return self;
 }
-
 - (id)initWithOwner:(id)owner
 {
     self = [super init];
@@ -41,7 +34,6 @@
     }
     return self;
 }
-
 
 - (UITableView *)tableView{
 	
@@ -70,7 +62,6 @@
 	
 	return _tableView;
 }
-
 - (UITableView *)groupTableView{
 	
 	
@@ -99,7 +90,6 @@
 	
 	return _groupTableView;
 }
-
 - (TPKeyboardAvoidingTableView *)tpTableView
 {
     if(!_tpTableView)
@@ -146,5 +136,4 @@
     [activityView show];
 	
 }
-
 @end

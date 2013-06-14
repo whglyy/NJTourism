@@ -5,30 +5,18 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "PageRefreshTableViewController.h"
-
 @implementation PageRefreshTableViewController
-
 @synthesize  currentPage;
-
 @synthesize  totalPage;
-
 @synthesize  totalCount;
-
 @synthesize  isLastPage;
 
-
 @synthesize  reloading = _reloading;
-
 @synthesize  isFromHead = _isFromHead;
-
 @synthesize  isLoading = _isLoading;
 
-
 @synthesize  refreshHeaderView = _refreshHeaderView;
-
-
 
 - (id)init{
 	
@@ -45,8 +33,6 @@
     }
     return self;
 }
-
-
 
 -(EGORefreshTableHeaderView*)refreshHeaderView{
     
@@ -66,7 +52,6 @@
     return _refreshHeaderView;
     
 }
-
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{	
     
@@ -105,9 +90,6 @@
 }
 
 
-
-
-
 - (void)startMoreAnimation:(BOOL)animating {
 	
     
@@ -124,7 +106,6 @@
 	}
 	
 }
-
 - (void)startRefreshLoading{
 	
 	_reloading = YES;
@@ -143,7 +124,6 @@
 	[UIView commitAnimations];
 	
 }
-
 - (void)dataSourceDidFinishLoadingNewData{
 	_reloading = NO;
 	
@@ -156,7 +136,6 @@
 	[_refreshHeaderView setCurrentDate];  //  should check if data reload was successful 
 }
 
-
 - (void)reloadTableViewDataSource{
 	
 	_isFromHead = YES ;
@@ -164,12 +143,10 @@
 	[self refreshData];
 	
 }
-
 - (BOOL)hasMore{
     
     return !self.isLastPage;
 }
-
 
 /*子类实现*/
 - (void)refreshData{
@@ -178,7 +155,6 @@
     
     self.isLoading = YES;
 }
-
 /*子类实现*/
 - (void)refreshDataComplete{
      
@@ -201,12 +177,10 @@
     [self startMoreAnimation:NO];
     
 }
-
 - (void)doneLoadingTableViewData{
 	//  model should call this when its done loading
 	[self dataSourceDidFinishLoadingNewData];
 }
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -215,14 +189,11 @@
     
     // Release any cached data, images, etc that aren't in use.
 }
-
 #pragma mark - View lifecycle
-
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return NO;
 }
-
 @end

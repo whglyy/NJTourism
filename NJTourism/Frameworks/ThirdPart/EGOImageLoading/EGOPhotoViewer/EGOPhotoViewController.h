@@ -5,11 +5,9 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <MessageUI/MessageUI.h>
 #import "EGOPhotoSource.h"
 #import "EGOPhotoGlobal.h"
-
 @class EGOPhotoImageView, EGOPhotoCaptionView;
 @interface EGOPhotoViewController : UIViewController <UIScrollViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate> {
 @private
@@ -35,7 +33,6 @@
 	BOOL _oldToolBarTranslucent;
 	UIColor* _oldToolBarTintColor;	
 	BOOL _oldToolBarHidden;
-
 	//BOOL _autoresizedPopover;
 	id _popover;
 	
@@ -45,21 +42,15 @@
 	UIView *_transferView;
 	
 }
-
 - (id)initWithPhoto:(id<EGOPhoto>)aPhoto;
-
 - (id)initWithImage:(UIImage*)anImage;
 - (id)initWithImageURL:(NSURL*)anImageURL;
-
 - (id)initWithPhotoSource:(id <EGOPhotoSource>)aPhotoSource;
 - (id)initWithPopoverController:(id)aPopoverController photoSource:(id <EGOPhotoSource>)aPhotoSource;
-
 @property(nonatomic,readonly) id <EGOPhotoSource> photoSource;
 @property(nonatomic,retain) NSMutableArray *photoViews;
 @property(nonatomic,retain) UIScrollView *scrollView;
 @property(nonatomic,assign) BOOL _fromPopover;
-
 - (NSInteger)currentPhotoIndex;
 - (void)moveToPhotoAtIndex:(NSInteger)index animated:(BOOL)animated;
-
 @end

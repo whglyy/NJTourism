@@ -5,11 +5,8 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "LeveyTabBar.h"
-
 @implementation LeveyTabBar
-
 
 - (id)initWithFrame:(CGRect)frame buttonImages:(NSArray *)imageArray
 {
@@ -39,12 +36,10 @@
     }
     return self;
 }
-
 - (void)setBackgroundImage:(UIImage *)img
 {
 	[_backgroundView setImage:img];
 }
-
 - (void)tabBarButtonClicked:(id)sender
 {
 	UIButton *btn = sender;
@@ -55,7 +50,6 @@
         [_delegate tabBar:self didSelectIndex:btn.tag];
     }
 }
-
 - (void)selectTabAtIndex:(NSInteger)index
 {
 	for (int i = 0; i < [self.buttons count]; i++)
@@ -68,7 +62,6 @@
 	btn.selected = YES;
 	btn.userInteractionEnabled = NO;
 }
-
 - (void)removeTabAtIndex:(NSInteger)index
 {
     // Remove button
@@ -109,6 +102,5 @@
     [self.buttons insertObject:btn atIndex:index];
     [self addSubview:btn];
 }
-
 
 @end

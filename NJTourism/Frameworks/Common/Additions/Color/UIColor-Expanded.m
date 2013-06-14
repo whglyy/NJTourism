@@ -5,10 +5,7 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "UIColor-Expanded.h"
-
-
 
 /*
  
@@ -16,7 +13,6 @@
  and everyone else who helped out but whose name is inadvertantly omitted
  
 */
-
 /*
  Current outstanding request list:
  
@@ -25,7 +21,6 @@
  - Eridius - UIColor needs a method that takes 2 colors and gives a third complementary one
  - Consider UIMutableColor that can be adjusted (brighter, cooler, warmer, thicker-alpha, etc)
  */
-
 /*
  FOR REFERENCE: Color Space Models: enum CGColorSpaceModel {
 	kCGColorSpaceModelUnknown = -1,
@@ -38,10 +33,8 @@
 	kCGColorSpaceModelPattern
 };
 */
-
 // Static cache of looked up color names. Used with +colorWithName:
 static NSMutableDictionary *colorNameCache = nil;
-
 #if SUPPORTS_UNDOCUMENTED_API
 // UIColor_Undocumented
 // Undocumented methods of UIColor
@@ -49,19 +42,14 @@ static NSMutableDictionary *colorNameCache = nil;
 - (NSString *)styleString;
 @end
 #endif // SUPPORTS_UNDOCUMENTED_API
-
 @interface UIColor (UIColor_Expanded_Support)
 + (UIColor *)searchForColorByName:(NSString *)cssColorName;
 @end
-
 #pragma mark -
-
 @implementation UIColor (UIColor_Expanded)
-
 - (CGColorSpaceModel)colorSpaceModel {
 	return CGColorSpaceGetModel(CGColorGetColorSpace(self.CGColor));
 }
-
 - (NSString *)colorSpaceString {
 	switch (self.colorSpaceModel) {
 		case kCGColorSpaceModelUnknown:
@@ -84,7 +72,6 @@ static NSMutableDictionary *colorNameCache = nil;
 			return @"Not a valid color space";
 	}
 }
-
 - (BOOL)canProvideRGBComponents {
 	switch (self.colorSpaceModel) {
 		case kCGColorSpaceModelRGB:
@@ -94,10 +81,8 @@ static NSMutableDictionary *colorNameCache = nil;
 			return NO;
 	}
 }
-
 - (NSArray *)arrayFromRGBAComponents {
 	NSAssert(self.canProvideRGBComponents, @"Must be an RGB color to use -arrayFromRGBAComponents");
-
 	CGFloat r,g,b,a;
 	if (![self red:&r green:&g blue:&b alpha:&a]) return nil;
 	
@@ -108,7 +93,6 @@ static NSMutableDictionary *colorNameCache = nil;
 			[NSNumber numberWithFloat:a],
 			nil];
 }
-
 - (BOOL)red:(CGFloat *)red green:(CGFloat *)green blue:(CGFloat *)blue alpha:(CGFloat *)alpha {
 	const CGFloat *components = CGColorGetComponents(self.CGColor);
 	
@@ -136,37 +120,31 @@ static NSMutableDictionary *colorNameCache = nil;
 	
 	return YES;
 }
-
 - (CGFloat)red {
 	NSAssert(self.canProvideRGBComponents, @"Must be an RGB color to use -red");
 	const CGFloat *c = CGColorGetComponents(self.CGColor);
 	return c[0];
 }
-
 - (CGFloat)green {
 	NSAssert(self.canProvideRGBComponents, @"Must be an RGB color to use -green");
 	const CGFloat *c = CGColorGetComponents(self.CGColor);
 	if (self.colorSpaceModel == kCGColorSpaceModelMonochrome) return c[0];
 	return c[1];
 }
-
 - (CGFloat)blue {
 	NSAssert(self.canProvideRGBComponents, @"Must be an RGB color to use -blue");
 	const CGFloat *c = CGColorGetComponents(self.CGColor);
 	if (self.colorSpaceModel == kCGColorSpaceModelMonochrome) return c[0];
 	return c[2];
 }
-
 - (CGFloat)white {
 	NSAssert(self.colorSpaceModel == kCGColorSpaceModelMonochrome, @"Must be a Monochrome color to use -white");
 	const CGFloat *c = CGColorGetComponents(self.CGColor);
 	return c[0];
 }
-
 - (CGFloat)alpha {
 	return CGColorGetAlpha(self.CGColor);
 }
-
 - (UInt32)rgbHex {
 	NSAssert(self.canProvideRGBComponents, @"Must be a RGB color to use rgbHex");
 	
@@ -181,9 +159,7 @@ static NSMutableDictionary *colorNameCache = nil;
 	     | (((int)roundf(g * 255)) << 8)
 	     | (((int)roundf(b * 255)));
 }
-
 #pragma mark Arithmetic operations
-
 - (UIColor *)colorByLuminanceMapping {
 	NSAssert(self.canProvideRGBComponents, @"Must be a RGB color to use arithmatic operations");
 	
@@ -196,10 +172,8 @@ static NSMutableDictionary *colorNameCache = nil;
 							 alpha:a];
 	
 }
-
 - (UIColor *)colorByMultiplyingByRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha {
 	NSAssert(self.canProvideRGBComponents, @"Must be a RGB color to use arithmatic operations");
-
 	CGFloat r,g,b,a;
 	if (![self red:&r green:&g blue:&b alpha:&a]) return nil;
 		
@@ -208,7 +182,6 @@ static NSMutableDictionary *colorNameCache = nil;
 							blue:MAX(0.0, MIN(1.0, b * blue))
 						   alpha:MAX(0.0, MIN(1.0, a * alpha))];
 }
-
 - (UIColor *)colorByAddingRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha {
 	NSAssert(self.canProvideRGBComponents, @"Must be a RGB color to use arithmatic operations");
 	
@@ -220,7 +193,6 @@ static NSMutableDictionary *colorNameCache = nil;
 							blue:MAX(0.0, MIN(1.0, b + blue))
 						   alpha:MAX(0.0, MIN(1.0, a + alpha))];
 }
-
 - (UIColor *)colorByLighteningToRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha {
 	NSAssert(self.canProvideRGBComponents, @"Must be a RGB color to use arithmatic operations");
 	
@@ -232,7 +204,6 @@ static NSMutableDictionary *colorNameCache = nil;
 							blue:MAX(b, blue)
 						   alpha:MAX(a, alpha)];
 }
-
 - (UIColor *)colorByDarkeningToRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue alpha:(CGFloat)alpha {
 	NSAssert(self.canProvideRGBComponents, @"Must be a RGB color to use arithmatic operations");
 	
@@ -244,23 +215,18 @@ static NSMutableDictionary *colorNameCache = nil;
 							blue:MIN(b, blue)
 						   alpha:MIN(a, alpha)];
 }
-
 - (UIColor *)colorByMultiplyingBy:(CGFloat)f {
 	return [self colorByMultiplyingByRed:f green:f blue:f alpha:1.0f];
 }
-
 - (UIColor *)colorByAdding:(CGFloat)f {
 	return [self colorByMultiplyingByRed:f green:f blue:f alpha:0.0f];
 }
-
 - (UIColor *)colorByLighteningTo:(CGFloat)f {
 	return [self colorByLighteningToRed:f green:f blue:f alpha:0.0f];
 }
-
 - (UIColor *)colorByDarkeningTo:(CGFloat)f {
 	return [self colorByDarkeningToRed:f green:f blue:f alpha:1.0f];
 }
-
 - (UIColor *)colorByMultiplyingByColor:(UIColor *)color {
 	NSAssert(self.canProvideRGBComponents, @"Must be a RGB color to use arithmatic operations");
 	
@@ -269,7 +235,6 @@ static NSMutableDictionary *colorNameCache = nil;
 	
 	return [self colorByMultiplyingByRed:r green:g blue:b alpha:1.0f];
 }
-
 - (UIColor *)colorByAddingColor:(UIColor *)color {
 	NSAssert(self.canProvideRGBComponents, @"Must be a RGB color to use arithmatic operations");
 	
@@ -278,7 +243,6 @@ static NSMutableDictionary *colorNameCache = nil;
 	
 	return [self colorByAddingRed:r green:g blue:b alpha:0.0f];
 }
-
 - (UIColor *)colorByLighteningToColor:(UIColor *)color {
 	NSAssert(self.canProvideRGBComponents, @"Must be a RGB color to use arithmatic operations");
 	
@@ -287,7 +251,6 @@ static NSMutableDictionary *colorNameCache = nil;
 		
 	return [self colorByLighteningToRed:r green:g blue:b alpha:0.0f];
 }
-
 - (UIColor *)colorByDarkeningToColor:(UIColor *)color {
 	NSAssert(self.canProvideRGBComponents, @"Must be a RGB color to use arithmatic operations");
 	
@@ -296,9 +259,7 @@ static NSMutableDictionary *colorNameCache = nil;
 	
 	return [self colorByDarkeningToRed:r green:g blue:b alpha:1.0f];
 }
-
 #pragma mark String utilities
-
 - (NSString *)stringFromColor {
 	NSAssert(self.canProvideRGBComponents, @"Must be an RGB color to use -stringFromColor");
 	NSString *result;
@@ -314,11 +275,9 @@ static NSMutableDictionary *colorNameCache = nil;
 	}
 	return result;
 }
-
 - (NSString *)hexStringFromColor {
 	return [NSString stringWithFormat:@"%0.6lX", self.rgbHex];
 }
-
 + (UIColor *)colorWithString:(NSString *)stringToConvert {
 	NSScanner *scanner = [NSScanner scannerWithString:stringToConvert];
 	if (![scanner scanString:@"{" intoString:NULL]) return nil;
@@ -351,16 +310,13 @@ static NSMutableDictionary *colorNameCache = nil;
 	}
 	return color;
 }
-
 #pragma mark Class methods
-
 + (UIColor *)randomColor {
 	return [UIColor colorWithRed:(CGFloat)RAND_MAX / random()
 						   green:(CGFloat)RAND_MAX / random()
 							blue:(CGFloat)RAND_MAX / random()
 						   alpha:1.0f];
 }
-
 + (UIColor *)colorWithRGBHex:(UInt32)hex {
 	int r = (hex >> 16) & 0xFF;
 	int g = (hex >> 8) & 0xFF;
@@ -371,7 +327,6 @@ static NSMutableDictionary *colorNameCache = nil;
 							blue:b / 255.0f
 						   alpha:1.0f];
 }
-
 // Returns a UIColor by scanning the string for a hex number and passing that to +[UIColor colorWithRGBHex:]
 // Skips any leading whitespace and ignores any trailing characters
 + (UIColor *)colorWithHexString:(NSString *)stringToConvert {
@@ -380,7 +335,6 @@ static NSMutableDictionary *colorNameCache = nil;
 	if (![scanner scanHexInt:&hexNum]) return nil;
 	return [UIColor colorWithRGBHex:hexNum];
 }
-
 // Lookup a color using css 3/svg color name
 + (UIColor *)colorWithName:(NSString *)cssColorName {
 	UIColor *color;
@@ -405,24 +359,17 @@ static NSMutableDictionary *colorNameCache = nil;
 }
 
 
-
-
 #pragma mark UIColor_Expanded initialization
-
 + (void)load {
 	colorNameCache = [[NSMutableDictionary alloc] init];
 }
-
 @end
-
 #pragma mark -
-
 #if SUPPORTS_UNDOCUMENTED_API
 @implementation UIColor (UIColor_Undocumented_Expanded)
 - (NSString *)fetchStyleString {
 	return [self styleString];
 }
-
 // Convert a color into RGB Color space, courtesy of Poltras
 // via http://ofcodeandmen.poltras.com/2009/01/22/convert-a-cgcolorref-to-another-cgcolorspaceref/
 //
@@ -444,7 +391,6 @@ static NSMutableDictionary *colorNameCache = nil;
 }
 @end
 #endif // SUPPORTS_UNDOCUMENTED_API
-
 @implementation UIColor (UIColor_Expanded_Support)
 /*
  * Database of color names and hex rgb values, derived
@@ -492,7 +438,6 @@ static const char *colorNameDB = ","
 	"snow#fffafa,springgreen#00ff7f,steelblue#4682b4,tan#d2b48c,teal#008080,"
 	"thistle#d8bfd8,tomato#ff6347,turquoise#40e0d0,violet#ee82ee,wheat#f5deb3,"
 	"white#ffffff,whitesmoke#f5f5f5,yellow#ffff00,yellowgreen#9acd32";
-
 + (UIColor *)searchForColorByName:(NSString *)cssColorName {
 	UIColor *result = nil;
 	

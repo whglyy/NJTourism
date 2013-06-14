@@ -5,21 +5,17 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "PlaceholderTextView.h"
-
 @implementation PlaceholderTextView
 @synthesize placeholder = _placeholder;
 @synthesize placeholderColor = _placeholderColor;
 @synthesize placeHolderLabel = _placeHolderLabel;
-
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
  
 }
-
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -27,7 +23,6 @@
     [self setPlaceholderColor:[UIColor lightGrayColor]];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name:UITextViewTextDidChangeNotification object:nil];
 }
-
 - (id)initWithFrame:(CGRect)frame
 {
     if( (self = [super initWithFrame:frame]) )
@@ -38,7 +33,6 @@
     }
     return self;
 }
-
 - (void)textChanged:(NSNotification *)notification
 {
     if([[self placeholder] length] == 0)
@@ -55,7 +49,6 @@
         [[self viewWithTag:999] setAlpha:0];
     }
 }
-
 - (void)setPlaceholder:(NSString *)placeholder
 {
     if (_placeholder != placeholder) 
@@ -71,7 +64,6 @@
         [self setNeedsDisplay];
     }
 }
-
 - (void)drawRect:(CGRect)rect
 {
     if( [[self placeholder] length] > 0 )
@@ -101,5 +93,4 @@
     
     [super drawRect:rect];
 }
-
 @end

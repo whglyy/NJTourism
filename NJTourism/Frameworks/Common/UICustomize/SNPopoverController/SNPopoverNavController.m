@@ -5,25 +5,19 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "SNPopoverNavController.h"
 #import "AuthNavigationBar.h"
 #include <objc/runtime.h>
 #import "SNPopoverController.h"
 #import "SNPopoverCommonViewController.h"
-
 @interface SNPopoverNavController()
 {
     SNPopoverController *_homeController;
 }
 
-
 @end
-
 /*********************************************************************/
-
 @implementation SNPopoverNavController
-
 
 - (id)initWithRootViewController:(UIViewController *)rootViewController 
                   homeController:(SNPopoverController *)homeController{
@@ -54,14 +48,11 @@
     }
     return self;
 }
-
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     if ([viewController isKindOfClass:[SNPopoverCommonViewController class]]) {
         [(SNPopoverCommonViewController *)viewController setSnpopoverController:_homeController];
     }
     [super pushViewController:viewController animated:animated];
-
 }
-
 @end

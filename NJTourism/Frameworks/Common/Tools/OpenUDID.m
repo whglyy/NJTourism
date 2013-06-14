@@ -5,15 +5,12 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #if __has_feature(objc_arc)
 #error This file uses the classic non-ARC retain/release model; hints below... 
     // to selectively compile this file as non-ARC, do as follows:
     // https://img.skitch.com/20120717-g3ag5h9a6ehkgpmpjiuen3qpwp.png
 #endif
-
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
-
 #import "OpenUDID.h"
 #import <CommonCrypto/CommonDigest.h> // Need to import for CC_MD5 access
 #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
@@ -22,11 +19,9 @@
 #else
 #import <AppKit/NSPasteboard.h>
 #endif
-
 #define OpenUDIDLog(fmt, ...)
 //#define OpenUDIDLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
 //#define OpenUDIDLog(fmt, ...) NSLog((@"[Line %d] " fmt), __LINE__, ##__VA_ARGS__);
-
 static NSString * kOpenUDIDSessionCache = nil;
 static NSString * const kOpenUDIDDescription = @"OpenUDID_with_iOS6_Support";
 static NSString * const kOpenUDIDKey = @"OpenUDID";
@@ -37,15 +32,12 @@ static NSString * const kOpenUDIDOOTSKey = @"OpenUDID_optOutTS";
 static NSString * const kOpenUDIDDomain = @"org.OpenUDID";
 static NSString * const kOpenUDIDSlotPBPrefix = @"org.OpenUDID.slot.";
 static int const kOpenUDIDRedundancySlots = 100;
-
 @interface OpenUDID (Private)
 + (void) _setDict:(id)dict forPasteboard:(id)pboard;
 + (NSMutableDictionary*) _getDictFromPasteboard:(id)pboard;
 + (NSString*) _generateFreshOpenUDID;
 @end
-
 @implementation OpenUDID
-
 // Archive a NSDictionary inside a pasteboard of a given type
 // Convenience method to support iOS & Mac OS X
 //
@@ -56,7 +48,6 @@ static int const kOpenUDIDRedundancySlots = 100;
     [pboard setData:[NSKeyedArchiver archivedDataWithRootObject:dict] forType:kOpenUDIDDomain];
 #endif
 }
-
 // Retrieve an NSDictionary from a pasteboard of a given type
 // Convenience method to support iOS & Mac OS X
 //
@@ -78,7 +69,6 @@ static int const kOpenUDIDRedundancySlots = 100;
     // return an instance of a MutableDictionary 
     return [NSMutableDictionary dictionaryWithDictionary:(item == nil || [item isKindOfClass:[NSDictionary class]]) ? item : nil];
 }
-
 // Private method to create and return a new OpenUDID
 // Theoretically, this function is called once ever per application when calling [OpenUDID value] for the first time.
 // After that, the caching/pasteboard/redundancy mechanism inside [OpenUDID value] returns a persistent and cross application OpenUDID
@@ -115,9 +105,7 @@ static int const kOpenUDIDRedundancySlots = 100;
     // Essentially, this means that OpenUDID will keep on behaving the same way as before for existing users or
     // new users in iOS 5 and before. For new users on iOS 6 and after, the new official public APIs will take over.
     // OpenUDID will therefore be obsoleted when iOS reaches significant adoption, anticipated around mid-2013.
-
     /*
-
         September 14; ok, new development. The alleged API has moved!
         This part of the code will therefore be updated when iOS 6 is actually released.
         Nevertheless, if you want to go ahead, the code should be pretty easy to
@@ -151,7 +139,6 @@ static int const kOpenUDIDRedundancySlots = 100;
         CC_MD5( cStr, strlen(cStr), result );
         CFRelease(uuid);
         if (cfstring)  CFRelease(cfstring);
-
         _openUDID = [NSString stringWithFormat:
                 @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%08x",
                 result[0], result[1], result[2], result[3], 
@@ -167,10 +154,8 @@ static int const kOpenUDIDRedundancySlots = 100;
     // NOTE that the goal is NOT to find a better hash method, but rather, find a decentralized (i.e. not web-based)
     // 160 bits / 20 bytes random string generator with the fewest possible collisions.
     // 
-
     return _openUDID;
 }
-
 
 // Main public method that returns the OpenUDID
 // This method will generate and store the OpenUDID if it doesn't exist, typically the first time it is called
@@ -180,9 +165,7 @@ static int const kOpenUDIDRedundancySlots = 100;
 + (NSString*) value {
     return [OpenUDID valueWithError:nil];
 }
-
 + (NSString*) valueWithError:(NSError **)error {
-
     if (kOpenUDIDSessionCache!=nil) {
         if (error!=nil)
             *error = [NSError errorWithDomain:kOpenUDIDDomain
@@ -328,12 +311,10 @@ static int const kOpenUDIDRedundancySlots = 100;
         if (openUDID && localDict)
             [OpenUDID _setDict:localDict forPasteboard:slotPB];
     }
-
     // Save the dictionary locally if applicable
     //
     if (localDict && saveLocalDictToDefaults)
         [defaults setObject:localDict forKey:kOpenUDIDKey];
-
     // If the UIPasteboard external representation marks this app as opted-out, then to respect privacy, we return the ZERO OpenUDID, a sequence of 40 zeros...
     // This is a *new* case that developers have to deal with. Unlikely, statistically low, but still.
     // To circumvent this and maintain good tracking (conversion ratios, etc.), developers are invited to calculate how many of their users have opted-out from the full set of users.
@@ -347,7 +328,6 @@ static int const kOpenUDIDRedundancySlots = 100;
         kOpenUDIDSessionCache = [[NSString stringWithFormat:@"%040x",0] retain];
         return kOpenUDIDSessionCache;
     }
-
     // return the well earned openUDID!
     //
     if (error!=nil) {
@@ -363,14 +343,11 @@ static int const kOpenUDIDRedundancySlots = 100;
     kOpenUDIDSessionCache = [openUDID retain];
     return kOpenUDIDSessionCache;
 }
-
 + (void) setOptOut:(BOOL)optOutValue {
-
     // init call
     [OpenUDID value];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
     // load the dictionary from local cache or create one
     id dict = [defaults objectForKey:kOpenUDIDKey];
     if ([dict isKindOfClass:[NSDictionary class]]) {
@@ -378,13 +355,11 @@ static int const kOpenUDIDRedundancySlots = 100;
     } else {
         dict = [NSMutableDictionary dictionaryWithCapacity:2];
     }
-
     // set the opt-out date or remove key, according to parameter
     if (optOutValue)
         [dict setObject:[NSDate date] forKey:kOpenUDIDOOTSKey];
     else
         [dict removeObjectForKey:kOpenUDIDOOTSKey];
-
   	// store the dictionary locally
     [defaults setObject:dict forKey:kOpenUDIDKey];
     
@@ -394,5 +369,4 @@ static int const kOpenUDIDRedundancySlots = 100;
     kOpenUDIDSessionCache = nil;
     
 }
-
 @end

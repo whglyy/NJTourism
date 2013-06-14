@@ -5,20 +5,14 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "BBAlertView.h"
-
 #define IS_IPAD (UI_USER_INTERFACE_IDIOM()==UIUserInterfaceIdiomPad)
-
 #define kContentLabelWidth      250.0f
-
 static CGFloat kTransitionDuration = 0.3f;
 static NSMutableArray *gAlertViewStack = nil;
 static UIWindow *gPreviouseKeyWindow = nil;
 static UIWindow *gMaskWindow = nil;
-
 @implementation NSObject (BBAlert)
-
 - (void)alertCustomDlg:(NSString *)message
 {
     BBAlertView *alert = [[BBAlertView alloc] initWithTitle:L(@"system-info")
@@ -27,9 +21,7 @@ static UIWindow *gMaskWindow = nil;
                                           cancelButtonTitle:L(@"Ok")
                                           otherButtonTitles:nil];
     [alert show];
-
 }
-
 - (void)dismissAllCustomAlerts
 {
     for (BBAlertView *alert in gAlertViewStack)
@@ -40,63 +32,47 @@ static UIWindow *gMaskWindow = nil;
         }
     }
 }
-
 @end
-
 /*********************************************************************/
-
 @interface BBAlertView()
 {
     NSInteger clickedButtonIndex;
 }
-
 @property (nonatomic, retain) UILabel *titleLabel;
 @property (nonatomic, retain) UILabel *bodyTextLabel;
 @property (nonatomic, retain) UITextView *bodyTextView;
 @property (nonatomic, retain) UIView *customView;
 @property (nonatomic, retain) UIView *contentView;
-
 @property (nonatomic, retain) UIButton *cancelButton;
 @property (nonatomic, retain) UIButton *otherButton;
-
 //orientation
 - (void)registerObservers;
 - (void)removeObservers;
 - (BOOL)shouldRotateToOrientation:(UIInterfaceOrientation)orientation;
 - (void)sizeToFitOrientation:(BOOL)transform;
 - (CGAffineTransform)transformForOrientation;
-
 + (BBAlertView *)getStackTopAlertView;
 + (void)pushAlertViewInStack:(BBAlertView *)alertView;
 + (void)popAlertViewFromStack;
-
 + (void)presentMaskWindow;
 + (void)dismissMaskWindow;
-
 + (void)addAlertViewOnMaskWindow:(BBAlertView *)alertView;
 + (void)removeAlertViewFormMaskWindow:(BBAlertView *)alertView;
-
 - (void)bounce0Animation;
 - (void)bounce1AnimationDidStop;
 - (void)bounce2AnimationDidStop;
 - (void)bounceDidStop;
-
 - (void)dismissAlertView;
-
 
 //tools
 + (CGFloat)heightOfString:(NSString *)message;
 @end
-
 /*********************************************************************/
-
 @implementation BBAlertView
-
 
 @synthesize visible = _visible;
 @synthesize dimBackground = _dimBackground;
 @synthesize style = _style;
-
 @synthesize titleLabel = _titleLabel;
 @synthesize bodyTextLabel = _bodyTextLabel;
 @synthesize bodyTextView = _bodyTextView;
@@ -108,16 +84,13 @@ static UIWindow *gMaskWindow = nil;
 @synthesize shouldDismissAfterConfirm = _shouldDismissAfterConfirm;
 @synthesize contentAlignment = _contentAlignment;
 
-
 - (void)dealloc {
     _delegate = nil;
     _cancelBlock = nil;
     _confirmBlock = nil;
     [self removeObserver:self forKeyPath:@"dimBackground"];
     [self removeObserver:self forKeyPath:@"contentAlignment"];
-
 }
-
 
 - (void)initData
 {
@@ -136,7 +109,6 @@ static UIWindow *gMaskWindow = nil;
               options:NSKeyValueObservingOptionNew
               context:NULL];
 }
-
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
@@ -149,7 +121,6 @@ static UIWindow *gMaskWindow = nil;
         self.bodyTextView.textAlignment = self.contentAlignment;
     }
 }
-
 - (id)initWithTitle:(NSString *)title
             message:(NSString *)message 
            delegate:(id<BBAlertViewDelegate>)delegate 
@@ -248,20 +219,17 @@ static UIWindow *gMaskWindow = nil;
     return self;
      
 }
-
 - (id)initWithContentView:(UIView *)contentView
 {
     self = [super initWithFrame:[UIScreen mainScreen].bounds];
     if (self) {
         [self initData];
-
         self.contentView = contentView;
         self.contentView.center = self.center;
         _style = BBAlertViewStyleCustomView;
     }
     return self;
 }
-
 - (id)initWithStyle:(BBAlertViewStyle)style 
               Title:(NSString *)title 
             message:(NSString *)message 
@@ -286,7 +254,6 @@ static UIWindow *gMaskWindow = nil;
             self = [super initWithFrame:[UIScreen mainScreen].bounds];
             if (self) {
                 [self initData];
-
                 _delegate = delegate;
                 
                 //content view
@@ -422,12 +389,10 @@ static UIWindow *gMaskWindow = nil;
     }
     return [super initWithFrame:[UIScreen mainScreen].bounds];
 }
-
 - (BOOL)isVisible
 {
     return _visible;
 }
-
 - (void)drawRect:(CGRect)rect
 {    
     if (_dimBackground) {
@@ -451,18 +416,14 @@ static UIWindow *gMaskWindow = nil;
         CGGradientRelease(gradient);
     }
 }
-
 #pragma mark -
 #pragma mark orientation
-
 - (void)registerObservers{
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationDidChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
-
 - (void)removeObservers{
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
 }
-
 - (void)orientationDidChange:(NSNotification*)notify
 {
     
@@ -479,7 +440,6 @@ static UIWindow *gMaskWindow = nil;
         [UIView commitAnimations];
     } 
 }
-
 - (BOOL)shouldRotateToOrientation:(UIInterfaceOrientation)orientation
 {
     BOOL result = NO;
@@ -492,7 +452,6 @@ static UIWindow *gMaskWindow = nil;
     
     return result;
 }
-
 - (void)sizeToFitOrientation:(BOOL)transform
 {
     if (transform) {
@@ -506,7 +465,6 @@ static UIWindow *gMaskWindow = nil;
         self.transform = [self transformForOrientation];
     }
 }
-
 - (CGAffineTransform)transformForOrientation
 {
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
@@ -521,10 +479,8 @@ static UIWindow *gMaskWindow = nil;
     }
 }
 
-
 #pragma mark -
 #pragma mark view getters
-
 - (UILabel *)titleLabel
 {
     if (!_titleLabel) {
@@ -534,7 +490,6 @@ static UIWindow *gMaskWindow = nil;
     }
     return _titleLabel;
 }
-
 - (UILabel *)bodyTextLabel
 {
     if (!_bodyTextLabel) {
@@ -546,7 +501,6 @@ static UIWindow *gMaskWindow = nil;
     }
     return _bodyTextLabel;
 }
-
 - (UITextView *)bodyTextView
 {
     if (!_bodyTextView) {
@@ -558,7 +512,6 @@ static UIWindow *gMaskWindow = nil;
     }
     return _bodyTextView;
 }
-
 - (UIView *)contentView
 {
     if (!_contentView) {
@@ -567,7 +520,6 @@ static UIWindow *gMaskWindow = nil;
     }
     return _contentView;
 }
-
 - (UIButton *)cancelButton{
     
     if (!_cancelButton) {
@@ -579,7 +531,6 @@ static UIWindow *gMaskWindow = nil;
     return _cancelButton;
     
 }
-
 
 - (UIButton *)otherButton{
     
@@ -593,25 +544,19 @@ static UIWindow *gMaskWindow = nil;
     return _otherButton;
     
 }
-
 #pragma mark -
 #pragma mark block setter
-
 - (void)setCancelBlock:(BBBasicBlock)block
 {
-
     _cancelBlock = [block copy];
 }
-
 - (void)setConfirmBlock:(BBBasicBlock)block
 {
  
     _confirmBlock = [block copy];
 }
-
 #pragma mark -
 #pragma mark button action
-
 - (void)buttonTapped:(id)sender
 {
     UIButton *button = (UIButton *)sender;
@@ -643,10 +588,8 @@ static UIWindow *gMaskWindow = nil;
     }
     
 }
-
 #pragma mark -
 #pragma mark lify cycle
-
 - (void)show
 {
     if (_visible) {
@@ -676,7 +619,6 @@ static UIWindow *gMaskWindow = nil;
     //alertView弹出动画
     [self bounce0Animation];
 }
-
 - (void)dismiss
 {
     if (!_visible) {
@@ -697,7 +639,6 @@ static UIWindow *gMaskWindow = nil;
         [__bgView removeFromSuperview];
     }
 }
-
 - (void)dismissAlertView{
     [BBAlertView removeAlertViewFormMaskWindow:self];
     
@@ -715,9 +656,7 @@ static UIWindow *gMaskWindow = nil;
     }
     
     [self removeObservers];
-
 }
-
 
 + (void)presentMaskWindow{
     
@@ -739,7 +678,6 @@ static UIWindow *gMaskWindow = nil;
         [UIView commitAnimations];
     }
 }
-
 + (void)dismissMaskWindow{
     // make previouse window the key again
     if (gMaskWindow) {
@@ -748,7 +686,6 @@ static UIWindow *gMaskWindow = nil;
  
     }
 }
-
 + (BBAlertView *)getStackTopAlertView{
     BBAlertView *topItem = nil;
     if (0 != [gAlertViewStack count]) {
@@ -757,7 +694,6 @@ static UIWindow *gMaskWindow = nil;
     
     return topItem;
 }
-
 + (void)addAlertViewOnMaskWindow:(BBAlertView *)alertView{
     if (!gMaskWindow ||[gMaskWindow.subviews containsObject:alertView]) {
         return;
@@ -772,7 +708,6 @@ static UIWindow *gMaskWindow = nil;
     }
     [BBAlertView pushAlertViewInStack:alertView];
 }
-
 + (void)removeAlertViewFormMaskWindow:(BBAlertView *)alertView{
     if (!gMaskWindow || ![gMaskWindow.subviews containsObject:alertView]) {
         return;
@@ -788,14 +723,12 @@ static UIWindow *gMaskWindow = nil;
         [previousAlertView bounce0Animation];
     }
 }
-
 + (void)pushAlertViewInStack:(BBAlertView *)alertView{
     if (!gAlertViewStack) {
         gAlertViewStack = [[NSMutableArray alloc] init];
     }
     [gAlertViewStack addObject:alertView];
 }
-
 
 + (void)popAlertViewFromStack{
     if (![gAlertViewStack count]) {
@@ -804,15 +737,12 @@ static UIWindow *gMaskWindow = nil;
     [gAlertViewStack removeLastObject];
     
     if ([gAlertViewStack count] == 0) {
-
         gAlertViewStack = nil;
     }
 }
 
-
 #pragma mark -
 #pragma mark animation
-
 - (void)bounce0Animation{
     self.contentView.transform = CGAffineTransformScale([self transformForOrientation], 0.001f, 0.001f);
     [UIView beginAnimations:nil context:nil];
@@ -822,7 +752,6 @@ static UIWindow *gMaskWindow = nil;
     self.contentView.transform = CGAffineTransformScale([self transformForOrientation], 1.1f, 1.1f);
     [UIView commitAnimations];
 }
-
 - (void)bounce1AnimationDidStop{  
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:kTransitionDuration/2];
@@ -839,14 +768,11 @@ static UIWindow *gMaskWindow = nil;
     self.contentView.transform = [self transformForOrientation];
     [UIView commitAnimations];
 }
-
 - (void)bounceDidStop{
     
 }
-
 #pragma mark -
 #pragma mark tools
-
 + (CGFloat)heightOfString:(NSString *)message
 {
     if (message == nil || [message isEqualToString:@""]) {
@@ -858,5 +784,4 @@ static UIWindow *gMaskWindow = nil;
     
     return messageSize.height+10.0;
 }
-
 @end

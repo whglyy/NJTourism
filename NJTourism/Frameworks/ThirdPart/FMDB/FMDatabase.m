@@ -5,17 +5,13 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "FMDatabase.h"
 #import "unistd.h"
 #import <objc/runtime.h>
-
 @interface FMDatabase ()
-
 - (FMResultSet *)executeQuery:(NSString *)sql withArgumentsInArray:(NSArray*)arrayArgs orDictionary:(NSDictionary *)dictionaryArgs orVAList:(va_list)args;
 - (BOOL)executeUpdate:(NSString*)sql error:(NSError**)outErr withArgumentsInArray:(NSArray*)arrayArgs orDictionary:(NSDictionary *)dictionaryArgs orVAList:(va_list)args;
 @end
-
 @implementation FMDatabase
 @synthesize cachedStatements=_cachedStatements;
 @synthesize logsErrors=_logsErrors;
@@ -23,20 +19,16 @@
 @synthesize busyRetryTimeout=_busyRetryTimeout;
 @synthesize checkedOut=_checkedOut;
 @synthesize traceExecution=_traceExecution;
-
 + (id)databaseWithPath:(NSString*)aPath {
     return FMDBReturnAutoreleased([[self alloc] initWithPath:aPath]);
 }
-
 + (NSString*)sqliteLibVersion {
     return [NSString stringWithFormat:@"%s", sqlite3_libversion()];
 }
-
 + (BOOL)isSQLiteThreadSafe {
     // make sure to read the sqlite headers on this guy!
     return sqlite3_threadsafe();
 }
-
 - (id)initWithPath:(NSString*)aPath {
     
     assert(sqlite3_threadsafe()); // whoa there big boy- gotta make sure sqlite it happy with what we're going to do.
@@ -54,12 +46,10 @@
     
     return self;
 }
-
 - (void)finalize {
     [self close];
     [super finalize];
 }
-
 - (void)dealloc {
     [self close];
     FMDBRelease(_openResultSets);
@@ -71,15 +61,12 @@
     [super dealloc];
 #endif
 }
-
 - (NSString *)databasePath {
     return _databasePath;
 }
-
 - (sqlite3*)sqliteHandle {
     return _db;
 }
-
 - (BOOL)open {
     if (_db) {
         return YES;
@@ -93,7 +80,6 @@
     
     return YES;
 }
-
 #if SQLITE_VERSION_NUMBER >= 3005000
 - (BOOL)openWithFlags:(int)flags {
     int err = sqlite3_open_v2((_databasePath ? [_databasePath fileSystemRepresentation] : ":memory:"), &_db, flags, NULL /* Name of VFS module to use */);
@@ -104,7 +90,6 @@
     return YES;
 }
 #endif
-
 
 - (BOOL)close {
     
@@ -153,7 +138,6 @@
     _db = nil;
     return YES;
 }
-
 - (void)clearCachedStatements {
     
     for (FMStatement *cachedStmt in [_cachedStatements objectEnumerator]) {
@@ -163,11 +147,9 @@
     
     [_cachedStatements removeAllObjects];
 }
-
 - (BOOL)hasOpenResultSets {
     return [_openResultSets count] > 0;
 }
-
 - (void)closeOpenResultSets {
     
     //Copy the set so we don't get mutation errors
@@ -181,17 +163,14 @@
         [_openResultSets removeObject:rsInWrappedInATastyValueMeal];
     }
 }
-
 - (void)resultSetDidClose:(FMResultSet *)resultSet {
     NSValue *setValue = [NSValue valueWithNonretainedObject:resultSet];
     
     [_openResultSets removeObject:setValue];
 }
-
 - (FMStatement*)cachedStatementForQuery:(NSString*)query {
     return [_cachedStatements objectForKey:query];
 }
-
 - (void)setCachedStatement:(FMStatement*)statement forQuery:(NSString*)query {
     //NSLog(@"setting query: %@", query);
     
@@ -203,7 +182,6 @@
     
     FMDBRelease(query);
 }
-
 
 - (BOOL)rekey:(NSString*)key {
 #ifdef SQLITE_HAS_CODEC
@@ -223,7 +201,6 @@
     return NO;
 #endif
 }
-
 - (BOOL)setKey:(NSString*)key {
 #ifdef SQLITE_HAS_CODEC
     if (!key) {
@@ -237,7 +214,6 @@
     return NO;
 #endif
 }
-
 - (BOOL)goodConnection {
     
     if (!_db) {
@@ -253,7 +229,6 @@
     
     return NO;
 }
-
 - (void)warnInUse {
     DLog(@"The FMDatabase %@ is currently in use.", self);
     
@@ -264,7 +239,6 @@
     }
 #endif
 }
-
 - (BOOL)databaseExists {
     
     if (!_db) {
@@ -283,25 +257,20 @@
     
     return YES;
 }
-
 - (NSString*)lastErrorMessage {
     return [NSString stringWithUTF8String:sqlite3_errmsg(_db)];
 }
-
 - (BOOL)hadError {
     int lastErrCode = [self lastErrorCode];
     
     return (lastErrCode > SQLITE_OK && lastErrCode < SQLITE_ROW);
 }
-
 - (int)lastErrorCode {
     return sqlite3_errcode(_db);
 }
-
 - (NSError*)lastError {
     return [NSError errorWithDomain:@"FMDatabase" code:sqlite3_errcode(_db) userInfo:[NSDictionary dictionaryWithObject:[self lastErrorMessage] forKey:NSLocalizedDescriptionKey]];
 }
-
 - (sqlite_int64)lastInsertRowId {
     
     if (_isExecutingStatement) {
@@ -317,7 +286,6 @@
     
     return ret;
 }
-
 - (int)changes {
     if (_isExecutingStatement) {
         [self warnInUse];
@@ -332,7 +300,6 @@
     
     return ret;
 }
-
 - (void)bindObject:(id)obj toColumn:(int)idx inStatement:(sqlite3_stmt*)pStmt {
     
     if ((!obj) || ((NSNull *)obj == [NSNull null])) {
@@ -374,7 +341,6 @@
         sqlite3_bind_text(pStmt, idx, [[obj description] UTF8String], -1, SQLITE_STATIC);
     }
 }
-
 - (void)extractSQL:(NSString *)sql argumentsList:(va_list)args intoString:(NSMutableString *)cleanedSQL arguments:(NSMutableArray *)arguments {
     
     NSUInteger length = [sql length];
@@ -484,11 +450,9 @@
         last = current;
     }
 }
-
 - (FMResultSet *)executeQuery:(NSString *)sql withParameterDictionary:(NSDictionary *)arguments {
     return [self executeQuery:sql withArgumentsInArray:nil orDictionary:arguments orVAList:nil];
 }
-
 - (FMResultSet *)executeQuery:(NSString *)sql withArgumentsInArray:(NSArray*)arrayArgs orDictionary:(NSDictionary *)dictionaryArgs orVAList:(va_list)args {
     
     if (![self databaseExists]) {
@@ -641,7 +605,6 @@
     
     return rs;
 }
-
 - (FMResultSet *)executeQuery:(NSString*)sql, ... {
     va_list args;
     va_start(args, sql);
@@ -651,7 +614,6 @@
     va_end(args);
     return result;
 }
-
 - (FMResultSet *)executeQueryWithFormat:(NSString*)format, ... {
     va_list args;
     va_start(args, format);
@@ -664,11 +626,9 @@
     
     return [self executeQuery:sql withArgumentsInArray:arguments];
 }
-
 - (FMResultSet *)executeQuery:(NSString *)sql withArgumentsInArray:(NSArray *)arguments {
     return [self executeQuery:sql withArgumentsInArray:arguments orDictionary:nil orVAList:nil];
 }
-
 - (BOOL)executeUpdate:(NSString*)sql error:(NSError**)outErr withArgumentsInArray:(NSArray*)arrayArgs orDictionary:(NSDictionary *)dictionaryArgs orVAList:(va_list)args {
     
     if (![self databaseExists]) {
@@ -883,7 +843,6 @@
     return (rc == SQLITE_DONE || rc == SQLITE_OK);
 }
 
-
 - (BOOL)executeUpdate:(NSString*)sql, ... {
     va_list args;
     va_start(args, sql);
@@ -893,15 +852,12 @@
     va_end(args);
     return result;
 }
-
 - (BOOL)executeUpdate:(NSString*)sql withArgumentsInArray:(NSArray *)arguments {
     return [self executeUpdate:sql error:nil withArgumentsInArray:arguments orDictionary:nil orVAList:nil];
 }
-
 - (BOOL)executeUpdate:(NSString*)sql withParameterDictionary:(NSDictionary *)arguments {
     return [self executeUpdate:sql error:nil withArgumentsInArray:nil orDictionary:arguments orVAList:nil];
 }
-
 - (BOOL)executeUpdateWithFormat:(NSString*)format, ... {
     va_list args;
     va_start(args, format);
@@ -915,7 +871,6 @@
     
     return [self executeUpdate:sql withArgumentsInArray:arguments];
 }
-
 - (BOOL)update:(NSString*)sql withErrorAndBindings:(NSError**)outErr, ... {
     va_list args;
     va_start(args, outErr);
@@ -925,7 +880,6 @@
     va_end(args);
     return result;
 }
-
 - (BOOL)rollback {
     BOOL b = [self executeUpdate:@"rollback transaction"];
     
@@ -935,7 +889,6 @@
     
     return b;
 }
-
 - (BOOL)commit {
     BOOL b =  [self executeUpdate:@"commit transaction"];
     
@@ -945,7 +898,6 @@
     
     return b;
 }
-
 - (BOOL)beginDeferredTransaction {
     
     BOOL b = [self executeUpdate:@"begin deferred transaction"];
@@ -955,7 +907,6 @@
     
     return b;
 }
-
 - (BOOL)beginTransaction {
     
     BOOL b = [self executeUpdate:@"begin exclusive transaction"];
@@ -965,13 +916,10 @@
     
     return b;
 }
-
 - (BOOL)inTransaction {
     return _inTransaction;
 }
-
 #if SQLITE_VERSION_NUMBER >= 3007000
-
 - (BOOL)startSavePointWithName:(NSString*)name error:(NSError**)outErr {
     
     // FIXME: make sure the savepoint name doesn't have a ' in it.
@@ -989,7 +937,6 @@
     
     return YES;
 }
-
 - (BOOL)releaseSavePointWithName:(NSString*)name error:(NSError**)outErr {
     
     NSParameterAssert(name);
@@ -1002,7 +949,6 @@
     
     return worked;
 }
-
 - (BOOL)rollbackToSavePointWithName:(NSString*)name error:(NSError**)outErr {
     
     NSParameterAssert(name);
@@ -1015,7 +961,6 @@
     
     return worked;
 }
-
 - (NSError*)inSavePoint:(void (^)(BOOL *rollback))block {
     static unsigned long savePointIdx = 0;
     
@@ -1040,14 +985,11 @@
     
     return err;
 }
-
 #endif
-
 
 - (BOOL)shouldCacheStatements {
     return _shouldCacheStatements;
 }
-
 - (void)setShouldCacheStatements:(BOOL)value {
     
     _shouldCacheStatements = value;
@@ -1060,7 +1002,6 @@
         [self setCachedStatements:nil];
     }
 }
-
 void FMDBBlockSQLiteCallBackFunction(sqlite3_context *context, int argc, sqlite3_value **argv);
 void FMDBBlockSQLiteCallBackFunction(sqlite3_context *context, int argc, sqlite3_value **argv) {
 #if ! __has_feature(objc_arc)
@@ -1070,7 +1011,6 @@ void FMDBBlockSQLiteCallBackFunction(sqlite3_context *context, int argc, sqlite3
 #endif
     block(context, argc, argv);
 }
-
 
 - (void)makeFunctionNamed:(NSString*)name maximumArguments:(int)count withBlock:(void (^)(sqlite3_context *context, int argc, sqlite3_value **argv))block {
     
@@ -1089,21 +1029,16 @@ void FMDBBlockSQLiteCallBackFunction(sqlite3_context *context, int argc, sqlite3
     sqlite3_create_function([self sqliteHandle], [name UTF8String], count, SQLITE_UTF8, (__bridge void*)b, &FMDBBlockSQLiteCallBackFunction, 0x00, 0x00);
 #endif
 }
-
 @end
-
-
 
 @implementation FMStatement
 @synthesize statement=_statement;
 @synthesize query=_query;
 @synthesize useCount=_useCount;
-
 - (void)finalize {
     [self close];
     [super finalize];
 }
-
 - (void)dealloc {
     [self close];
     FMDBRelease(_query);
@@ -1111,24 +1046,19 @@ void FMDBBlockSQLiteCallBackFunction(sqlite3_context *context, int argc, sqlite3
     [super dealloc];
 #endif
 }
-
 - (void)close {
     if (_statement) {
         sqlite3_finalize(_statement);
         _statement = 0x00;
     }
 }
-
 - (void)reset {
     if (_statement) {
         sqlite3_reset(_statement);
     }
 }
-
 - (NSString*)description {
     return [NSString stringWithFormat:@"%@ %ld hit(s) for query %@", [super description], _useCount, _query];
 }
 
-
 @end
-

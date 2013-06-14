@@ -5,9 +5,7 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <Foundation/Foundation.h>
-
 #import "ABProperties.h"
 #import "ABAddressBook.h"
 #import "ABRecord.h"

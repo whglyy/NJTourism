@@ -5,14 +5,10 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "DAO.h"
 #import "DatabaseManager.h"
-
 @implementation DAO
-
 @synthesize databaseQueue = _databaseQueue;
-
 - (id)init{ 
     self = [super init];
     
@@ -25,8 +21,6 @@
 	return self;
 }
 
-
-
 - (FMDatabaseQueue *)databaseQueue
 {
     if (![[DatabaseManager currentManager] isDatabaseOpened]) {
@@ -36,7 +30,6 @@
     }
     return _databaseQueue;
 }
-
 + (void)createTablesNeeded
 {
     @autoreleasepool {
@@ -112,7 +105,6 @@
             RECORDTIME text,\
             RECORDCONTENT text)";
             
-
             //执行sql
             BOOL isUploadTBCreateSuccess = [database executeUpdate:UploadTB_CREATE_Sql];
             if (!isUploadTBCreateSuccess)
@@ -143,5 +135,4 @@
         }];
     }
 }
-
 @end

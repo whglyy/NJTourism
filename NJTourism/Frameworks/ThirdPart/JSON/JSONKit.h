@@ -5,13 +5,11 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #include <stddef.h>
 #include <stdint.h>
 #include <limits.h>
 #include <TargetConditionals.h>
 #include <AvailabilityMacros.h>
-
 #ifdef    __OBJC__
 #import <Foundation/NSArray.h>
 #import <Foundation/NSData.h>
@@ -25,7 +23,6 @@
 extern "C" {
 #endif
   
-
 // For Mac OS X < 10.5.
 #ifndef   NSINTEGER_DEFINED
 #define   NSINTEGER_DEFINED
@@ -44,10 +41,8 @@ typedef unsigned int   NSUInteger;
 #endif // defined(__LP64__) || defined(NS_BUILD_32_LIKE_64)
 #endif // NSINTEGER_DEFINED
 
-
 #ifndef _JSONKIT_H_
 #define _JSONKIT_H_
-
 #if defined(__GNUC__) && (__GNUC__ >= 4) && defined(__APPLE_CC__) && (__APPLE_CC__ >= 5465)
 #define JK_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
 #else
@@ -56,9 +51,7 @@ typedef unsigned int   NSUInteger;
   
 #define JSONKIT_VERSION_MAJOR 1
 #define JSONKIT_VERSION_MINOR 4
-
 typedef NSUInteger JKFlags;
-
 /*
   JKParseOptionComments        : Allow C style // and /_* ... *_/ (without a _, obviously) comments in JSON.
   JKParseOptionUnicodeNewlines : Allow Unicode recommended (?:\r\n|[\n\v\f\r\x85\p{Zl}\p{Zp}]) newlines.
@@ -66,7 +59,6 @@ typedef NSUInteger JKFlags;
                                  This option allows JSON with malformed Unicode to be parsed without reporting an error.
                                  Any malformed Unicode is replaced with \uFFFD, or "REPLACEMENT CHARACTER".
  */
-
 enum {
   JKParseOptionNone                     = 0,
   JKParseOptionStrict                   = 0,
@@ -77,7 +69,6 @@ enum {
   JKParseOptionValidFlags               = (JKParseOptionComments | JKParseOptionUnicodeNewlines | JKParseOptionLooseUnicode | JKParseOptionPermitTextAfterValidJSON),
 };
 typedef JKFlags JKParseOptionFlags;
-
 enum {
   JKSerializeOptionNone                 = 0,
   JKSerializeOptionPretty               = (1 << 0),
@@ -86,13 +77,9 @@ enum {
   JKSerializeOptionValidFlags           = (JKSerializeOptionPretty | JKSerializeOptionEscapeUnicode | JKSerializeOptionEscapeForwardSlashes),
 };
 typedef JKFlags JKSerializeOptionFlags;
-
 #ifdef    __OBJC__
-
 typedef struct JKParseState JKParseState; // Opaque internal, private type.
-
 // As a general rule of thumb, if you use a method that doesn't accept a JKParseOptionFlags argument, it defaults to JKParseOptionStrict
-
 @interface JSONDecoder : NSObject {
   JKParseState *parseState;
 }
@@ -100,34 +87,28 @@ typedef struct JKParseState JKParseState; // Opaque internal, private type.
 + (id)decoderWithParseOptions:(JKParseOptionFlags)parseOptionFlags;
 - (id)initWithParseOptions:(JKParseOptionFlags)parseOptionFlags;
 - (void)clearCache;
-
 // The parse... methods were deprecated in v1.4 in favor of the v1.4 objectWith... methods.
 - (id)parseUTF8String:(const unsigned char *)string length:(size_t)length                         JK_DEPRECATED_ATTRIBUTE; // Deprecated in JSONKit v1.4.  Use objectWithUTF8String:length:        instead.
 - (id)parseUTF8String:(const unsigned char *)string length:(size_t)length error:(NSError **)error JK_DEPRECATED_ATTRIBUTE; // Deprecated in JSONKit v1.4.  Use objectWithUTF8String:length:error:  instead.
 // The NSData MUST be UTF8 encoded JSON.
 - (id)parseJSONData:(NSData *)jsonData                                                            JK_DEPRECATED_ATTRIBUTE; // Deprecated in JSONKit v1.4.  Use objectWithData:                     instead.
 - (id)parseJSONData:(NSData *)jsonData error:(NSError **)error                                    JK_DEPRECATED_ATTRIBUTE; // Deprecated in JSONKit v1.4.  Use objectWithData:error:               instead.
-
 // Methods that return immutable collection objects.
 - (id)objectWithUTF8String:(const unsigned char *)string length:(NSUInteger)length;
 - (id)objectWithUTF8String:(const unsigned char *)string length:(NSUInteger)length error:(NSError **)error;
 // The NSData MUST be UTF8 encoded JSON.
 - (id)objectWithData:(NSData *)jsonData;
 - (id)objectWithData:(NSData *)jsonData error:(NSError **)error;
-
 // Methods that return mutable collection objects.
 - (id)mutableObjectWithUTF8String:(const unsigned char *)string length:(NSUInteger)length;
 - (id)mutableObjectWithUTF8String:(const unsigned char *)string length:(NSUInteger)length error:(NSError **)error;
 // The NSData MUST be UTF8 encoded JSON.
 - (id)mutableObjectWithData:(NSData *)jsonData;
 - (id)mutableObjectWithData:(NSData *)jsonData error:(NSError **)error;
-
 @end
-
 ////////////
 #pragma mark Deserializing methods
 ////////////
-
 @interface NSString (JSONKitDeserializing)
 - (id)objectFromJSONString;
 - (id)objectFromJSONStringWithParseOptions:(JKParseOptionFlags)parseOptionFlags;
@@ -136,7 +117,6 @@ typedef struct JKParseState JKParseState; // Opaque internal, private type.
 - (id)mutableObjectFromJSONStringWithParseOptions:(JKParseOptionFlags)parseOptionFlags;
 - (id)mutableObjectFromJSONStringWithParseOptions:(JKParseOptionFlags)parseOptionFlags error:(NSError **)error;
 @end
-
 @interface NSData (JSONKitDeserializing)
 // The NSData MUST be UTF8 encoded JSON.
 - (id)objectFromJSONData;
@@ -146,7 +126,6 @@ typedef struct JKParseState JKParseState; // Opaque internal, private type.
 - (id)mutableObjectFromJSONDataWithParseOptions:(JKParseOptionFlags)parseOptionFlags;
 - (id)mutableObjectFromJSONDataWithParseOptions:(JKParseOptionFlags)parseOptionFlags error:(NSError **)error;
 @end
-
 ////////////
 #pragma mark Serializing methods
 ////////////
@@ -161,7 +140,6 @@ typedef struct JKParseState JKParseState; // Opaque internal, private type.
 - (NSString *)JSONString; // Invokes JSONStringWithOptions:JKSerializeOptionNone includeQuotes:YES
 - (NSString *)JSONStringWithOptions:(JKSerializeOptionFlags)serializeOptions includeQuotes:(BOOL)includeQuotes error:(NSError **)error;
 @end
-
 @interface NSArray (JSONKitSerializing)
 - (NSData *)JSONData;
 - (NSData *)JSONDataWithOptions:(JKSerializeOptionFlags)serializeOptions error:(NSError **)error;
@@ -170,7 +148,6 @@ typedef struct JKParseState JKParseState; // Opaque internal, private type.
 - (NSString *)JSONStringWithOptions:(JKSerializeOptionFlags)serializeOptions error:(NSError **)error;
 - (NSString *)JSONStringWithOptions:(JKSerializeOptionFlags)serializeOptions serializeUnsupportedClassesUsingDelegate:(id)delegate selector:(SEL)selector error:(NSError **)error;
 @end
-
 @interface NSDictionary (JSONKitSerializing)
 - (NSData *)JSONData;
 - (NSData *)JSONDataWithOptions:(JKSerializeOptionFlags)serializeOptions error:(NSError **)error;
@@ -179,14 +156,11 @@ typedef struct JKParseState JKParseState; // Opaque internal, private type.
 - (NSString *)JSONStringWithOptions:(JKSerializeOptionFlags)serializeOptions error:(NSError **)error;
 - (NSString *)JSONStringWithOptions:(JKSerializeOptionFlags)serializeOptions serializeUnsupportedClassesUsingDelegate:(id)delegate selector:(SEL)selector error:(NSError **)error;
 @end
-
 #ifdef __BLOCKS__
-
 @interface NSArray (JSONKitSerializingBlockAdditions)
 - (NSData *)JSONDataWithOptions:(JKSerializeOptionFlags)serializeOptions serializeUnsupportedClassesUsingBlock:(id(^)(id object))block error:(NSError **)error;
 - (NSString *)JSONStringWithOptions:(JKSerializeOptionFlags)serializeOptions serializeUnsupportedClassesUsingBlock:(id(^)(id object))block error:(NSError **)error;
 @end
-
 @interface NSDictionary (JSONKitSerializingBlockAdditions)
 - (NSData *)JSONDataWithOptions:(JKSerializeOptionFlags)serializeOptions serializeUnsupportedClassesUsingBlock:(id(^)(id object))block error:(NSError **)error;
 - (NSString *)JSONStringWithOptions:(JKSerializeOptionFlags)serializeOptions serializeUnsupportedClassesUsingBlock:(id(^)(id object))block error:(NSError **)error;
@@ -194,11 +168,8 @@ typedef struct JKParseState JKParseState; // Opaque internal, private type.
   
 #endif
 
-
 #endif // __OBJC__
-
 #endif // _JSONKIT_H_
-
 #ifdef __cplusplus
 }  // extern "C"
 #endif

@@ -5,19 +5,15 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "IPhoneFileUtil.h"
 
-
 @implementation IPhoneFileUtil
-
 
 + (NSString *)getPrivateDocsDir 
 {
     
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
-
     //NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     documentsDirectory = [documentsDirectory stringByAppendingPathComponent:@"Private Documents"];
@@ -27,7 +23,6 @@
     
     return documentsDirectory;    
 }
-
 //-------------------------------------------------------------------
 //方法：getDocumentDirectory
 //说明：检索应用程序的文档目录路径
@@ -39,7 +34,6 @@
 	NSString *documentDirectory = [paths objectAtIndex: 0 ];
 	return documentDirectory;	
 }
-
 //-------------------------------------------------------------------
 //方法：getTemporaryDirectory
 //说明：检索应用程序的文档临时目录路径
@@ -51,7 +45,6 @@
 	return tempPath;
 }
 
-
 //-------------------------------------------------------------------
 //方法：getAppendingPath
 //说明：文件目录追加
@@ -62,7 +55,6 @@
 	NSString *path=[string1 stringByAppendingPathComponent:string2];	
 	return path ;		
 }
-
 //-------------------------------------------------------------------
 //方法：fileIsExists
 //说明：判断文件是否存在
@@ -75,7 +67,6 @@
 	}
 	return FALSE;
 }
-
 //-------------------------------------------------------------------
 //方法：writeArrayToFile
 //说明：将数组对象写入指定的文件
@@ -85,7 +76,6 @@
 -(void)writeArrayToFile:(NSString *)filePath fileContent:(NSArray *) array{
 	[array writeToFile:filePath atomically:YES];
 }
-
 //-------------------------------------------------------------------
 //方法：dataFilePath
 //说明：获取指定文件名所在document的全路径
@@ -97,7 +87,6 @@
 	NSString *path = [self getAppendingPath:documentDirectory pathAppending:fileName];
 	return path;
 }
-
 //-------------------------------------------------------------------
 //方法：deleteFile
 //说明：删除指定的文件
@@ -116,7 +105,6 @@
 	}
 	return TRUE;
 }
-
 -(void)createFolder:(NSString *) filepath {
 	
 	NSFileManager *NSFm= [NSFileManager defaultManager]; 
@@ -138,8 +126,6 @@
 	
 }
 
-
-
 -(NSArray *)arrayOfFoldersInFolder:(NSString*) folder {
 	NSFileManager *fm = [NSFileManager defaultManager];
 	NSArray* files = [fm contentsOfDirectoryAtPath:folder error:nil];
@@ -156,5 +142,4 @@
 	
 	return directoryList;
 }
-
 @end

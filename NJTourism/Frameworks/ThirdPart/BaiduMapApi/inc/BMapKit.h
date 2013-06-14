@@ -5,7 +5,6 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "BMKMapManager.h"
 #import "BMKGeneralDelegate.h"
 #import "BMKAnnotation.h"
@@ -29,10 +28,8 @@
 #import "BMKPolygonView.h"
 #import "BMKPolylineView.h"
 #import "BMKCircleView.h"
-
 #import "BMKSearch.h"
 #import "BMKPoiSearchType.h"
 #import "BMKRouteSearchType.h"
 #import "BMKGeocodeType.h"
-
 #import "BMKVersion.h"

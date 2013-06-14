@@ -5,28 +5,21 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "FMDatabasePool.h"
 #import "FMDatabase.h"
-
 @interface FMDatabasePool()
-
 - (void)pushDatabaseBackInPool:(FMDatabase*)db;
 - (FMDatabase*)db;
-
 @end
-
 
 @implementation FMDatabasePool
 @synthesize path=_path;
 @synthesize delegate=_delegate;
 @synthesize maximumNumberOfDatabasesToCreate=_maximumNumberOfDatabasesToCreate;
 
-
 + (id)databasePoolWithPath:(NSString*)aPath {
     return FMDBReturnAutoreleased([[self alloc] initWithPath:aPath]);
 }
-
 - (id)initWithPath:(NSString*)aPath {
     
     self = [super init];
@@ -40,7 +33,6 @@
     
     return self;
 }
-
 - (void)dealloc {
     
     _delegate = 0x00;
@@ -57,11 +49,9 @@
 #endif
 }
 
-
 - (void)executeLocked:(void (^)(void))aBlock {
     dispatch_sync(_lockQueue, aBlock);
 }
-
 - (void)pushDatabaseBackInPool:(FMDatabase*)db {
     
     if (!db) { // db can be null if we set an upper bound on the # of databases to create.
@@ -79,7 +69,6 @@
         
     }];
 }
-
 - (FMDatabase*)db {
     
     __block FMDatabase *db;
@@ -126,7 +115,6 @@
     
     return db;
 }
-
 - (NSUInteger)countOfCheckedInDatabases {
     
     __block NSInteger count;
@@ -137,7 +125,6 @@
     
     return count;
 }
-
 - (NSUInteger)countOfCheckedOutDatabases {
     
     __block NSInteger count;
@@ -148,7 +135,6 @@
     
     return count;
 }
-
 - (NSUInteger)countOfOpenDatabases {
     __block NSInteger count;
     
@@ -158,14 +144,12 @@
     
     return count;
 }
-
 - (void)releaseAllDatabases {
     [self executeLocked:^() {
         [_databaseOutPool removeAllObjects];
         [_databaseInPool removeAllObjects];
     }];
 }
-
 - (void)inDatabase:(void (^)(FMDatabase *db))block {
     
     FMDatabase *db = [self db];
@@ -174,7 +158,6 @@
     
     [self pushDatabaseBackInPool:db];
 }
-
 - (void)beginTransaction:(BOOL)useDeferred withBlock:(void (^)(FMDatabase *db, BOOL *rollback))block {
     
     BOOL shouldRollback = NO;
@@ -200,11 +183,9 @@
     
     [self pushDatabaseBackInPool:db];
 }
-
 - (void)inDeferredTransaction:(void (^)(FMDatabase *db, BOOL *rollback))block {
     [self beginTransaction:YES withBlock:block];
 }
-
 - (void)inTransaction:(void (^)(FMDatabase *db, BOOL *rollback))block {
     [self beginTransaction:NO withBlock:block];
 }
@@ -240,5 +221,4 @@
     return err;
 }
 #endif
-
 @end

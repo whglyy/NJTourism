@@ -5,11 +5,8 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "NSDate+Helper.h"
-
 @implementation NSDate (Helper)
-
 + (NSDate *)dateFromString:(NSString *)string withFormat:(NSString *)formatString
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -17,7 +14,6 @@
     NSDate *date = [dateFormatter dateFromString:string];
     return date;
 }
-
 + (NSString *)stringFromDate:(NSDate *)date withFormat:(NSString *)formatString
 {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -25,5 +21,4 @@
     NSString *dateStr = [dateFormatter stringFromDate:date];
     return dateStr;
 }
-
 @end

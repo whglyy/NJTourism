@@ -6,13 +6,10 @@
 //
 //
 
-
 #import "EGOPhotoGlobal.h"
 #import "EGOPhotoSource.h"
 #import "EGOImageLoader.h"
-
 @class EGOPhotoScrollView, EGOPhotoCaptionView;
-
 @interface EGOPhotoImageView : UIView <EGOImageLoaderObserver, UIScrollViewDelegate>{
 @private
 	EGOPhotoScrollView *_scrollView;
@@ -26,17 +23,14 @@
 //	CGPoint _midPos;
 	
 }
-
 @property(nonatomic,readonly) id <EGOPhoto> photo;
 @property(nonatomic,readonly) UIImageView *imageView;
 @property(nonatomic,readonly) EGOPhotoScrollView *scrollView;
 @property(nonatomic,assign,getter=isLoading) BOOL loading;
-
 - (void)setPhoto:(id <EGOPhoto>)aPhoto;
 - (void)killScrollViewZoom;
 - (void)layoutScrollViewAnimated:(BOOL)animated;
 - (void)prepareForReusue;
 - (void)rotateToOrientation:(UIInterfaceOrientation)orientation;
 - (CGSize)sizeForPopover;
-
 @end

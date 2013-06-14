@@ -5,11 +5,8 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "UIColor-HSVAdditions.h"
-
 @implementation UIColor (UIColor_HSVAdditions)
-
 
 +(struct hsv_color)HSVfromRGB:(struct rgb_color)rgb
 {
@@ -38,7 +35,6 @@
 	
     return hsv;
 }
-
 +(struct hsv_color)HSVfromRGB22:(struct rgb_color)rgb
 {
 	struct hsv_color hsv;

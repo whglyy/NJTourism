@@ -5,9 +5,7 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "DefineConstant.h"
-
 
 extern NSString* EncodeObjectFromDic(NSDictionary *dic, NSString *key)
 {
@@ -27,11 +25,9 @@ extern NSString* EncodeObjectFromDic(NSDictionary *dic, NSString *key)
     return nil;
 }
 
-
 extern SNPageInfo
 SNPageInfoMake(NSInteger currentPage, NSInteger totalPage, NSInteger pageSize)
 {
     return (SNPageInfo){currentPage, totalPage, pageSize};
 }
-
 const SNPageInfo SNPageInfoZero = {0,0,0};

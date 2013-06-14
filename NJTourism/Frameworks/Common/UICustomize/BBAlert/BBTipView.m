@@ -5,9 +5,7 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "BBTipView.h"
-
 @interface BBTipView(){
     BOOL __hasLogo;
     
@@ -15,16 +13,13 @@
     CGFloat  __tipViewWidth;
     
 }
-
 @property (nonatomic, retain) UILabel *label;
 @property (nonatomic, retain) UIView *fatherView;
 @property (nonatomic, retain) NSTimer *dlgTimer;
 @property (nonatomic, copy) NSString *labelText;
 @property (nonatomic, retain) UIImage  *logoImage;
 @end
-
 /*********************************************************************/
-
 @implementation BBTipView
 @synthesize label = _label;
 @synthesize fatherView = _fatherView;
@@ -32,17 +27,12 @@
 @synthesize labelText = _labelText;
 @synthesize showTime = _showTime;
 @synthesize dimBackground = _dimBackground;
-
 - (void)dealloc {
-
     TT_INVALIDATE_TIMER(_dlgTimer);
 
-
 }
-
 #pragma mark -
 #pragma mark tools
-
 - (CGFloat)heightWithMessage:(NSString *)message{
     
     CGSize messageSize = [message sizeWithFont:[UIFont systemFontOfSize:16.0f]
@@ -52,7 +42,6 @@
     return messageSize.height+10.0;
     
 }
-
 static void addRoundedRectToPath(CGContextRef context, CGRect rect,
                                  float ovalWidth,float ovalHeight)
 {
@@ -75,7 +64,6 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect,
     CGContextClosePath(context); // 12
     CGContextRestoreGState(context); // 13
 }
-
 - (id)initWithView:(UIView *)view message:(NSString *)message posY:(CGFloat)posY
 {
     self = [super initWithFrame:view.bounds];
@@ -111,10 +99,8 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect,
     }
     return self;
 }
-
 - (id)initWithView:(UIView *)view message:(NSString *)message
           logoView:(UIImage *)logoImage posY:(CGFloat)posY{
-
     self = [self initWithView:view message:message posY:posY];
     if (self) {
         self.logoImage = logoImage;
@@ -125,7 +111,6 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect,
     }
     return self;
 }
-
 - (UILabel *)label
 {
     if (!_label) {
@@ -139,7 +124,6 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect,
     }
     return _label;
 }
-
 - (void)show 
 {
     [self.fatherView addSubview:self];
@@ -155,7 +139,6 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect,
                                                    userInfo:nil 
                                                     repeats:NO];
 }
-
 - (void)dismiss
 {
     [UIView animateWithDuration:0.2f
@@ -167,7 +150,6 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect,
                          [self removeFromSuperview];
                      }];
 }
-
 - (void)dismiss:(BOOL)animation
 {
     if (animation) {
@@ -184,7 +166,6 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect,
         [self removeFromSuperview];
     }
 }
-
 - (void)drawRect:(CGRect)rect
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -250,7 +231,6 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect,
     TT_RELEASE_SAFELY(logoView);
     TT_RELEASE_SAFELY(bgImView);
 }
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self dismiss];

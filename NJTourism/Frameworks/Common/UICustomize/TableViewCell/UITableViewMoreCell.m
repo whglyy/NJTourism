@@ -5,17 +5,10 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "UITableViewMoreCell.h"
-
 static const CGFloat kMoreButtonMargin = 26;
 static const CGFloat kSmallMargin = 21;
-
 @implementation UITableViewMoreCell
-
-
-
-
 
 
 
@@ -23,10 +16,8 @@ static const CGFloat kSmallMargin = 21;
     
     return  48;
 }
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // NSObject
-
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString*)identifier {
     if (self = [super initWithStyle:style reuseIdentifier:identifier]) {
         
@@ -49,10 +40,8 @@ static const CGFloat kSmallMargin = 21;
     return self;
 }
 
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // UIView
-
 - (void)layoutSubviews {
     
     [super layoutSubviews];
@@ -69,15 +58,11 @@ static const CGFloat kSmallMargin = 21;
     self.activityIndicatorView.top =  self.textLabel.top;    
     
 }
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // TTTableViewCell
 
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // public
-
 - (UIActivityIndicatorView*)activityIndicatorView {
     if (!_activityIndicatorView) {
         _activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:
@@ -86,7 +71,6 @@ static const CGFloat kSmallMargin = 21;
     }
     return _activityIndicatorView;
 }
-
 - (void)setAnimating:(BOOL)animating {
     if (_animating != animating) {
         _animating = animating;
@@ -99,6 +83,5 @@ static const CGFloat kSmallMargin = 21;
         [self setNeedsLayout];
     }
 }
-
 
 @end

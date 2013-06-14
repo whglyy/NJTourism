@@ -24,26 +24,21 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
-
 //#include "config.h"
 #include "qrspec.h"
-
 /******************************************************************************
  * Version and capacity
  *****************************************************************************/
-
 typedef struct {
 	int width; //< Edge length of the symbol
 	int words;  //< Data capacity (bytes)
 	int remainder; //< Remainder bit (bits)
 	int ec[4];  //< Number of ECC code (bytes)
 } QRspec_Capacity;
-
 /**
  * Table of the capacity of symbols
  * See Table 1 (pp.13) and Table 12-16 (pp.30-36), JIS X0510:2004.
@@ -91,55 +86,44 @@ static const QRspec_Capacity qrspecCapacity[QRSPEC_VERSION_MAX + 1] = {
 	{173, 3532, 0, { 720, 1316, 1950, 2310}},
 	{177, 3706, 0, { 750, 1372, 2040, 2430}} //40
 };
-
 int QRspec_getDataLength(int version, QRecLevel level)
 {
 	return qrspecCapacity[version].words - qrspecCapacity[version].ec[level];
 }
-
 int QRspec_getECCLength(int version, QRecLevel level)
 {
 	return qrspecCapacity[version].ec[level];
 }
-
 int QRspec_getMinimumVersion(int size, QRecLevel level)
 {
 	int i;
 	int words;
-
 	for(i=1; i<= QRSPEC_VERSION_MAX; i++) {
 		words  = qrspecCapacity[i].words - qrspecCapacity[i].ec[level];
 		if(words >= size) return i;
 	}
-
 	return -1;
 }
-
 int QRspec_getWidth(int version)
 {
 	return qrspecCapacity[version].width;
 }
-
 int QRspec_getRemainder(int version)
 {
 	return qrspecCapacity[version].remainder;
 }
-
 /******************************************************************************
  * Length indicator
  *****************************************************************************/
-
 static const int lengthTableBits[4][3] = {
 	{10, 12, 14},
 	{ 9, 11, 13},
 	{ 8, 16, 16},
 	{ 8, 10, 12}
 };
-
 int QRspec_lengthIndicator(QRencodeMode mode, int version)
 {
 	int l;
-
 	if(mode == QR_MODE_STRUCTURE) return 0;
 	if(version <= 9) {
 		l = 0;
@@ -148,16 +132,13 @@ int QRspec_lengthIndicator(QRencodeMode mode, int version)
 	} else {
 		l = 2;
 	}
-
 	return lengthTableBits[mode][l];
 }
-
 int QRspec_maximumWords(QRencodeMode mode, int version)
 {
 	int l;
 	int bits;
 	int words;
-
 	if(mode == QR_MODE_STRUCTURE) return 3;
 	if(version <= 9) {
 		l = 0;
@@ -166,20 +147,16 @@ int QRspec_maximumWords(QRencodeMode mode, int version)
 	} else {
 		l = 2;
 	}
-
 	bits = lengthTableBits[mode][l];
 	words = (1 << bits) - 1;
 	if(mode == QR_MODE_KANJI) {
 		words *= 2; // the number of bytes is required
 	}
-
 	return words;
 }
-
 /******************************************************************************
  * Error correction code
  *****************************************************************************/
-
 /**
  * Table of the error correction code (Reed-Solomon block)
  * See Table 12-16 (pp.30-36), JIS X0510:2004.
@@ -227,17 +204,14 @@ static const int eccTable[QRSPEC_VERSION_MAX+1][4][2] = {
 	{{20,  4}, {40,  7}, {43, 22}, {10, 67}},
 	{{19,  6}, {18, 31}, {34, 34}, {20, 61}},//40
 };
-
 void QRspec_getEccSpec(int version, QRecLevel level, int spec[5])
 {
 	int b1, b2;
 	int data, ecc;
-
 	b1 = eccTable[version][level][0];
 	b2 = eccTable[version][level][1];
 	data = QRspec_getDataLength(version, level);
 	ecc  = QRspec_getECCLength(version, level);
-
 	if(b2 == 0) {
 		spec[0] = b1;
 		spec[1] = data / b1;
@@ -251,11 +225,9 @@ void QRspec_getEccSpec(int version, QRecLevel level, int spec[5])
 		spec[4] = spec[1] + 1;
 	}
 }
-
 /******************************************************************************
  * Alignment pattern
  *****************************************************************************/
-
 /**
  * Positions of alignment patterns.
  * This array includes only the second and the third position of the alignment
@@ -274,7 +246,6 @@ static const int alignmentPattern[QRSPEC_VERSION_MAX+1][2] = {
 	{30, 56}, {34, 60}, {30, 58}, {34, 62}, {30, 54}, //31-35
 	{24, 50}, {28, 54}, {32, 58}, {26, 54}, {30, 58}, //35-40
 };
-
 /**
  * Put an alignment marker.
  * @param frame
@@ -292,7 +263,6 @@ static void QRspec_putAlignmentMarker(unsigned char *frame, int width, int ox, i
 	};
 	int x, y;
 	const unsigned char *s;
-
 	frame += (oy - 2) * width + ox - 2;
 	s = finder;
 	for(y=0; y<5; y++) {
@@ -303,35 +273,29 @@ static void QRspec_putAlignmentMarker(unsigned char *frame, int width, int ox, i
 		s += 5;
 	}
 }
-
 //__STATIC
 static void QRspec_putAlignmentPattern(int version, unsigned char *frame, int width)
 {
 	int d, w, x, y, cx, cy;
-
 	if(version < 2) return;
-
 	d = alignmentPattern[version][1] - alignmentPattern[version][0];
 	if(d < 0) {
 		w = 2;
 	} else {
 		w = (width - alignmentPattern[version][0]) / d + 2;
 	}
-
 	if(w * w - 3 == 1) {
 		x = alignmentPattern[version][0];
 		y = alignmentPattern[version][0];
 		QRspec_putAlignmentMarker(frame, width, x, y);
 		return;
 	}
-
 	cx = alignmentPattern[version][0];
 	for(x=1; x<w - 1; x++) {
 		QRspec_putAlignmentMarker(frame, width,  6, cx);
 		QRspec_putAlignmentMarker(frame, width, cx,  6);
 		cx += d;
 	}
-
 	cy = alignmentPattern[version][0];
 	for(y=0; y<w-1; y++) {
 		cx = alignmentPattern[version][0];
@@ -342,11 +306,9 @@ static void QRspec_putAlignmentPattern(int version, unsigned char *frame, int wi
 		cy += d;
 	}
 }
-
 /******************************************************************************
  * Version information pattern
  *****************************************************************************/
-
 /**
  * Version information pattern (BCH coded).
  * See Table 1 in Appendix D (pp.68) of JIS X0510:2004.
@@ -358,18 +320,14 @@ static const unsigned int versionPattern[QRSPEC_VERSION_MAX - 6] = {
 	0x1f250, 0x209d5, 0x216f0, 0x228ba, 0x2379f, 0x24b0b, 0x2542e, 0x26a64,
 	0x27541, 0x28c69
 };
-
 unsigned int QRspec_getVersionPattern(int version)
 {
 	if(version < 7 || version > QRSPEC_VERSION_MAX) return 0;
-
 	return versionPattern[version -7];
 }
-
 /******************************************************************************
  * Format information
  *****************************************************************************/
-
 /* See calcFormatInfo in tests/test_qrspec.c */
 static const unsigned int formatInfo[4][8] = {
 	{0x77c4, 0x72f3, 0x7daa, 0x789d, 0x662f, 0x6318, 0x6c41, 0x6976},
@@ -377,25 +335,20 @@ static const unsigned int formatInfo[4][8] = {
 	{0x355f, 0x3068, 0x3f31, 0x3a06, 0x24b4, 0x2183, 0x2eda, 0x2bed},
 	{0x1689, 0x13be, 0x1ce7, 0x19d0, 0x0762, 0x0255, 0x0d0c, 0x083b}
 };
-
 unsigned int QRspec_getFormatInfo(int mask, QRecLevel level)
 {
 	if(mask < 0 || mask > 7) return 0;
-
 	return formatInfo[level][mask];
 }
-
 /******************************************************************************
  * Frame
  *****************************************************************************/
-
 /**
  * Cache of initial frames.
  */
 /* C99 says that static storage shall be initialized to a null pointer
  * by compiler. */
 static unsigned char *frames[QRSPEC_VERSION_MAX + 1];
-
 /**
  * Put a finder pattern.
  * @param frame
@@ -415,7 +368,6 @@ static void putFinderPattern(unsigned char *frame, int width, int ox, int oy)
 	};
 	int x, y;
 	const unsigned char *s;
-
 	frame += oy * width + ox;
 	s = finder;
 	for(y=0; y<7; y++) {
@@ -427,18 +379,15 @@ static void putFinderPattern(unsigned char *frame, int width, int ox, int oy)
 	}
 }
 
-
 static unsigned char *QRspec_createFrame(int version)
 {
 	unsigned char *frame, *p, *q;
 	int width;
 	int x, y;
 	unsigned int verinfo, v;
-
 	width = qrspecCapacity[version].width;
 	frame = (unsigned char *)malloc(width * width);
 	if(frame == NULL) return NULL;
-
 	memset(frame, 0, width * width);
 	/* Finder pattern */
 	putFinderPattern(frame, width, 0, 0);
@@ -481,11 +430,9 @@ static unsigned char *QRspec_createFrame(int version)
 	}
 	/* Alignment pattern */
 	QRspec_putAlignmentPattern(version, frame, width);
-
 	/* Version information */
 	if(version >= 7) {
 		verinfo = QRspec_getVersionPattern(version);
-
 		p = frame + width * (width - 11);
 		v = verinfo;
 		for(x=0; x<6; x++) {
@@ -494,7 +441,6 @@ static unsigned char *QRspec_createFrame(int version)
 				v = v >> 1;
 			}
 		}
-
 		p = frame + width - 11;
 		v = verinfo;
 		for(y=0; y<6; y++) {
@@ -507,34 +453,26 @@ static unsigned char *QRspec_createFrame(int version)
 	}
 	/* and a little bit... */
 	frame[width * (width - 8) + 8] = 0x81;
-
 	return frame;
 }
-
 unsigned char *QRspec_newFrame(int version)
 {
 	unsigned char *frame;
 	int width;
-
 	if(version < 1 || version > QRSPEC_VERSION_MAX) return NULL;
-
 	if(frames[version] == NULL) {
 		frames[version] = QRspec_createFrame(version);
 	}
 	if(frames[version] == NULL) return NULL;
-
 	width = qrspecCapacity[version].width;
 	frame = (unsigned char *)malloc(width * width);
 	if(frame == NULL) return NULL;
 	memcpy(frame, frames[version], width * width);
-
 	return frame;
 }
-
 void QRspec_clearCache(void)
 {
 	int i;
-
 	for(i=1; i<=QRSPEC_VERSION_MAX; i++) {
 		free(frames[i]);
 	}

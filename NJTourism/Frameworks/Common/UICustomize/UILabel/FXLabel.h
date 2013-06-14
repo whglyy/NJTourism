@@ -5,7 +5,6 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #ifndef AH_RETAIN
 #if __has_feature(objc_arc)
 #define AH_RETAIN(x) (x)
@@ -21,15 +20,11 @@
 #define AH_SUPER_DEALLOC [super dealloc]
 #endif
 #endif
-
 //  ARC Helper ends
-
 
 #import <UIKit/UIKit.h>
 
-
 @interface FXLabel : UILabel
-
 @property (nonatomic, assign) CGFloat shadowBlur;
 @property (nonatomic, assign) CGSize innerShadowOffset;
 @property (nonatomic, strong) UIColor *innerShadowColor;
@@ -40,5 +35,4 @@
 @property (nonatomic, assign) CGPoint gradientEndPoint;
 @property (nonatomic, assign) NSUInteger oversampling;
 @property (nonatomic, assign) UIEdgeInsets textInsets;
-
 @end

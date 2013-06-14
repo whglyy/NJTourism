@@ -5,20 +5,15 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "TPKeyboardAvoidingScrollView.h"
-
 #define _UIKeyboardFrameEndUserInfoKey (&UIKeyboardFrameEndUserInfoKey != NULL ? UIKeyboardFrameEndUserInfoKey : @"UIKeyboardBoundsUserInfoKey")
-
 @interface TPKeyboardAvoidingScrollView ()
 - (UIView*)findFirstResponderBeneathView:(UIView*)view;
 - (UIEdgeInsets)contentInsetForKeyboard;
 - (CGFloat)idealOffsetForView:(UIView *)view withSpace:(CGFloat)space;
 - (CGRect)keyboardRect;
 @end
-
 @implementation TPKeyboardAvoidingScrollView
-
 - (void)setup {
     if ( CGSizeEqualToSize(self.contentSize, CGSizeZero) ) {
         self.contentSize = self.bounds.size;
@@ -30,25 +25,19 @@
     }
     _priorInset = self.contentInset;
 }
-
 -(id)initWithFrame:(CGRect)frame {
     if ( !(self = [super initWithFrame:frame]) ) return nil;
     [self setup];
     return self;
 }
-
 -(void)awakeFromNib {
     [self setup];
 }
-
 -(void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-
 }
-
 -(void)setFrame:(CGRect)frame {
     [super setFrame:frame];
-
     CGSize contentSize = _originalContentSize;
     contentSize.width = MAX(contentSize.width, self.frame.size.width);
     contentSize.height = MAX(contentSize.height, self.frame.size.height);
@@ -58,7 +47,6 @@
         self.contentInset = [self contentInsetForKeyboard];
     }
 }
-
 -(void)setContentSize:(CGSize)contentSize {
     _originalContentSize = contentSize;
     
@@ -70,12 +58,10 @@
         self.contentInset = [self contentInsetForKeyboard];
     }
 }
-
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     [[self findFirstResponderBeneathView:self] resignFirstResponder];
     [super touchesEnded:touches withEvent:event];
 } 
-
 - (void)keyboardWillShow:(NSNotification*)notification {
     _keyboardRect = [[[notification userInfo] objectForKey:_UIKeyboardFrameEndUserInfoKey] CGRectValue];
     _keyboardVisible = YES;
@@ -90,7 +76,6 @@
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationCurve:[[[notification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]];
     [UIView setAnimationDuration:[[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue]];
-
     self.contentInset = [self contentInsetForKeyboard];
     [self setContentOffset:CGPointMake(self.contentOffset.x, 
                                        [self idealOffsetForView:firstResponder withSpace:[self keyboardRect].origin.y - self.bounds.origin.y]) 
@@ -98,11 +83,9 @@
     
     [UIView commitAnimations];
 }
-
 - (void)keyboardWillHide:(NSNotification*)notification {
     _keyboardRect = CGRectZero;
     _keyboardVisible = NO;
-
     // Restore dimensions to prior size
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationCurve:[[[notification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] intValue]];
@@ -110,7 +93,6 @@
     self.contentInset = _priorInset;
     [UIView commitAnimations];
 }
-
 - (UIView*)findFirstResponderBeneathView:(UIView*)view {
     // Search recursively for first responder
     for ( UIView *childView in view.subviews ) {
@@ -120,14 +102,12 @@
     }
     return nil;
 }
-
 - (UIEdgeInsets)contentInsetForKeyboard {
     UIEdgeInsets newInset = self.contentInset;
     CGRect keyboardRect = [self keyboardRect];
     newInset.bottom = keyboardRect.size.height - ((keyboardRect.origin.y+keyboardRect.size.height) - (self.bounds.origin.y+self.bounds.size.height));
     return newInset;
 }
-
 -(CGFloat)idealOffsetForView:(UIView *)view withSpace:(CGFloat)space {
     
     // Convert the rect to get the view's distance from the top of the scrollView.
@@ -155,7 +135,6 @@
     
     return offset;
 }
-
 -(void)adjustOffsetToIdealIfNeeded {
     
     // Only do this if the keyboard is already visible
@@ -167,7 +146,6 @@
     
     [self setContentOffset:idealOffset animated:YES];                
 }
-
 - (CGRect)keyboardRect {
     CGRect keyboardRect = [self convertRect:_keyboardRect fromView:nil];
     if ( keyboardRect.origin.y == 0 ) {
@@ -176,5 +154,4 @@
     }
     return keyboardRect;
 }
-
 @end

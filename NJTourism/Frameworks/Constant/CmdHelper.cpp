@@ -5,11 +5,9 @@
 //  Created by lyywhg on 12-9-5.
 //  Copyright (c) 2012年 FatFist. All rights reserved.
 //
-
 #include <stdio.h>
 #include "CmdConstant.h"
 #include "CmdHelper.h"
-
 
 bool CC_Login_Contain(int cmdCode)
 {
@@ -22,7 +20,6 @@ bool CC_Login_Contain(int cmdCode)
     }
     return false;
 }
-
 
 bool CC_Need_Cookie_Contain(int cmdCode)
 {

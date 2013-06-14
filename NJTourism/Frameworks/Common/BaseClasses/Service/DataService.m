@@ -5,19 +5,14 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "DataService.h"
 #import "ErrorAnalyzeUtil.h"
-
 @implementation DataService
-
 
 - (void)dealloc
 {
     [self cancelRequests];
-
 }
-
 - (NSString *)errorMsgOfRequestError:(NSError *)error
 {
     ASINetworkErrorType errorCode = error.code;
@@ -108,7 +103,6 @@
         
     return L(errorMsg);
 }
-
 - (BOOL)isResponseSuccess:(NSDictionary *)items withCMDCode:(E_CMDCODE)cmd
 {
 //解析状态信息，返回response的状态。
@@ -122,6 +116,5 @@
     }
     
 }
-
 
 @end

@@ -5,19 +5,15 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 @class ASIHTTPRequest;
-
 typedef enum _ASIAuthenticationType {
 	ASIStandardAuthenticationType = 0,
     ASIProxyAuthenticationType = 1
 } ASIAuthenticationType;
-
 @interface ASIAutorotatingViewController : UIViewController
 @end
-
 @interface ASIAuthenticationDialog : ASIAutorotatingViewController <UIActionSheetDelegate, UITableViewDelegate, UITableViewDataSource> {
 	ASIHTTPRequest *request;
 	ASIAuthenticationType type;
@@ -27,7 +23,6 @@ typedef enum _ASIAuthenticationType {
 }
 + (void)presentAuthenticationDialogForRequest:(ASIHTTPRequest *)request;
 + (void)dismiss;
-
 @property (retain) ASIHTTPRequest *request;
 @property (assign) ASIAuthenticationType type;
 @property (assign) BOOL didEnableRotationNotifications;

@@ -5,18 +5,12 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "ABRecord.h"
 #import "ABMultiValue.h"
-
 #import <AddressBook/ABPerson.h>
-
 static NSMutableIndexSet * __multiValuePropertyIDSet = nil;
-
 @implementation ABRecord
-
 @synthesize recordRef=_ref;
-
 + (void) initialize
 {
     if ( self != [ABRecord class] )
@@ -31,7 +25,6 @@ static NSMutableIndexSet * __multiValuePropertyIDSet = nil;
     [__multiValuePropertyIDSet addIndex: kABPersonURLProperty];
     [__multiValuePropertyIDSet addIndex: kABPersonRelatedNamesProperty];
 }
-
 + (Class<ABRefInitialization>) wrapperClassForPropertyID: (ABPropertyID) propID
 {
     if ( [__multiValuePropertyIDSet containsIndex: propID] )
@@ -39,7 +32,6 @@ static NSMutableIndexSet * __multiValuePropertyIDSet = nil;
     
     return ( Nil );
 }
-
 - (id) initWithABRef: (CFTypeRef) recordRef
 {
     if ( recordRef == NULL )
@@ -56,24 +48,20 @@ static NSMutableIndexSet * __multiValuePropertyIDSet = nil;
     
     return ( self );
 }
-
 - (void) dealloc
 {
     if ( _ref != NULL )
         CFRelease( _ref );
     [super dealloc];
 }
-
 - (ABRecordID) recordID
 {
     return ( ABRecordGetRecordID(_ref) );
 }
-
 - (ABRecordType) recordType
 {
     return ( ABRecordGetRecordType(_ref) );
 }
-
 - (id) valueForProperty: (ABPropertyID) property
 {
     CFTypeRef value = ABRecordCopyValue( _ref, property );
@@ -90,23 +78,19 @@ static NSMutableIndexSet * __multiValuePropertyIDSet = nil;
     
     return ( [result autorelease] );
 }
-
 - (BOOL) setValue: (id) value forProperty: (ABPropertyID) property error: (NSError **) error
 {
     if ( [value isKindOfClass: [ABMultiValue class]] )
         value = (id) [value getMultiValueRef];
     return ( (BOOL) ABRecordSetValue(_ref, property, (CFTypeRef)value, (CFErrorRef *)error) );
 }
-
 - (BOOL) removeValueForProperty: (ABPropertyID) property error: (NSError **) error
 {
     return ( (BOOL) ABRecordRemoveValue(_ref, property, (CFErrorRef *)error) );
 }
-
 - (NSString *) compositeName
 {
     NSString * result = (NSString *) ABRecordCopyCompositeName( _ref );
     return ( [result autorelease] );
 }
-
 @end

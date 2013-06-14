@@ -5,30 +5,24 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "AibangApi.h"
 #import "ABasyncApi.h"
 #import "ABConnection.h"
 @implementation AibangApi
-
 @synthesize delegate;
-
 -(void) dealloc
 {
     [self connectionCancel];
 }
-
 -(void)connectionCancel
 {
     [http.connection cancel];
 }
-
 + (void)setAppkey:(NSString *)appkey
 {
     APPKEY = appkey;
 }
 #pragma mark callback handler
-
 -(void) handleData:(NSData*)data WithConnection:(ABConnection*)connection
 {
     if (delegate && [delegate respondsToSelector:@selector(requestDidFinishWithData:aibangApi:)])
@@ -36,7 +30,6 @@
         [delegate performSelector:@selector(requestDidFinishWithData:aibangApi:) withObject:data withObject:self];
     }
 }
-
 -(void) handleError:(NSError*)error WithConnection:(ABConnection*)connection
 {
     if (delegate && [delegate respondsToSelector:@selector(requestDidFailedWithError:aibangApi:)])
@@ -44,7 +37,6 @@
         [delegate performSelector:@selector(requestDidFailedWithError:aibangApi:) withObject:error withObject:self];
     }
 }
-
 #pragma mark api interfaces
 - (void) searchBizWithCity:(NSString *)city 
                      Query:(NSString *)query
@@ -78,7 +70,6 @@
     http.callback = self;
     [http execute];
 }
-
 - (void) locateWithCity:(NSString *)city
                    Addr:(NSString *)addr
 {
@@ -125,7 +116,6 @@
     http.callback = self;
     [http execute];
 }
-
 - (void)bizPicsWithBid:(NSString *)bid
                   From:(NSString *)from
                     To:(NSString *)to
@@ -314,7 +304,6 @@
     http.callback = self;
     [http execute];
 }   
-
 - (void)postAddBizInfoWithBname:(NSString *)bname
                           Uname:(NSString *)uname
                          Status:(NSString *)status
@@ -353,6 +342,5 @@
     http.callback = self;
     [http execute];
 }
-
 
 @end

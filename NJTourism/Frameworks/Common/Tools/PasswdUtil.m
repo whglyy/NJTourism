@@ -5,22 +5,17 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "PasswdUtil.h"
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonCryptor.h>
-
 // PBEWITHMD5andDES算法默认盐，长度为8个字节，数据可配置，
 // 需要和服务端保持一致
 #define kPBEDefaultSalt     @"sn201209" 
-
 // 口令和盐摘要迭代次数,可配置，
 // 需要和服务端保持一致
 #define MD5_ITERATIONS_NUM  50
 static void FixKeyLengths(CCAlgorithm algorithm, NSMutableData *keyData, NSMutableData *ivData);
-
 @implementation PasswdUtil
-
 + (NSString *)encryptData:(NSData *)data forUser:(NSString *)userID
 {
     
@@ -36,7 +31,6 @@ static void FixKeyLengths(CCAlgorithm algorithm, NSMutableData *keyData, NSMutab
     
     return [self hexStringForData:encryptedData];
 }
-
 + (NSString *)decryptData:(NSData *)data forUser:(NSString *)userID
 {
     if (!data || !userID) 
@@ -53,7 +47,6 @@ static void FixKeyLengths(CCAlgorithm algorithm, NSMutableData *keyData, NSMutab
     
     return plainText;
 }
-
 #pragma mark -
 #pragma mark PBE
 + (NSData *)encryptPBEData:(NSData *)data usingPwd:(NSString *)pwd withSalt:(NSString *)salt
@@ -96,7 +89,6 @@ static void FixKeyLengths(CCAlgorithm algorithm, NSMutableData *keyData, NSMutab
 			
 	return nil;
 }
-
 + (NSData *)decryptPBEData:(NSData *)data usingPwd:(NSString *)pwd withSalt:(NSString *)salt
 {
     
@@ -136,9 +128,7 @@ static void FixKeyLengths(CCAlgorithm algorithm, NSMutableData *keyData, NSMutab
     }
 	
 	return nil;
-
 }
-
 + (NSData *)encryptedUsingAlgorithm:(CCAlgorithm)algorithm
                                data:(NSData *)data
                                 key:(id)key
@@ -181,7 +171,6 @@ static void FixKeyLengths(CCAlgorithm algorithm, NSMutableData *keyData, NSMutab
 	
 	if (status != kCCSuccess)
 	{
-
 		return nil;
 	}
 	
@@ -191,7 +180,6 @@ static void FixKeyLengths(CCAlgorithm algorithm, NSMutableData *keyData, NSMutab
 	
 	return result;
 }
-
 + (NSData *)decryptedDataUsingAlgorithm:(CCAlgorithm)algorithm
                                    data:(NSData *)data
                                     key:(id)key		// data or string
@@ -234,7 +222,6 @@ static void FixKeyLengths(CCAlgorithm algorithm, NSMutableData *keyData, NSMutab
 	
 	if ( status != kCCSuccess )
 	{
-
 		return nil;
 	}
 	
@@ -244,7 +231,6 @@ static void FixKeyLengths(CCAlgorithm algorithm, NSMutableData *keyData, NSMutab
 	
 	return result;
 }
-
 + (NSData *)runCryptor:(CCCryptorRef)cryptor withData:(NSData *)data
 {
     CCCryptorStatus status = kCCSuccess;
@@ -280,7 +266,6 @@ static void FixKeyLengths(CCAlgorithm algorithm, NSMutableData *keyData, NSMutab
 	
 	return [NSData dataWithBytesNoCopy:buf length:bytesTotal];
 }
-
 static void FixKeyLengths(CCAlgorithm algorithm, NSMutableData *keyData, NSMutableData *ivData)
 {
 	NSUInteger keyLength = [keyData length];
@@ -344,7 +329,6 @@ static void FixKeyLengths(CCAlgorithm algorithm, NSMutableData *keyData, NSMutab
 	
 	[ivData setLength: [keyData length]];
 }
-
 #pragma mark -
 #pragma mark Hex Convert
 + (NSString *)hexStringForData:(NSData *)data
@@ -365,7 +349,6 @@ static void FixKeyLengths(CCAlgorithm algorithm, NSMutableData *keyData, NSMutab
     
     return [hexString uppercaseString];
 }
-
 + (NSData *)dataForHexString:(NSString *)hexString
 {
     if (hexString == nil)
@@ -405,5 +388,4 @@ static void FixKeyLengths(CCAlgorithm algorithm, NSMutableData *keyData, NSMutab
     
     return data;
 }
-
 @end

@@ -5,28 +5,21 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "SNPopoverCommonViewController.h"
 #import "SNPopoverController.h"
-
 @implementation SNPopoverCommonViewController
-
 @synthesize snpopoverController = _snpopoverController;
 @synthesize tableView = _tableView;
 @synthesize titleLabel = _titleLabel;
-
 - (void)dealloc {
     _tableView.delegate = nil; _tableView.dataSource = nil;
-
 }
-
 - (void)loadView
 {    
     [super loadView];
     
     self.view.frame = CGRectMake(0, 0, 230, 250);
 }
-
 - (void)dismissPopover:(BOOL)animated
 {
     if (_snpopoverController && [_snpopoverController isKindOfClass:[SNPopoverController class]]) {
@@ -35,7 +28,6 @@
         }
     }
 }
-
 - (UITableView *)tableView
 {
 	if(!_tableView){
@@ -60,7 +52,6 @@
 	
 	return _tableView;
 }
-
 - (UILabel *)titleLabel
 {
     if (!_titleLabel) {
@@ -74,15 +65,12 @@
     }
     return _titleLabel;
 }
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return 0;
 }
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return [[UITableViewCell alloc] init] ;
 }
-
 @end

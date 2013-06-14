@@ -5,33 +5,22 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "NJPageScrollView.h"
 #import "NJPageScrollViewCell.h"
-
 @interface NJPageScrollView()
 
-
 - (NJPageScrollViewCell *)loadPageAtIndex:(NSInteger)index insertIntoVisibleIndex:(NSInteger)visibleIndex;
-
 - (void)addPageToScrollView:(NJPageScrollViewCell *)page atIndex:(NSInteger)index;
 - (void)setFrameForPage:(UIView *)page atIndex:(NSInteger)index;
 
-
 - (void)updateVisiblePages;
-
 @end
-
 /*********************************************************************/
-
 @implementation NJPageScrollView
 
-
 @synthesize numberOfFreshPages = _numberOfFreshPages;
-
 @synthesize scrollView = _scrollView;
 @synthesize maxWidth = _maxWidth;
-
 
 - (id)init {
     self = [super init];
@@ -61,17 +50,14 @@
     return self;
 }
 
-
 - (void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];
     
     self.scrollView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
 }
-
 #pragma mark -
 #pragma mark const views
-
 - (UIScrollView *)scrollView
 {
     if (!_scrollView) {
@@ -81,26 +67,21 @@
     }
     return _scrollView;
 }
-
 - (UIScrollView *)contentScrollView
 {
     return self.scrollView;
 }
-
 #pragma mark -
 #pragma mark page scroll view data
-
 - (NSInteger)numberOfPages
 {
     return _numberOfPages;
 }
-
 - (void)setNumberOfPages:(NSInteger)number
 {
     _numberOfPages = number; 
     self.scrollView.contentSize = CGSizeMake(_numberOfPages * self.scrollView.bounds.size.width, self.scrollView.bounds.size.height);            
 }
-
 - (NJPageScrollViewCell *)pageAtIndex:(NSInteger)index;            // returns nil if page is not visible or the index is out of range
 {
 	if (index == NSNotFound || index < _visibleIndexes.location || index > _visibleIndexes.location + _visibleIndexes.length-1) {
@@ -112,7 +93,6 @@
     }
 	return [_visiblePages objectAtIndex:pageIndex];
 }
-
 - (NSInteger)indexForVisiblePage:(NJPageScrollViewCell *)page
 {
     NSInteger index = [_visiblePages indexOfObject:page];
@@ -121,15 +101,12 @@
     }
     return NSNotFound;
 }
-
 - (NSInteger)numberOfFreshPages
 {
     return _numberOfFreshPages;
 }
-
 #pragma mark -
 #pragma mark load data
-
 - (void)setClipsToBounds:(BOOL)clipsToBounds
 {
     [super setClipsToBounds:clipsToBounds];
@@ -137,7 +114,6 @@
         _maxWidth = self.frame.size.width;
     }
 }
-
 - (void)reloadData
 {
     NSInteger numPages = 1;  
@@ -167,7 +143,6 @@
     
     _numberOfFreshPages = [_visiblePages count];
 }
-
 - (NJPageScrollViewCell *)loadPageAtIndex:(NSInteger)index insertIntoVisibleIndex:(NSInteger)visibleIndex
 {
 	NJPageScrollViewCell *visiblePage = [self.dataSource pageScrollView:self cellForPage:index];
@@ -187,7 +162,6 @@
     
     return visiblePage;
 }
-
 - (void)addPageToScrollView:(NJPageScrollViewCell *)page atIndex:(NSInteger)index
 {
 	// configure the page frame
@@ -196,7 +170,6 @@
     // add the page to the scroller
 	[_scrollView insertSubview:page atIndex:0];    
 }
-
 - (void)updateVisiblePages
 {
 	CGFloat pageWidth = self.frame.size.width;
@@ -246,10 +219,8 @@
 	}
 }
 
-
 #pragma mark -
 #pragma mark 视图 操作
-
 - (void)setFrameForPage:(UIView *)page atIndex:(NSInteger)index
 {
     /*
@@ -263,7 +234,6 @@
 	page.frame = frame;
     
 }
-
 - (void)setContentOffset:(CGPoint)offset
 {
     NSInteger page = (int)(offset.x / self.scrollView.frame.size.width + 0.5);
@@ -283,16 +253,13 @@
     
     [self.scrollView setContentOffset:offset];
 }
-
 - (void)setContentOffset:(CGPoint)offset animated:(BOOL)animated
 {
     [self.scrollView setContentOffset:offset animated:animated];
     
 }
-
 #pragma mark -
 #pragma mark scroll view delegate methods
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
 	// update the visible pages
@@ -302,35 +269,30 @@
         [self.delegate scrollViewDidScroll:scrollView];
     }
 }
-
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView 
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(scrollViewDidZoom:)]) {
         [self.delegate scrollViewDidZoom:scrollView];
     }
 }
-
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(scrollViewWillBeginDragging:)]) {
         [self.delegate scrollViewWillBeginDragging:scrollView];
     }
 }
-
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_5_0){
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:)]) {
         [self.delegate scrollViewWillEndDragging:scrollView withVelocity:velocity targetContentOffset:targetContentOffset];
     }
 }
-
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(scrollViewDidEndDecelerating:)]) {
         [self.delegate scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
     }
 }
-
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(scrollViewWillBeginDecelerating:)]) {
@@ -343,14 +305,12 @@
         [self.delegate scrollViewDidEndDecelerating:scrollView];
     }
 }
-
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(scrollViewDidEndScrollingAnimation:)]) {
         [self.delegate scrollViewDidEndScrollingAnimation:scrollView];
     }
 }
-
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(viewForZoomingInScrollView:)]) {
@@ -358,21 +318,18 @@
     }
     return nil;
 }
-
 - (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(UIView *)view __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_2)
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(scrollViewWillBeginZooming:withView:)]) {
         [self.delegate scrollViewWillBeginZooming:scrollView withView:view];
     }
 }
-
 - (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(float)scale
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(scrollViewDidEndZooming:withView:atScale:)]) {
         [self.delegate scrollViewDidEndZooming:scrollView withView:view atScale:scale];
     }
 }
-
 - (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(scrollViewShouldScrollToTop:)]) {
@@ -380,17 +337,14 @@
     }
     return NO;
 }
-
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView
 {
     if (self.delegate && [self.delegate respondsToSelector:@selector(scrollViewDidScrollToTop:)]) {
         [self.delegate scrollViewDidScrollToTop:scrollView];
     }
 }
-
 #pragma mark -
 #pragma mark others
-
 - (NJPageScrollViewCell *)dequeueReusablePageWithIdentifier:(NSString *)identifier;  // Used by the delegate to acquire an already allocated page, instead of allocating a new one
 {
 	NJPageScrollViewCell *reusablePageCell = nil;
@@ -406,6 +360,5 @@
 	}
 	return reusablePageCell;
 }
-
 
 @end

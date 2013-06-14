@@ -5,9 +5,7 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "NSString+NULL.h"
-
 
 @implementation NSString (NSStringNULL)
 - (id)initWithUTF8NULLString:(const char *)nullTerminatedCString{

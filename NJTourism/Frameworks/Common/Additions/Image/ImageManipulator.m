@@ -5,12 +5,9 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "ImageManipulator.h"
 
-
 @implementation ImageManipulator
-
 static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWidth, float ovalHeight)
 {
     float fw, fh;
@@ -31,7 +28,6 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
     CGContextClosePath(context);
     CGContextRestoreGState(context);
 }
-
 +(UIImage *)makeRoundCornerImage : (UIImage*) img : (int) cornerWidth : (int) cornerHeight
 {
 	UIImage * newImage = nil;
@@ -68,7 +64,6 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
 	
     return newImage;
 }
-
 +(UIImage*)imageWithBorderFromImage:(UIImage*)source
 { 
 	CGSize size = [source size]; 
@@ -91,5 +86,4 @@ static void addRoundedRectToPath(CGContextRef context, CGRect rect, float ovalWi
 	
 	return testImg; 
 } 
-
 @end

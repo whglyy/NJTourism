@@ -5,19 +5,14 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <UIKit/UIKit.h>
-
 @protocol ImageViewTextFieldDelegate <UITextFieldDelegate>
 @optional
 //点击照相机按钮，触发该方法，遵循此协议的类实现
 - (void)cameraButtonClicked:(id)sender;
 //点击分享按钮，触发该方法，遵循此协议的类实现
 - (void)shareButtonClicked:(id)sender;
-
 @end
-
-
 
 @interface ImageViewTextField : UITextField
 {
@@ -43,7 +38,6 @@
     
 }
 
-
 /****************getter And Setter method*************/
 //照片视图
 @property (nonatomic, retain) UIImageView  *imageView;
@@ -63,9 +57,6 @@
 @property (nonatomic, weak) id <ImageViewTextFieldDelegate> imageViewTextFieldDelegate;
 /****************getter And Setter method*************/
 
-
-
 //该方法的主要功能是将选取的照片存放到数组中
 - (void)setItemByImage:(UIImage *)image;
-
 @end

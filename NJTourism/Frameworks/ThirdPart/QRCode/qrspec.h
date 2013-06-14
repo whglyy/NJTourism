@@ -5,26 +5,20 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #ifndef __QRSPEC_H__
 #define __QRSPEC_H__
-
 #include "qrencode.h"
-
 /******************************************************************************
  * Version and capacity
  *****************************************************************************/
-
 /**
  * Maximum version (size) of QR-code symbol.
  */
 #define QRSPEC_VERSION_MAX 40
-
 /**
  * Maximum width of a symbol
  */
 #define QRSPEC_WIDTH_MAX 177
-
 /**
  * Return maximum data code length (bytes) for the version.
  * @param version
@@ -32,7 +26,6 @@
  * @return maximum size (bytes)
  */
 extern int QRspec_getDataLength(int version, QRecLevel level);
-
 /**
  * Return maximum error correction code length (bytes) for the version.
  * @param version
@@ -40,7 +33,6 @@ extern int QRspec_getDataLength(int version, QRecLevel level);
  * @return ECC size (bytes)
  */
 extern int QRspec_getECCLength(int version, QRecLevel level);
-
 /**
  * Return a version number that satisfies the input code length.
  * @param size input code length (byte)
@@ -48,25 +40,21 @@ extern int QRspec_getECCLength(int version, QRecLevel level);
  * @return version number
  */
 extern int QRspec_getMinimumVersion(int size, QRecLevel level);
-
 /**
  * Return the width of the symbol for the version.
  * @param version
  * @return width
  */
 extern int QRspec_getWidth(int version);
-
 /**
  * Return the numer of remainder bits.
  * @param version
  * @return number of remainder bits
  */
 extern int QRspec_getRemainder(int version);
-
 /******************************************************************************
  * Length indicator
  *****************************************************************************/
-
 /**
  * Return the size of lenght indicator for the mode and version.
  * @param mode
@@ -74,7 +62,6 @@ extern int QRspec_getRemainder(int version);
  * @return the size of the appropriate length indicator (bits).
  */
 extern int QRspec_lengthIndicator(QRencodeMode mode, int version);
-
 /**
  * Return the maximum length for the mode and version.
  * @param mode
@@ -82,11 +69,9 @@ extern int QRspec_lengthIndicator(QRencodeMode mode, int version);
  * @return the maximum length (bytes)
  */
 extern int QRspec_maximumWords(QRencodeMode mode, int version);
-
 /******************************************************************************
  * Error correction code
  *****************************************************************************/
-
 /**
  * Return an array of ECC specification.
  * @param version
@@ -96,7 +81,6 @@ extern int QRspec_maximumWords(QRencodeMode mode, int version);
  *  # of type2 blocks, # of data code}
  */
 void QRspec_getEccSpec(int version, QRecLevel level, int spec[5]);
-
 #define QRspec_rsBlockNum(__spec__) (__spec__[0] + __spec__[3])
 #define QRspec_rsBlockNum1(__spec__) (__spec__[0])
 #define QRspec_rsDataCodes1(__spec__) (__spec__[1])
@@ -104,17 +88,14 @@ void QRspec_getEccSpec(int version, QRecLevel level, int spec[5]);
 #define QRspec_rsBlockNum2(__spec__) (__spec__[3])
 #define QRspec_rsDataCodes2(__spec__) (__spec__[4])
 #define QRspec_rsEccCodes2(__spec__) (__spec__[2])
-
 #define QRspec_rsDataLength(__spec__) \
 	((QRspec_rsBlockNum1(__spec__) * QRspec_rsDataCodes1(__spec__)) + \
 	 (QRspec_rsBlockNum2(__spec__) * QRspec_rsDataCodes2(__spec__)))
 #define QRspec_rsEccLength(__spec__) \
 	(QRspec_rsBlockNum(__spec__) * QRspec_rsEccCodes1(__spec__))
-
 /******************************************************************************
  * Version information pattern
  *****************************************************************************/
-
 /**
  * Return BCH encoded version information pattern that is used for the symbol
  * of version 7 or greater. Use lower 18 bits.
@@ -122,11 +103,9 @@ void QRspec_getEccSpec(int version, QRecLevel level, int spec[5]);
  * @return BCH encoded version information pattern
  */
 extern unsigned int QRspec_getVersionPattern(int version);
-
 /******************************************************************************
  * Format information
  *****************************************************************************/
-
 /**
  * Return BCH encoded format information pattern.
  * @param mask
@@ -134,11 +113,9 @@ extern unsigned int QRspec_getVersionPattern(int version);
  * @return BCH encoded format information pattern
  */
 extern unsigned int QRspec_getFormatInfo(int mask, QRecLevel level);
-
 /******************************************************************************
  * Frame
  *****************************************************************************/
-
 /**
  * Return a copy of initialized frame.
  * When the same version is requested twice or more, a copy of cached frame
@@ -148,11 +125,9 @@ extern unsigned int QRspec_getFormatInfo(int mask, QRecLevel level);
  * @return Array of unsigned char. You can free it by free().
  */
 extern unsigned char *QRspec_newFrame(int version);
-
 /**
  * Clear the frame cache. Typically for debug.
  * WARNING: Thread unsafe!!!
  */
 extern void QRspec_clearCache(void);
-
 #endif /* __QRSPEC_H__ */

@@ -5,7 +5,6 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 /**数据库文件存取路径~/Library/Cache/Download/[userId] */
 static NSString *_DatabaseDirectory;
 /**Document路径*/
@@ -20,7 +19,6 @@ static NSString *_UpLoadPath;
 static NSString *_AppSurportPath;
 /**本地聊天记录存储 ~/Library/Cache/Record/[userid]/[friendid]*/
 static NSString *_FriendChatRecordsPath;
-
 
 static inline NSString* DatabaseDirectory() {
 	if(!_DatabaseDirectory) {
@@ -47,7 +45,6 @@ static inline NSString* DatabaseDirectory() {
 	}
 	return _DatabaseDirectory;
 }
-
 static inline NSString* FileDocumentPath() {
     if (!_FileDocumentPath) {
         
@@ -70,7 +67,6 @@ static inline NSString* FileDocumentPath() {
     }
     return _FileDocumentPath;
 }
-
 static inline NSString* DownLoadPath() {
     if (!_DownLoadPath) {
         
@@ -94,7 +90,6 @@ static inline NSString* DownLoadPath() {
     }
     return _DownLoadPath;
 }
-
 static inline NSString* UpLoadPath() {
     if (!_UpLoadPath) {
         
@@ -118,7 +113,6 @@ static inline NSString* UpLoadPath() {
     }
     return _UpLoadPath;
 }
-
 static inline NSString* ThumbnailPath() {
     if (!_ThumbnailPath) {
         
@@ -142,7 +136,6 @@ static inline NSString* ThumbnailPath() {
     }
     return _ThumbnailPath;
 }
-
 static inline NSString *AppSurportPath(){
     if (!_AppSurportPath) {
         NSString *appSurprtPath = [NSSearchPathForDirectoriesInDomains
@@ -166,7 +159,6 @@ static inline NSString *AppSurportPath(){
     }
     return _AppSurportPath;
 }
-
 static inline NSString *FriendChatRecordsPath()
 {
     if (!_FriendChatRecordsPath)
@@ -194,5 +186,4 @@ static inline NSString *FriendChatRecordsPath()
     }
     return _FriendChatRecordsPath;
 }
-
 

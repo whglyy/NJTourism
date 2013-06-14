@@ -5,9 +5,7 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <UIKit/UIKit.h>
-
 @interface AnimatedGifFrame : NSObject
 {
 	NSData *data;
@@ -16,15 +14,12 @@
 	int disposalMethod;
 	CGRect area;
 }
-
 @property (nonatomic, copy) NSData *header;
 @property (nonatomic, copy) NSData *data;
 @property (nonatomic) double delay;
 @property (nonatomic) int disposalMethod;
 @property (nonatomic) CGRect area;
-
 @end
-
 
 @interface AnimatedImageView : UIImageView
 {
@@ -42,16 +37,11 @@
 	
 	int dataPointer;
 }
-
 @property (nonatomic, retain) NSMutableArray *GIF_frames;
-
 @property (nonatomic, copy)   NSString    *imageFileName;
 @property (nonatomic, retain) NSData      *imageFileData;
-
 - (void)loadImageData;
-
 + (BOOL)isGifImage:(NSData*)imageData;
-
 - (void)decodeGIF:(NSData *)GIFData;
 - (void)GIFReadExtensions;
 - (void)GIFReadDescriptor;
@@ -59,5 +49,4 @@
 - (BOOL)GIFSkipBytes: (int) length;
 - (NSData*)getFrameAsDataAtIndex:(int)index;
 - (UIImage*)getFrameAsImageAtIndex:(int)index;
-
 @end

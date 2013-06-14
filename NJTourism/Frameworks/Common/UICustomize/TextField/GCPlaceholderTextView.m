@@ -5,27 +5,18 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "GCPlaceholderTextView.h"
-
 @interface GCPlaceholderTextView () 
-
 @property (nonatomic, retain) UIColor* realTextColor;
 @property (nonatomic, readonly) NSString* realText;
-
 - (void) beginEditing:(NSNotification*) notification;
 - (void) endEditing:(NSNotification*) notification;
-
 @end
-
 @implementation GCPlaceholderTextView
-
 @synthesize realTextColor;
 @synthesize placeholder;
-
 #pragma mark -
 #pragma mark Initialisation
-
 - (id) initWithFrame:(CGRect)frame 
 {
     if ((self = [super initWithFrame:frame])) 
@@ -39,10 +30,8 @@
     
     return self;
 }
-
 #pragma mark -
 #pragma mark Setter/Getters
-
 - (void) setPlaceholder:(NSString *)aPlaceholder 
 {
     if ([self.realText isEqualToString:placeholder]) 
@@ -55,14 +44,12 @@
     
     [self endEditing:nil];
 }
-
 - (NSString *) text 
 {
     NSString* text = [super text];
     if ([text isEqualToString:self.placeholder]) return nil;
     return text;
 }
-
 - (void) setText:(NSString *)text
 {
     if ([text isEqualToString:@""] || text == nil) 
@@ -85,12 +72,10 @@
         self.textColor = self.realTextColor;
     }
 }
-
 - (NSString *) realText
 {
     return [super text];
 }
-
 - (void) beginEditing:(NSNotification*) notification
 {
     
@@ -98,11 +83,9 @@
     {
         
         super.text = nil;
-
         self.textColor = self.realTextColor;
     }
 }
-
 - (void) endEditing:(NSNotification*) notification 
 {
     if ([self.realText isEqualToString:@""] || self.realText == nil) 
@@ -111,7 +94,6 @@
         self.textColor = [UIColor lightGrayColor];
     }
 }
-
 - (void) setTextColor:(UIColor *)textColor
 {
     if ([self.realText isEqualToString:self.placeholder])
@@ -125,15 +107,10 @@
         [super setTextColor:textColor];
     }
 }
-
 #pragma mark -
 #pragma mark Dealloc
-
 - (void)dealloc 
 {
-
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-
 }
-
 @end

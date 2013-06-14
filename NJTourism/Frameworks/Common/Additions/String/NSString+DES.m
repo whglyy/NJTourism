@@ -5,12 +5,9 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "NSString+DES.h"
 #import <CommonCrypto/CommonCryptor.h>
-
 @implementation NSString (DES)
-
 
 + (NSString *)doCipher:(NSString *)sTextIn key:(NSString *)sKey context:(CCOperation)encryptOrDecrypt
 {
@@ -62,7 +59,6 @@
     free(bufferPtr1);
     return sResult;
 }
-
 /*
  DES加密
  */
@@ -70,7 +66,6 @@
 {
     return [self doCipher:clearText key:key context:kCCEncrypt];
 }
-
 
 /**
  DES解密

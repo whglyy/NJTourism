@@ -5,7 +5,6 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 /*!
  
  @header   NSObject+GlobalDataManage
@@ -15,9 +14,7 @@
  
  */
 #import <Foundation/Foundation.h>
-
 @interface NSObject (GlobalDataManage)
 //应用程序代理
 - (AppDelegate *)appDelegate;
-
 @end

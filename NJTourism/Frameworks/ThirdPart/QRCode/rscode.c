@@ -23,16 +23,13 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
-
 #include <stdlib.h>
 #include <string.h>
 #include "rscode.h"
-
 /* Stuff specific to the 8-bit symbol version of the general purpose RS codecs
  *
  */
 typedef unsigned char data_t;
-
 
 /**
  * Reed-Solomon codec control block
@@ -51,9 +48,7 @@ struct _RS {
 	int gfpoly;
 	struct _RS *next;
 };
-
 static RS *rslist = NULL;
-
 static inline int modnn(RS *rs, int x){
 	while (x >= rs->nn) {
 		x -= rs->nn;
@@ -62,9 +57,7 @@ static inline int modnn(RS *rs, int x){
 	return x;
 }
 
-
 #define MODNN(x) modnn(rs,x)
-
 #define MM (rs->mm)
 #define NN (rs->nn)
 #define ALPHA_TO (rs->alpha_to) 
@@ -76,7 +69,6 @@ static inline int modnn(RS *rs, int x){
 #define IPRIM (rs->iprim)
 #define PAD (rs->pad)
 #define A0 (NN)
-
 
 /* Initialize a Reed-Solomon codec
  * symsize = symbol size, bits
@@ -90,22 +82,18 @@ static RS *init_rs_char(int symsize, int gfpoly, int fcr, int prim, int nroots, 
 {
   RS *rs;
 
-
 /* Common code for intializing a Reed-Solomon control block (char or int symbols)
  * Copyright 2004 Phil Karn, KA9Q
  * May be used under the terms of the GNU Lesser General Public License (LGPL)
  */
 //#undef NULL
 //#define NULL ((void *)0)
-
   int i, j, sr,root,iprim;
-
   rs = NULL;
   /* Check parameter ranges */
   if(symsize < 0 || symsize > (int)(8*sizeof(data_t))){
     goto done;
   }
-
   if(fcr < 0 || fcr >= (1<<symsize))
     goto done;
   if(prim <= 0 || prim >= (1<<symsize))
@@ -114,15 +102,12 @@ static RS *init_rs_char(int symsize, int gfpoly, int fcr, int prim, int nroots, 
     goto done; /* Can't have more roots than symbol values! */
   if(pad < 0 || pad >= ((1<<symsize) -1 - nroots))
     goto done; /* Too much padding */
-
   rs = (RS *)calloc(1,sizeof(RS));
   if(rs == NULL)
     goto done;
-
   rs->mm = symsize;
   rs->nn = (1<<symsize)-1;
   rs->pad = pad;
-
   rs->alpha_to = (data_t *)malloc(sizeof(data_t)*(rs->nn+1));
   if(rs->alpha_to == NULL){
     free(rs);
@@ -136,7 +121,6 @@ static RS *init_rs_char(int symsize, int gfpoly, int fcr, int prim, int nroots, 
     rs = NULL;
     goto done;
   }
-
   /* Generate Galois field lookup tables */
   rs->index_of[0] = A0; /* log(zero) = -inf */
   rs->alpha_to[A0] = 0; /* alpha**-inf = 0 */
@@ -157,7 +141,6 @@ static RS *init_rs_char(int symsize, int gfpoly, int fcr, int prim, int nroots, 
     rs = NULL;
     goto done;
   }
-
   /* Form RS code generator polynomial from its roots */
   rs->genpoly = (data_t *)malloc(sizeof(data_t)*(nroots+1));
   if(rs->genpoly == NULL){
@@ -171,16 +154,13 @@ static RS *init_rs_char(int symsize, int gfpoly, int fcr, int prim, int nroots, 
   rs->prim = prim;
   rs->nroots = nroots;
   rs->gfpoly = gfpoly;
-
   /* Find prim-th root of 1, used in decoding */
   for(iprim=1;(iprim % prim) != 0;iprim += rs->nn)
     ;
   rs->iprim = iprim / prim;
-
   rs->genpoly[0] = 1;
   for (i = 0,root=fcr*prim; i < nroots; i++,root += prim) {
     rs->genpoly[i+1] = 1;
-
     /* Multiply rs->genpoly[] by  @**(root + x) */
     for (j = i; j > 0; j--){
       if (rs->genpoly[j] != 0)
@@ -195,14 +175,11 @@ static RS *init_rs_char(int symsize, int gfpoly, int fcr, int prim, int nroots, 
   for (i = 0; i <= nroots; i++)
     rs->genpoly[i] = rs->index_of[rs->genpoly[i]];
  done:;
-
   return rs;
 }
-
 RS *init_rs(int symsize, int gfpoly, int fcr, int prim, int nroots, int pad)
 {
 	RS *rs;
-
 	for(rs = rslist; rs != NULL; rs = rs->next) {
 		if(rs->pad != pad) continue;
 		if(rs->nroots != nroots) continue;
@@ -210,19 +187,15 @@ RS *init_rs(int symsize, int gfpoly, int fcr, int prim, int nroots, int pad)
 		if(rs->gfpoly != gfpoly) continue;
 		if(rs->fcr != fcr) continue;
 		if(rs->prim != prim) continue;
-
 		goto DONE;
 	}
-
 	rs = init_rs_char(symsize, gfpoly, fcr, prim, nroots, pad);
 	if(rs == NULL) goto DONE;
 	rs->next = rslist;
 	rslist = rs;
-
 DONE:
 	return rs;
 }
-
 
 void free_rs_char(RS *rs)
 {
@@ -231,11 +204,9 @@ void free_rs_char(RS *rs)
 	free(rs->genpoly);
 	free(rs);
 }
-
 void free_rs_cache(void)
 {
 	RS *rs, *next;
-
 	rs = rslist;
 	while(rs != NULL) {
 		next = rs->next;
@@ -243,11 +214,9 @@ void free_rs_cache(void)
 		rs = next;
 	}
 }
-
 /* The guts of the Reed-Solomon encoder, meant to be #included
  * into a function body with the following typedefs, macros and variables supplied
  * according to the code parameters:
-
  * data_t - a typedef for the data symbol
  * data_t data[] - array of NN-NROOTS-PAD and type data_t to be encoded
  * data_t parity[] - an array of NROOTS and type data_t to be written with parity symbols
@@ -263,25 +232,19 @@ void free_rs_cache(void)
  *            elements in polynomial form to index (log) form. Read only.
  * MODNN - a function to reduce its argument modulo NN. May be inline or a macro.
  * GENPOLY - an array of NROOTS+1 elements containing the generator polynomial in index form
-
  * The memset() and memmove() functions are used. The appropriate header
  * file declaring these functions (usually <string.h>) must be included by the calling
  * program.
-
  * Copyright 2004, Phil Karn, KA9Q
  * May be used under the terms of the GNU Lesser General Public License (LGPL)
  */
-
 #undef A0
 #define A0 (NN) /* Special reserved value encoding zero in index form */
-
 void encode_rs_char(RS *rs, const data_t *data, data_t *parity)
 {
   int i, j;
   data_t feedback;
-
   memset(parity,0,NROOTS*sizeof(data_t));
-
   for(i=0;i<NN-NROOTS-PAD;i++){
     feedback = INDEX_OF[data[i] ^ parity[0]];
     if(feedback != A0){      /* feedback term is non-zero */

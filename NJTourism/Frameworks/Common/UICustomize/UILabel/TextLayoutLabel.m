@@ -5,18 +5,12 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "TextLayoutLabel.h"
 #import<CoreText/CoreText.h>
-
 @implementation TextLayoutLabel
-
 @synthesize characterSpacing = characterSpacing_;
-
 @synthesize linesSpacing = linesSpacing_;
-
 -(id) initWithFrame:(CGRect)frame
-
 {//初始化字间距、行间距
     
     if(self =[super initWithFrame:frame])
@@ -33,10 +27,7 @@
     
 }
 
-
-
 -(void)setCharacterSpacing:(CGFloat)characterSpacing //外部调用设置字间距
-
 {
     
     characterSpacing_ = characterSpacing;
@@ -45,10 +36,7 @@
     
 }
 
-
-
 -(void)setLinesSpacing:(long)linesSpacing  //外部调用设置行间距
-
 {
     
     linesSpacing_ = linesSpacing;
@@ -57,10 +45,7 @@
     
 }
 
-
-
 -(void) drawTextInRect:(CGRect)requestedRect
-
 {
     
     //去掉空行
@@ -194,12 +179,10 @@
     CFRelease(framesetter);
     
     CFRelease(helveticaBold);
-
     
     UIGraphicsPushContext(context);
     
     
     
 }
-
 @end

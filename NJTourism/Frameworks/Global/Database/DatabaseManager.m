@@ -5,27 +5,18 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "DatabaseManager.h"
 #include <sqlite3.h>
 #import "FMDatabaseQueue.h"
 #import "FMDatabase.h"
-
 @interface DatabaseManager ()
 
-
 @end
-
 /*********************************************************************/
-
 @implementation DatabaseManager
-
 @synthesize writablePath = _writablePath;
-
 @synthesize  databaseQueue = _databaseQueue;
-
 static DatabaseManager *manager = nil;
-
 - (id)init{
 	if(self = [super init]){
         
@@ -38,12 +29,10 @@ static DatabaseManager *manager = nil;
 	}
 	return self;
 }
-
 - (BOOL)isDatabaseOpened
 {
     return _isDataBaseOpened;
 }
-
 - (void)openDataBase{
     
 	_databaseQueue = [FMDatabaseQueue databaseQueueWithPath:self.writablePath] ;
@@ -59,7 +48,6 @@ static DatabaseManager *manager = nil;
         [db setShouldCacheStatements:YES];
     }];
 }
-
 - (void)closeDataBase{
 	if(!_isDataBaseOpened){
 		DLog(@"数据库已打开，或打开失败。请求关闭数据库失败。");
@@ -73,7 +61,6 @@ static DatabaseManager *manager = nil;
 	_isDataBaseOpened = NO;
 	DLog(@"关闭数据库成功。");
 }
-
 + (DatabaseManager*)currentManager {
     
 	@synchronized(self) {
@@ -87,7 +74,6 @@ static DatabaseManager *manager = nil;
 	
 	return manager;
 }
-
 + (void)releaseManager{
     
     if(manager){
@@ -97,14 +83,11 @@ static DatabaseManager *manager = nil;
     }
 }
 
-
 -(void)dealloc
 {
     [self closeDataBase];
 	
 }
-
-
 
 
 @end

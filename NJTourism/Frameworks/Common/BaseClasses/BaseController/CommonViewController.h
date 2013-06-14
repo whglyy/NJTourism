@@ -5,7 +5,6 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <Foundation/Foundation.h>
 #import "UIView+ActivityIndicator.h"
 #import "AppDelegate.h"
@@ -13,7 +12,6 @@
 #import "BBAlertView.h"
 #import "NSTimerHelper.h"
 #import "TPKeyboardAvoidingTableView.h"
-
 @interface CommonViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, BBAlertViewDelegate>
 {
     
@@ -25,33 +23,24 @@
     
     NSString                *_pageInTime;
 }
-
 @property (nonatomic, retain) UITableView       *tableView;
-
 @property (nonatomic, retain) UITableView       *groupTableView;
-
 @property (nonatomic, retain) TPKeyboardAvoidingTableView *tpTableView;
-
 @property (nonatomic, retain) NSTimerHelper     *dlgTimer; 
-
 @property (nonatomic, retain) NSString          *pageInTime;
-
 + (id)controller;
-
 /*!
  @method
  @abstract      包含［加载中⋯⋯］的提示语，并且包含加载动态进度圈的弹出框
  @discussion    继承自commonViewController 的类直接调用
  */
 - (void)displayOverFlowActivityView;
-
 /*!
  @method
  @abstract      移除包含［加载中⋯⋯］的提示语，并且包含加载动态进度圈的弹出框
  @discussion    继承自commonViewController 的类直接调用
  */
 - (void)removeOverFlowActivityView;
-
 /*!
  @method
  @abstract      包含［加载中⋯⋯］的提示语，并且包含加载动态进度圈的弹出框
@@ -59,7 +48,6 @@
  @param         indiTitle  提示信息
  */
 - (void)displayOverFlowActivityView:(NSString *)indiTitle;
-
 
 /*!
  @method
@@ -69,7 +57,6 @@
  @param         time       自加载框最长自动消失时间
  */
 - (void)displayOverFlowActivityView:(NSString *)indiTitle maxShowTime:(CGFloat)time;
-
 /*!
  @method
  @abstract      包含［加载中⋯⋯］的提示语，并且包含加载动态进度圈的弹出框
@@ -78,7 +65,6 @@
  @param         y          自定义的位置
  */
 - (void)displayOverFlowActivityView:(NSString *)indiTitle yOffset:(CGFloat)y;
-
 /*!
  @method
  @abstract 仅文字提示的黑色半透明信息框
@@ -107,7 +93,6 @@
  @param         indiTitle  提示信息
  */
 - (void)presentCustomDlg:(NSString *)indiTitle;
-
 /*!
  @method
  @abstract      仅文字提示的黑色半透明信息框
@@ -116,5 +101,4 @@
  @param         y          自定义的位置
  */
 - (void)presentSheet:(NSString*)indiTitle posY:(CGFloat)y;
-
 @end

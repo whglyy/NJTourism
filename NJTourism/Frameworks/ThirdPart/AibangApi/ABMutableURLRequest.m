@@ -5,11 +5,8 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "ABMutableURLRequest.h"
-
 @implementation ABMutableURLRequest
-
 + (NSMutableURLRequest *)requestGet:(NSString *)aUrl queryString:(NSString *)aQueryString {
 	NSMutableString *url = [[NSMutableString alloc] initWithString:aUrl];
 	if (aQueryString) {
@@ -20,7 +17,6 @@
 	[request setTimeoutInterval:60.0f];
 	return request;
 }
-
 + (NSMutableURLRequest *)requestPost:(NSString *)aUrl queryString:(NSData *)data {
 	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:aUrl]];
 	[request setHTTPMethod:@"POST"];
@@ -29,5 +25,4 @@
     [request setHTTPBody:data];
 	return request;
 }
-
 @end

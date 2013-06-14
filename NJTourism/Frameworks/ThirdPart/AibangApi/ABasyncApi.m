@@ -5,23 +5,16 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "ABasyncApi.h"
 #import "ABAsyncHttp.h"
 #import "AibangApi.h"
-
 @interface ABasyncApi (private) 
-
 - (NSString*) serverUrl;
-
 @end
-
 @implementation ABasyncApi
-
 - (NSString*) serverUrl {
     return @"http://openapi.aibang.com";
 }
-
 - (NSString *)normalizedRequestParameters:(NSDictionary *)aParameters {
 	NSMutableArray *parametersArray = [NSMutableArray array];
 	for (NSString *key in aParameters) {
@@ -32,7 +25,6 @@
 	}
 	return [parametersArray componentsJoinedByString:@"&"];
 }
-
 - (NSString*) nameValString: (NSDictionary*) dict {
 	NSArray* keys = [dict allKeys];
 	NSString* result = [NSString string];
@@ -49,7 +41,6 @@
 	
 	return result;
 }
-
 - (NSURLConnection *)searchBizWithCity:(NSString *)city 
                                  Query:(NSString *)query
                                Address:(NSString *)address
@@ -107,7 +98,6 @@
                        delegate:aDelegate];
 }
 
-
 - (NSURLConnection *) locateWithCity:(NSString *)city
                                 Addr:(NSString *)addr
                             Delegate:(id)aDelegate{
@@ -130,7 +120,6 @@
                        delegate:aDelegate];
 }
 
-
 - (NSURLConnection *) bizWithBid:(NSString *)bid
                         Delegate:(id)aDelegate{
     NSString *url = @"";
@@ -150,7 +139,6 @@
                     queryString:parameterStr 
                        delegate:aDelegate];
 }
-
 
 - (NSURLConnection *)bizCommentsWithBid:(NSString *)bid
                                Delegate:(id)aDelegate{
@@ -172,7 +160,6 @@
                        delegate:aDelegate];
     
 }
-
 - (NSURLConnection *)bizPicsWithBid:(NSString *)bid
                                From:(NSString *)from 
                                  To:(NSString *)to 
@@ -201,7 +188,6 @@
                        delegate:aDelegate];
     
 }
-
 - (NSURLConnection *)busTransferWithCity:(NSString *)city
                                StartAddr:(NSString *)startAddr
                                  EndAddr:(NSString *)endAddr
@@ -256,7 +242,6 @@
                        delegate:aDelegate];
     
 }
-
 - (NSURLConnection *)buslinesWithCity:(NSString *)city
                               KeyWord:(NSString *)keyword
                               Withxys:(NSString *)withxys
@@ -284,7 +269,6 @@
                        delegate:aDelegate];
     
 }
-
 - (NSURLConnection *)busStatsWithCity:(NSString *)city
                               Keyword:(NSString *) keyword
                              Delegate:(id)aDelegate{
@@ -307,7 +291,6 @@
                        delegate:aDelegate];
     
 }
-
 - (NSURLConnection *)busStatsAroundWithCity:(NSString *)city
                                        Dist:(NSString *)dist
                                         Lng:(NSString *)lng
@@ -341,7 +324,6 @@
     
 }
 
-
 - (NSURLConnection *)postCommentToBizWithBid:(NSString *)bid
                                        Uname:(NSString *)uname
                                        Score:(NSString *)score
@@ -369,7 +351,6 @@
     [data appendData:[footer dataUsingEncoding:NSUTF8StringEncoding]];
     return [ABAsyncHttp httpPost:url queryString:data delegate:aDelegate];
 }
-
 - (NSURLConnection *)postBizPicWithBid:(NSString *)bid
                                  Uname:(NSString *)uname
                                  Title:(NSString *)title
@@ -390,7 +371,6 @@
     [data appendData:[footer dataUsingEncoding:NSUTF8StringEncoding]];
     return [ABAsyncHttp httpPost:url queryString:data delegate:aDelegate];
 }
-
 
 - (NSURLConnection *)postModifyBizInfoWithBid:(NSString *)bid
                                         Uname:(NSString *)uname
@@ -462,7 +442,6 @@
     return [ABAsyncHttp httpPost:url queryString:data delegate:aDelegate];
 }
 
-
 - (NSURLConnection *)postAddBizInfoWithBname:(NSString *)bname
                                        Uname:(NSString *)uname
                                       Status:(NSString *)status
@@ -532,18 +511,7 @@
     return [ABAsyncHttp httpPost:url queryString:data delegate:aDelegate];
 }
 
-
-
 @end
-
-
-
-
-
-
-
-
-
 
 
 

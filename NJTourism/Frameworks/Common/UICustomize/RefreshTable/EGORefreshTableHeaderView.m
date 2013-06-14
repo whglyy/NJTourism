@@ -5,18 +5,13 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "EGORefreshTableHeaderView.h"
-
 
 #define TEXT_COLOR	 [UIColor colorWithRed:87.0/255.0 green:108.0/255.0 blue:137.0/255.0 alpha:1.0]
 #define BORDER_COLOR [UIColor colorWithRed:87.0/255.0 green:108.0/255.0 blue:137.0/255.0 alpha:1.0]
 
-
 @implementation EGORefreshTableHeaderView
-
 @synthesize state=_state;
-
 
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
@@ -33,7 +28,6 @@
 		lastUpdatedLabel.textAlignment = UITextAlignmentCenter;
 		[self addSubview:lastUpdatedLabel];
 		
-
 		if ([[NSUserDefaults standardUserDefaults] objectForKey:@"EGORefreshTableView_LastRefresh"]) {
 			lastUpdatedLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"EGORefreshTableView_LastRefresh"];
 		} else {
@@ -68,7 +62,6 @@
     }
     return self;
 }
-
 - (void)drawRect:(CGRect)rect{
     /*
 	CGContextRef context = UIGraphicsGetCurrentContext();
@@ -80,7 +73,6 @@
 	CGContextStrokePath(context);
      */
 }
-
 - (void)setCurrentDate {
 	NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
 	
@@ -107,7 +99,6 @@
 	[[NSUserDefaults standardUserDefaults] synchronize];
 	
 }
-
 - (void)setState:(EGOPullRefreshState)aState{
 	
 	switch (aState) {
@@ -154,7 +145,5 @@
 	
 	_state = aState;
 }
-
-
 
 @end

@@ -6,15 +6,11 @@
 //
 //
 
-
 #import "ABGroup.h"
 #import "ABPerson.h"
 #import "ABSource.h"
-
 extern NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitialization> class );
-
 @implementation ABGroup
-
 - (id) init
 {
     ABRecordRef group = ABGroupCreate();
@@ -26,13 +22,11 @@ extern NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitializa
     
     return ( [self initWithABRef: group] );
 }
-
 - (ABSource *) source
 {
 	ABRecordRef source = ABGroupCopySource( _ref );
 	return ( [[[ABSource alloc] initWithABRef: source] autorelease] );
 }
-
 - (NSArray *) allMembers
 {
     NSArray * members = (NSArray *) ABGroupCopyArrayOfAllMembers( _ref );
@@ -47,7 +41,6 @@ extern NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitializa
     
     return ( result );
 }
-
 - (NSArray *) allMembersSortedInOrder: (ABPersonSortOrdering) order
 {
     NSArray * members = (NSArray *) ABGroupCopyArrayOfAllMembersWithSortOrdering( _ref, order );
@@ -62,17 +55,14 @@ extern NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitializa
     
     return ( result );
 }
-
 - (BOOL) addMember: (ABPerson *) person error: (NSError **) error
 {
     return ( (BOOL) ABGroupAddMember(_ref, person.recordRef, (CFErrorRef *)error) );
 }
-
 - (BOOL) removeMember: (ABPerson *) person error: (NSError **) error
 {
     return ( (BOOL) ABGroupRemoveMember(_ref, person.recordRef, (CFErrorRef *)error) );
 }
-
 - (NSIndexSet *) indexSetWithAllMemberRecordIDs
 {
     NSArray * members = (NSArray *) ABGroupCopyArrayOfAllMembers( _ref );
@@ -95,5 +85,4 @@ extern NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitializa
     
     return ( [result autorelease] );
 }
-
 @end

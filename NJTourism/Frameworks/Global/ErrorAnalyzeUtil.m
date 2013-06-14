@@ -5,11 +5,8 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "ErrorAnalyzeUtil.h"
-
 @implementation ErrorAnalyzeUtil
-
 + (BOOL)isSessionFailed:(NSString *)SNRetCode{
     if (!IsStrEmpty(SNRetCode)) {
         if ([SNRetCode isEqualToString:@"pan_interceptor_0000_e"]) {
@@ -20,9 +17,7 @@
     }else{
         return NO;
     }
-
 }
-
 
 + (NSString *)getErrorMsg:(E_CMDCODE)cmdCode errorCode:(int)errorCode
 {
@@ -31,7 +26,6 @@
         case CC_GetVerCode:{
             switch (errorCode) {
                 case 0:  return L(@"参数有错");
-
                 default:
                     break;
             }

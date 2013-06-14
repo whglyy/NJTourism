@@ -5,16 +5,13 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <Foundation/Foundation.h>
 #import "ASIHTTPRequestDelegate.h"
 #import "ASIProgressDelegate.h"
-
 @interface ASINetworkQueue : NSOperationQueue <ASIProgressDelegate, ASIHTTPRequestDelegate, NSCopying> {
 	
 	// Delegate will get didFail + didFinish messages (if set)
 	id delegate;
-
 	// Will be called when a request starts with the request as the argument
 	SEL requestDidStartSelector;
 	
@@ -25,7 +22,6 @@
 	// Will be called when a request is about to redirect
 	// Should take the form request:willRedirectToURL:, where the first argument is the request, and the second the new url
 	SEL requestWillRedirectSelector;
-
 	// Will be called when a request completes with the request as the argument
 	SEL requestDidFinishSelector;
 	
@@ -43,7 +39,6 @@
 	
 	// Total amount to be uploaded for all requests in this queue - requests add to this figure as they work out how much data they have to transmit
 	unsigned long long totalBytesToUpload;
-
 	// Download progress indicator, probably an NSProgressIndicator or UIProgressView
 	id downloadProgressDelegate;
 	
@@ -66,28 +61,21 @@
 	// Set to YES if the size of a requests in the queue varies greatly for much more accurate results
 	// Default for requests in the queue is NO
 	BOOL showAccurateProgress;
-
 	// Storage container for additional queue information.
 	NSDictionary *userInfo;
 	
 }
-
 // Convenience constructor
 + (id)queue;
-
 // Call this to reset a queue - it will cancel all operations, clear delegates, and suspend operation
 - (void)reset;
-
 // Used internally to manage HEAD requests when showAccurateProgress is YES, do not use!
 - (void)addHEADOperation:(NSOperation *)operation;
-
 // All ASINetworkQueues are paused when created so that total size can be calculated before the queue starts
 // This method will start the queue
 - (void)go;
-
 @property (assign, nonatomic, setter=setUploadProgressDelegate:) id uploadProgressDelegate;
 @property (assign, nonatomic, setter=setDownloadProgressDelegate:) id downloadProgressDelegate;
-
 @property (assign) SEL requestDidStartSelector;
 @property (assign) SEL requestDidReceiveResponseHeadersSelector;
 @property (assign) SEL requestWillRedirectSelector;
@@ -99,10 +87,8 @@
 @property (assign) BOOL showAccurateProgress;
 @property (assign, readonly) int requestsCount;
 @property (retain) NSDictionary *userInfo;
-
 @property (assign) unsigned long long bytesUploadedSoFar;
 @property (assign) unsigned long long totalBytesToUpload;
 @property (assign) unsigned long long bytesDownloadedSoFar;
 @property (assign) unsigned long long totalBytesToDownload;
-
 @end

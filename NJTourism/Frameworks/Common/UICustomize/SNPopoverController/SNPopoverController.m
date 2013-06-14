@@ -5,20 +5,16 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "SNPopoverController.h"
 #import "AuthNavigationBar.h"
 #import <objc/runtime.h>
 #import "SNPopoverNavController.h"
 #import "SNPopoverCommonViewController.h"
-
 #define kDefaultPopoverViewWidth   230
 #define kDefaultPopoverViewHeight  294
 #define kAnimationDuration  0.3f
 #define kPopoverViewTop     94
-
 /*********************************************************************/
-
 
 @interface SNPopoverController()
 {
@@ -26,29 +22,20 @@
     SNPopoverNavController *navController_;
 }
 @property (nonatomic, readonly, retain) CALayer *blackLayer;
-
 @property (nonatomic, readonly, retain) UIControl *maskControl;
-
 @property (nonatomic, retain) UIImageView *backGroundImageView;
-
 @property (nonatomic, readonly, retain) SNPopoverNavController *navController;
-
 - (void)setContentController:(SNPopoverCommonViewController *)controller;
-
 @end
-
 /******************************************************/
-
 @implementation SNPopoverController
 @synthesize blackLayer = _blackLayer;
 @synthesize maskControl = _maskControl;
 @synthesize backGroundImageView = _backGroundImageView;
 @synthesize navController = navController_;
-
 @synthesize isVisible = isVisible_;
 @synthesize blackLayerFrame = _blackLayerFrame;
 @synthesize popoverSize = _popoverSize;
-
 
 - (void)commonSetUp
 {
@@ -58,7 +45,6 @@
     //设置默认大小
     self.popoverSize = CGSizeMake(kDefaultPopoverViewWidth, kDefaultPopoverViewHeight);
 }
-
 - (id)init
 {
     self = [super init];
@@ -68,7 +54,6 @@
     }
     return self;
 }
-
 - (id)initWithContentController:(SNPopoverCommonViewController *)controller
 {
     self = [super init];
@@ -79,7 +64,6 @@
     }
     return self;
 }
-
 - (void)setContentController:(SNPopoverCommonViewController *)controller
 {
     if (contentViewController_ != controller) {
@@ -94,7 +78,6 @@
         }
         
 		[[contentViewController_ view] removeFromSuperview];
-
 		contentViewController_ = controller ;
         if ([contentViewController_ isKindOfClass:[SNPopoverCommonViewController class]]) {
             contentViewController_.snpopoverController = self;
@@ -104,17 +87,14 @@
 		[self.navController setViewControllers:viewControllers];
 	}
 }
-
 - (SNPopoverCommonViewController *)contentController
 {
     return contentViewController_;
 }
-
 - (BOOL)isVisible
 {
     return isVisible_;
 }
-
 - (SNPopoverNavController *)navController
 {
     if (!navController_) {
@@ -126,7 +106,6 @@
     }
     return navController_;
 }
-
 - (UIControl *)maskControl {
 	if (_maskControl == nil) {
 		_maskControl = [[UIControl alloc] init];
@@ -137,7 +116,6 @@
 	}
 	return _maskControl;
 }
-
 - (CALayer *)blackLayer
 {
     if (!_blackLayer) {
@@ -146,7 +124,6 @@
     }
     return _blackLayer;
 }
-
 - (UIImageView *)backGroundImageView
 {
     if (!_backGroundImageView)
@@ -162,17 +139,14 @@
     return _backGroundImageView;
 }
 
-
 #pragma mark -
 #pragma mark life cycle
-
 - (void)presentWithContentViewController:(SNPopoverCommonViewController *)viewController animated:(BOOL)animated
 {
     [self setContentController:viewController];
     
     [self presentAnimated:animated];
 }
-
 - (void)presentAnimated:(BOOL)animated
 {
     if (isVisible_) {
@@ -216,7 +190,6 @@
                          
                      }];
 }
-
 - (void)dismissAnimated:(BOOL)animated
 {
     [UIView animateWithDuration:animated?kAnimationDuration:0
@@ -235,16 +208,12 @@
                          
                      }];
 }
-
 - (void)maskControlDidTouchUpInside:(id)sender {
 	[self dismissAnimated:YES];
     
 }
-
 - (void)popToRoot:(BOOL)animated
 {
     [self.navController popViewControllerAnimated:animated];
 }
-
 @end
-

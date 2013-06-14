@@ -5,27 +5,18 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "WebViewJavascriptBridge.h"
-
 @interface WebViewJavascriptBridge ()
-
 @property (nonatomic,strong) NSMutableArray *startupMessageQueue;
-
 - (void)_flushMessageQueueFromWebView:(UIWebView *)webView;
 - (void)_doSendMessage:(NSString*)message toWebView:(UIWebView *)webView;
-
 @end
-
 @implementation WebViewJavascriptBridge
-
 @synthesize delegate = _delegate;
 @synthesize startupMessageQueue = _startupMessageQueue;
-
 static NSString *MESSAGE_SEPARATOR = @"__wvjb_sep__";
 static NSString *CUSTOM_PROTOCOL_SCHEME = @"webviewjavascriptbridge";
 static NSString *QUEUE_HAS_MESSAGE = @"queuehasmessage";
-
 + (id)javascriptBridgeWithDelegate:(id <WebViewJavascriptBridgeDelegate>)delegate {
     WebViewJavascriptBridge* bridge = [[WebViewJavascriptBridge alloc] init] ;
     bridge.delegate = delegate;
@@ -33,20 +24,16 @@ static NSString *QUEUE_HAS_MESSAGE = @"queuehasmessage";
     return bridge;
 }
 
-
-
 - (void)sendMessage:(NSString *)message toWebView:(UIWebView *)webView {
     if (self.startupMessageQueue) { [self.startupMessageQueue addObject:message]; }
     else { [self _doSendMessage:message toWebView: webView]; }
 }
-
 - (void)_doSendMessage:(NSString *)message toWebView:(UIWebView *)webView {
     message = [message stringByReplacingOccurrencesOfString:@"\\n" withString:@"\\\\n"];
     message = [message stringByReplacingOccurrencesOfString:@"'" withString:@"\\'"];
     message = [message stringByReplacingOccurrencesOfString:@"\"" withString:@"\\\""];
     [webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"WebViewJavascriptBridge._handleMessageFromObjC('%@');", message]];
 }
-
 - (void)_flushMessageQueueFromWebView:(UIWebView *)webView {
     NSString *messageQueueString = [webView stringByEvaluatingJavaScriptFromString:@"WebViewJavascriptBridge._fetchQueue();"];
     NSArray* messages = [messageQueueString componentsSeparatedByString:MESSAGE_SEPARATOR];
@@ -54,9 +41,7 @@ static NSString *QUEUE_HAS_MESSAGE = @"queuehasmessage";
         [self.delegate javascriptBridge:self receivedMessage:message fromWebView:webView];
     }
 }
-
 #pragma mark UIWebViewDelegate
-
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     NSString *js = [NSString stringWithFormat:@";(function() {"
         "if (window.WebViewJavascriptBridge) { return; };"
@@ -123,20 +108,16 @@ static NSString *QUEUE_HAS_MESSAGE = @"queuehasmessage";
     for (id message in self.startupMessageQueue) {
         [self _doSendMessage:message toWebView: webView];
     }
-
     self.startupMessageQueue = nil;
-
     if(self.delegate != nil && [self.delegate respondsToSelector:@selector(webViewDidFinishLoad:)]) {
         [self.delegate webViewDidFinishLoad:webView];
     }
 }
-
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     if(self.delegate != nil && [self.delegate respondsToSelector:@selector(webView:didFailLoadWithError:)]) {
         [self.delegate webView:webView didFailLoadWithError:error];
     }
 }
-
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     NSURL *url = [request URL];
     if (![[url scheme] isEqualToString:CUSTOM_PROTOCOL_SCHEME]) {
@@ -145,20 +126,16 @@ static NSString *QUEUE_HAS_MESSAGE = @"queuehasmessage";
         }
         return YES;
     }
-
     if ([[url host] isEqualToString:QUEUE_HAS_MESSAGE]) {
         [self _flushMessageQueueFromWebView: webView];
     } else {
         DLog(@"WebViewJavascriptBridge: WARNING: Received unknown WebViewJavascriptBridge command %@://%@", CUSTOM_PROTOCOL_SCHEME, [url path]);
     }
-
     return NO;
 }
-
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     if(self.delegate != nil && [self.delegate respondsToSelector:@selector(webViewDidStartLoad:)]) {
         [self.delegate webViewDidStartLoad:webView];
     }
 }
-
 @end

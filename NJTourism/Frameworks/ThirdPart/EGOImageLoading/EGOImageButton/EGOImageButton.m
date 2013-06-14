@@ -5,17 +5,13 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "EGOImageButton.h"
 #import "EGOImageLoader.h"
-
 @implementation EGOImageButton
 @synthesize imageURL, placeholderImage, delegate;
-
 - (id)initWithPlaceholderImage:(UIImage*)anImage {
 	return [self initWithPlaceholderImage:anImage delegate:nil];	
 }
-
 - (id)initWithPlaceholderImage:(UIImage*)anImage delegate:(id<EGOImageButtonDelegate>)aDelegate {
 	if((self = [super initWithFrame:CGRectZero])) {
 		self.placeholderImage = anImage;
@@ -25,7 +21,6 @@
 	
 	return self;
 }
-
 - (void)setImageURL:(NSURL *)aURL {
 	if(imageURL) {
 		[[EGOImageLoader sharedImageLoader] removeObserver:self forURL:imageURL];
@@ -47,20 +42,16 @@
     {
         UIImage *anImage = [UIImage imageWithData:imageData];
         [self setImage:anImage forState:UIControlStateNormal];
-
 	} else {
         [self setImage:self.placeholderImage forState:UIControlStateNormal];
 	}
 }
-
 #pragma mark -
 #pragma mark Image loading
-
 - (void)cancelImageLoad {
 	[[EGOImageLoader sharedImageLoader] cancelLoadForURL:self.imageURL];
 	[[EGOImageLoader sharedImageLoader] removeObserver:self forURL:self.imageURL];
 }
-
 - (void)imageLoaderDidLoad:(NSNotification*)notification {
 	if(![[[notification userInfo] objectForKey:@"imageURL"] isEqual:self.imageURL]) return;
 	
@@ -73,7 +64,6 @@
 		[self.delegate imageButtonLoadedImage:self];
 	}	
 }
-
 - (void)imageLoaderDidFailToLoad:(NSNotification*)notification {
 	if(![[[notification userInfo] objectForKey:@"imageURL"] isEqual:self.imageURL]) return;
 	
@@ -81,7 +71,6 @@
 		[self.delegate imageButtonFailedToLoadImage:self error:[[notification userInfo] objectForKey:@"error"]];
 	}
 }
-
 #pragma mark -
 - (void)dealloc {
 	[[EGOImageLoader sharedImageLoader] removeObserver:self];
@@ -90,5 +79,4 @@
 	self.placeholderImage = nil;
     [super dealloc];
 }
-
 @end

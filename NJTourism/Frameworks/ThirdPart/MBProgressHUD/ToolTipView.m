@@ -5,44 +5,27 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "ToolTipView.h"
-
 #define  LABELFONTSIZE   16.0f
-
 #define MARGIN 20.0
-
 #define PADDING 4.0
-
 #define PI 3.14159265358979323846
-
 @implementation ToolTipView
-
 @synthesize labelText = _labelText;
-
 @synthesize labelFont;
-
 @synthesize xOffset;
-
 @synthesize yOffset;
-
 @synthesize autoHideInterval;
 
-
-
 - (void)dealloc {
-
     TT_INVALIDATE_TIMER(dlgTimer_);
-
 }
-
 
 - (id)initWithWindow:(UIWindow *)window {
 	
     return [self initWithView:window];
 	
 }
-
 
 - (id)initWithView:(UIView *)view  {
 	
@@ -57,8 +40,6 @@
 	return [self initWithFrame:view.bounds];
 	
 }
-
-
 
 - (id)initWithFrame:(CGRect)frame {
 	
@@ -91,10 +72,8 @@
     }
     return self;
 }
-
 #pragma mark -
 #pragma mark Layout
-
 - (void)layoutSubviews {
 	
     CGRect frame = self.bounds;
@@ -108,7 +87,6 @@
         // Compute label dimensions based on font metrics if size is larger than max then clip the label width
         float lHeight = dims.height;
         float lWidth = dims.width;
-
 		float bkHeight = dims.height+45;
 		
         float bkWidth = dims.width+35;
@@ -122,7 +100,6 @@
 		CGRect bkFrame = CGRectMake(((frame.size.width - bkWidth) / 2) ,
 							 ((frame.size.height - bkHeight) / 2)+self.yOffset , bkWidth, bkHeight);
         
-
         if(self.yOffset>0){
             
             bkFrame = CGRectMake(((frame.size.width - bkWidth) / 2) ,
@@ -139,7 +116,6 @@
 		[self addSubview:bkView];
 		
         label.font = self.labelFont;
-
         label.textAlignment = UITextAlignmentCenter;
 		
         label.opaque = NO;
@@ -169,7 +145,6 @@
             lFrame = CGRectMake(floor((frame.size.width - lWidth) / 2) + xOffset,
                                 self.yOffset+25,
                                 lWidth, lHeight);
-
         }
         
         label.frame = lFrame;//CGRectMake(50,100,100,200);
@@ -187,7 +162,6 @@
                                                         repeats:NO];
     }
 }
-
 - (void)Dismiss{
 	
 	
@@ -210,7 +184,6 @@
 	
 	
 }
-
 - (void)dismissAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context 
 {
 	[self removeFromSuperview];
@@ -221,12 +194,10 @@
         [delegate_ tipViewWasHidden:self];
     }
 }
-
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event { 
 	
 	[self Dismiss];
 }
-
 
 - (void)drawRect2:(CGRect)rect {
     // Center HUD
@@ -238,7 +209,6 @@
 	float lWidth = dims.width+ +50;
 	
 	
-
     // Draw rounded HUD bacgroud rect
     boxRect = CGRectMake(((allRect.size.width - lWidth) / 2) ,
                                 ((allRect.size.height - lHeight) / 2) , lWidth, lHeight);
@@ -255,9 +225,7 @@
 	
 	label.frame = lFrame;
 	
-
 }
-
 
 - (void)fillRoundedRect:(CGRect)rect inContext:(CGContextRef)context {
 	
@@ -273,5 +241,4 @@
     CGContextClosePath(context);
     CGContextFillPath(context);
 }
-
 @end

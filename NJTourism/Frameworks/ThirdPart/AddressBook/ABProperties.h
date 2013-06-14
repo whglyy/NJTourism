@@ -5,16 +5,12 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <AddressBook/AddressBook.h>
-
 // macros to avoid copious type-casts when using ObjC wrappers
-
 // Generic labels
 #define ABWorkLabel     (NSString *) kABWorkLabel
 #define ABHomeLabel     (NSString *) kABHomeLabel
 #define ABOtherLabel    (NSString *) kABOtherLabel
-
 // Addresses
 #define ABPersonAddressStreetKey        (NSString *) kABPersonAddressStreetKey
 #define ABPersonAddressCityKey          (NSString *) kABPersonAddressCityKey
@@ -22,14 +18,11 @@
 #define ABPersonAddressZIPKey           (NSString *) kABPersonAddressZIPKey
 #define ABPersonAddressCountryKey       (NSString *) kABPersonAddressCountryKey
 #define ABPersonAddressCountryCodeKey   (NSString *) kABPersonAddressCountryCodeKey
-
 // Dates
 #define ABPersonAnniversaryLabel        (NSString *) kABPersonAnniversaryLabel
-
 // Kind
 #define ABPersonKindPerson              (NSNumber *) kABPersonKindPerson
 #define ABPersonKindOrganization        (NSNumber *) kABPersonKindOrganization
-
 // Phone Numbers
 #define ABPersonPhoneMobileLabel        (NSString *) kABPersonPhoneMobileLabel
 #define ABPersonPhoneIPhoneLabel        (NSString *) kABPersonPhoneIPhoneLabel
@@ -37,7 +30,6 @@
 #define ABPersonPhoneHomeFAXLabel       (NSString *) kABPersonPhoneHomeFAXLabel
 #define ABPersonPhoneWorkFAXLabel       (NSString *) kABPersonPhoneWorkFAXLabel
 #define ABPersonPhonePagerLabel         (NSString *) kABPersonPhonePagerLabel
-
 // IM
 #define ABPersonInstantMessageServiceKey    (NSString *) kABPersonInstantMessageServiceKey
 #define ABPersonInstantMessageServiceYahoo  (NSString *) kABPersonInstantMessageServiceYahoo
@@ -46,10 +38,8 @@
 #define ABPersonInstantMessageServiceICQ    (NSString *) kABPersonInstantMessageServiceICQ
 #define ABPersonInstantMessageServiceAIM    (NSString *) kABPersonInstantMessageServiceAIM
 #define ABPersonInstantMessageUsernameKey   (NSString *) kABPersonInstantMessageUsernameKey
-
 // URLs
 #define ABPersonHomePageLabel           (NSString *) kABPersonHomePageLabel
-
 // Related Names
 #define ABPersonFatherLabel             (NSString *) kABPersonFatherLabel
 #define ABPersonMotherLabel             (NSString *) kABPersonMotherLabel

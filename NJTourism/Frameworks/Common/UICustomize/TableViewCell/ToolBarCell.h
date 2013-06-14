@@ -5,21 +5,14 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <UIKit/UIKit.h>
 #import "ToolBarButton.h"
-
 @protocol ToolBarCellDelegate <NSObject>
-
 @optional
 - (void)doneClicked:(UITableViewCell *)cell;
-
 - (void)cancelClicked:(UITableViewCell *)cell;
-
 - (void)singleSelectCell:(UITableViewCell *)cell;
-
 @end
-
 @interface ToolBarCell : UITableViewCell
 {
     
@@ -33,21 +26,13 @@
     
     BOOL    canBecomeFirstRes_;
 }
-
 @property (nonatomic, weak) id <ToolBarCellDelegate> toolBarDelegate;
-
 @property (readwrite, retain) UIView *inputView;
-
 @property (readwrite, retain) UIView *inputAccessoryView;
-
 @property (nonatomic, retain) UIToolbar *keyboardDoneButtonBar;
-
 @property (nonatomic, assign) BOOL canBecomeFirstRes;   //default is YES
-
 @property (nonatomic, retain) UILabel *customLabel;
-
 - (id)initWithStyle:(UITableViewCellStyle)style
     reuseIdentifier:(NSString *)reuseIdentifier 
           inputView:(UIView *)aInputView;
-
 @end

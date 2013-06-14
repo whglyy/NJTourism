@@ -18,7 +18,6 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  */
-
 #include <stdlib.h>
 #include <string.h>
 #include <limits.h>
@@ -26,7 +25,6 @@
 #include "qrencode.h"
 #include "qrspec.h"
 #include "mask.h"
-
 //__STATIC
 static int Mask_writeFormatInformation(int width, unsigned char *frame, int mask, QRecLevel level)
 {
@@ -34,9 +32,7 @@ static int Mask_writeFormatInformation(int width, unsigned char *frame, int mask
 	unsigned char v;
 	int i;
 	int blacks = 0;
-
 	format =  QRspec_getFormatInfo(mask, level);
-
 	for(i=0; i<8; i++) {
 		if(format & 1) {
 			blacks += 2;
@@ -67,10 +63,8 @@ static int Mask_writeFormatInformation(int width, unsigned char *frame, int mask
 		}
 		format= format >> 1;
 	}
-
 	return blacks;
 }
-
 /**
  * Demerit coefficients.
  * See Section 8.8.2, pp.45, JIS X0510:2004.
@@ -79,7 +73,6 @@ static int Mask_writeFormatInformation(int width, unsigned char *frame, int mask
 #define N2 (3)
 #define N3 (40)
 #define N4 (10)
-
 #define MASKMAKER(__exp__) \
 	int x, y;\
 	int b = 0;\
@@ -96,79 +89,62 @@ static int Mask_writeFormatInformation(int width, unsigned char *frame, int mask
 		}\
 	}\
 	return b;
-
 static int Mask_mask0(int width, const unsigned char *s, unsigned char *d)
 {
 	MASKMAKER((x+y)&1)
 }
-
 static int Mask_mask1(int width, const unsigned char *s, unsigned char *d)
 {
 	MASKMAKER(y&1)
 }
-
 static int Mask_mask2(int width, const unsigned char *s, unsigned char *d)
 {
 	MASKMAKER(x%3)
 }
-
 static int Mask_mask3(int width, const unsigned char *s, unsigned char *d)
 {
 	MASKMAKER((x+y)%3)
 }
-
 static int Mask_mask4(int width, const unsigned char *s, unsigned char *d)
 {
 	MASKMAKER(((y/2)+(x/3))&1)
 }
-
 static int Mask_mask5(int width, const unsigned char *s, unsigned char *d)
 {
 	MASKMAKER(((x*y)&1)+(x*y)%3)
 }
-
 static int Mask_mask6(int width, const unsigned char *s, unsigned char *d)
 {
 	MASKMAKER((((x*y)&1)+(x*y)%3)&1)
 }
-
 static int Mask_mask7(int width, const unsigned char *s, unsigned char *d)
 {
 	MASKMAKER((((x*y)%3)+((x+y)&1))&1)
 }
-
 typedef int MaskMaker(int, const unsigned char *, unsigned char *);
 static MaskMaker *maskMakers[] = {
 	Mask_mask0, Mask_mask1, Mask_mask2, Mask_mask3,
 	Mask_mask4, Mask_mask5, Mask_mask6, Mask_mask7
 };
-
 unsigned char *Mask_makeMask(int width, unsigned char *frame, int mask, QRecLevel level)
 {
 	unsigned char *masked;
-
 	masked = (unsigned char *)malloc(width * width);
 	if(masked == NULL) return NULL;
-
 	maskMakers[mask](width, frame, masked);
 	Mask_writeFormatInformation(width, masked, mask, level);
-
 	return masked;
 }
-
 static int runLength[QRSPEC_WIDTH_MAX + 1];
-
 //static int n1;
 //static int n2;
 //static int n3;
 //static int n4;
-
 static int Mask_calcN1N3(int length, int *runLength)
 {
 	int i;
 	int demerit = 0;
 	int fact;
-
 	for(i=0; i<length; i++) {
 		if(runLength[i] >= 5) {
 			demerit += N1 + (runLength[i] - 5);
@@ -192,10 +168,8 @@ static int Mask_calcN1N3(int length, int *runLength)
 			}
 		}
 	}
-
 	return demerit;
 }
-
 //__STATIC
 static int Mask_evaluateSymbol(int width, unsigned char *frame)
 {
@@ -204,7 +178,6 @@ static int Mask_evaluateSymbol(int width, unsigned char *frame)
 	unsigned char b22, w22;
 	int head;
 	int demerit = 0;
-
 	p = frame;
 	for(y=0; y<width; y++) {
 		head = 0;
@@ -233,7 +206,6 @@ static int Mask_evaluateSymbol(int width, unsigned char *frame)
 		}
 		demerit += Mask_calcN1N3(head+1, runLength);
 	}
-
 	for(x=0; x<width; x++) {
 		head = 0;
 		runLength[0] = 1;
@@ -255,10 +227,8 @@ static int Mask_evaluateSymbol(int width, unsigned char *frame)
 		}
 		demerit += Mask_calcN1N3(head+1, runLength);
 	}
-
 	return demerit;
 }
-
 unsigned char *Mask_mask(int width, unsigned char *frame, QRecLevel level)
 {
 	int i;
@@ -267,11 +237,9 @@ unsigned char *Mask_mask(int width, unsigned char *frame, QRecLevel level)
 	int bestMaskNum = 0;
 	int blacks;
 	int demerit;
-
 	mask = (unsigned char *)malloc(width * width);
 	if(mask == NULL) return NULL;
 	bestMask = NULL;
-
 	for(i=0; i<8; i++) {
 //		n1 = n2 = n3 = n4 = 0;
 		demerit = 0;

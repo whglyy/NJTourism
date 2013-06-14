@@ -5,26 +5,20 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "UITextField+LeftPadding.h"
-
 
 @implementation LeftPaddingField
 @synthesize keyboardDoneButtonView = _keyboardDoneButtonView;
 @synthesize leftPaddingDelegate = _leftPaddingDelegate;
 
-
-
 - (CGRect)textRectForBounds:(CGRect)bounds
 {
     return  CGRectInset(bounds, 5, 0);
 }
-
 - (CGRect)editingRectForBounds:(CGRect)bounds
 {
     return CGRectInset(bounds, 5, 0);
 }
-
 - (void)displayBorder:(BOOL)visible
 {
     if (visible)
@@ -36,7 +30,6 @@
         self.layer.masksToBounds = YES;
     }
 }
-
 - (void)displayToolBar:(BOOL)visible
 {
     
@@ -46,7 +39,6 @@
     }
     
 }
-
 - (UIToolbar *)keyboardDoneButtonView
 {
     if (!_keyboardDoneButtonView)
@@ -91,7 +83,6 @@
     return _keyboardDoneButtonView;
     
 }
-
 - (void)doneClicked:(id)sender
 {
     if ([self.leftPaddingDelegate respondsToSelector:@selector(doneButtonClicked:)]) 
@@ -101,7 +92,6 @@
     
     [self resignFirstResponder];
 }
-
 - (void)cancelClicked:(id)sender
 {
     if ([self.leftPaddingDelegate respondsToSelector:@selector(cancelButtonClicked:)]) 
@@ -111,7 +101,5 @@
     
     [self resignFirstResponder];
 }
-
 @end
-
 

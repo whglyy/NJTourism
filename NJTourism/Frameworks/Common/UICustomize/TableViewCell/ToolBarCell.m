@@ -5,16 +5,10 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "ToolBarCell.h"
-
 @implementation ToolBarCell
 
-
-
 @synthesize canBecomeFirstRes = canBecomeFirstRes_;
-
-
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier inputView:(UIView *)aInputView
@@ -31,7 +25,6 @@
     }
     return self;
 }
-
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -44,8 +37,6 @@
     }
     return self;
 }
-
-
 
 - (UIToolbar*)keyboardDoneButtonBar{
     
@@ -85,7 +76,6 @@
     
     return _keyboardDoneButtonBar;
 }
-
 - (UILabel *)customLabel
 {
     if (!_customLabel) {
@@ -97,19 +87,16 @@
     }
     return _customLabel;
 }
-
 - (BOOL)canBecomeFirstResponder
 {
     return self.canBecomeFirstRes;
 }
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     
     
     
 }
-
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     
@@ -130,10 +117,8 @@
     
 }
 
-
 #pragma mark -
 #pragma mark Tool Bar Button Delegate Methods
-
 - (void)doneButtonClicked:(id)sender
 {
     if ([_toolBarDelegate conformsToProtocol:@protocol(ToolBarCellDelegate)])
@@ -146,7 +131,6 @@
         [self resignFirstResponder];
     }
 }
-
 - (void)cancelButtonClicked:(id)sender
 {
     if ([_toolBarDelegate conformsToProtocol:@protocol(ToolBarCellDelegate)])
@@ -158,6 +142,5 @@
     }
     [self resignFirstResponder];
 }
-
 
 @end

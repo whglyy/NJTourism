@@ -5,9 +5,7 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <Foundation/Foundation.h>
-
 ///通知Delegate
 @protocol BMKGeneralDelegate<NSObject>
 @optional
@@ -16,7 +14,6 @@
 *@param iError 错误号
 */
 - (void)onGetNetworkState:(int)iError;
-
 /**
 *返回授权验证错误
 *@param iError 错误号 : BMKErrorPermissionCheckFailure 验证失败

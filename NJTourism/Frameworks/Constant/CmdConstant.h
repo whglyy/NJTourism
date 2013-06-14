@@ -6,9 +6,7 @@
 //
 //
 
-
 #define HTTP_TIMEOUT    kHttpTimeoutSeconds
-
 typedef enum CmdCode
 {
 	// 系统命令
@@ -40,24 +38,20 @@ typedef enum CmdCode
     CC_Register                 = 0x0034,
     CC_VerCode                  = 0x0035,
     CC_GetVerCode               = 0x0036,
-
     CC_Logout                  = 0x0037,
     CC_BeginVerify             = 0x0038,
     CC_StopVerify              = 0x0039,
     CC_ReadPhone               = 0x0040,
     CC_Upload                  = 0x0041,
     CC_Upgrade                 = 0x0042,
-
     
 } E_CMDCODE;
-
 
 //需要登录的接口
 static const int CC_NEED_LOGIN_QUEUE[] = 
 {
     //CmdCodeValue,
 };
-
 //需要重写cookie的接口，例如彩票服务器，酒店服务器的域名不同，需要重写下cookie，否则cookie不能带过去
 static const int CC_NEED_COOKIE_QUEUE[] = 
 {

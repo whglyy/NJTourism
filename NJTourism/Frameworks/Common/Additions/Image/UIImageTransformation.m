@@ -5,16 +5,12 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "UIImageTransformation.h"
-
 @implementation UIImageTransformation
-
 -(id)init{
     self = [super init];    
     return self;
 }
-
 
 - (UIImage*)imageByScalingAndCroppingForSize:(CGSize)targetSize image:(UIImage*)image
 {

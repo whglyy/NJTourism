@@ -5,16 +5,12 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <libkern/OSAtomic.h>
-
 #import "ABAddressBook.h"
 #import "ABPerson.h"
 #import "ABGroup.h"
 #import "ABSource.h"
-
 NSString *ABAddressBookDidChangeNotification = @"ABAddressBookDidChange";
-
 NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitialization> wrapperClass )
 {
     NSMutableArray * wrapped = [[NSMutableArray alloc] initWithCapacity: [records count]];
@@ -30,21 +26,16 @@ NSArray * WrappedArrayOfRecords( NSArray * records, Class<ABRefInitialization> w
     
     return ( [result autorelease] );
 }
-
 @interface ABAddressBook ()
 - (void) _handleExternalChangeCallback;
 @end
-
 static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef info, void * context )
 {
     ABAddressBook * obj = (ABAddressBook *) context;
     [obj _handleExternalChangeCallback];
 }
-
 @implementation ABAddressBook
-
 @synthesize addressBookRef=_ref;
-
 + (ABAddressBook *) sharedAddressBook
 {
     static ABAddressBook * volatile __shared = nil;
@@ -71,7 +62,6 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
     
     return ( __shared );
 }
-
 - (id) initWithABRef: (CFTypeRef) ref
 {
     if ( ref == NULL )
@@ -90,7 +80,6 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
     
     return ( self );
 }
-
 - (id) init
 {
     if ([[UIDevice currentDevice].systemVersion doubleValue]>= 6.0) {
@@ -112,9 +101,7 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
     }
     
     return ( self );
-
 }
-
 - (void) dealloc
 {
     self.delegate = nil;
@@ -122,50 +109,41 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
         CFRelease( _ref );
     [super dealloc];
 }
-
 - (id<ABAddressBookDelegate>) delegate
 {
     return ( _delegate );
 }
-
 - (void) setDelegate: (id<ABAddressBookDelegate>) delegate
 {
     _delegate = delegate;
 }
-
 - (BOOL) save: (NSError **) error
 {
 	BOOL result = (BOOL) ABAddressBookSave(_ref, (CFErrorRef *)error);
 	[[NSNotificationCenter defaultCenter] postNotificationName:ABAddressBookDidChangeNotification object:self];
     return ( result );
 }
-
 - (BOOL) hasUnsavedChanges
 {
     return ( (BOOL) ABAddressBookHasUnsavedChanges(_ref) );
 }
-
 - (BOOL) addRecord: (ABRecord *) record error: (NSError **) error
 {
     return ( (BOOL) ABAddressBookAddRecord(_ref, record.recordRef, (CFErrorRef *)error) );
 }
-
 - (BOOL) removeRecord: (ABRecord *) record error: (NSError **) error
 {
     return ( (BOOL) ABAddressBookRemoveRecord(_ref, record.recordRef, (CFErrorRef *)error) );
 }
-
 - (NSString *) localizedStringForLabel: (NSString *) label
 {
     NSString * str = (NSString *) ABAddressBookCopyLocalizedLabel( (CFStringRef)label );
     return ( [str autorelease] );
 }
-
 - (void) revert
 {
     ABAddressBookRevert( _ref );
 }
-
 - (void) _handleExternalChangeCallback
 {
     if(_delegate && [_delegate respondsToSelector:@selector(addressBookDidChange:)])
@@ -173,21 +151,16 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:ABAddressBookDidChangeNotification object:self];
 }
-
 @end
-
 @implementation ABAddressBook (People)
-
 - (NSUInteger) personCount
 {
     return ( (NSUInteger) ABAddressBookGetPersonCount(_ref) );
 }
-
 -(ABPerson *) personWithRecordRef:(ABRecordRef) recordRef
 {
     return ( [[[ABPerson alloc] initWithABRef: recordRef] autorelease] );    
 }
-
 - (ABPerson *) personWithRecordID: (ABRecordID) recordID
 {
     ABRecordRef person = ABAddressBookGetPersonWithRecordID( _ref, recordID );
@@ -196,7 +169,6 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
     
     return ( [[[ABPerson alloc] initWithABRef: person] autorelease] );
 }
-
 - (NSArray *) allPeople
 {
     NSArray * people = (NSArray *) ABAddressBookCopyArrayOfAllPeople( _ref );
@@ -211,7 +183,6 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
     
     return ( result );
 }
-
 - (NSArray *) allPeopleSorted
 {
   CFArrayRef people = ABAddressBookCopyArrayOfAllPeople( _ref );
@@ -232,14 +203,11 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
             (CFComparatorFunction) ABPersonComparePeopleByName,
             (void*) ABPersonGetSortOrdering()
             );
-
   NSArray *peopleSorted = (NSArray*)peopleMutable;
   NSArray *result = WrappedArrayOfRecords( peopleSorted, [ABPerson class] );
   [peopleSorted release];
-
   return ( result );
 }
-
 - (NSArray *) allPeopleWithName: (NSString *) name
 {
     NSArray * people = (NSArray *) ABAddressBookCopyPeopleWithName( _ref, (CFStringRef)name );
@@ -254,16 +222,12 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
     
     return ( result );
 }
-
 @end
-
 @implementation ABAddressBook (Groups)
-
 - (NSUInteger) groupCount
 {
     return ( (NSUInteger) ABAddressBookGetGroupCount(_ref) );
 }
-
 - (ABGroup *) groupWithRecordID: (ABRecordID) recordID
 {
     ABRecordRef group = ABAddressBookGetGroupWithRecordID( _ref, recordID );
@@ -272,7 +236,6 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
     
     return ( [[[ABGroup alloc] initWithABRef: group] autorelease] );
 }
-
 - (NSArray *) allGroups
 {
     NSArray * groups = (NSArray *) ABAddressBookCopyArrayOfAllGroups( _ref );
@@ -287,11 +250,8 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
     
     return ( result );
 }
-
 @end
-
 @implementation ABAddressBook (Sources)
-
 - (ABSource *) sourceWithRecordID: (ABRecordID) recordID
 {
 	ABRecordRef source = ABAddressBookGetSourceWithRecordID( _ref, recordID );
@@ -300,7 +260,6 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
     
     return ( [[[ABSource alloc] initWithABRef: source] autorelease] );
 }
-
 - (ABSource *) defaultSource
 {
 	ABRecordRef source = ABAddressBookCopyDefaultSource( _ref );
@@ -309,7 +268,6 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
     
     return ( [[[ABSource alloc] initWithABRef: source] autorelease] );
 }
-
 - (NSArray *) allSources
 {
 	NSArray * sources = (NSArray *) ABAddressBookCopyArrayOfAllSources( _ref );
@@ -324,5 +282,4 @@ static void _ExternalChangeCallback( ABAddressBookRef bookRef, CFDictionaryRef i
     
     return ( result );
 }
-
 @end

@@ -5,13 +5,10 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-
 @interface ABasyncApi : NSObject {
 }
-
 - (NSURLConnection *)searchBizWithCity:(NSString *)city 
                                  Query:(NSString *)query
                                Address:(NSString *)address
@@ -23,22 +20,17 @@
                                   From:(NSString *)from
                                     To:(NSString *)to
                               Delegate:(id)aDelegate;
-
 - (NSURLConnection *)locateWithCity:(NSString *)city
                                 Addr:(NSString *)addr
                            Delegate:(id)aDelegate;
-
 - (NSURLConnection *)bizWithBid:(NSString *)bid
                         Delegate:(id)aDelegate;
-
 - (NSURLConnection *)bizCommentsWithBid:(NSString *)bid
                                Delegate:(id)aDelegate;
-
 - (NSURLConnection *)bizPicsWithBid:(NSString *)bid
                                From:(NSString *)from
                                  To:(NSString *)to
                            Delegate:(id)aDelegate;
-
 - (NSURLConnection *)busTransferWithCity:(NSString *)city
                                StartAddr:(NSString *)startAddr
                                  EndAddr:(NSString *)endAddr
@@ -50,22 +42,18 @@
                                    Count:(NSString *)count
                                  Withxys:(NSString *)withxys
                                 Delegate:(id)aDelegate;
-
 - (NSURLConnection *)buslinesWithCity:(NSString *)city
                               KeyWord:(NSString *)keyword
                               Withxys:(NSString *)withxys
                              Delegate:(id)aDelegate;
-
 - (NSURLConnection *)busStatsWithCity:(NSString *)city
                               Keyword:(NSString *) keyword
                              Delegate:(id)aDelegate;
-
 - (NSURLConnection *)busStatsAroundWithCity:(NSString *)city
                                        Dist:(NSString *)dist
                                         Lng:(NSString *)lng
                                         Lat:(NSString *)lat
                                    Delegate:(id)aDelegate;
-
 
 - (NSURLConnection *)postCommentToBizWithBid:(NSString *)bid
                                        Uname:(NSString *)uname
@@ -74,13 +62,11 @@
                                      Content:(NSString *)content
                                     Delegate:(id)aDelegate;
 
-
 - (NSURLConnection *)postBizPicWithBid:(NSString *)bid
                                  Uname:(NSString *)uname
                                  Title:(NSString *)title
                              ImageData:(NSData *)imageData
                               Delegate:(id)aDelegate;
-
 - (NSURLConnection *)postModifyBizInfoWithBid:(NSString *)bid
                                         Uname:(NSString *)uname
                                         Bname:(NSString *)bname
@@ -97,7 +83,6 @@
                                          Cost:(NSString *)cost
                                       SiteUrl:(NSString *)siteurl
                                      Delegate:(id)aDelegate;
-
 - (NSURLConnection *)postAddBizInfoWithBname:(NSString *)bname
                                        Uname:(NSString *)uname
                                       Status:(NSString *)status
@@ -116,20 +101,7 @@
 
 
 
-
-
-
 @end
-
-
-
-
-
-
-
-
-
-
 
 
 

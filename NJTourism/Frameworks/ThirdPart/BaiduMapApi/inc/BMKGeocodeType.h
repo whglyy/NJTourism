@@ -5,10 +5,8 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <CoreLocation/CoreLocation.h>
 #import <Foundation/Foundation.h>
-
 
 ///此类表示地址结果的层次化信息
 @interface BMKGeocoderAddressComponent : NSObject
@@ -19,7 +17,6 @@
 	NSString* _city;
 	NSString* _province;
 }
-
 /// 街道号码
 @property (nonatomic, retain) NSString* streetNumber;
 /// 街道名称
@@ -30,10 +27,7 @@
 @property (nonatomic, retain) NSString* city;
 /// 省份名称
 @property (nonatomic, retain) NSString* province;
-
 @end
-
-
 
 ///地址信息类，用于地理编码和反地理编码
 @interface BMKAddrInfo : NSObject
@@ -51,8 +45,5 @@
 @property (nonatomic) CLLocationCoordinate2D geoPt;
 ///地址周边POI信息，成员类型为BMKPoiInfo
 @property (nonatomic, retain) NSArray* poiList;
-
 @end
-
-
 

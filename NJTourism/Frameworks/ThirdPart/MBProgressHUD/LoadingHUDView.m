@@ -5,23 +5,18 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "LoadingHUDView.h"
 #import "NSString+Additions.h"
 #import "UIView+Draw.h"
 
-
 #define WIDTH_MARGIN 20
 #define HEIGHT_MARGIN 20
-
 @interface LoadingHUDView (PrivateMethods)
 - (CGSize) calculateHeightOfTextFromWidth:(NSString*)text font: (UIFont*)withFont width:(float)width linebreak:(UILineBreakMode)lineBreakMode;
 @end
 
-
 @implementation LoadingHUDView
 @synthesize radius;
-
 - (id) initWithTitle:(NSString*)ttl message:(NSString*)msg{
 	if(self = [super initWithFrame:CGRectMake(0, 0, 280, 200)]){
 		
@@ -42,7 +37,6 @@
         return nil;
 	return self;	
 }
-
 - (void) drawRect:(CGRect)rect {
 	
 	if(_hidden) return;
@@ -92,7 +86,6 @@
 	
 }
 
-
 - (void) setTitle:(NSString*)str{
 	
 	_title = [str copy];
@@ -102,7 +95,6 @@
 - (NSString*) title{
 	return _title;
 }
-
 - (void) setMessage:(NSString*)str{
 	
 	_message = [str copy];
@@ -111,7 +103,6 @@
 - (NSString*) message{
 	return _message;
 }
-
 - (void) setRadius:(float)f{
 	if(f==radius) return;
 	
@@ -119,7 +110,6 @@
 	[self setNeedsDisplay];
 	
 }
-
 - (void) startAnimating{
 	if(!_hidden) return;
 	_hidden = NO;
@@ -135,7 +125,6 @@
 	
 }
 
-
 - (CGSize) calculateHeightOfTextFromWidth:(NSString*)text font: (UIFont*)withFont width:(float)width linebreak:(UILineBreakMode)lineBreakMode{
 	return [text sizeWithFont:withFont 
 			constrainedToSize:CGSizeMake(width, FLT_MAX) 
@@ -150,13 +139,10 @@
 	CGSize s2 = [_message heightWithFont:[UIFont systemFontOfSize:12.0] 
 								   width:200.0 
 							   linebreak:UILineBreakModeCharacterWrap];
-
 	CGRect r = self.frame;
 	r.size.height = s1.height + s2.height + 20;
 	self.frame = r;
 }
-
-
 
 
 @end

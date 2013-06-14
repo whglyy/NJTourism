@@ -5,13 +5,10 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <CoreLocation/CoreLocation.h>
 #import <Foundation/Foundation.h>
-
 #import "BMKPoiSearchType.h"
 #import "BMKGeometry.h"
-
 ///线路节点信息
 @interface BMKPlanNode : NSObject
 {
@@ -22,9 +19,7 @@
 @property (nonatomic, retain) NSString* name;
 ///节点坐标
 @property (nonatomic) CLLocationCoordinate2D pt;
-
 @end
-
 
 ///公交路段结果类
 @interface BMKLine : NSObject
@@ -56,13 +51,9 @@
 @property (nonatomic, retain) BMKPoiInfo* getOnStopPoiInfo;
 ///下车站点POI信息
 @property (nonatomic, retain) BMKPoiInfo* getOffStopPoiInfo;
-
 ///线路坐标数组
 - (BMKMapPoint*)points;
-
 @end
-
-
 
 ///此类表示驾车或步行路线中的一个关键点
 @interface BMKStep : NSObject
@@ -71,17 +62,13 @@
 	NSString* _content;
 	int _degree;
 }
-
 ///关键点坐标
 @property (nonatomic) CLLocationCoordinate2D pt;
 ///关键点提示信息
 @property (nonatomic, retain) NSString* content;
 ///路线相对正北的角度
 @property (nonatomic) int degree;
-
 @end
-
-
 
 ///此类表示一条驾驶或步行线路
 @interface BMKRoute : NSObject
@@ -110,17 +97,12 @@
 @property (nonatomic, retain) NSString* tip;	
 ///线路关键点数组,成员类型为BMKStep
 @property (nonatomic, retain) NSArray* steps;
-
 @property (nonatomic) BMKMapPoint** points;
-
 ///某一段坐标点数目
 - (int)getPointsNum:(int)index;
 ///某一段坐标点数组
 - (const BMKMapPoint*)getPoints:(int)index;
-
 @end
-
-
 
 ///公交方案详情类
 @interface BMKTransitRoutePlan : NSObject
@@ -144,10 +126,7 @@
 @property (nonatomic, retain) NSArray* routes;	
 ///BMKLine数组
 @property (nonatomic, retain) NSArray* lines;	
-
 @end
-
-
 
 ///此类表示一条驾车或步行方案
 @interface BMKRoutePlan : NSObject
@@ -159,9 +138,7 @@
 @property (nonatomic) int distance;
 ///BMKRoute数组
 @property (nonatomic, retain) NSArray* routes;
-
 @end
-
 @class BMKRouteAddrResult;
 ///线路搜索结果类
 @interface BMKPlanResult : NSObject
@@ -181,7 +158,6 @@
 @property (nonatomic, retain) BMKRouteAddrResult* routeAddrResult;
 @end
 
-
 ///路线搜索地址结果类.当输入的起点或终点有多个地点选择时，或者选定的城市没有此地点，但其它城市有(驾乘或步行)，返回该类的实例
 @interface BMKRouteAddrResult : NSObject
 {
@@ -199,7 +175,6 @@
 ///终点城市列表，成员类型为BMKCityListInfo,如果输入的地点在本城市没有而在其它城市有，则返回其它城市的信息
 @property (nonatomic, retain) NSArray* endCityList;
 @end
-
 ///公交详情结果类.
 @interface BMKBusLineResult : NSObject
 {
@@ -211,18 +186,12 @@
     BMKRoute* _mBusRoute;
 	
 }
-
 @property (nonatomic, retain) NSString* mCompany;
-
 @property (nonatomic, retain) NSString* mBusName;
-
 @property (nonatomic) int mIsMonTicket;
-
 @property (nonatomic, retain) NSString* mStartTime;
 @property (nonatomic, retain) NSString* mEndTime;
 @property (nonatomic, retain) BMKRoute* mBusRoute;
 @end
-
-
 
 

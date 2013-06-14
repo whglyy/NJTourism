@@ -5,9 +5,7 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <UIKit/UIKit.h>
-
 
 enum {
     BMKMapTypeStandard   = 1,	       ///< 标准地图    0X00000001
@@ -17,9 +15,7 @@ enum {
 };
 typedef NSUInteger BMKMapType;
 
-
 //UIKIT_EXTERN NSString *BMKErrorDomain;
-
 enum BMKErrorCode {
 	BMKErrorOk = 0,	///< 正确，无错误
     BMKErrorConnect = 2,	///< 网络连接错误

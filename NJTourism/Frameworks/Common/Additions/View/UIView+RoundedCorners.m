@@ -5,12 +5,9 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "UIView+RoundedCorners.h"
 #import <QuartzCore/QuartzCore.h>
-
 @implementation UIView (RoundedCorners)
-
 -(void)setRoundedCorners:(UIRectCorner)corners radius:(CGFloat)radius {
 	CGRect rect = self.bounds;
 	    
@@ -27,5 +24,4 @@
     // Set the newly created shape layer as the mask for the view's layer
     self.layer.mask = maskLayer;
 }
-
 @end

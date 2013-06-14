@@ -5,10 +5,8 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
-
 
 typedef enum
 {
@@ -16,8 +14,6 @@ typedef enum
 	EGOOPullRefreshNormal,
 	EGOOPullRefreshLoading,	
 } EGOPullRefreshState;
-
-
 
 @interface EGORefreshTableHeaderView : UIView {
 	
@@ -30,17 +26,10 @@ typedef enum
     
     
     
-
 }
 
-
 @property(nonatomic,assign) EGOPullRefreshState state;
-
 - (void)setCurrentDate;
-
 - (void)setState:(EGOPullRefreshState)aState;
-
 @end
-
-
 

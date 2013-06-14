@@ -5,9 +5,7 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "ABConnection.h"
-
 @implementation ABConnection
 #pragma mark-
 #pragma mark Init & Dealloc
@@ -20,22 +18,17 @@
     }
     return self;
 }
-
 -(void) dealloc
 {
-
 }
-
 -(void) cancel
 {
     [_connection cancel];
 }
-
 -(void) execute
 {
     [_connection start];
 }
-
 #pragma mark NSURLConnectionDelegate
 //appending receiving data
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
@@ -43,7 +36,6 @@
     [_bufData appendData:data];
     
 }
-
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
     if (_callback)
@@ -53,7 +45,6 @@
                         withObject:self];
     }
 }
-
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
@@ -95,7 +86,6 @@
         }
     }
 }
-
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     if (_callback)

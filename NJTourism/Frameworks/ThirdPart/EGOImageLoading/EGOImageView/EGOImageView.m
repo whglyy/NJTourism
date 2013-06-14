@@ -5,13 +5,10 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "EGOImageView.h"
 #import "EGOImageLoader.h"
 #import "ImageManipulator.h"
-
 #define DEGREES_TO_RADIANS(d) (d * M_PI / 180)
-
 
 @implementation EGOImageView
 @synthesize imageURL, placeholderImage, delegate;
@@ -20,11 +17,9 @@
 @synthesize hasAnimateType;
 @synthesize isRoundCorner = isRoundCorner_;
 @synthesize imageCornerRadis = imageCornerRadius_;
-
 - (id)initWithPlaceholderImage:(UIImage*)anImage {
 	return [self initWithPlaceholderImage:anImage delegate:nil];	
 }
-
 - (id)initWithPlaceholderImage:(UIImage*)anImage delegate:(id<EGOImageViewDelegate>)aDelegate {
 	if((self = [super initWithImage:anImage])) {
 		self.placeholderImage = anImage;
@@ -33,7 +28,6 @@
 	
 	return self;
 }
-
 - (id)init {
     self = [super init];
     if (self) {
@@ -42,7 +36,6 @@
     }
     return self;
 }
-
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
@@ -51,7 +44,6 @@
     }
     return self;
 }
-
 - (void)setHasBorder:(BOOL)aHasBorder{
     if(aHasBorder!=_hasBorder && !_hasBorder){
         [self.layer setMasksToBounds:YES];
@@ -68,7 +60,6 @@
         self.backgroundColor = [UIColor whiteColor];
     }
 }
-
 - (void)setImageURL:(NSURL *)aURL {
 	if(imageURL) {
 		[[EGOImageLoader sharedImageLoader] removeObserver:self forURL:imageURL];
@@ -83,7 +74,6 @@
 	} else {
 		imageURL = [aURL retain];
 	}
-
 	[[EGOImageLoader sharedImageLoader] removeObserver:self];
 	NSData* imageData = [[EGOImageLoader sharedImageLoader] dataForURL:aURL shouldLoadWithObserver:self];
 	
@@ -92,7 +82,6 @@
         self.imageFileData = imageData;
         
         self.isDataIntegrated = YES;
-
 		// trigger the delegate callback if the image was found in the cache
         if([self.delegate respondsToSelector:@selector(imageViewLoadedImage:)]) 
         {
@@ -102,7 +91,6 @@
 		self.image = self.placeholderImage;
 	}
 }
-
 //liukun 2012-6-8
 - (void)setImage:(UIImage *)image
 {
@@ -119,18 +107,14 @@
     }
     
 }
-
 #pragma mark -
 #pragma mark Image loading
-
 - (void)cancelImageLoad {
 	[[EGOImageLoader sharedImageLoader] cancelLoadForURL:self.imageURL];
 	[[EGOImageLoader sharedImageLoader] removeObserver:self forURL:self.imageURL];
 }
-
 - (void)imageLoaderDidLoad:(NSNotification*)notification {
 	if(![[[notification userInfo] objectForKey:@"imageURL"] isEqual:self.imageURL]) return;
-
 	NSData* imageData = [[notification userInfo] objectForKey:@"data"];
     
     self.imageFileData = imageData;
@@ -220,13 +204,11 @@
         default:
             break;
     }
-
 	
 	if([self.delegate respondsToSelector:@selector(imageViewLoadedImage:)]) {
 		[self.delegate imageViewLoadedImage:self];
 	}	
 }
-
 - (void)imageLoaderDidFailToLoad:(NSNotification*)notification {
 	if(![[[notification userInfo] objectForKey:@"imageURL"] isEqual:self.imageURL]) return;
 	
@@ -234,7 +216,6 @@
 		[self.delegate imageViewFailedToLoadImage:self error:[[notification userInfo] objectForKey:@"error"]];
 	}
 }
-
 #pragma mark -
 - (void)dealloc {
 	[[EGOImageLoader sharedImageLoader] removeObserver:self];
@@ -246,7 +227,6 @@
 	self.placeholderImage = nil;    
     [super dealloc];
 }
-
 - (UIImage *)adjustPlaceholderImage:(UIImage *)image
 {
     if (!image) {
@@ -277,5 +257,4 @@
 	
 	return testImg;
 }
-
 @end

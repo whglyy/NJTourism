@@ -5,24 +5,16 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-
 #import "SNHUDIndicatorView.h"
-
 @interface SNHUDIndicatorView ()
-
 @property (nonatomic, retain) NSTimerHelper  *indicatorTimer;
-
 @end
-
 @implementation SNHUDIndicatorView
-
 - (void)dealloc
 {
     [self.indicatorTimer invalidate];
     TT_RELEASE_SAFELY(_indicatorImgView);
-
 }
-
 - (void)drawRect:(CGRect)rect{
     float radian = 90;
     @autoreleasepool {
@@ -31,9 +23,7 @@
         self.indicatorImgView.image = image;
     }
 }
-
 - (UIImageView *)indicatorImgView{
-
     if (!_indicatorImgView) {
       
         _indicatorImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 37, 37)];
@@ -42,7 +32,6 @@
     }
     return _indicatorImgView;
 }
-
 - (void)handleProgres{
     if (self.progress == 0) {
         self.progress = 0.25;
@@ -56,7 +45,6 @@
     
     [self.indicatorTimer invalidate];
     self.indicatorTimer = [NSTimerHelper scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(handleProgres) userInfo:nil repeats:YES];
-
 }
 - (void)stopAnimation{
     [self.indicatorTimer invalidate];
