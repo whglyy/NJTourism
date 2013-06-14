@@ -6,7 +6,9 @@
 //
 //
 #import "NSObject+GlobalDataManage.h"
+
 @implementation NSObject (GlobalDataManage)
+
 - (AppDelegate *)appDelegate
 {
     return [AppDelegate currentAppDelegate];

@@ -5,14 +5,14 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-#import "TabBarViewController.h"
-@class JIDSettingsViewController;
 
-@interface AppDelegate : NSObject <UIApplicationDelegate>
-{
-	UIWindow *window;
-}
-@property (nonatomic, strong) IBOutlet UIWindow *window;
-@property (nonatomic, strong) IBOutlet TabBarViewController *rootViewController;
+#import "RevealController.h"
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (retain, nonatomic) UIWindow *window;
+@property (retain, nonatomic) RevealController *viewController;
+
 + (AppDelegate *)currentAppDelegate;
+
 @end

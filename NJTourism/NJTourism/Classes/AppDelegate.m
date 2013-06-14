@@ -6,25 +6,37 @@
 //
 //
 #import "AppDelegate.h"
-#import "DAO.h"
-@interface AppDelegate()
-@end
+
+#import "RevealController.h"
+#import "BusListViewController.h"
+#import "RearViewController.h"
+
 @implementation AppDelegate
-@synthesize window;
-@synthesize rootViewController;
-#pragma mark-
-#pragma mark Init & Add
-#pragma mark-
-#pragma mark
+
+@synthesize window = _window;
+@synthesize viewController = _viewController;
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [AibangApi setAppkey:@"f41c8afccc586de03a99c86097e98ccb"];
-   
-    self.window.rootViewController = self.rootViewController;
-    [self.window makeKeyAndVisible];
-            
-    return YES;
+	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+	
+	BusListViewController *frontViewController;
+	RearViewController *rearViewController;
+	
+	
+    frontViewController = [[BusListViewController alloc] initWithNibName:@"BusListViewController" bundle:nil];
+    rearViewController = [[RearViewController alloc] initWithNibName:@"RearViewController" bundle:nil];
+    
+	
+	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
+	
+	RevealController *revealController = [[RevealController alloc] initWithFrontViewController:navigationController rearViewController:rearViewController];
+	
+	self.window.rootViewController = revealController;
+	[self.window makeKeyAndVisible];
+	return YES;
 }
+
 + (AppDelegate *)currentAppDelegate
 {
 	return (AppDelegate *)[[UIApplication sharedApplication] delegate];
