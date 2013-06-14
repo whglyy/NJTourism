@@ -20,12 +20,8 @@
 {
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
-	BusListViewController *frontViewController;
-	RearViewController *rearViewController;
-	
-	
-    frontViewController = [[BusListViewController alloc] initWithNibName:@"BusListViewController" bundle:nil];
-    rearViewController = [[RearViewController alloc] initWithNibName:@"RearViewController" bundle:nil];
+	BusListViewController *frontViewController = [[BusListViewController alloc] initWithNibName:@"BusListViewController" bundle:nil];
+	RearViewController *rearViewController = [[RearViewController alloc] initWithNibName:@"RearViewController" bundle:nil];
     
 	
 	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
