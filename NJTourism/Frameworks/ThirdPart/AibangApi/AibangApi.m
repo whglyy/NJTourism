@@ -23,8 +23,10 @@
     APPKEY = appkey;
 }
 #pragma mark callback handler
--(void) handleData:(NSData*)data WithConnection:(ABConnection*)connection
+-(void)handleData:(NSData*)data WithConnection:(ABConnection*)connection
 {
+    
+    
     if (delegate && [delegate respondsToSelector:@selector(requestDidFinishWithData:aibangApi:)])
     {
         [delegate performSelector:@selector(requestDidFinishWithData:aibangApi:) withObject:data withObject:self];
