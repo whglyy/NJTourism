@@ -2,7 +2,7 @@
 //  EGOPhotoController.m
 //  FatFist
 //
-//  Created by lyywhg on 13-5-24.
+//  Copyright 2011 FatFish. All rights reserved.
 //
 //
 
@@ -948,25 +948,6 @@
 	[self dismissModalViewControllerAnimated:YES];
 	
 	NSString *mailError = nil;
-	
-	switch (result) {
-		case MFMailComposeResultCancelled:
-			break;
-		case MFMailComposeResultSaved:
-            [self presentSheet:L(@"Save success")];
-			break;
-		case MFMailComposeResultSent:
-            [self presentSheet:L(@"Send success, thank for your feedback")];
-			break;
-		case MFMailComposeResultFailed:
-            [self presentSheet:L(@"Send failed")];
-			break;
-		default:
-		{
-			[self presentSheet:L(@"Sending Failed – Unknown Error  ")];
-			break;
-        }
-	}
 	
 	if (mailError != nil) {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:mailError delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];

@@ -54,8 +54,6 @@
 		42B298B217608F880043CBA2 /* PhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B298B117608F800043CBA2 /* PhoneNumberFormatter.m */; };
 		42B298BA1760B07A0043CBA2 /* ErrorAnalyzeUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B298B91760B07A0043CBA2 /* ErrorAnalyzeUtil.m */; };
 		42E675C81758994A006BAD7D /* AuthNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E675C61758994A006BAD7D /* AuthNavigationBar.m */; };
-		42E675CC17589C87006BAD7D /* snim_icon_add_friend.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E675CA17589C87006BAD7D /* snim_icon_add_friend.png */; };
-		42E675CD17589C87006BAD7D /* snim_icon_people.png in Resources */ = {isa = PBXBuildFile; fileRef = 42E675CB17589C87006BAD7D /* snim_icon_people.png */; };
 		42E67620175D8C79006BAD7D /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E6761F175D8C78006BAD7D /* AddressBook.framework */; };
 		42E67622175D8CF6006BAD7D /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42E67621175D8CF6006BAD7D /* AddressBookUI.framework */; };
 		42E67634175DC30B006BAD7D /* ABAddressBook.m in Sources */ = {isa = PBXBuildFile; fileRef = 42E67624175DC30B006BAD7D /* ABAddressBook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -194,7 +192,6 @@
 		42F76277173BC4A5000A9AC8 /* UIResponder+MotionRecognizers.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F761DF173BC4A5000A9AC8 /* UIResponder+MotionRecognizers.m */; };
 		B22F44EC175CC0E8007E7DA2 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B22F44EA175CC0E7007E7DA2 /* AddressBook.framework */; };
 		B22F44ED175CC0E8007E7DA2 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B22F44EB175CC0E8007E7DA2 /* AddressBookUI.framework */; };
-		DC19DDA1170B4138000D2178 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DC19DDA0170B4138000D2178 /* Default-568h@2x.png */; };
 		DC1F97E21152CA2D00138A8F /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DC1F97E11152CA2D00138A8F /* libxml2.dylib */; };
 		DC1F97E81152CA4E00138A8F /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC1F97E71152CA4E00138A8F /* CFNetwork.framework */; };
 		DC1F98371152CBC200138A8F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC1F98361152CBC200138A8F /* SystemConfiguration.framework */; };
@@ -294,8 +291,6 @@
 		42B298B91760B07A0043CBA2 /* ErrorAnalyzeUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorAnalyzeUtil.m; sourceTree = "<group>"; };
 		42E675C51758994A006BAD7D /* AuthNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthNavigationBar.h; sourceTree = "<group>"; };
 		42E675C61758994A006BAD7D /* AuthNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthNavigationBar.m; sourceTree = "<group>"; };
-		42E675CA17589C87006BAD7D /* snim_icon_add_friend.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snim_icon_add_friend.png; sourceTree = "<group>"; };
-		42E675CB17589C87006BAD7D /* snim_icon_people.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snim_icon_people.png; sourceTree = "<group>"; };
 		42E6761F175D8C78006BAD7D /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		42E67621175D8CF6006BAD7D /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		42E67623175DC30B006BAD7D /* ABAddressBook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABAddressBook.h; sourceTree = "<group>"; };
@@ -576,7 +571,6 @@
 		8D1107310486CEB800E47090 /* NJTourism-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "NJTourism-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		B22F44EA175CC0E7007E7DA2 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		B22F44EB175CC0E8007E7DA2 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
-		DC19DDA0170B4138000D2178 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		DC1F97E11152CA2D00138A8F /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		DC1F97E71152CA4E00138A8F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		DC1F98361152CBC200138A8F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -755,7 +749,6 @@
 				1F38EEA417694AD900D5A96C /* snim_icon_people.png */,
 				1F38EEA517694AD900D5A96C /* system_bg.png */,
 				1F38EEA617694AD900D5A96C /* system_nav_bg.png */,
-				42E675C917589C76006BAD7D /* contact */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -794,7 +787,6 @@
 			children = (
 				1F5BFA0F173BE8A200B12EAA /* Localizable */,
 				1F5BF9F7173BE43E00B12EAA /* Images */,
-				DC19DDA0170B4138000D2178 /* Default-568h@2x.png */,
 				8D1107310486CEB800E47090 /* NJTourism-Info.plist */,
 				1F78F245173C9BA1002DC1AF /* test.strings */,
 			);
@@ -868,15 +860,6 @@
 			);
 			name = AuthManager;
 			path = ../../Frameworks/Global/AuthManager;
-			sourceTree = "<group>";
-		};
-		42E675C917589C76006BAD7D /* contact */ = {
-			isa = PBXGroup;
-			children = (
-				42E675CA17589C87006BAD7D /* snim_icon_add_friend.png */,
-				42E675CB17589C87006BAD7D /* snim_icon_people.png */,
-			);
-			name = contact;
 			sourceTree = "<group>";
 		};
 		42E67606175D8B75006BAD7D /* AddressBook */ = {
@@ -1646,7 +1629,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
-				DC19DDA1170B4138000D2178 /* Default-568h@2x.png in Resources */,
 				1F78F246173C9BA1002DC1AF /* test.strings in Resources */,
 				1F78F249173C9BE9002DC1AF /* Localizable.strings in Resources */,
 				42F76251173BC4A5000A9AC8 /* egopv_error_placeholder.png in Resources */,
@@ -1660,8 +1642,6 @@
 				42F76259173BC4A5000A9AC8 /* egopv_photo_placeholder@2x.png in Resources */,
 				42F7625A173BC4A5000A9AC8 /* egopv_right.png in Resources */,
 				42F7625B173BC4A5000A9AC8 /* egopv_right@2x.png in Resources */,
-				42E675CC17589C87006BAD7D /* snim_icon_add_friend.png in Resources */,
-				42E675CD17589C87006BAD7D /* snim_icon_people.png in Resources */,
 				1F38EEA717694AD900D5A96C /* chat.png in Resources */,
 				1F38EEA817694AD900D5A96C /* chat@2x.png in Resources */,
 				1F38EEA917694AD900D5A96C /* contact.png in Resources */,

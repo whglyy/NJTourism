@@ -2,7 +2,7 @@
 //  ABMutableURLRequest.m
 //  FatFist
 //
-//  Created by lyywhg on 13-5-24.
+//  Copyright 2011 FatFish. All rights reserved.
 //
 //
 
@@ -15,15 +15,14 @@
 	if (aQueryString) {
 		[url appendFormat:@"?%@", aQueryString];
 	}
-	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]] autorelease];
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
 	[request setHTTPMethod:@"GET"];
 	[request setTimeoutInterval:60.0f];
-	[url release];
 	return request;
 }
 
 + (NSMutableURLRequest *)requestPost:(NSString *)aUrl queryString:(NSData *)data {
-	NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:aUrl]] autorelease];
+	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:aUrl]];
 	[request setHTTPMethod:@"POST"];
 	[request setTimeoutInterval:60.0f];
 	[request setValue:@"multipart/form-data;boundary=0194784892923" forHTTPHeaderField:@"Content-Type"];

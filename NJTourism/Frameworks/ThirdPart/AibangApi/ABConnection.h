@@ -2,21 +2,20 @@
 //  ABConnection.h
 //  FatFist
 //
-//  Created by lyywhg on 13-5-24.
+//  Copyright 2011 FatFish. All rights reserved.
 //
 //
 
 #import <UIKit/UIKit.h>
 #import "AibangApi.h"
 
-@interface ABConnection : NSObject <NSURLConnectionDataDelegate> {
-    NSMutableData* _bufData;
-    NSURLConnection* _connection;
-    AibangApi* _callback;
+@interface ABConnection : NSObject <NSURLConnectionDataDelegate>
+{
 }
+@property (nonatomic, strong) NSMutableData *bufData;
 
-@property(nonatomic, retain) NSURLConnection* connection;
-@property(nonatomic, assign) AibangApi* callback;
+@property (nonatomic, strong) NSURLConnection* connection;
+@property (nonatomic, assign) AibangApi* callback;
 -(void) cancel;
 -(void) execute;
 @end

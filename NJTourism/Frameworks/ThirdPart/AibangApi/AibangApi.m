@@ -2,7 +2,7 @@
 //  AibangApi.m
 //  FatFist
 //
-//  Created by lyywhg on 13-5-24.
+//  Copyright 2011 FatFish. All rights reserved.
 //
 //
 
@@ -13,30 +13,34 @@
 
 @synthesize delegate;
 
--(void) dealloc {
+-(void) dealloc
+{
     [self connectionCancel];
-    [http release];
-    [super dealloc];
 }
 
--(void)connectionCancel{
+-(void)connectionCancel
+{
     [http.connection cancel];
 }
 
-+ (void)setAppkey:(NSString *)appkey{
-    [APPKEY release];
-    APPKEY = [appkey retain];
++ (void)setAppkey:(NSString *)appkey
+{
+    APPKEY = appkey;
 }
 #pragma mark callback handler
 
--(void) handleData:(NSData*)data WithConnection:(ABConnection*)connection {
-    if (delegate && [delegate respondsToSelector:@selector(requestDidFinishWithData:aibangApi:)]) {
+-(void) handleData:(NSData*)data WithConnection:(ABConnection*)connection
+{
+    if (delegate && [delegate respondsToSelector:@selector(requestDidFinishWithData:aibangApi:)])
+    {
         [delegate performSelector:@selector(requestDidFinishWithData:aibangApi:) withObject:data withObject:self];
     }
 }
 
--(void) handleError:(NSError*)error WithConnection:(ABConnection*)connection {
-    if (delegate && [delegate respondsToSelector:@selector(requestDidFailedWithError:aibangApi:)]) {
+-(void) handleError:(NSError*)error WithConnection:(ABConnection*)connection
+{
+    if (delegate && [delegate respondsToSelector:@selector(requestDidFailedWithError:aibangApi:)])
+    {
         [delegate performSelector:@selector(requestDidFailedWithError:aibangApi:) withObject:error withObject:self];
     }
 }
@@ -51,11 +55,12 @@
                     Radius:(NSString *)radius
                   Rankcode:(NSString *)rc
                       From:(NSString *)from
-                        To:(NSString *)to; {
+                        To:(NSString *)to;
+{
     ABasyncApi* api = [[ABasyncApi alloc] init];
-    if (http) {
+    if (http)
+    {
         [http cancel];
-        [http release];
     }
     http = [[ABConnection alloc] init];
     NSURLConnection* url = [api searchBizWithCity:city
@@ -72,16 +77,16 @@
     http.connection = url;
     http.callback = self;
     [http execute];
-    [api release];
 }
 
 - (void) locateWithCity:(NSString *)city
-                   Addr:(NSString *)addr {
+                   Addr:(NSString *)addr
+{
     
     ABasyncApi* api = [[ABasyncApi alloc] init];
-    if (http) {
+    if (http)
+    {
         [http cancel];
-        [http release];
     }
     http = [[ABConnection alloc] init];
     NSURLConnection* url = [api locateWithCity:city 
@@ -90,28 +95,28 @@
     http.connection = url;
     http.callback = self;
     [http execute];
-    [api release];
 }
                             
-- (void) bizWithBid:(NSString *)bid{
+- (void) bizWithBid:(NSString *)bid
+{
     ABasyncApi* api = [[ABasyncApi alloc] init];
-    if (http) {
+    if (http)
+    {
         [http cancel];
-        [http release];
     }
     http = [[ABConnection alloc] init];
     NSURLConnection* url = [api bizWithBid:bid Delegate:http];
     http.connection = url;
     http.callback = self;
     [http execute];
-    [api release];
 }
                             
-- (void) bizCommentsWithBid:(NSString *)bid{
+- (void) bizCommentsWithBid:(NSString *)bid
+{
     ABasyncApi* api = [[ABasyncApi alloc] init];
-    if (http) {
+    if (http)
+    {
         [http cancel];
-        [http release];
     }
     http = [[ABConnection alloc] init];
     NSURLConnection* url = [api bizCommentsWithBid:bid
@@ -119,16 +124,16 @@
     http.connection = url;
     http.callback = self;
     [http execute];
-    [api release];
 }
 
 - (void)bizPicsWithBid:(NSString *)bid
                   From:(NSString *)from
-                    To:(NSString *)to{
+                    To:(NSString *)to
+{
     ABasyncApi* api = [[ABasyncApi alloc] init];
-    if (http) {
+    if (http)
+    {
         [http cancel];
-        [http release];
     }
     http = [[ABConnection alloc] init];
     NSURLConnection* url = [api bizPicsWithBid:bid 
@@ -138,7 +143,6 @@
     http.connection = url;
     http.callback = self;
     [http execute];
-    [api release];
 }                            
                             
 - (void)busTransferWithCity:(NSString *)city
@@ -150,11 +154,12 @@
                      EndLat:(NSString *)endLat
                          Rc:(NSString *)rc
                       Count:(NSString *)count
-                    Withxys:(NSString *)withxys{
+                    Withxys:(NSString *)withxys
+{
     ABasyncApi* api = [[ABasyncApi alloc] init];
-    if (http) {
+    if (http)
+    {
         [http cancel];
-        [http release];
     }
     http = [[ABConnection alloc] init];
     NSURLConnection* url = [api busTransferWithCity:city
@@ -171,16 +176,16 @@
     http.connection = url;
     http.callback = self;
     [http execute];
-    [api release];
 }  
                             
 -(void)buslinesWithCity:(NSString *)city
                 KeyWord:(NSString *)keyword
-                Withxys:(NSString *)withxys{
+                Withxys:(NSString *)withxys
+{
     ABasyncApi* api = [[ABasyncApi alloc] init];
-    if (http) {
+    if (http)
+    {
         [http cancel];
-        [http release];
     }
     http = [[ABConnection alloc] init];
     NSURLConnection* url = [api buslinesWithCity:city
@@ -190,16 +195,16 @@
     http.connection = url;
     http.callback = self;
     [http execute];
-    [api release];
 }                              
                             
                             
 -(void)busStatsWithCity:(NSString *)city
-                Keyword:(NSString *) keyword{
+                Keyword:(NSString *) keyword
+{
     ABasyncApi* api = [[ABasyncApi alloc] init];
-    if (http) {
+    if (http)
+    {
         [http cancel];
-        [http release];
     }
     http = [[ABConnection alloc] init];
     NSURLConnection* url = [api busStatsWithCity:city
@@ -208,7 +213,6 @@
     http.connection = url;
     http.callback = self;
     [http execute];
-    [api release];
 }                             
                             
 -(void)busStatsAroundWithCity:(NSString *)city
@@ -218,7 +222,6 @@
     ABasyncApi* api = [[ABasyncApi alloc] init];
     if (http) {
         [http cancel];
-        [http release];
     }
     http = [[ABConnection alloc] init];
     NSURLConnection* url = [api busStatsAroundWithCity:city
@@ -229,7 +232,6 @@
     http.connection = url;
     http.callback = self;
     [http execute];
-    [api release];
 }                             
                             
 -(void)postCommentToBizWithBid:(NSString *)bid
@@ -240,7 +242,6 @@
     ABasyncApi* api = [[ABasyncApi alloc] init];
     if (http) {
         [http cancel];
-        [http release];
     }
     http = [[ABConnection alloc] init];
     NSURLConnection* url = [api postCommentToBizWithBid:bid
@@ -252,7 +253,6 @@
     http.connection = url;
     http.callback = self;
     [http execute];
-    [api release];
 }                           
                             
 -(void)postBizPicWithBid:(NSString *)bid
@@ -262,7 +262,6 @@
     ABasyncApi* api = [[ABasyncApi alloc] init];
     if (http) {
         [http cancel];
-        [http release];
     }
     http = [[ABConnection alloc] init];
     NSURLConnection* url = [api postBizPicWithBid:bid
@@ -273,7 +272,6 @@
     http.connection = url;
     http.callback = self;
     [http execute];
-    [api release];
 }                                 
                             
 -(void)postModifyBizInfoWithBid:(NSString *)bid
@@ -294,7 +292,6 @@
     ABasyncApi* api = [[ABasyncApi alloc] init];
     if (http) {
         [http cancel];
-        [http release];
     }
     http = [[ABConnection alloc] init];
     NSURLConnection* url = [api postModifyBizInfoWithBid:bid
@@ -316,7 +313,6 @@
     http.connection = url;
     http.callback = self;
     [http execute];
-    [api release];
 }   
 
 - (void)postAddBizInfoWithBname:(NSString *)bname
@@ -336,7 +332,6 @@
     ABasyncApi* api = [[ABasyncApi alloc] init];
     if (http) {
         [http cancel];
-        [http release];
     }
     http = [[ABConnection alloc] init];
     NSURLConnection* url = [api postAddBizInfoWithBname:bname
@@ -357,7 +352,6 @@
     http.connection = url;
     http.callback = self;
     [http execute];
-    [api release];
 }
 
 

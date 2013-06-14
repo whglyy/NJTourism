@@ -2,9 +2,11 @@
 //  DataService.h
 //  FatFist
 //
-//  Created by lyywhg on 13-5-24.
+//  Copyright 2011 FatFish. All rights reserved.
 //
 //
+
+
 
 #import <Foundation/Foundation.h>
 #import "SNNetwork.h"
@@ -28,5 +30,4 @@
 - (NSString *)errorMsgOfRequestError:(NSError *)error;
 
 - (BOOL)isResponseSuccess:(NSDictionary *)items withCMDCode:(E_CMDCODE)cmd;
-- (id)dataInfoOfResponse:(NSDictionary *)items;
 @end

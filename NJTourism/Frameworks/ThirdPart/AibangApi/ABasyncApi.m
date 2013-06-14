@@ -2,7 +2,7 @@
 //  AibangAsyncApi.m
 //  FatFist
 //
-//  Created by lyywhg on 13-5-24.
+//  Copyright 2011 FatFish. All rights reserved.
 //
 //
 
@@ -269,8 +269,9 @@
     if (keyword) {
         [parameters setObject:keyword forKey:@"q"];
     }
-    if(withxys){
-        [parameters setObject:[NSString stringWithFormat:@"%d", withxys] forKey:@"with_xys"];
+    if(withxys)
+    {
+        [parameters setObject:[NSString stringWithFormat:@"%@", withxys] forKey:@"with_xys"];
     }    
     if (APPKEY) {
         [parameters setObject:APPKEY forKey:@"app_key"];
@@ -366,7 +367,6 @@
     [data appendData:[param dataUsingEncoding:NSUTF8StringEncoding]];
     [data appendData:[content dataUsingEncoding:NSUTF8StringEncoding]];
     [data appendData:[footer dataUsingEncoding:NSUTF8StringEncoding]];
-    [dic release];
     return [ABAsyncHttp httpPost:url queryString:data delegate:aDelegate];
 }
 
@@ -459,7 +459,6 @@
     NSMutableData *data = [NSMutableData data];
     [data appendData:[param dataUsingEncoding:NSUTF8StringEncoding]];
     [data appendData:[footer dataUsingEncoding:NSUTF8StringEncoding]];
-    [dic release];
     return [ABAsyncHttp httpPost:url queryString:data delegate:aDelegate];
 }
 
@@ -530,7 +529,6 @@
     NSMutableData *data = [NSMutableData data];
     [data appendData:[param dataUsingEncoding:NSUTF8StringEncoding]];
     [data appendData:[footer dataUsingEncoding:NSUTF8StringEncoding]];
-    [dic release];
     return [ABAsyncHttp httpPost:url queryString:data delegate:aDelegate];
 }
 
