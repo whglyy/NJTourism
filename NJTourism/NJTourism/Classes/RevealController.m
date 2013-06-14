@@ -27,11 +27,6 @@
 }
 
 #pragma - ZUUIRevealControllerDelegate Protocol.
-
-/*
- * All of the methods below are optional. You can use them to control the behavior of the ZUUIRevealController, 
- * or react to certain events.
- */
 - (BOOL)revealController:(ZUUIRevealController *)revealController shouldRevealRearViewController:(UIViewController *)rearViewController
 {
 	return YES;
@@ -62,11 +57,5 @@
 	NSLog(@"%@", NSStringFromSelector(_cmd));
 }
 
-#pragma mark - View lifecycle
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-	return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-}
 
 @end

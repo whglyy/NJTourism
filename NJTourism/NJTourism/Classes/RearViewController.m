@@ -39,11 +39,6 @@
 #import "SettingViewController.h"
 
 @interface RearViewController()
-
-// Private Properties:
-
-// Private Methods:
-
 @end
 
 @implementation RearViewController

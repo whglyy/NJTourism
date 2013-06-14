@@ -24,12 +24,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {	
-	BusListViewController *frontViewController = [[BusListViewController alloc] initWithNibName:@"BusListViewController" bundle:nil];
+	BusListViewController *busListViewController = [[BusListViewController alloc] initWithNibName:@"BusListViewController" bundle:nil];
 	RearViewController *rearViewController = [[RearViewController alloc] initWithNibName:@"RearViewController" bundle:nil];
     
-	UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
+	UINavigationController *firstNavController = [[UINavigationController alloc] initWithRootViewController:busListViewController];
 	
-	RevealController *revealController = [[RevealController alloc] initWithFrontViewController:navigationController rearViewController:rearViewController];
+	RevealController *revealController = [[RevealController alloc] initWithFrontViewController:firstNavController rearViewController:rearViewController];
     revealController.view.backgroundColor = [UIColor orangeColor];
 	
 	self.window.rootViewController = revealController;

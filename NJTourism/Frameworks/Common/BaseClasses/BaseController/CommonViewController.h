@@ -28,6 +28,7 @@
 @property (nonatomic, retain) TPKeyboardAvoidingTableView *tpTableView;
 @property (nonatomic, retain) NSTimerHelper     *dlgTimer; 
 @property (nonatomic, retain) NSString          *pageInTime;
+@property (retain, nonatomic) UIPanGestureRecognizer *navigationBarPanGestureRecognizer;
 + (id)controller;
 /*!
  @method
