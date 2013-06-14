@@ -52,6 +52,12 @@
 		1F5FAC47176AF16D0029CB4F /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAC39176AF16C0029CB4F /* SBJsonTokeniser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1F5FAC48176AF16D0029CB4F /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAC3B176AF16C0029CB4F /* SBJsonUTF8Stream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1F5FAC49176AF16D0029CB4F /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAC3D176AF16D0029CB4F /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		1F5FAC4D176AFEBD0029CB4F /* TaxiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAC4B176AFEBB0029CB4F /* TaxiViewController.m */; };
+		1F5FAC4E176AFEBD0029CB4F /* TaxiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F5FAC4C176AFEBB0029CB4F /* TaxiViewController.xib */; };
+		1F5FAC52176AFEE30029CB4F /* WeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAC50176AFEE20029CB4F /* WeatherViewController.m */; };
+		1F5FAC53176AFEE30029CB4F /* WeatherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F5FAC51176AFEE30029CB4F /* WeatherViewController.xib */; };
+		1F5FAC57176AFEF30029CB4F /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAC55176AFEF20029CB4F /* SettingViewController.m */; };
+		1F5FAC58176AFEF30029CB4F /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F5FAC56176AFEF20029CB4F /* SettingViewController.xib */; };
 		1F78F246173C9BA1002DC1AF /* test.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F78F245173C9BA1002DC1AF /* test.strings */; };
 		1F78F249173C9BE9002DC1AF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F78F24B173C9BE9002DC1AF /* Localizable.strings */; };
 		1FAC52F3173CF42A00EA2BD8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAC52F2173CF42600EA2BD8 /* libsqlite3.dylib */; };
@@ -309,6 +315,15 @@
 		1F5FAC3B176AF16C0029CB4F /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
 		1F5FAC3C176AF16D0029CB4F /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		1F5FAC3D176AF16D0029CB4F /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		1F5FAC4A176AFEBA0029CB4F /* TaxiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxiViewController.h; sourceTree = "<group>"; };
+		1F5FAC4B176AFEBB0029CB4F /* TaxiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxiViewController.m; sourceTree = "<group>"; };
+		1F5FAC4C176AFEBB0029CB4F /* TaxiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaxiViewController.xib; sourceTree = "<group>"; };
+		1F5FAC4F176AFEE20029CB4F /* WeatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherViewController.h; sourceTree = "<group>"; };
+		1F5FAC50176AFEE20029CB4F /* WeatherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherViewController.m; sourceTree = "<group>"; };
+		1F5FAC51176AFEE30029CB4F /* WeatherViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherViewController.xib; sourceTree = "<group>"; };
+		1F5FAC54176AFEF20029CB4F /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		1F5FAC55176AFEF20029CB4F /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		1F5FAC56176AFEF20029CB4F /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		1F78F245173C9BA1002DC1AF /* test.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = test.strings; sourceTree = "<group>"; };
 		1F78F24A173C9BE9002DC1AF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1F78F24C173C9BF0002DC1AF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -807,6 +822,15 @@
 				1F5FAC1F176AE5390029CB4F /* BusListViewController.h */,
 				1F5FAC20176AE5390029CB4F /* BusListViewController.m */,
 				1F5FAC21176AE5390029CB4F /* BusListViewController.xib */,
+				1F5FAC4A176AFEBA0029CB4F /* TaxiViewController.h */,
+				1F5FAC4B176AFEBB0029CB4F /* TaxiViewController.m */,
+				1F5FAC4C176AFEBB0029CB4F /* TaxiViewController.xib */,
+				1F5FAC4F176AFEE20029CB4F /* WeatherViewController.h */,
+				1F5FAC50176AFEE20029CB4F /* WeatherViewController.m */,
+				1F5FAC51176AFEE30029CB4F /* WeatherViewController.xib */,
+				1F5FAC54176AFEF20029CB4F /* SettingViewController.h */,
+				1F5FAC55176AFEF20029CB4F /* SettingViewController.m */,
+				1F5FAC56176AFEF20029CB4F /* SettingViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1738,6 +1762,9 @@
 				1F38EEB817694AD900D5A96C /* system_nav_bg.png in Resources */,
 				1F38EEF117694C9B00D5A96C /* mapapi.bundle in Resources */,
 				1F5FAC23176AE5390029CB4F /* BusListViewController.xib in Resources */,
+				1F5FAC4E176AFEBD0029CB4F /* TaxiViewController.xib in Resources */,
+				1F5FAC53176AFEE30029CB4F /* WeatherViewController.xib in Resources */,
+				1F5FAC58176AFEF30029CB4F /* SettingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1895,6 +1922,9 @@
 				1F5FAC47176AF16D0029CB4F /* SBJsonTokeniser.m in Sources */,
 				1F5FAC48176AF16D0029CB4F /* SBJsonUTF8Stream.m in Sources */,
 				1F5FAC49176AF16D0029CB4F /* SBJsonWriter.m in Sources */,
+				1F5FAC4D176AFEBD0029CB4F /* TaxiViewController.m in Sources */,
+				1F5FAC52176AFEE30029CB4F /* WeatherViewController.m in Sources */,
+				1F5FAC57176AFEF30029CB4F /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

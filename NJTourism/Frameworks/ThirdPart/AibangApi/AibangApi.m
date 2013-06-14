@@ -26,8 +26,7 @@
 -(void)handleData:(NSData*)data WithConnection:(ABConnection*)connection
 {
     NSString *jsonString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
-    id jsonDic = [jsonString JSONValue];
+    NSDictionary *jsonDic = [jsonString JSONValue];
     
     if (delegate && [delegate respondsToSelector:@selector(requestDidFinishWithDictionary:aibangApi:)])
     {
