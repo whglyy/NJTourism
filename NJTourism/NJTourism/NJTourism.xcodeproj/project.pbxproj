@@ -38,6 +38,8 @@
 		1F38EEEF17694C9B00D5A96C /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F38EEE617694C9B00D5A96C /* libbaidumapapi.a */; };
 		1F38EEF017694C9B00D5A96C /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F38EEE817694C9B00D5A96C /* libbaidumapapi.a */; };
 		1F38EEF117694C9B00D5A96C /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F38EEE917694C9B00D5A96C /* mapapi.bundle */; };
+		1F5FAC22176AE5390029CB4F /* BusListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAC20176AE5390029CB4F /* BusListViewController.m */; };
+		1F5FAC23176AE5390029CB4F /* BusListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F5FAC21176AE5390029CB4F /* BusListViewController.xib */; };
 		1F78F246173C9BA1002DC1AF /* test.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F78F245173C9BA1002DC1AF /* test.strings */; };
 		1F78F249173C9BE9002DC1AF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F78F24B173C9BE9002DC1AF /* Localizable.strings */; };
 		1FAC52F3173CF42A00EA2BD8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAC52F2173CF42600EA2BD8 /* libsqlite3.dylib */; };
@@ -268,6 +270,9 @@
 		1F38EEE617694C9B00D5A96C /* libbaidumapapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbaidumapapi.a; sourceTree = "<group>"; };
 		1F38EEE817694C9B00D5A96C /* libbaidumapapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbaidumapapi.a; sourceTree = "<group>"; };
 		1F38EEE917694C9B00D5A96C /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
+		1F5FAC1F176AE5390029CB4F /* BusListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusListViewController.h; sourceTree = "<group>"; };
+		1F5FAC20176AE5390029CB4F /* BusListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusListViewController.m; sourceTree = "<group>"; };
+		1F5FAC21176AE5390029CB4F /* BusListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusListViewController.xib; sourceTree = "<group>"; };
 		1F78F245173C9BA1002DC1AF /* test.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = test.strings; sourceTree = "<group>"; };
 		1F78F24A173C9BE9002DC1AF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1F78F24C173C9BF0002DC1AF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -761,6 +766,16 @@
 			name = Localizable;
 			sourceTree = "<group>";
 		};
+		1F5FAC24176AE5480029CB4F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1F5FAC1F176AE5390029CB4F /* BusListViewController.h */,
+				1F5FAC20176AE5390029CB4F /* BusListViewController.m */,
+				1F5FAC21176AE5390029CB4F /* BusListViewController.xib */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
@@ -825,6 +840,7 @@
 		423B2ABE174DC694003B281F /* App */ = {
 			isa = PBXGroup;
 			children = (
+				1F5FAC24176AE5480029CB4F /* Controller */,
 				1D3623240D0F684500981E51 /* AppDelegate.h */,
 				1D3623250D0F684500981E51 /* AppDelegate.m */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
@@ -1661,6 +1677,7 @@
 				1F38EEB717694AD900D5A96C /* system_bg.png in Resources */,
 				1F38EEB817694AD900D5A96C /* system_nav_bg.png in Resources */,
 				1F38EEF117694C9B00D5A96C /* mapapi.bundle in Resources */,
+				1F5FAC23176AE5390029CB4F /* BusListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1805,6 +1822,7 @@
 				1F38EEEC17694C9B00D5A96C /* ABConnection.m in Sources */,
 				1F38EEED17694C9B00D5A96C /* ABMutableURLRequest.m in Sources */,
 				1F38EEEE17694C9B00D5A96C /* AibangApi.m in Sources */,
+				1F5FAC22176AE5390029CB4F /* BusListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

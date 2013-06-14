@@ -21,6 +21,7 @@
 #import "NSObject+BoardManage.h"
 #import "NSObject+GlobalDataManage.h"
 #import "JSONKit.h"
+#import "AibangApi.h"
 #endif
 
 

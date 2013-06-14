@@ -18,9 +18,9 @@
 #pragma mark
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [AibangApi setAppkey:@"f41c8afccc586de03a99c86097e98ccb"];
    
     self.window.rootViewController = self.rootViewController;
-        
     [self.window makeKeyAndVisible];
             
     return YES;
