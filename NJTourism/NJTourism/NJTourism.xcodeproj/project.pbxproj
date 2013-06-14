@@ -778,6 +778,7 @@
 		1F5BF9DD173BCDF500B12EAA /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				1F5FAC59176B00ED0029CB4F /* MainController */,
 				423B2ABE174DC694003B281F /* App */,
 			);
 			name = Application;
@@ -833,6 +834,30 @@
 				1F5FAC56176AFEF20029CB4F /* SettingViewController.xib */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		1F5FAC59176B00ED0029CB4F /* MainController */ = {
+			isa = PBXGroup;
+			children = (
+				1F5FAC5B176B01110029CB4F /* Model */,
+				1F5FAC5A176B010C0029CB4F /* View */,
+				1F5FAC24176AE5480029CB4F /* Controller */,
+			);
+			name = MainController;
+			sourceTree = "<group>";
+		};
+		1F5FAC5A176B010C0029CB4F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		1F5FAC5B176B01110029CB4F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
@@ -899,7 +924,6 @@
 		423B2ABE174DC694003B281F /* App */ = {
 			isa = PBXGroup;
 			children = (
-				1F5FAC24176AE5480029CB4F /* Controller */,
 				1D3623240D0F684500981E51 /* AppDelegate.h */,
 				1D3623250D0F684500981E51 /* AppDelegate.m */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,

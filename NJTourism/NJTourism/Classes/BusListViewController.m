@@ -33,7 +33,7 @@
 }
 
 #pragma mark-
-#pragma mark
+#pragma mark View Method
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -44,7 +44,8 @@
     
     // Do any additional setup after loading the view from its nib.
 }
-
+#pragma mark-
+#pragma mark Delegate
 -(void) requestDidFinishWithDictionary:(NSDictionary *)dict aibangApi:(id)aibangApi
 {
     DLog(@"msg_lyywhg:r~data%@", dict);
