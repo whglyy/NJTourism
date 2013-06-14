@@ -22,7 +22,6 @@
 #import "CommonViewController.h"
 #import "NSObject+BoardManage.h"
 #import "NSObject+GlobalDataManage.h"
-#import "JSONKit.h"
 #import "SBJson.h"
 
 #import "AibangApi.h"
