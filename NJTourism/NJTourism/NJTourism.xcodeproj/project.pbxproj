@@ -247,7 +247,6 @@
 		1F38EEBF17694C9B00D5A96C /* ABConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABConnection.m; sourceTree = "<group>"; };
 		1F38EEC017694C9B00D5A96C /* ABMutableURLRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABMutableURLRequest.h; sourceTree = "<group>"; };
 		1F38EEC117694C9B00D5A96C /* ABMutableURLRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABMutableURLRequest.m; sourceTree = "<group>"; };
-		1F38EEC217694C9B00D5A96C /* AibangApi-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AibangApi-Prefix.pch"; sourceTree = "<group>"; };
 		1F38EEC317694C9B00D5A96C /* AibangApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AibangApi.h; sourceTree = "<group>"; };
 		1F38EEC417694C9B00D5A96C /* AibangApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AibangApi.m; sourceTree = "<group>"; };
 		1F38EEC717694C9B00D5A96C /* BMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMapKit.h; sourceTree = "<group>"; };
@@ -684,7 +683,6 @@
 				1F38EEBF17694C9B00D5A96C /* ABConnection.m */,
 				1F38EEC017694C9B00D5A96C /* ABMutableURLRequest.h */,
 				1F38EEC117694C9B00D5A96C /* ABMutableURLRequest.m */,
-				1F38EEC217694C9B00D5A96C /* AibangApi-Prefix.pch */,
 				1F38EEC317694C9B00D5A96C /* AibangApi.h */,
 				1F38EEC417694C9B00D5A96C /* AibangApi.m */,
 			);

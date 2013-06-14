@@ -5,11 +5,10 @@
 //  Copyright 2011 FatFish. All rights reserved.
 //
 //
-#import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
+
 @class ABConnection;
 
- NSString *APPKEY;
+NSString *APPKEY;
 @protocol AibangApiDelegate <NSObject>
 -(void) requestDidFinishWithData:(NSData*)data aibangApi:(id)aibangApi;
 -(void) requestDidFailedWithError:(NSError*)error aibangApi:(id)aibangApi; 
