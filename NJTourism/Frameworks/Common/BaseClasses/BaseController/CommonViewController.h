@@ -102,4 +102,7 @@
  @param         y          自定义的位置
  */
 - (void)presentSheet:(NSString*)indiTitle posY:(CGFloat)y;
+
+- (void)canPush;
+
 @end

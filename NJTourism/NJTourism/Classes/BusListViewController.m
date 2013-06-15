@@ -55,29 +55,4 @@
 {
     DLog(@"msg_lyywhg:r~error%@", error);
 }
-#pragma mark-
-#pragma mark 
-- (BOOL)canPush
-{
-    if ([self.navigationController.parentViewController respondsToSelector:@selector(revealGesture:)] && [self.navigationController.parentViewController respondsToSelector:@selector(revealToggle:)])
-	{
-		// Check if a UIPanGestureRecognizer already sits atop our NavigationBar.
-		if (![[self.navigationController.navigationBar gestureRecognizers] containsObject:self.navigationBarPanGestureRecognizer])
-		{
-			// If not, allocate one and add it.
-			UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self.navigationController.parentViewController action:@selector(revealGesture:)];
-			self.navigationBarPanGestureRecognizer = panGestureRecognizer;
-			
-			[self.navigationController.navigationBar addGestureRecognizer:self.navigationBarPanGestureRecognizer];
-		}
-		
-		// Check if we have a revealButton already.
-		if (![self.navigationItem leftBarButtonItem])
-		{
-			// If not, allocate one and add it.
-			UIBarButtonItem *revealButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Reveal", @"Reveal") style:UIBarButtonItemStylePlain target:self.navigationController.parentViewController action:@selector(revealToggle:)];
-			self.navigationItem.leftBarButtonItem = revealButton;
-		}
-	}
-}
 @end

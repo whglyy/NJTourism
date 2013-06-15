@@ -38,6 +38,8 @@
 #import "WeatherViewController.h"
 #import "SettingViewController.h"
 
+#import "RuleViewController.h"
+
 @interface RearViewController()
 @end
 
@@ -45,37 +47,68 @@
 
 @synthesize rearTableView = _rearTableView;
 
-#pragma marl - UITableView Data Source
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+#pragma mark-
+#pragma mark Init & Add
+- (NSArray *)sectionTitleList
 {
-	return 2;
+    if (!_sectionTitleList)
+    {
+        _sectionTitleList = [[NSArray alloc] initWithObjects:L(@"常用"), L(@"设置"), nil];
+    }
+    return _sectionTitleList;
+}
+- (NSArray *)tableList
+{
+    if (!_tableList)
+    {
+        _tableList = [[NSArray alloc] initWithObjects:L(@"附近公交"), L(@"附近出租"), L(@"当地天气"), L(@"附近趣事"), L(@"检查更新"), L(@"意见反馈"), L(@"关于我们"), L(@"免责申明"), nil];
+    }
+    return _tableList;
 }
 
+
+#pragma mark-
+#pragma mark TableView Delegate
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+	return 4;
+}
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return [self.sectionTitleList objectAtIndex:section];
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	static NSString *cellIdentifier = @"Cell";
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
 	
 	if (nil == cell)
 	{
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
 	}
 	
-	if (indexPath.row == 0)
-	{
-		cell.textLabel.text = @"Front View Controller";
-	}
-	else
-	{
-		cell.textLabel.text = @"Map View Controller";
-	}
+	cell.textLabel.text = [self.tableList objectAtIndex:(indexPath.section * 4 + indexPath.row)];
 	
 	return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    switch (indexPath.section)
+    {
+        case 0:
+            break;
+        case 1:
+            [self settingControllers:indexPath.row];
+            break;
+        default:
+            break;
+    }
 	RevealController *revealController = [self.parentViewController isKindOfClass:[RevealController class]] ? (RevealController *)self.parentViewController : nil;
 	
 	if (indexPath.row == 0)
@@ -92,17 +125,39 @@
 			[revealController setFrontViewController:navigationController animated:NO];
 		}
 	}
-//	else
-//	{
-//		if (![revealController.frontViewController isKindOfClass:[MapViewController class]])
-//		{
-//			MapViewController *mapViewController;
-//			
-//			mapViewController = [[MapViewController alloc] initWithNibName:@"MapViewController_iPhone" bundle:nil];
-//			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mapViewController];
-//			[revealController setFrontViewController:navigationController animated:NO];
-//		}
-//	}
+
 }
+#pragma mark-
+#pragma mark Method
+- (void)settingControllers:(NSInteger)index
+{
+    switch (index)
+    {
+        case 0:
+            break;
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            [self readRule];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void)readRule
+{
+    @autoreleasepool
+    {
+        RevealController *revealController = [self.parentViewController isKindOfClass:[RevealController class]] ? (RevealController *)self.parentViewController : nil;
+        
+        RuleViewController *ruleVC = [[RuleViewController alloc] init];
+        UINavigationController *ruleNaviController = [[UINavigationController alloc] initWithRootViewController:ruleVC];
+        [revealController setFrontViewController:ruleNaviController animated:NO];
+    }
+}
+
 
 @end
