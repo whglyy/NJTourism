@@ -29,7 +29,7 @@
 {
     if (!_logoImageView)
     {
-        _logoImageView = [[UIImageView alloc]initWithFrame:CGRectMake(94, 65, 132, 71)];
+        _logoImageView = [[UIImageView alloc]initWithFrame:CGRectMake(94, 35, 132, 71)];
         _logoImageView.backgroundColor = [UIColor clearColor];
         _logoImageView.image = [UIImage imageNamed:@"FatFish_Logo_bg.png"];
         
@@ -41,7 +41,7 @@
 {
     if (!_versionLabel)
     {
-        _versionLabel = [[UILabel alloc] initWithFrame:CGRectMake(110, 140, 160, 35)];
+        _versionLabel = [[UILabel alloc] initWithFrame:CGRectMake(110, 110, 160, 35)];
         _versionLabel.text = [NSString stringWithFormat:@"版本号:Version %@", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
         _versionLabel.font = [UIFont systemFontOfSize:13.f];
         //[versionLabel setText:L(@"VersionCode")];
@@ -55,12 +55,12 @@
 {
     if (!_textLabel)
     {
-        _textLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, 180, 280, 160)];
+        _textLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, 150, 280, 160)];
         _textLabel.backgroundColor = [UIColor clearColor];
         _textLabel.numberOfLines = 7;
         _textLabel.textColor = [UIColor blackColor];
         _textLabel.textAlignment = UITextAlignmentCenter;
-        _textLabel.text = L(@"DBookIntro");
+        _textLabel.text = L(@"DBooks系列是FatFish自主研发的侦探小说阅读系列。阅读DBooks，可以真正实现随时随地舒适体验全球知名侦探作家知名作品！");
     }
     return _textLabel;
 }
@@ -69,7 +69,7 @@
 {
     if (!_allRightLabel)
     {
-        _allRightLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, 340, 280, 160)];
+        _allRightLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, 240, 280, 160)];
         _allRightLabel.backgroundColor = [UIColor clearColor];
         _allRightLabel.numberOfLines = 2;
         _allRightLabel.textColor = [UIColor grayColor];
@@ -79,28 +79,13 @@
     return _allRightLabel;
 }
 
-- (UIButton *)fullBtn
-{
-    if (!_fullBtn)
-    {
-        _fullBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _fullBtn.backgroundColor = [UIColor clearColor];
-        [_fullBtn setBackgroundImage:[UIImage imageNamed:@"sys_full_btn.png"] forState:UIControlStateNormal];
-        _fullBtn.frame = CGRectMake(115, 315, 90, 43);
-        [_fullBtn addTarget:self action:@selector(fullMethod) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _fullBtn;
-}
-
 - (void)addAll
 {
     UIImageView *tmpTitleIV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 44)];
     tmpTitleIV.image = [UIImage imageNamed:@"sys_navbar_bg.png"];
     [self.view addSubview:tmpTitleIV];
     TT_RELEASE_SAFELY(tmpTitleIV);
-    
-    [self.view addSubview:self.titleL];    
-    
+        
     [self.view addSubview:self.logoImageView];
     [self.view addSubview:self.versionLabel];
     [self.view addSubview:self.textLabel];
@@ -115,11 +100,6 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self canPush];
     [self addAll];
-}
-
-- (void)backMethod
-{
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

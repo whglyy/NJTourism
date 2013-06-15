@@ -62,6 +62,7 @@
 		1F78F249173C9BE9002DC1AF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F78F24B173C9BE9002DC1AF /* Localizable.strings */; };
 		1F7FB600176C85F80093F88D /* MyRule.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F7FB5FF176C85F80093F88D /* MyRule.plist */; };
 		1F7FB603176C86330093F88D /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7FB602176C86330093F88D /* AboutUsViewController.m */; };
+		1F7FB611176C9AB50093F88D /* FatFish_Logo_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7FB610176C9AB40093F88D /* FatFish_Logo_bg.png */; };
 		1FA9655C176BE826008B9DED /* RuleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9655B176BE826008B9DED /* RuleViewController.m */; };
 		1FAC52F3173CF42A00EA2BD8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAC52F2173CF42600EA2BD8 /* libsqlite3.dylib */; };
 		1FAC52F5173CF48500EA2BD8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAC52F4173CF48100EA2BD8 /* QuartzCore.framework */; };
@@ -337,6 +338,7 @@
 		1F7FB5FF176C85F80093F88D /* MyRule.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyRule.plist; sourceTree = "<group>"; };
 		1F7FB601176C86330093F88D /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
 		1F7FB602176C86330093F88D /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
+		1F7FB610176C9AB40093F88D /* FatFish_Logo_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FatFish_Logo_bg.png; path = ../Resources/Images/FatFish_Logo_bg.png; sourceTree = "<group>"; };
 		1FA9655A176BE826008B9DED /* RuleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleViewController.h; sourceTree = "<group>"; };
 		1FA9655B176BE826008B9DED /* RuleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuleViewController.m; sourceTree = "<group>"; };
 		1FAC52F2173CF42600EA2BD8 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -806,6 +808,7 @@
 		1F5BF9F7173BE43E00B12EAA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1F7FB610176C9AB40093F88D /* FatFish_Logo_bg.png */,
 				1F38EE9517694AD900D5A96C /* chat.png */,
 				1F38EE9617694AD900D5A96C /* chat@2x.png */,
 				1F38EE9717694AD900D5A96C /* contact.png */,
@@ -1839,6 +1842,7 @@
 				1FF39647176B498D00DBB52A /* RearViewController.xib in Resources */,
 				1FEB2544176B52BB00C93780 /* MainWindow.xib in Resources */,
 				1F7FB600176C85F80093F88D /* MyRule.plist in Resources */,
+				1F7FB611176C9AB50093F88D /* FatFish_Logo_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
