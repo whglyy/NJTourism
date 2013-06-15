@@ -10,4 +10,6 @@
 @property (nonatomic, strong) NSArray *sectionTitleList;
 @property (nonatomic, strong) NSArray *tableList;
 
+@property (nonatomic, strong) RevealController *revealController;
+
 @end

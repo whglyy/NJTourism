@@ -6,10 +6,8 @@
 //  Copyright 2012年 FatFish. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-#import "RuleViewController.h"
 
-@interface AboutUsViewController : BaseViewController
+@interface AboutUsViewController : CommonViewController
 {
 }
 
@@ -17,11 +15,6 @@
 @property (nonatomic, retain) UILabel *textLabel;
 @property (nonatomic, retain) UIImageView *logoImageView;
 @property (nonatomic, retain) UILabel *allRightLabel;
-
-@property (nonatomic, retain) UIButton *ruleBtn;
-@property (nonatomic, retain) UIButton *fullBtn;
-@property (nonatomic, retain) UIButton *backBtn;
-@property (nonatomic, retain) UILabel *titleL;
 
 @end
 

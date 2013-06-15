@@ -20,46 +20,11 @@
 {
     if (self = [super init]) 
     {
+        self.title = L(@"关于我们");
     }
     return self;
 }
 
-- (void)dealloc
-{
-    TT_RELEASE_SAFELY(_titleL);
-    TT_RELEASE_SAFELY(_logoImageView);
-    TT_RELEASE_SAFELY(_versionLabel);
-    TT_RELEASE_SAFELY(_textLabel);
-    
-    [super dealloc];
-}
-
-- (UILabel *)titleL
-{
-    if (!_titleL)
-    {
-        _titleL = [[UILabel alloc] init];
-        _titleL.frame = CGRectMake(110, 0, 100, 40);
-        _titleL.backgroundColor = [UIColor clearColor];
-        _titleL.textAlignment = UITextAlignmentCenter;
-        _titleL.text = @"关于我们";
-        _titleL.font = [UIFont boldSystemFontOfSize:25];
-        _titleL.textColor = [UIColor whiteColor];
-    }
-    return _titleL;
-}
-- (UIButton *)backBtn
-{
-    if (!_backBtn)
-    {
-        _backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _backBtn.backgroundColor = [UIColor clearColor];
-        [_backBtn setBackgroundImage:[UIImage imageNamed:@"sys_back_btn.png"] forState:UIControlStateNormal];
-        _backBtn.frame = CGRectMake(5, 2.5, 35, 35);
-        [_backBtn addTarget:self action:@selector(backMethod) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _backBtn;
-}
 -(UIImageView *)logoImageView
 {
     if (!_logoImageView)
@@ -114,19 +79,6 @@
     return _allRightLabel;
 }
 
-- (UIButton *)ruleBtn
-{
-    if (!_ruleBtn)
-    {
-        _ruleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _ruleBtn.backgroundColor = [UIColor clearColor];
-        [_ruleBtn setBackgroundImage:[UIImage imageNamed:@"sys_rule_btn.png"] forState:UIControlStateNormal];
-        _ruleBtn.frame = CGRectMake(115, 170, 90, 43);
-        [_ruleBtn addTarget:self action:@selector(ruleViewMethod) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _ruleBtn;
-}
-
 - (UIButton *)fullBtn
 {
     if (!_fullBtn)
@@ -147,14 +99,7 @@
     [self.view addSubview:tmpTitleIV];
     TT_RELEASE_SAFELY(tmpTitleIV);
     
-    [self.view addSubview:self.titleL];
-    [self.view addSubview:self.backBtn];
-    
-#if UnFullApp
-    [self.view addSubview:self.fullBtn];
-#endif
-    
-    [self.view addSubview:self.ruleBtn];
+    [self.view addSubview:self.titleL];    
     
     [self.view addSubview:self.logoImageView];
     [self.view addSubview:self.versionLabel];
@@ -167,23 +112,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    [self canPush];
     [self addAll];
 }
 
 - (void)backMethod
 {
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)ruleViewMethod
-{
-    RuleViewController *ruleVC = [[RuleViewController alloc] init];
-    [self.navigationController pushViewController:ruleVC animated:YES];
-    TT_RELEASE_SAFELY(ruleVC);
-}
-- (void)fullMethod
-{
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:AppFullUrl]];
 }
 
 @end

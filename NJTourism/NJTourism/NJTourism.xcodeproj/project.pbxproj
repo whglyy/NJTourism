@@ -839,8 +839,6 @@
 		1F5FAC24176AE5480029CB4F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1F7FB601176C86330093F88D /* AboutUsViewController.h */,
-				1F7FB602176C86330093F88D /* AboutUsViewController.m */,
 				1F5FAC1F176AE5390029CB4F /* BusListViewController.h */,
 				1F5FAC20176AE5390029CB4F /* BusListViewController.m */,
 				1F5FAC21176AE5390029CB4F /* BusListViewController.xib */,
@@ -853,6 +851,8 @@
 				1F5FAC54176AFEF20029CB4F /* SettingViewController.h */,
 				1F5FAC55176AFEF20029CB4F /* SettingViewController.m */,
 				1F5FAC56176AFEF20029CB4F /* SettingViewController.xib */,
+				1F7FB601176C86330093F88D /* AboutUsViewController.h */,
+				1F7FB602176C86330093F88D /* AboutUsViewController.m */,
 				1FA9655A176BE826008B9DED /* RuleViewController.h */,
 				1FA9655B176BE826008B9DED /* RuleViewController.m */,
 			);
