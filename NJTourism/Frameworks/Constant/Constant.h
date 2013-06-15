@@ -14,6 +14,7 @@
 #import "GlobalConstant.h"
 #import "CmdConstant.h"
 #include "CmdHelper.h"
+#import "ExternConstant.h"
 //发布时需要修改的定义
 
 

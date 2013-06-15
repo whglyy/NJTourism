@@ -8,12 +8,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/RearViewController.m"
-         timestampString = "392989791.153476"
+         timestampString = "392995243.96849"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "112"
-         endingLineNumber = "112"
-         landmarkName = "-settingControllers:"
+         startingLineNumber = "160"
+         endingLineNumber = "160"
+         landmarkName = "-readRule"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -21,12 +21,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/RearViewController.m"
-         timestampString = "392989791.153476"
+         timestampString = "392995418.347917"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "140"
-         endingLineNumber = "140"
-         landmarkName = "-readRule"
+         startingLineNumber = "136"
+         endingLineNumber = "136"
+         landmarkName = "-checkVersion"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

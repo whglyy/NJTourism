@@ -8,8 +8,11 @@
 #import "WeatherViewController.h"
 #import "SettingViewController.h"
 
+#import "FeedbackViewController.h"
 #import "AboutUsViewController.h"
 #import "RuleViewController.h"
+
+#import "MobClick.h"
 
 @interface RearViewController()
 @end
@@ -83,7 +86,7 @@
             break;
         case 1:
             [self settingControllers:indexPath.row];
-            break;
+            return;
         default:
             break;
     }
@@ -112,8 +115,10 @@
     switch (index)
     {
         case 0:
+            [self checkVersion];
             break;
         case 1:
+            [self feedBack];
             break;
         case 2:
             [self aboutUs];
@@ -123,6 +128,21 @@
             break;
         default:
             break;
+    }
+}
+- (void)checkVersion
+{
+    [MobClick startWithAppkey:UMENG_APPKEY];
+    [MobClick checkUpdate];
+}
+- (void)feedBack
+{
+    @autoreleasepool
+    {
+        FeedbackViewController *feedbackVC = [[FeedbackViewController alloc] initWithNibName:@"FeedbackViewController" bundle:nil];
+        UINavigationController *feedbackNaviController = [[UINavigationController alloc] initWithRootViewController:feedbackVC];
+        [self.revealController setFrontViewController:feedbackNaviController animated:NO];
+        
     }
 }
 - (void)aboutUs
