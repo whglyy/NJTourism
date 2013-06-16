@@ -25,6 +25,7 @@
 #import "SBJson.h"
 
 #import "AibangApi.h"
+#import "BingTranslate.h"
 #endif
 
 

@@ -7,8 +7,9 @@
 //
 
 #import "RevealController.h"
+#import "BingTranslate.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, BTClientDelegate>
 
 @property (retain, nonatomic) UIWindow *window;
 @property (retain, nonatomic) RevealController *revealVC;

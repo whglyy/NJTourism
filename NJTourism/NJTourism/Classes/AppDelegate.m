@@ -57,6 +57,11 @@
 - (void)getLocalLanguage
 {
     [Config currentConfig].localLanguage = [NSNumber numberWithInteger:[GetLocalLanguage getLocalLanguage]];
+    
+    BTClient *btClient = [[BTClient alloc] initWithAppID:@"676de377-1817-4e34-ae0f-4d16a4f81e99"];
+    btClient.delegate = self;
+    
+    [btClient translateText:@"中国" fromLanguage:@"zh-CHS" toLanguage:@"en"];
 }
 
 

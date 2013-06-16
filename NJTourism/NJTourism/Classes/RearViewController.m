@@ -5,7 +5,6 @@
 #import "RevealController.h"
 #import "BusListViewController.h"
 #import "TaxiViewController.h"
-#import "WeatherViewController.h"
 #import "SettingViewController.h"
 
 #import "FeedbackViewController.h"

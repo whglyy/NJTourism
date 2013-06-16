@@ -58,7 +58,6 @@
 		1F5FAC58176AFEF30029CB4F /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F5FAC56176AFEF20029CB4F /* SettingViewController.xib */; };
 		1F78F246173C9BA1002DC1AF /* test.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F78F245173C9BA1002DC1AF /* test.strings */; };
 		1F78F249173C9BE9002DC1AF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F78F24B173C9BE9002DC1AF /* Localizable.strings */; };
-		1FA5C56C176DD82E00525EC1 /* GetLocalLanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA5C56B176DD82E00525EC1 /* GetLocalLanguage.m */; };
 		1F7FB600176C85F80093F88D /* MyRule.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F7FB5FF176C85F80093F88D /* MyRule.plist */; };
 		1F7FB603176C86330093F88D /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7FB602176C86330093F88D /* AboutUsViewController.m */; };
 		1F7FB611176C9AB50093F88D /* FatFish_Logo_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7FB610176C9AB40093F88D /* FatFish_Logo_bg.png */; };
@@ -83,6 +82,14 @@
 		1F7FB675176C9C330093F88D /* R_FeedbackTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7FB65F176C9C330093F88D /* R_FeedbackTableViewCell.m */; };
 		1F7FB676176C9C330093F88D /* libUMFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7FB660176C9C330093F88D /* libUMFeedback.a */; };
 		1F7FB677176C9C330093F88D /* umFeedback.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F7FB661176C9C330093F88D /* umFeedback.bundle */; };
+		1FA5C56C176DD82E00525EC1 /* GetLocalLanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA5C56B176DD82E00525EC1 /* GetLocalLanguage.m */; };
+		1FA5C592176DEB0100525EC1 /* BTClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA5C585176DEB0100525EC1 /* BTClient.m */; };
+		1FA5C593176DEB0100525EC1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FA5C587176DEB0100525EC1 /* Info.plist */; };
+		1FA5C594176DEB0100525EC1 /* NSArray+BingTranslate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA5C589176DEB0100525EC1 /* NSArray+BingTranslate.m */; };
+		1FA5C595176DEB0100525EC1 /* NSDictionary+BingTranslate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA5C58B176DEB0100525EC1 /* NSDictionary+BingTranslate.m */; };
+		1FA5C596176DEB0100525EC1 /* NSMutableString+BingTranslate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA5C58D176DEB0100525EC1 /* NSMutableString+BingTranslate.m */; };
+		1FA5C597176DEB0100525EC1 /* NSString+BingTranslate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA5C58F176DEB0100525EC1 /* NSString+BingTranslate.m */; };
+		1FA5C598176DEB0100525EC1 /* NSURLConnection+BingTranslate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA5C591176DEB0100525EC1 /* NSURLConnection+BingTranslate.m */; };
 		1FA9655C176BE826008B9DED /* RuleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9655B176BE826008B9DED /* RuleViewController.m */; };
 		1FAC52F3173CF42A00EA2BD8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAC52F2173CF42600EA2BD8 /* libsqlite3.dylib */; };
 		1FAC52F5173CF48500EA2BD8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAC52F4173CF48100EA2BD8 /* QuartzCore.framework */; };
@@ -352,11 +359,6 @@
 		1F78F245173C9BA1002DC1AF /* test.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = test.strings; sourceTree = "<group>"; };
 		1F78F24A173C9BE9002DC1AF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1F78F24C173C9BF0002DC1AF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1FA5C56A176DD82E00525EC1 /* GetLocalLanguage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetLocalLanguage.h; sourceTree = "<group>"; };
-		1FA5C56B176DD82E00525EC1 /* GetLocalLanguage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLocalLanguage.m; sourceTree = "<group>"; };
-		1FA5C572176DDAF200525EC1 /* EnumTypeConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnumTypeConstant.h; sourceTree = "<group>"; };
-		1FA5C574176DDF2700525EC1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1FA5C575176DDF2C00525EC1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F7FB5FF176C85F80093F88D /* MyRule.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyRule.plist; sourceTree = "<group>"; };
 		1F7FB601176C86330093F88D /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
 		1F7FB602176C86330093F88D /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
@@ -388,6 +390,26 @@
 		1F7FB661176C9C330093F88D /* umFeedback.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = umFeedback.bundle; sourceTree = "<group>"; };
 		1F7FB662176C9C330093F88D /* UMFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMFeedback.h; sourceTree = "<group>"; };
 		1F7FB678176C9DB00093F88D /* ExternConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExternConstant.h; sourceTree = "<group>"; };
+		1FA5C56A176DD82E00525EC1 /* GetLocalLanguage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetLocalLanguage.h; sourceTree = "<group>"; };
+		1FA5C56B176DD82E00525EC1 /* GetLocalLanguage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLocalLanguage.m; sourceTree = "<group>"; };
+		1FA5C572176DDAF200525EC1 /* EnumTypeConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnumTypeConstant.h; sourceTree = "<group>"; };
+		1FA5C574176DDF2700525EC1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1FA5C575176DDF2C00525EC1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1FA5C583176DEB0100525EC1 /* BingTranslate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BingTranslate.h; sourceTree = "<group>"; };
+		1FA5C584176DEB0100525EC1 /* BTClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTClient.h; sourceTree = "<group>"; };
+		1FA5C585176DEB0100525EC1 /* BTClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTClient.m; sourceTree = "<group>"; };
+		1FA5C586176DEB0100525EC1 /* BTDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTDefines.h; sourceTree = "<group>"; };
+		1FA5C587176DEB0100525EC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1FA5C588176DEB0100525EC1 /* NSArray+BingTranslate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+BingTranslate.h"; sourceTree = "<group>"; };
+		1FA5C589176DEB0100525EC1 /* NSArray+BingTranslate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+BingTranslate.m"; sourceTree = "<group>"; };
+		1FA5C58A176DEB0100525EC1 /* NSDictionary+BingTranslate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+BingTranslate.h"; sourceTree = "<group>"; };
+		1FA5C58B176DEB0100525EC1 /* NSDictionary+BingTranslate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+BingTranslate.m"; sourceTree = "<group>"; };
+		1FA5C58C176DEB0100525EC1 /* NSMutableString+BingTranslate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableString+BingTranslate.h"; sourceTree = "<group>"; };
+		1FA5C58D176DEB0100525EC1 /* NSMutableString+BingTranslate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableString+BingTranslate.m"; sourceTree = "<group>"; };
+		1FA5C58E176DEB0100525EC1 /* NSString+BingTranslate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+BingTranslate.h"; sourceTree = "<group>"; };
+		1FA5C58F176DEB0100525EC1 /* NSString+BingTranslate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BingTranslate.m"; sourceTree = "<group>"; };
+		1FA5C590176DEB0100525EC1 /* NSURLConnection+BingTranslate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLConnection+BingTranslate.h"; sourceTree = "<group>"; };
+		1FA5C591176DEB0100525EC1 /* NSURLConnection+BingTranslate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLConnection+BingTranslate.m"; sourceTree = "<group>"; };
 		1FA9655A176BE826008B9DED /* RuleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleViewController.h; sourceTree = "<group>"; };
 		1FA9655B176BE826008B9DED /* RuleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuleViewController.m; sourceTree = "<group>"; };
 		1FAC52F2173CF42600EA2BD8 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -989,6 +1011,28 @@
 				1F7FB65F176C9C330093F88D /* R_FeedbackTableViewCell.m */,
 			);
 			path = chat;
+			sourceTree = "<group>";
+		};
+		1FA5C582176DEB0100525EC1 /* BingTranslate */ = {
+			isa = PBXGroup;
+			children = (
+				1FA5C583176DEB0100525EC1 /* BingTranslate.h */,
+				1FA5C584176DEB0100525EC1 /* BTClient.h */,
+				1FA5C585176DEB0100525EC1 /* BTClient.m */,
+				1FA5C586176DEB0100525EC1 /* BTDefines.h */,
+				1FA5C587176DEB0100525EC1 /* Info.plist */,
+				1FA5C588176DEB0100525EC1 /* NSArray+BingTranslate.h */,
+				1FA5C589176DEB0100525EC1 /* NSArray+BingTranslate.m */,
+				1FA5C58A176DEB0100525EC1 /* NSDictionary+BingTranslate.h */,
+				1FA5C58B176DEB0100525EC1 /* NSDictionary+BingTranslate.m */,
+				1FA5C58C176DEB0100525EC1 /* NSMutableString+BingTranslate.h */,
+				1FA5C58D176DEB0100525EC1 /* NSMutableString+BingTranslate.m */,
+				1FA5C58E176DEB0100525EC1 /* NSString+BingTranslate.h */,
+				1FA5C58F176DEB0100525EC1 /* NSString+BingTranslate.m */,
+				1FA5C590176DEB0100525EC1 /* NSURLConnection+BingTranslate.h */,
+				1FA5C591176DEB0100525EC1 /* NSURLConnection+BingTranslate.m */,
+			);
+			path = BingTranslate;
 			sourceTree = "<group>";
 		};
 		1FF3963C176B480700DBB52A /* ZUUIRevealController */ = {
@@ -1603,6 +1647,7 @@
 		42F7615E173BC4A5000A9AC8 /* ThirdPart */ = {
 			isa = PBXGroup;
 			children = (
+				1FA5C582176DEB0100525EC1 /* BingTranslate */,
 				1F7FB646176C9C330093F88D /* Umeng */,
 				1F7FB649176C9C330093F88D /* UmengFeedBack */,
 				1FF3963C176B480700DBB52A /* ZUUIRevealController */,
@@ -1962,6 +2007,7 @@
 				1F7FB673176C9C330093F88D /* nav_btn_bg@2x.png in Resources */,
 				1F7FB674176C9C330093F88D /* nav_btn_bg_lighted@2x.png in Resources */,
 				1F7FB677176C9C330093F88D /* umFeedback.bundle in Resources */,
+				1FA5C593176DEB0100525EC1 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2130,6 +2176,12 @@
 				1F7FB665176C9C330093F88D /* FeedbackViewController.m in Sources */,
 				1F7FB667176C9C330093F88D /* L_FeedbackTableViewCell.m in Sources */,
 				1F7FB675176C9C330093F88D /* R_FeedbackTableViewCell.m in Sources */,
+				1FA5C592176DEB0100525EC1 /* BTClient.m in Sources */,
+				1FA5C594176DEB0100525EC1 /* NSArray+BingTranslate.m in Sources */,
+				1FA5C595176DEB0100525EC1 /* NSDictionary+BingTranslate.m in Sources */,
+				1FA5C596176DEB0100525EC1 /* NSMutableString+BingTranslate.m in Sources */,
+				1FA5C597176DEB0100525EC1 /* NSString+BingTranslate.m in Sources */,
+				1FA5C598176DEB0100525EC1 /* NSURLConnection+BingTranslate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

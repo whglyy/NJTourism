@@ -13,4 +13,4 @@ typedef enum _LocalLanguageType
     IsJanpaneseType,
     IsKoreaType,
     IsOtherType         = 1
-}UpdateFriendListTypeLocalLanguageType
+}UpdateFriendListTypeLocalLanguageType;
