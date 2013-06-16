@@ -10,4 +10,7 @@
 
 @interface BusListViewController : CommonViewController<AibangApiDelegate>
 
+
+
+
 @end

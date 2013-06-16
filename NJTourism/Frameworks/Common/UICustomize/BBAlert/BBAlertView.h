@@ -27,7 +27,6 @@ typedef void (^BBBasicBlock)(void);
 @interface BBAlertView : UIView
 {
 @private
-    id <BBAlertViewDelegate> __weak  _delegate;
     UILabel   *_titleLabel;
     UILabel   *_bodyTextLabel;
     UITextView *_bodyTextView;
