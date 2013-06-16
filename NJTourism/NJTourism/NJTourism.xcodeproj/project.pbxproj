@@ -58,6 +58,7 @@
 		1F5FAC58176AFEF30029CB4F /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F5FAC56176AFEF20029CB4F /* SettingViewController.xib */; };
 		1F78F246173C9BA1002DC1AF /* test.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F78F245173C9BA1002DC1AF /* test.strings */; };
 		1F78F249173C9BE9002DC1AF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F78F24B173C9BE9002DC1AF /* Localizable.strings */; };
+		1FA5C56C176DD82E00525EC1 /* GetLocalLanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA5C56B176DD82E00525EC1 /* GetLocalLanguage.m */; };
 		1F7FB600176C85F80093F88D /* MyRule.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F7FB5FF176C85F80093F88D /* MyRule.plist */; };
 		1F7FB603176C86330093F88D /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7FB602176C86330093F88D /* AboutUsViewController.m */; };
 		1F7FB611176C9AB50093F88D /* FatFish_Logo_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F7FB610176C9AB40093F88D /* FatFish_Logo_bg.png */; };
@@ -351,6 +352,11 @@
 		1F78F245173C9BA1002DC1AF /* test.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = test.strings; sourceTree = "<group>"; };
 		1F78F24A173C9BE9002DC1AF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1F78F24C173C9BF0002DC1AF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1FA5C56A176DD82E00525EC1 /* GetLocalLanguage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetLocalLanguage.h; sourceTree = "<group>"; };
+		1FA5C56B176DD82E00525EC1 /* GetLocalLanguage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLocalLanguage.m; sourceTree = "<group>"; };
+		1FA5C572176DDAF200525EC1 /* EnumTypeConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnumTypeConstant.h; sourceTree = "<group>"; };
+		1FA5C574176DDF2700525EC1 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1FA5C575176DDF2C00525EC1 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1F7FB5FF176C85F80093F88D /* MyRule.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = MyRule.plist; sourceTree = "<group>"; };
 		1F7FB601176C86330093F88D /* AboutUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsViewController.h; sourceTree = "<group>"; };
 		1F7FB602176C86330093F88D /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
@@ -1317,6 +1323,8 @@
 		42F760C2173BC4A5000A9AC8 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				1FA5C56A176DD82E00525EC1 /* GetLocalLanguage.h */,
+				1FA5C56B176DD82E00525EC1 /* GetLocalLanguage.m */,
 				42F760C3173BC4A5000A9AC8 /* ByteToKMGB.h */,
 				42F760C4173BC4A5000A9AC8 /* ByteToKMGB.m */,
 				42F760C5173BC4A5000A9AC8 /* IPhoneFileUtil.h */,
@@ -1521,6 +1529,7 @@
 				42F7612E173BC4A5000A9AC8 /* NotificationConstant.h */,
 				42F7612F173BC4A5000A9AC8 /* PathConstant.h */,
 				42F76130173BC4A5000A9AC8 /* ReleaseConfig.h */,
+				1FA5C572176DDAF200525EC1 /* EnumTypeConstant.h */,
 			);
 			path = Constant;
 			sourceTree = "<group>";
@@ -1881,6 +1890,8 @@
 				German,
 				en,
 				"zh-Hans",
+				ja,
+				ko,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
@@ -2114,6 +2125,7 @@
 				1FF39643176B486C00DBB52A /* RevealController.m in Sources */,
 				1FF39648176B498D00DBB52A /* RearViewController.m in Sources */,
 				1FA9655C176BE826008B9DED /* RuleViewController.m in Sources */,
+				1FA5C56C176DD82E00525EC1 /* GetLocalLanguage.m in Sources */,
 				1F7FB603176C86330093F88D /* AboutUsViewController.m in Sources */,
 				1F7FB665176C9C330093F88D /* FeedbackViewController.m in Sources */,
 				1F7FB667176C9C330093F88D /* L_FeedbackTableViewCell.m in Sources */,
@@ -2129,6 +2141,8 @@
 			children = (
 				1F78F24A173C9BE9002DC1AF /* zh-Hans */,
 				1F78F24C173C9BF0002DC1AF /* en */,
+				1FA5C574176DDF2700525EC1 /* ja */,
+				1FA5C575176DDF2C00525EC1 /* ko */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

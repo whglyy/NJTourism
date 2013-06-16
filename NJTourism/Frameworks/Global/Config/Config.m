@@ -9,6 +9,9 @@
 #import "NSString+SEL.h"
 @implementation Config
 @synthesize defaults;
+
+@dynamic localLanguage;
+
 @dynamic uid;
 @dynamic userId;
 @dynamic password;
@@ -23,14 +26,17 @@
 @dynamic isUpdate;
 @dynamic versionUpdateCancel;
 @dynamic isChatInfoChanged;
--(id) init {
-	
+
+-(id) init
+{	
     if(!(self = [super init]))
+    {
         return self;
-	
+	}
+    
     self.defaults = [NSUserDefaults standardUserDefaults];
-	
     [self.defaults registerDefaults:[NSDictionary dictionaryWithObjectsAndKeys:
+                                     [NSNumber numberWithInteger:0], dLocalLanguage,
                                      [NSNumber numberWithInt:-1],    dUID,
                                      @"",                            dUserId,
                                      @"",                            dPassword,
@@ -50,6 +56,9 @@
 -(void) dealloc
 {
     self.defaults = nil;
+    
+    self.localLanguage = nil;
+    
 	self.uid = nil;
 	self.userId = nil;
 	self.password = nil;
@@ -64,30 +73,30 @@
     self.isChatInfoChanged = nil;
 }
 
-+(Config *) currentConfig {
-    
++ (Config *)currentConfig
+{
     static Config *instance;
 	
     if(!instance)
-		
+    {
         instance = [[Config alloc] init];
-    
+    }
     return instance;
 }
-- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
-	    
-    if ([NSStringFromSelector(aSelector) hasPrefix:@"set"]){
-		
+- (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector
+{
+    if ([NSStringFromSelector(aSelector) hasPrefix:@"set"])
+    {
         return [NSMethodSignature signatureWithObjCTypes:"v@:@"];
 	}
-    //DLog(@"methodSignatureForSelector 2\n");
     return [NSMethodSignature signatureWithObjCTypes:"@@:"];
 }
 
-- (void)forwardInvocation:(NSInvocation *)anInvocation {
-    
+- (void)forwardInvocation:(NSInvocation *)anInvocation
+{    
     NSString *selector = NSStringFromSelector(anInvocation.selector);
-    if ([selector hasPrefix:@"set"]) {
+    if ([selector hasPrefix:@"set"])
+    {
         NSRange firstChar, rest;
         firstChar.location  = 3;
         firstChar.length    = 1;
@@ -112,8 +121,8 @@
             [self.defaults setObject:value forKey:selector];
         }
     }
-    
-    else {
+    else
+    {
 		//DLog(@"forwardInvocation 2\n");
         id value = [self.defaults objectForKey:selector];
         
@@ -122,7 +131,6 @@
             value = [NSKeyedUnarchiver unarchiveObjectWithData:value];
         }
         [anInvocation setReturnValue:&value];
-        
     }
 }
 

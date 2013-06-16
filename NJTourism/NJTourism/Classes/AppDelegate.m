@@ -7,6 +7,8 @@
 //
 #import "AppDelegate.h"
 
+#import "GetLocalLanguage.h"
+
 #import "RevealController.h"
 #import "BusListViewController.h"
 #import "RearViewController.h"
@@ -34,6 +36,9 @@
 	
 	self.window.rootViewController = revealController;
 	[self.window makeKeyAndVisible];
+    
+    [self getLocalLanguage];
+    
 	return YES;
 }
 
@@ -47,6 +52,11 @@
 }
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
+}
+
+- (void)getLocalLanguage
+{
+    [Config currentConfig].localLanguage = [NSNumber numberWithInteger:[GetLocalLanguage getLocalLanguage]];
 }
 
 
