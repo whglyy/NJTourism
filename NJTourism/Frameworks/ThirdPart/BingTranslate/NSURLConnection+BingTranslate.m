@@ -11,12 +11,11 @@
 
 @implementation NSURLConnection (BingTranslate)
 
-+ (NSURLConnection *) connectionWithUrlString:(NSString *)urlString delegate:(NSObject *)delegate {
++ (NSURLConnection *) connectionWithUrlString:(NSString *)urlString delegate:(NSObject *)delegate
+{
 	NSURL *url = [[NSURL alloc] initWithString:urlString];
 	NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:url];
-	[url release];
 	NSURLConnection *connection = [NSURLConnection connectionWithRequest:urlRequest delegate:delegate];
-	[urlRequest release];
 	return connection;
 }
 

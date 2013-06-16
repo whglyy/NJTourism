@@ -8,13 +8,12 @@
 
 #import "NSArray+BingTranslate.h"
 #import "NSString+BingTranslate.h"
-#import <CarbonateJSON/CarbonateJSON.h>
 
 
 @implementation NSArray (BingTranslate)
 
 - (NSString *) escapedJsonString {
-	NSString *json = [self generateJson];
+	NSString *json = [self JSONRepresentation];
 	NSString *ret = [json urlEscapedString];
 	return ret;
 }

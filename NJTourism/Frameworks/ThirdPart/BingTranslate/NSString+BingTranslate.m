@@ -9,40 +9,41 @@
 #import "NSString+BingTranslate.h"
 #import "NSMutableString+BingTranslate.h"
 #import "BTDefines.h"
-#import <CarbonateJSON/CarbonateJSON.h>
-
 
 @implementation NSString (BingTranslate)
 
-+ (NSString *) keyWithObject:(NSObject *)object {
-	return [NSString stringWithFormat:@"%x", object];
++ (NSString *) keyWithObject:(NSObject *)object
+{
+	return [NSString stringWithFormat:@"%@", object];
 }
 
-- (NSArray *) translationResults {
-	NSArray *response = [self parseJson];
+- (NSArray *) translationResults
+{
+	NSArray *response = [self JSONValue];
 	NSMutableArray *result = [NSMutableArray array];
-	for (int i = 0; i < [response count]; i++) {
+	for (int i = 0; i < [response count]; i++)
+    {
 		NSDictionary *output = [response objectAtIndex:i];
 		NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
 		NSMutableString *translatedText = [[NSMutableString alloc] initWithString:[output objectForKey:@"TranslatedText"]];
 		[translatedText unescapeJson];
 		[dict setValue:translatedText forKey:BTResultKeyTranslation];
-		[translatedText release];
 		NSString *from = [output objectForKey:@"From"];
 		[dict setValue:from forKey:BTResultKeySourceLanguage];
 		[result addObject:dict];
-		[dict release];
 	}
 	return result;
 }
 
-- (NSArray *) detectionResults {
-	NSArray *response = [self parseJson];
+- (NSArray *) detectionResults
+{
+	NSArray *response = [self JSONValue];
 	return response;
 }
 
 
-- (NSString *) urlEscapedString {
+- (NSString *) urlEscapedString
+{
 	NSString *unpercent = [self stringByReplacingOccurrencesOfString:@"%" withString:@"%25"];
 	NSString *unampersand = [unpercent stringByReplacingOccurrencesOfString:@"&" withString:@" and "];
 	NSString *escaped = [unampersand stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];

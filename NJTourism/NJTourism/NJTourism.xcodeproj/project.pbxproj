@@ -90,6 +90,7 @@
 		1FA5C596176DEB0100525EC1 /* NSMutableString+BingTranslate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA5C58D176DEB0100525EC1 /* NSMutableString+BingTranslate.m */; };
 		1FA5C597176DEB0100525EC1 /* NSString+BingTranslate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA5C58F176DEB0100525EC1 /* NSString+BingTranslate.m */; };
 		1FA5C598176DEB0100525EC1 /* NSURLConnection+BingTranslate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA5C591176DEB0100525EC1 /* NSURLConnection+BingTranslate.m */; };
+		1FA5C59B176DF75200525EC1 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA5C59A176DF75200525EC1 /* AVFoundation.framework */; };
 		1FA9655C176BE826008B9DED /* RuleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA9655B176BE826008B9DED /* RuleViewController.m */; };
 		1FAC52F3173CF42A00EA2BD8 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAC52F2173CF42600EA2BD8 /* libsqlite3.dylib */; };
 		1FAC52F5173CF48500EA2BD8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAC52F4173CF48100EA2BD8 /* QuartzCore.framework */; };
@@ -410,6 +411,7 @@
 		1FA5C58F176DEB0100525EC1 /* NSString+BingTranslate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BingTranslate.m"; sourceTree = "<group>"; };
 		1FA5C590176DEB0100525EC1 /* NSURLConnection+BingTranslate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLConnection+BingTranslate.h"; sourceTree = "<group>"; };
 		1FA5C591176DEB0100525EC1 /* NSURLConnection+BingTranslate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLConnection+BingTranslate.m"; sourceTree = "<group>"; };
+		1FA5C59A176DF75200525EC1 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1FA9655A176BE826008B9DED /* RuleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RuleViewController.h; sourceTree = "<group>"; };
 		1FA9655B176BE826008B9DED /* RuleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RuleViewController.m; sourceTree = "<group>"; };
 		1FAC52F2173CF42600EA2BD8 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -732,6 +734,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FA5C59B176DF75200525EC1 /* AVFoundation.framework in Frameworks */,
 				B22F44EC175CC0E8007E7DA2 /* AddressBook.framework in Frameworks */,
 				B22F44ED175CC0E8007E7DA2 /* AddressBookUI.framework in Frameworks */,
 				42E67622175D8CF6006BAD7D /* AddressBookUI.framework in Frameworks */,
@@ -1047,6 +1050,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				1FA5C59A176DF75200525EC1 /* AVFoundation.framework */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
