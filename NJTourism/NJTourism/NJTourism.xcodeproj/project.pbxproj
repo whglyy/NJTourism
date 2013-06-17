@@ -82,6 +82,10 @@
 		1F7FB675176C9C330093F88D /* R_FeedbackTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7FB65F176C9C330093F88D /* R_FeedbackTableViewCell.m */; };
 		1F7FB676176C9C330093F88D /* libUMFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7FB660176C9C330093F88D /* libUMFeedback.a */; };
 		1F7FB677176C9C330093F88D /* umFeedback.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F7FB661176C9C330093F88D /* umFeedback.bundle */; };
+		1FA541C5176F42FD0065E49E /* BusSelectScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA541C4176F42FD0065E49E /* BusSelectScrollView.m */; };
+		1FA541C9176F43220065E49E /* ChangeBusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA541C8176F43220065E49E /* ChangeBusView.m */; };
+		1FA541CC176F43310065E49E /* BusLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA541CB176F43310065E49E /* BusLineView.m */; };
+		1FA541CF176F43630065E49E /* BusStationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA541CE176F43630065E49E /* BusStationView.m */; };
 		1FA5C56C176DD82E00525EC1 /* GetLocalLanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA5C56B176DD82E00525EC1 /* GetLocalLanguage.m */; };
 		1FA5C592176DEB0100525EC1 /* BTClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA5C585176DEB0100525EC1 /* BTClient.m */; };
 		1FA5C593176DEB0100525EC1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FA5C587176DEB0100525EC1 /* Info.plist */; };
@@ -391,6 +395,14 @@
 		1F7FB661176C9C330093F88D /* umFeedback.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = umFeedback.bundle; sourceTree = "<group>"; };
 		1F7FB662176C9C330093F88D /* UMFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMFeedback.h; sourceTree = "<group>"; };
 		1F7FB678176C9DB00093F88D /* ExternConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExternConstant.h; sourceTree = "<group>"; };
+		1FA541C3176F42FD0065E49E /* BusSelectScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusSelectScrollView.h; sourceTree = "<group>"; };
+		1FA541C4176F42FD0065E49E /* BusSelectScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusSelectScrollView.m; sourceTree = "<group>"; };
+		1FA541C7176F43220065E49E /* ChangeBusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeBusView.h; sourceTree = "<group>"; };
+		1FA541C8176F43220065E49E /* ChangeBusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeBusView.m; sourceTree = "<group>"; };
+		1FA541CA176F43310065E49E /* BusLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusLineView.h; sourceTree = "<group>"; };
+		1FA541CB176F43310065E49E /* BusLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusLineView.m; sourceTree = "<group>"; };
+		1FA541CD176F43620065E49E /* BusStationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusStationView.h; sourceTree = "<group>"; };
+		1FA541CE176F43630065E49E /* BusStationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusStationView.m; sourceTree = "<group>"; };
 		1FA5C56A176DD82E00525EC1 /* GetLocalLanguage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetLocalLanguage.h; sourceTree = "<group>"; };
 		1FA5C56B176DD82E00525EC1 /* GetLocalLanguage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLocalLanguage.m; sourceTree = "<group>"; };
 		1FA5C572176DDAF200525EC1 /* EnumTypeConstant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnumTypeConstant.h; sourceTree = "<group>"; };
@@ -948,6 +960,14 @@
 		1F5FAC5A176B010C0029CB4F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1FA541C3176F42FD0065E49E /* BusSelectScrollView.h */,
+				1FA541C4176F42FD0065E49E /* BusSelectScrollView.m */,
+				1FA541C7176F43220065E49E /* ChangeBusView.h */,
+				1FA541C8176F43220065E49E /* ChangeBusView.m */,
+				1FA541CA176F43310065E49E /* BusLineView.h */,
+				1FA541CB176F43310065E49E /* BusLineView.m */,
+				1FA541CD176F43620065E49E /* BusStationView.h */,
+				1FA541CE176F43630065E49E /* BusStationView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1050,7 +1070,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				1FA5C59A176DF75200525EC1 /* AVFoundation.framework */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -1085,6 +1104,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1FA5C59A176DF75200525EC1 /* AVFoundation.framework */,
 				B22F44EA175CC0E7007E7DA2 /* AddressBook.framework */,
 				B22F44EB175CC0E8007E7DA2 /* AddressBookUI.framework */,
 				42E67621175D8CF6006BAD7D /* AddressBookUI.framework */,
@@ -2186,6 +2206,10 @@
 				1FA5C596176DEB0100525EC1 /* NSMutableString+BingTranslate.m in Sources */,
 				1FA5C597176DEB0100525EC1 /* NSString+BingTranslate.m in Sources */,
 				1FA5C598176DEB0100525EC1 /* NSURLConnection+BingTranslate.m in Sources */,
+				1FA541C5176F42FD0065E49E /* BusSelectScrollView.m in Sources */,
+				1FA541C9176F43220065E49E /* ChangeBusView.m in Sources */,
+				1FA541CC176F43310065E49E /* BusLineView.m in Sources */,
+				1FA541CF176F43630065E49E /* BusStationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

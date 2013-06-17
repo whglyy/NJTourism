@@ -12,9 +12,6 @@
 
 @property (strong, nonatomic, readonly) AibangApi *abApi;
 
-@property (strong, nonatomic) IBOutlet UISegmentedControl *busSegmentedControl;
-@property (strong, nonatomic) IBOutlet UIScrollView *busSelectScrollView;
-
 @end
 
 @implementation BusListViewController
@@ -37,15 +34,6 @@
 
 #pragma mark-
 #pragma mark Init & Add
-- (UISegmentedControl *)busSegmentedControl
-{
-    if (!_busSegmentedControl)
-    {
-        NSArray *segArray = [[NSArray alloc] initWithObjects:L(@"换乘"), L(@"线路"), L(@"站点"), nil];
-        _busSegmentedControl = [[UISegmentedControl alloc] initWithItems:segArray];
-    }
-    return _busSegmentedControl;
-}
 
 #pragma mark-
 #pragma mark View Method
@@ -71,8 +59,6 @@
     DLog(@"msg_lyywhg:r~error%@", error);
 }
 - (void)viewDidUnload {
-    [self setBusSegmentedControl:nil];
-    [self setBusSelectScrollView:nil];
     [super viewDidUnload];
 }
 @end
