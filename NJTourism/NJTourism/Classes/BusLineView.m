@@ -103,6 +103,7 @@
 - (void)setAllFrame
 {
     self.busLineTableView.frame = CGRectMake(0, 0, 260, 200);
+    self.backgroundColor = [UIColor greenColor];
 }
 
 - (void)getLocalStation

@@ -57,6 +57,9 @@
 		1F5FAC4E176AFEBD0029CB4F /* TaxiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F5FAC4C176AFEBB0029CB4F /* TaxiViewController.xib */; };
 		1F5FAC57176AFEF30029CB4F /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAC55176AFEF20029CB4F /* SettingViewController.m */; };
 		1F5FAC58176AFEF30029CB4F /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F5FAC56176AFEF20029CB4F /* SettingViewController.xib */; };
+		1F6ED6151770B3C2002D3C92 /* btn_first_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F6ED6121770B3C2002D3C92 /* btn_first_select@2x.png */; };
+		1F6ED6161770B3C2002D3C92 /* btn_second_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F6ED6131770B3C2002D3C92 /* btn_second_select@2x.png */; };
+		1F6ED6171770B3C2002D3C92 /* btn_third_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F6ED6141770B3C2002D3C92 /* btn_third_select@2x.png */; };
 		1F78F246173C9BA1002DC1AF /* test.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F78F245173C9BA1002DC1AF /* test.strings */; };
 		1F78F249173C9BE9002DC1AF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F78F24B173C9BE9002DC1AF /* Localizable.strings */; };
 		1F7FB600176C85F80093F88D /* MyRule.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F7FB5FF176C85F80093F88D /* MyRule.plist */; };
@@ -367,6 +370,9 @@
 		1F5FAC54176AFEF20029CB4F /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		1F5FAC55176AFEF20029CB4F /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		1F5FAC56176AFEF20029CB4F /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		1F6ED6121770B3C2002D3C92 /* btn_first_select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_first_select@2x.png"; path = "../Resources/Images/btn_first_select@2x.png"; sourceTree = "<group>"; };
+		1F6ED6131770B3C2002D3C92 /* btn_second_select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_second_select@2x.png"; path = "../Resources/Images/btn_second_select@2x.png"; sourceTree = "<group>"; };
+		1F6ED6141770B3C2002D3C92 /* btn_third_select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_third_select@2x.png"; path = "../Resources/Images/btn_third_select@2x.png"; sourceTree = "<group>"; };
 		1F78F245173C9BA1002DC1AF /* test.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = test.strings; sourceTree = "<group>"; };
 		1F78F24A173C9BE9002DC1AF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1F78F24C173C9BF0002DC1AF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -906,6 +912,9 @@
 		1F5BF9F7173BE43E00B12EAA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1F6ED6121770B3C2002D3C92 /* btn_first_select@2x.png */,
+				1F6ED6131770B3C2002D3C92 /* btn_second_select@2x.png */,
+				1F6ED6141770B3C2002D3C92 /* btn_third_select@2x.png */,
 				1F16C9581770A8A700D1E8C9 /* button_d_search@2x.png */,
 				1F97D6FA17709F6900F509BC /* stop_locate.png */,
 				1F97D6FB17709F6900F509BC /* stop_locate@2x.png */,
@@ -2052,6 +2061,9 @@
 				1F97D6FC17709F6900F509BC /* stop_locate.png in Resources */,
 				1F97D6FD17709F6900F509BC /* stop_locate@2x.png in Resources */,
 				1F16C9591770A8A700D1E8C9 /* button_d_search@2x.png in Resources */,
+				1F6ED6151770B3C2002D3C92 /* btn_first_select@2x.png in Resources */,
+				1F6ED6161770B3C2002D3C92 /* btn_second_select@2x.png in Resources */,
+				1F6ED6171770B3C2002D3C92 /* btn_third_select@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

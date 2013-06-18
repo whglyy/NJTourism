@@ -58,6 +58,7 @@
     
     self.busSelectScrollView.contentSize = CGSizeMake(0, 0);
     [self.busSelectScrollView setAllFrames];
+    _btnImageView.image = [UIImage imageNamed:@"btn_first_select.png"];
     
     _abApi = [[AibangApi alloc] init];
     [AibangApi setAppkey:@"f41c8afccc586de03a99c86097e98ccb"];
@@ -86,17 +87,19 @@
     {
         case 2001:
         {
-            _btnImageView.image = [UIImage imageNamed:@""];
+            _btnImageView.image = [UIImage imageNamed:@"btn_first_select.png"];
             self.busSelectScrollView.contentSize = CGSizeMake(0, 0);
         }
         break;
         case 2002:
         {
+            _btnImageView.image = [UIImage imageNamed:@"btn_second_select.png"];
             self.busSelectScrollView.contentSize = CGSizeMake(320, 0);
         }
         break;
         case 2003:
         {
+            _btnImageView.image = [UIImage imageNamed:@"btn_third_select.png"];
             self.busSelectScrollView.contentSize = CGSizeMake(640, 0);
         }
         break;
