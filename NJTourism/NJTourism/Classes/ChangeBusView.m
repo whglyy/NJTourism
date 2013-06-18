@@ -52,7 +52,7 @@
         _startPointTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         _startPointTextField.borderStyle = UITextBorderStyleNone;
         _startPointTextField.returnKeyType = UIReturnKeyDone;
-        _startPointTextField.frame = CGRectMake(20, 20, 222, 36);
+        _startPointTextField.frame = CGRectMake(15, 20, 200, 36);
     }
     return _startPointTextField;
 }
@@ -70,7 +70,7 @@
         _endPointTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         _endPointTextField.borderStyle = UITextBorderStyleNone;
         _endPointTextField.returnKeyType = UIReturnKeyDone;
-        _endPointTextField.frame = CGRectMake(20, 65, 222, 36);
+        _endPointTextField.frame = CGRectMake(15, 65, 200, 36);
     }
     return _endPointTextField;
 }
@@ -79,7 +79,10 @@
     if (!_localBtn)
     {
         _localBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _localBtn.backgroundColor = [UIColor clearColor];
+        [_localBtn setBackgroundImage:[UIImage imageNamed:@"stop_locate.png"] forState:UIControlStateNormal];
         [_localBtn addTarget:self action:@selector(getLocalStation) forControlEvents:UIControlEventTouchUpInside];
+        _localBtn.frame = CGRectMake(200, 20, 39, 36);
     }
     return _localBtn;
 }
@@ -122,11 +125,11 @@
     
     UIImageView *tmpUserIV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"user_textfield_input.png"]];
     UIImageView *nameLogoI = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"user_textfield_input.png"]];
-    tmpUserIV.frame = CGRectMake(15, 20, 232, 36);
+    tmpUserIV.frame = CGRectMake(10, 20, 200, 36);
     tmpUserIV.layer.cornerRadius = 10.0f;
     nameLogoI.layer.cornerRadius = 10.0f;
     [cell.contentView addSubview:tmpUserIV];
-    nameLogoI.frame = CGRectMake(15, 65, 232, 36);
+    nameLogoI.frame = CGRectMake(10, 65, 220, 36);
     [cell.contentView addSubview:nameLogoI];
     
     [cell.contentView addSubview:self.startPointTextField];
