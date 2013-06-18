@@ -18,4 +18,6 @@
 @property (strong, nonatomic) BusLineView *busLineView;
 @property (strong, nonatomic) BusStationView *busStationView;
 
+- (void)setAllFrames;
+
 @end

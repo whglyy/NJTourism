@@ -26,6 +26,7 @@
     if (!_changeBusView)
     {
         _changeBusView = [[ChangeBusView alloc] init];
+        [self addSubview:_changeBusView];
     }
     return _changeBusView;
 }
@@ -34,6 +35,7 @@
     if (!_busLineView)
     {
         _busLineView = [[BusLineView alloc] init];
+        [self addSubview:_busLineView];
     }
     return _busLineView;
 }
@@ -42,8 +44,19 @@
     if (!_busStationView)
     {
         _busStationView = [[BusStationView alloc] init];
+        [self addSubview:_busStationView];
     }
     return _busStationView;
+}
+
+- (void)setAllFrames
+{
+    self.changeBusView.frame = CGRectMake(40, 20, 260, 200);
+    [self.changeBusView setAllFrame];
+    self.busLineView.frame = CGRectMake(360, 20, 260, 150);
+    [self.busLineView setAllFrame];
+    self.busStationView.frame = CGRectMake(680, 20, 260, 150);
+    [self.busStationView setAllFrame];
 }
 
 @end

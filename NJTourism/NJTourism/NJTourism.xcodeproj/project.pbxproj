@@ -82,6 +82,8 @@
 		1F7FB675176C9C330093F88D /* R_FeedbackTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F7FB65F176C9C330093F88D /* R_FeedbackTableViewCell.m */; };
 		1F7FB676176C9C330093F88D /* libUMFeedback.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7FB660176C9C330093F88D /* libUMFeedback.a */; };
 		1F7FB677176C9C330093F88D /* umFeedback.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F7FB661176C9C330093F88D /* umFeedback.bundle */; };
+		1F97D6F71770967E00F509BC /* user_textfield_input.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F97D6F51770967E00F509BC /* user_textfield_input.png */; };
+		1F97D6F81770967E00F509BC /* user_textfield_input@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F97D6F61770967E00F509BC /* user_textfield_input@2x.png */; };
 		1FA541C5176F42FD0065E49E /* BusSelectScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA541C4176F42FD0065E49E /* BusSelectScrollView.m */; };
 		1FA541C9176F43220065E49E /* ChangeBusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA541C8176F43220065E49E /* ChangeBusView.m */; };
 		1FA541CC176F43310065E49E /* BusLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA541CB176F43310065E49E /* BusLineView.m */; };
@@ -395,6 +397,8 @@
 		1F7FB661176C9C330093F88D /* umFeedback.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = umFeedback.bundle; sourceTree = "<group>"; };
 		1F7FB662176C9C330093F88D /* UMFeedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMFeedback.h; sourceTree = "<group>"; };
 		1F7FB678176C9DB00093F88D /* ExternConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExternConstant.h; sourceTree = "<group>"; };
+		1F97D6F51770967E00F509BC /* user_textfield_input.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user_textfield_input.png; path = ../Resources/Images/user_textfield_input.png; sourceTree = "<group>"; };
+		1F97D6F61770967E00F509BC /* user_textfield_input@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "user_textfield_input@2x.png"; path = "../Resources/Images/user_textfield_input@2x.png"; sourceTree = "<group>"; };
 		1FA541C3176F42FD0065E49E /* BusSelectScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusSelectScrollView.h; sourceTree = "<group>"; };
 		1FA541C4176F42FD0065E49E /* BusSelectScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusSelectScrollView.m; sourceTree = "<group>"; };
 		1FA541C7176F43220065E49E /* ChangeBusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeBusView.h; sourceTree = "<group>"; };
@@ -896,6 +900,8 @@
 		1F5BF9F7173BE43E00B12EAA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1F97D6F51770967E00F509BC /* user_textfield_input.png */,
+				1F97D6F61770967E00F509BC /* user_textfield_input@2x.png */,
 				1F7FB610176C9AB40093F88D /* FatFish_Logo_bg.png */,
 				1F38EE9517694AD900D5A96C /* chat.png */,
 				1F38EE9617694AD900D5A96C /* chat@2x.png */,
@@ -2032,6 +2038,8 @@
 				1F7FB674176C9C330093F88D /* nav_btn_bg_lighted@2x.png in Resources */,
 				1F7FB677176C9C330093F88D /* umFeedback.bundle in Resources */,
 				1FA5C593176DEB0100525EC1 /* Info.plist in Resources */,
+				1F97D6F71770967E00F509BC /* user_textfield_input.png in Resources */,
+				1F97D6F81770967E00F509BC /* user_textfield_input@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

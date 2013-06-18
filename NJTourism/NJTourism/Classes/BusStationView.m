@@ -102,7 +102,7 @@
 #pragma mark Method
 - (void)setAllFrame
 {
-    
+    self.busStationTableView.frame = CGRectMake(0, 0, 260, 200);
 }
 
 - (void)getLocalStation

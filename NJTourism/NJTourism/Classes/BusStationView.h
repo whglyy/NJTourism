@@ -14,4 +14,6 @@
 @property (strong, nonatomic) UITextField *busStationTextField;
 @property (strong, nonatomic) UIButton *queryBtn;
 
+- (void)setAllFrame;
+
 @end

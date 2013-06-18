@@ -8,8 +8,11 @@
 
 #import "BusListViewController.h"
 
+#import "BusSelectScrollView.h"
+
 @interface BusListViewController ()
 
+@property (strong, nonatomic) BusSelectScrollView *busSelectScrollView;
 @property (strong, nonatomic, readonly) AibangApi *abApi;
 
 @end
@@ -34,19 +37,32 @@
 
 #pragma mark-
 #pragma mark Init & Add
-
+- (BusSelectScrollView *)busSelectScrollView
+{
+    if (!_busSelectScrollView)
+    {
+        _busSelectScrollView = [[BusSelectScrollView alloc] init];
+        _busSelectScrollView.backgroundColor = [UIColor clearColor];
+        _busSelectScrollView.frame = CGRectMake(0, 80, 960, 240);
+        [self.view addSubview:_busSelectScrollView];
+    }
+    return _busSelectScrollView;
+}
 #pragma mark-
 #pragma mark View Method
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self canPush];
+    
+    self.busSelectScrollView.contentSize = CGSizeMake(0, 0);
+    [self.busSelectScrollView setAllFrames];
+    
     _abApi = [[AibangApi alloc] init];
     [AibangApi setAppkey:@"f41c8afccc586de03a99c86097e98ccb"];
     _abApi.delegate = self;
     [_abApi busStatsWithCity:@"南京" Keyword:@"珠江路"];
-    
-    // Do any additional setup after loading the view from its nib.
 }
 #pragma mark-
 #pragma mark Delegate
@@ -58,7 +74,8 @@
 {
     DLog(@"msg_lyywhg:r~error%@", error);
 }
-- (void)viewDidUnload {
+- (void)viewDidUnload
+{
     [super viewDidUnload];
 }
 @end

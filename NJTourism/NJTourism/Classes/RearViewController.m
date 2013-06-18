@@ -81,6 +81,7 @@
     switch (indexPath.section)
     {
         case 0:
+            [self getNJThing:indexPath.row];
             break;
         case 1:
             [self settingControllers:indexPath.row];
@@ -88,26 +89,21 @@
         default:
             break;
     }
-	RevealController *revealController = [self.parentViewController isKindOfClass:[RevealController class]] ? (RevealController *)self.parentViewController : nil;
-	
-	if (indexPath.row == 0)
-	{
-		if (![revealController.frontViewController isKindOfClass:[BusListViewController class]])
-		{
-			BusListViewController *frontViewController;
-			
-			
-            frontViewController = [[BusListViewController alloc] initWithNibName:@"BusListViewController" bundle:nil];
-			
-			
-			UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:frontViewController];
-			[revealController setFrontViewController:navigationController animated:NO];
-		}
-	}
-
 }
 #pragma mark-
-#pragma mark Method
+#pragma mark Switch Method
+- (void)getNJThing:(NSInteger)index
+{
+    switch (index)
+    {
+        case 0:
+            [self getBusInfo];
+            break;
+            
+        default:
+            break;
+    }
+}
 - (void)settingControllers:(NSInteger)index
 {
     switch (index)
@@ -126,6 +122,17 @@
             break;
         default:
             break;
+    }
+}
+#pragma mark-
+#pragma mark 
+- (void)getBusInfo
+{
+    @autoreleasepool
+    {
+        BusListViewController *busListVC = [[BusListViewController alloc] initWithNibName:@"BusListViewController" bundle:nil];
+        UINavigationController *busListNaviController = [[UINavigationController alloc] initWithRootViewController:busListVC];
+        [self.revealController setFrontViewController:busListNaviController animated:NO];
     }
 }
 - (void)checkVersion

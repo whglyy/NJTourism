@@ -52,7 +52,7 @@
         _startPointTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         _startPointTextField.borderStyle = UITextBorderStyleNone;
         _startPointTextField.returnKeyType = UIReturnKeyDone;
-        _startPointTextField.frame = CGRectMake(45, 0, 222, 36);
+        _startPointTextField.frame = CGRectMake(20, 20, 222, 36);
     }
     return _startPointTextField;
 }
@@ -70,7 +70,7 @@
         _endPointTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         _endPointTextField.borderStyle = UITextBorderStyleNone;
         _endPointTextField.returnKeyType = UIReturnKeyDone;
-        _endPointTextField.frame = CGRectMake(45, 0, 222, 36);
+        _endPointTextField.frame = CGRectMake(20, 65, 222, 36);
     }
     return _endPointTextField;
 }
@@ -119,6 +119,16 @@
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    UIImageView *tmpUserIV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"user_textfield_input.png"]];
+    UIImageView *nameLogoI = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"user_textfield_input.png"]];
+    tmpUserIV.frame = CGRectMake(15, 20, 232, 36);
+    tmpUserIV.layer.cornerRadius = 10.0f;
+    nameLogoI.layer.cornerRadius = 10.0f;
+    [cell.contentView addSubview:tmpUserIV];
+    nameLogoI.frame = CGRectMake(15, 65, 232, 36);
+    [cell.contentView addSubview:nameLogoI];
+    
     [cell.contentView addSubview:self.startPointTextField];
     [cell.contentView addSubview:self.endPointTextField];
     [cell.contentView addSubview:self.localBtn];
@@ -130,7 +140,7 @@
 #pragma mark Method
 - (void)setAllFrame
 {
-    
+    self.changeBusTableView.frame = CGRectMake(0, 0, 260, 200);
 }
 
 - (void)getLocalStation
