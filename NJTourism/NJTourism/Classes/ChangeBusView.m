@@ -91,7 +91,11 @@
     if (!_queryBtn)
     {
         _queryBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _queryBtn.backgroundColor = [UIColor clearColor];
+        [_queryBtn setBackgroundImage:[UIImage imageNamed:@"button_d_search.png"] forState:UIControlStateNormal];
+        [_queryBtn setTitle:L(@"查询") forState:UIControlStateNormal];
         [_queryBtn addTarget:self action:@selector(queryBusLine) forControlEvents:UIControlEventTouchUpInside];
+        _queryBtn.frame = CGRectMake(20, 150, 200, 40);
     }
     return _queryBtn;
 }

@@ -11,6 +11,7 @@
 @interface BusListViewController : CommonViewController<AibangApiDelegate>
 
 
+@property (weak, nonatomic) IBOutlet UIImageView *btnImageView;
 
 
 @end

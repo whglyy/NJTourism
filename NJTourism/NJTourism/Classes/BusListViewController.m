@@ -76,6 +76,33 @@
 }
 - (void)viewDidUnload
 {
+    [self setBtnImageView:nil];
     [super viewDidUnload];
 }
+- (IBAction)buttonClick:(id)sender
+{
+    UIButton *tmpBtn = (UIButton *)sender;
+    switch (tmpBtn.tag)
+    {
+        case 2001:
+        {
+            _btnImageView.image = [UIImage imageNamed:@""];
+            self.busSelectScrollView.contentSize = CGSizeMake(0, 0);
+        }
+        break;
+        case 2002:
+        {
+            self.busSelectScrollView.contentSize = CGSizeMake(320, 0);
+        }
+        break;
+        case 2003:
+        {
+            self.busSelectScrollView.contentSize = CGSizeMake(640, 0);
+        }
+        break;
+        default:
+            break;
+    }
+}
+
 @end
