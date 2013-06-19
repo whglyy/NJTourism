@@ -36,6 +36,9 @@
 //请求失败
 #define kError_NormalRequestError             L(@"Error_NormalRequestFail")
 //===============================常用Request请求==============================//
+#define Taxi_Url                              @"http://www.itaxicall.net/ServiceCenter/Handler/ServiceHandler.ashx?P="
+
+
 #pragma mark -  Common Request Action
 #pragma mark    常用Request请求
 #define ActionArea_Login                        @"loginAuth"
