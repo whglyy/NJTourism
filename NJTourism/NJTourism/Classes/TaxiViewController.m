@@ -28,9 +28,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self canPush];
     
-    FindNearbyTaxi *findTaxi = [[FindNearbyTaxi alloc] init];
+    __strong FindNearbyTaxi *findTaxi = [[FindNearbyTaxi alloc] init];
     [findTaxi createFolderWithFolderInfo:nil];
+    
     
     // Do any additional setup after loading the view from its nib.
 }

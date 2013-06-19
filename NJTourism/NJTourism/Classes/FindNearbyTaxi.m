@@ -27,15 +27,14 @@
 - (void)createFolderWithFolderInfo:(NSString *)folderDto
 {
     
-    NSString *tmpString = @"KIND=11&MOBILEID=79c848f2b485f74a2cdda302d4cbcb8f9c9de202&MOBILETYPE=1";
+    NSString *tmpString = @"KIND=6&MOBILEID=79c848f2b485f74a2cdda302d4cbcb8f9c9de202&MOBILETYPE=2&CITY=1";
     NSData *data = [tmpString dataUsingEncoding:NSUnicodeStringEncoding];
     NSString *ret = [data base64Encoding];
     NSString *url = [NSString stringWithFormat:@"%@%@",
                      Taxi_Url, ret];
     DLog(@"msg_lyywhg:%@ ~~~~ %@", ret, data);
-    
     [self cancelRequestByCmdCode:10001];
-    SNRequest *request = [self POST:url dict:nil];
+    SNRequest *request = [self GET:url];
     request.cmdCode = 10001;
 
 }

@@ -8,12 +8,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/FindNearbyTaxi.m"
-         timestampString = "393338425.045911"
+         timestampString = "393341306.446624"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "37"
-         endingLineNumber = "37"
-         landmarkName = "-createFolderWithFolderInfo:"
+         startingLineNumber = "47"
+         endingLineNumber = "47"
+         landmarkName = "-handleRequest:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/FindNearbyTaxi.m"
+         timestampString = "393341868.035751"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "55"
+         endingLineNumber = "55"
+         landmarkName = "-handleRequest:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

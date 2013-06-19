@@ -53,7 +53,7 @@
 		1F5FAC47176AF16D0029CB4F /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAC39176AF16C0029CB4F /* SBJsonTokeniser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1F5FAC48176AF16D0029CB4F /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAC3B176AF16C0029CB4F /* SBJsonUTF8Stream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1F5FAC49176AF16D0029CB4F /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAC3D176AF16D0029CB4F /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		1F5FAC4D176AFEBD0029CB4F /* TaxiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAC4B176AFEBB0029CB4F /* TaxiViewController.m */; };
+		1F5FAC4D176AFEBD0029CB4F /* TaxiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAC4B176AFEBB0029CB4F /* TaxiViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		1F5FAC4E176AFEBD0029CB4F /* TaxiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F5FAC4C176AFEBB0029CB4F /* TaxiViewController.xib */; };
 		1F5FAC57176AFEF30029CB4F /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAC55176AFEF20029CB4F /* SettingViewController.m */; };
 		1F5FAC58176AFEF30029CB4F /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F5FAC56176AFEF20029CB4F /* SettingViewController.xib */; };
