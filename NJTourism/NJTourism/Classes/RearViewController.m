@@ -99,7 +99,8 @@
         case 0:
             [self getBusInfo];
             break;
-            
+        case 1:
+            [self getTaxiInfo];
         default:
             break;
     }
@@ -133,6 +134,15 @@
         BusListViewController *busListVC = [[BusListViewController alloc] initWithNibName:@"BusListViewController" bundle:nil];
         UINavigationController *busListNaviController = [[UINavigationController alloc] initWithRootViewController:busListVC];
         [self.revealController setFrontViewController:busListNaviController animated:NO];
+    }
+}
+- (void)getTaxiInfo
+{
+    @autoreleasepool
+    {
+        TaxiViewController *taxiListVC = [[TaxiViewController alloc] initWithNibName:@"TaxiViewController" bundle:nil];
+        UINavigationController *taxiListNaviController = [[UINavigationController alloc] initWithRootViewController:taxiListVC];
+        [self.revealController setFrontViewController:taxiListNaviController animated:NO];
     }
 }
 - (void)checkVersion

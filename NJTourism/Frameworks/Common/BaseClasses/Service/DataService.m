@@ -1,18 +1,23 @@
 //
 //  DataService.m
-//  FatFist
+//  FatFish
 //
-//  Copyright 2011 FatFish. All rights reserved.
+//  Created by lyywhg on 13-3-26.
+//  Copyright (c) 2013年 lyywhg. All rights reserved.
 //
-//
+
 #import "DataService.h"
 #import "ErrorAnalyzeUtil.h"
+
 @implementation DataService
+
 
 - (void)dealloc
 {
     [self cancelRequests];
+    _errorCode = nil;
 }
+
 - (NSString *)errorMsgOfRequestError:(NSError *)error
 {
     ASINetworkErrorType errorCode = error.code;
@@ -72,7 +77,6 @@
         }
         case ASIFileManagementError:
         {
-            DLog(@"%@",[[error userInfo] objectForKey:NSLocalizedDescriptionKey]);
             //文件操作有误
             errorMsg = L(@"Fail to handle file operation");;
             
@@ -100,21 +104,62 @@
             break;
         }
     }
-        
+    
     return L(errorMsg);
 }
-- (BOOL)isResponseSuccess:(NSDictionary *)items withCMDCode:(E_CMDCODE)cmd
+
+- (BOOL)isResponseSuccess:(NSDictionary *)items RequestCmd:(E_CMDCODE)cmdCode
 {
-//解析状态信息，返回response的状态。
-    NSString *issuccess = EncodeObjectFromDic(items, @"isSuccess");
-    if ([issuccess isEqualToString:@"1"]) {
-        return YES;
-    }else{
-        int errorCode = [issuccess intValue];
-        self.errorMsg = [ErrorAnalyzeUtil getErrorMsg:cmd errorCode:errorCode];
+    //解析状态信息，返回response的状态。
+    
+    //pan_safeboxOpt_0001_s : SNRetCode的格式
+    NSString *SNRetCode = [items objectForKey:@"SNRetCode"];
+    
+    BOOL isSessionFailed = [ErrorAnalyzeUtil isSessionFailed:SNRetCode];
+    if (isSessionFailed)
+    {
         return NO;
     }
     
+    NSString *isSuccess = @"e";
+    NSString *SNRetMsg = [items objectForKey:@"SNRetMsg"];
+    self.errorMsg = SNRetMsg;
+    
+    if (IsStrEmpty(SNRetCode)) {
+        isSuccess = @"e";
+        self.errorMsg = L(@"服务器异常，请稍后重试");
+    }else{
+        NSArray *temparr = [SNRetCode componentsSeparatedByString:@"_"];
+        if (!IsArrEmpty(temparr)) {
+            isSuccess = (NSString *)[temparr lastObject];
+            if ([temparr count]>3) {
+                self.errorCode = [temparr objectAtIndex:2];
+            }
+        }else{
+            isSuccess = @"e";
+        }
+    }
+    if ([isSuccess isEqualToString:@"s"]) {
+        return YES;
+    }else{
+        if (IsStrEmpty(self.errorCode)) {
+            self.errorMsg = L(@"服务器异常，请稍后重试");
+        }else{
+            self.errorMsg = [ErrorAnalyzeUtil getErrorMsg:cmdCode errorCode:[self.errorCode intValue]];
+            
+        }
+        return NO;
+    }
+}
+
+- (id)dataInfoOfResponse:(NSDictionary *)items
+{
+    if ([items isKindOfClass:[NSDictionary class]]) {
+        id data = [items objectForKey:@"data"];
+        return data;
+    }else{
+        return nil;
+    }
 }
 
 @end

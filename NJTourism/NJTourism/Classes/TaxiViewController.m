@@ -8,6 +8,8 @@
 
 #import "TaxiViewController.h"
 
+#import "FindNearbyTaxi.h"
+
 @interface TaxiViewController ()
 
 @end
@@ -26,6 +28,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    FindNearbyTaxi *findTaxi = [[FindNearbyTaxi alloc] init];
+    [findTaxi createFolderWithFolderInfo:nil];
+    
     // Do any additional setup after loading the view from its nib.
 }
 

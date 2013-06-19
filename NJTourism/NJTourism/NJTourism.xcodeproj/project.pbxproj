@@ -96,7 +96,6 @@
 		1FA541CF176F43630065E49E /* BusStationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA541CE176F43630065E49E /* BusStationView.m */; };
 		1FA5C56C176DD82E00525EC1 /* GetLocalLanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA5C56B176DD82E00525EC1 /* GetLocalLanguage.m */; };
 		1FA5C592176DEB0100525EC1 /* BTClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA5C585176DEB0100525EC1 /* BTClient.m */; };
-		1FA5C593176DEB0100525EC1 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FA5C587176DEB0100525EC1 /* Info.plist */; };
 		1FA5C594176DEB0100525EC1 /* NSArray+BingTranslate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA5C589176DEB0100525EC1 /* NSArray+BingTranslate.m */; };
 		1FA5C595176DEB0100525EC1 /* NSDictionary+BingTranslate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA5C58B176DEB0100525EC1 /* NSDictionary+BingTranslate.m */; };
 		1FA5C596176DEB0100525EC1 /* NSMutableString+BingTranslate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FA5C58D176DEB0100525EC1 /* NSMutableString+BingTranslate.m */; };
@@ -112,6 +111,7 @@
 		1FAC52FD173CF53D00EA2BD8 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAC52FC173CF53900EA2BD8 /* CoreText.framework */; };
 		1FAC52FF173CF6A800EA2BD8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAC52FE173CF6A400EA2BD8 /* MessageUI.framework */; };
 		1FAC5301173CF76300EA2BD8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAC5300173CF75F00EA2BD8 /* CoreMotion.framework */; };
+		1FC9218A1771D9BE002A8D0C /* FindNearbyTaxi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC921891771D9BE002A8D0C /* FindNearbyTaxi.m */; };
 		1FEB2544176B52BB00C93780 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FEB2543176B52BB00C93780 /* MainWindow.xib */; };
 		1FF3963F176B480700DBB52A /* ZUUIRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3963E176B480700DBB52A /* ZUUIRevealController.m */; };
 		1FF39643176B486C00DBB52A /* RevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF39642176B486C00DBB52A /* RevealController.m */; };
@@ -237,11 +237,11 @@
 		42F7625B173BC4A5000A9AC8 /* egopv_right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42F7619D173BC4A5000A9AC8 /* egopv_right@2x.png */; };
 		42F7625C173BC4A5000A9AC8 /* EGOQuickPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F7619F173BC4A5000A9AC8 /* EGOQuickPhoto.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		42F7625D173BC4A5000A9AC8 /* EGOQuickPhotoSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F761A1173BC4A5000A9AC8 /* EGOQuickPhotoSource.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		42F7625E173BC4A5000A9AC8 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F761A4173BC4A5000A9AC8 /* FMDatabase.m */; };
-		42F7625F173BC4A5000A9AC8 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F761A6173BC4A5000A9AC8 /* FMDatabaseAdditions.m */; };
-		42F76260173BC4A5000A9AC8 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F761A8173BC4A5000A9AC8 /* FMDatabasePool.m */; };
-		42F76261173BC4A5000A9AC8 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F761AA173BC4A5000A9AC8 /* FMDatabaseQueue.m */; };
-		42F76262173BC4A5000A9AC8 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F761AC173BC4A5000A9AC8 /* FMResultSet.m */; };
+		42F7625E173BC4A5000A9AC8 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F761A4173BC4A5000A9AC8 /* FMDatabase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		42F7625F173BC4A5000A9AC8 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F761A6173BC4A5000A9AC8 /* FMDatabaseAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		42F76260173BC4A5000A9AC8 /* FMDatabasePool.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F761A8173BC4A5000A9AC8 /* FMDatabasePool.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		42F76261173BC4A5000A9AC8 /* FMDatabaseQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F761AA173BC4A5000A9AC8 /* FMDatabaseQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		42F76262173BC4A5000A9AC8 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F761AC173BC4A5000A9AC8 /* FMResultSet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		42F76263173BC4A5000A9AC8 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F761AF173BC4A5000A9AC8 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		42F76269173BC4A5000A9AC8 /* LoadingHUDView.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F761BE173BC4A5000A9AC8 /* LoadingHUDView.m */; };
 		42F7626A173BC4A5000A9AC8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 42F761C0173BC4A5000A9AC8 /* MBProgressHUD.m */; };
@@ -428,7 +428,6 @@
 		1FA5C584176DEB0100525EC1 /* BTClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTClient.h; sourceTree = "<group>"; };
 		1FA5C585176DEB0100525EC1 /* BTClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTClient.m; sourceTree = "<group>"; };
 		1FA5C586176DEB0100525EC1 /* BTDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTDefines.h; sourceTree = "<group>"; };
-		1FA5C587176DEB0100525EC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1FA5C588176DEB0100525EC1 /* NSArray+BingTranslate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+BingTranslate.h"; sourceTree = "<group>"; };
 		1FA5C589176DEB0100525EC1 /* NSArray+BingTranslate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+BingTranslate.m"; sourceTree = "<group>"; };
 		1FA5C58A176DEB0100525EC1 /* NSDictionary+BingTranslate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+BingTranslate.h"; sourceTree = "<group>"; };
@@ -450,6 +449,8 @@
 		1FAC52FC173CF53900EA2BD8 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		1FAC52FE173CF6A400EA2BD8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		1FAC5300173CF75F00EA2BD8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		1FC921881771D9BE002A8D0C /* FindNearbyTaxi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindNearbyTaxi.h; sourceTree = "<group>"; };
+		1FC921891771D9BE002A8D0C /* FindNearbyTaxi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindNearbyTaxi.m; sourceTree = "<group>"; };
 		1FEB2543176B52BB00C93780 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		1FF3963D176B480700DBB52A /* ZUUIRevealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZUUIRevealController.h; sourceTree = "<group>"; };
 		1FF3963E176B480700DBB52A /* ZUUIRevealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZUUIRevealController.m; sourceTree = "<group>"; };
@@ -999,6 +1000,8 @@
 		1F5FAC5B176B01110029CB4F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1FC921881771D9BE002A8D0C /* FindNearbyTaxi.h */,
+				1FC921891771D9BE002A8D0C /* FindNearbyTaxi.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1067,7 +1070,6 @@
 				1FA5C584176DEB0100525EC1 /* BTClient.h */,
 				1FA5C585176DEB0100525EC1 /* BTClient.m */,
 				1FA5C586176DEB0100525EC1 /* BTDefines.h */,
-				1FA5C587176DEB0100525EC1 /* Info.plist */,
 				1FA5C588176DEB0100525EC1 /* NSArray+BingTranslate.h */,
 				1FA5C589176DEB0100525EC1 /* NSArray+BingTranslate.m */,
 				1FA5C58A176DEB0100525EC1 /* NSDictionary+BingTranslate.h */,
@@ -2055,7 +2057,6 @@
 				1F7FB673176C9C330093F88D /* nav_btn_bg@2x.png in Resources */,
 				1F7FB674176C9C330093F88D /* nav_btn_bg_lighted@2x.png in Resources */,
 				1F7FB677176C9C330093F88D /* umFeedback.bundle in Resources */,
-				1FA5C593176DEB0100525EC1 /* Info.plist in Resources */,
 				1F97D6F71770967E00F509BC /* user_textfield_input.png in Resources */,
 				1F97D6F81770967E00F509BC /* user_textfield_input@2x.png in Resources */,
 				1F97D6FC17709F6900F509BC /* stop_locate.png in Resources */,
@@ -2242,6 +2243,7 @@
 				1FA541C9176F43220065E49E /* ChangeBusView.m in Sources */,
 				1FA541CC176F43310065E49E /* BusLineView.m in Sources */,
 				1FA541CF176F43630065E49E /* BusStationView.m in Sources */,
+				1FC9218A1771D9BE002A8D0C /* FindNearbyTaxi.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2276,7 +2278,7 @@
 				GCC_PREFIX_HEADER = NJTourism_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "NJTourism-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Vendor/libidn\"",
@@ -2291,6 +2293,8 @@
 				PRODUCT_NAME = NJTourism;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 armv6";
 			};
 			name = Debug;
 		};
@@ -2306,7 +2310,7 @@
 				GCC_PREFIX_HEADER = NJTourism_Prefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "NJTourism-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Vendor/libidn\"",
@@ -2321,6 +2325,8 @@
 				PRODUCT_NAME = NJTourism;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 armv6";
 			};
 			name = Release;
 		};
