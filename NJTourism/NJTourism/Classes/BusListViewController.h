@@ -8,7 +8,7 @@
 
 #import "CommonViewController.h"
 
-@interface BusListViewController : CommonViewController<AibangApiDelegate>
+@interface BusListViewController : CommonViewController<AibangApiDelegate, UITextFieldDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *btnImageView;

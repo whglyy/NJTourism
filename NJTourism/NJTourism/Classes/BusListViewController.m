@@ -43,7 +43,15 @@
     {
         _busSelectScrollView = [[BusSelectScrollView alloc] init];
         _busSelectScrollView.backgroundColor = [UIColor clearColor];
-        _busSelectScrollView.frame = CGRectMake(0, 80, 960, 240);
+        _busSelectScrollView.frame = CGRectMake(0, 74, 320, 240);
+        _busSelectScrollView.pagingEnabled = YES;
+        _busSelectScrollView.showsVerticalScrollIndicator = NO;
+		_busSelectScrollView.showsHorizontalScrollIndicator = NO;
+		_busSelectScrollView.pagingEnabled = YES;
+        _busSelectScrollView.scrollsToTop = NO;
+        _busSelectScrollView.bounces = NO;
+        _busSelectScrollView.userInteractionEnabled = YES;
+        _busSelectScrollView.contentSize = CGSizeMake(960, 240);
         [self.view addSubview:_busSelectScrollView];
     }
     return _busSelectScrollView;
@@ -64,6 +72,10 @@
     [AibangApi setAppkey:@"f41c8afccc586de03a99c86097e98ccb"];
     _abApi.delegate = self;
     [_abApi busStatsWithCity:@"南京" Keyword:@"珠江路"];
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
 }
 #pragma mark-
 #pragma mark Delegate
@@ -88,19 +100,19 @@
         case 2001:
         {
             _btnImageView.image = [UIImage imageNamed:@"btn_first_select.png"];
-            self.busSelectScrollView.contentSize = CGSizeMake(0, 0);
+            [self.busSelectScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
         }
         break;
         case 2002:
         {
             _btnImageView.image = [UIImage imageNamed:@"btn_second_select.png"];
-            self.busSelectScrollView.contentSize = CGSizeMake(320, 0);
+            [self.busSelectScrollView setContentOffset:CGPointMake(320, 0) animated:YES];
         }
         break;
         case 2003:
         {
             _btnImageView.image = [UIImage imageNamed:@"btn_third_select.png"];
-            self.busSelectScrollView.contentSize = CGSizeMake(640, 0);
+            [self.busSelectScrollView setContentOffset:CGPointMake(640, 0) animated:YES];
         }
         break;
         default:

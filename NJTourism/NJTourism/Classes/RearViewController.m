@@ -2,8 +2,11 @@
 #import "RearViewController.h"
 
 #import "RevealController.h"
+
 #import "BusListViewController.h"
 #import "TaxiViewController.h"
+#import "WeatherViewController.h"
+
 #import "SettingViewController.h"
 
 #import "FeedbackViewController.h"
@@ -101,6 +104,8 @@
             break;
         case 1:
             [self getTaxiInfo];
+        case 2:
+            [self getWeatherInfo];
         default:
             break;
     }
@@ -143,6 +148,15 @@
         TaxiViewController *taxiListVC = [[TaxiViewController alloc] initWithNibName:@"TaxiViewController" bundle:nil];
         UINavigationController *taxiListNaviController = [[UINavigationController alloc] initWithRootViewController:taxiListVC];
         [self.revealController setFrontViewController:taxiListNaviController animated:NO];
+    }
+}
+- (void)getWeatherInfo
+{
+    @autoreleasepool
+    {
+        WeatherViewController *weatherListVC = [[WeatherViewController alloc] init];
+        UINavigationController *weatherListNaviController = [[UINavigationController alloc] initWithRootViewController:weatherListVC];
+        [self.revealController setFrontViewController:weatherListNaviController animated:NO];
     }
 }
 - (void)checkVersion

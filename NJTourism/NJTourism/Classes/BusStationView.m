@@ -53,7 +53,7 @@
         _busStationTextField.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
         _busStationTextField.borderStyle = UITextBorderStyleNone;
         _busStationTextField.returnKeyType = UIReturnKeyDone;
-        _busStationTextField.frame = CGRectMake(45, 0, 222, 36);
+        _busStationTextField.frame = CGRectMake(15, 20, 200, 36);
     }
     return _busStationTextField;
 }
@@ -62,7 +62,11 @@
     if (!_queryBtn)
     {
         _queryBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _queryBtn.backgroundColor = [UIColor clearColor];
+        [_queryBtn setBackgroundImage:[UIImage imageNamed:@"button_d_search.png"] forState:UIControlStateNormal];
+        [_queryBtn setTitle:L(@"查询") forState:UIControlStateNormal];
         [_queryBtn addTarget:self action:@selector(queryBusLine) forControlEvents:UIControlEventTouchUpInside];
+        _queryBtn.frame = CGRectMake(20, 100, 200, 40);
     }
     return _queryBtn;
 }
@@ -93,6 +97,12 @@
     }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    UIImageView *tmpUserIV = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"user_textfield_input.png"]];
+    tmpUserIV.frame = CGRectMake(10, 20, 200, 36);
+    tmpUserIV.layer.cornerRadius = 10.0f;
+    [cell.contentView addSubview:tmpUserIV];
+    
     [cell.contentView addSubview:self.busStationTextField];
     [cell.contentView addSubview:self.queryBtn];
     
