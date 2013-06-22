@@ -39,22 +39,22 @@
 
 - (void)revealController:(ZUUIRevealController *)revealController willRevealRearViewController:(UIViewController *)rearViewController 
 {
-	NSLog(@"%@", NSStringFromSelector(_cmd));
+	DLog(@"%@", NSStringFromSelector(_cmd));
 }
 
 - (void)revealController:(ZUUIRevealController *)revealController didRevealRearViewController:(UIViewController *)rearViewController
 {
-	NSLog(@"%@", NSStringFromSelector(_cmd));
+	DLog(@"%@", NSStringFromSelector(_cmd));
 }
 
 - (void)revealController:(ZUUIRevealController *)revealController willHideRearViewController:(UIViewController *)rearViewController
 {
-	NSLog(@"%@", NSStringFromSelector(_cmd));
+	DLog(@"%@", NSStringFromSelector(_cmd));
 }
 
 - (void)revealController:(ZUUIRevealController *)revealController didHideRearViewController:(UIViewController *)rearViewController 
 {
-	NSLog(@"%@", NSStringFromSelector(_cmd));
+	DLog(@"%@", NSStringFromSelector(_cmd));
 }
 
 

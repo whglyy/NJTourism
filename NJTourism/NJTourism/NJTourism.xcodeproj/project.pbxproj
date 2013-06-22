@@ -12,6 +12,10 @@
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		1F10336C17759731001DB673 /* BusInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F10336A17759731001DB673 /* BusInfoViewController.m */; };
+		1F10336D17759731001DB673 /* BusInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F10336B17759731001DB673 /* BusInfoViewController.xib */; };
+		1F10337217759906001DB673 /* AnswerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F10336F17759905001DB673 /* AnswerCell.m */; };
+		1F10337317759906001DB673 /* DropDownCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F10337117759906001DB673 /* DropDownCell.m */; };
 		1F16C9591770A8A700D1E8C9 /* button_d_search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F16C9581770A8A700D1E8C9 /* button_d_search@2x.png */; };
 		1F38EEA717694AD900D5A96C /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F38EE9517694AD900D5A96C /* chat.png */; };
 		1F38EEA817694AD900D5A96C /* chat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F38EE9617694AD900D5A96C /* chat@2x.png */; };
@@ -337,6 +341,13 @@
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* NJTourism.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NJTourism.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1F10336917759731001DB673 /* BusInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusInfoViewController.h; sourceTree = "<group>"; };
+		1F10336A17759731001DB673 /* BusInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusInfoViewController.m; sourceTree = "<group>"; };
+		1F10336B17759731001DB673 /* BusInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusInfoViewController.xib; sourceTree = "<group>"; };
+		1F10336E17759905001DB673 /* AnswerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerCell.h; sourceTree = "<group>"; };
+		1F10336F17759905001DB673 /* AnswerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerCell.m; sourceTree = "<group>"; };
+		1F10337017759905001DB673 /* DropDownCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownCell.h; sourceTree = "<group>"; };
+		1F10337117759906001DB673 /* DropDownCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownCell.m; sourceTree = "<group>"; };
 		1F16C9581770A8A700D1E8C9 /* button_d_search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button_d_search@2x.png"; path = "../Resources/Images/button_d_search@2x.png"; sourceTree = "<group>"; };
 		1F38EE9517694AD900D5A96C /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chat.png; path = ../Resources/Images/chat.png; sourceTree = "<group>"; };
 		1F38EE9617694AD900D5A96C /* chat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chat@2x.png"; path = "../Resources/Images/chat@2x.png"; sourceTree = "<group>"; };
@@ -1172,6 +1183,9 @@
 				1F5FAC1F176AE5390029CB4F /* BusListViewController.h */,
 				1F5FAC20176AE5390029CB4F /* BusListViewController.m */,
 				1F5FAC21176AE5390029CB4F /* BusListViewController.xib */,
+				1F10336917759731001DB673 /* BusInfoViewController.h */,
+				1F10336A17759731001DB673 /* BusInfoViewController.m */,
+				1F10336B17759731001DB673 /* BusInfoViewController.xib */,
 				1F5FAC4A176AFEBA0029CB4F /* TaxiViewController.h */,
 				1F5FAC4B176AFEBB0029CB4F /* TaxiViewController.m */,
 				1F5FAC4C176AFEBB0029CB4F /* TaxiViewController.xib */,
@@ -1199,6 +1213,10 @@
 		1F5FAC5A176B010C0029CB4F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1F10336E17759905001DB673 /* AnswerCell.h */,
+				1F10336F17759905001DB673 /* AnswerCell.m */,
+				1F10337017759905001DB673 /* DropDownCell.h */,
+				1F10337117759906001DB673 /* DropDownCell.m */,
 				1FA541C3176F42FD0065E49E /* BusSelectScrollView.h */,
 				1FA541C4176F42FD0065E49E /* BusSelectScrollView.m */,
 				1FA541C7176F43220065E49E /* ChangeBusView.h */,
@@ -2338,6 +2356,7 @@
 				1F45CAF71775385900CBECC6 /* WeatherViewController.xib in Resources */,
 				1F4ABEA51775734F00C4A290 /* NJT_Weather_MoistureIcon.png in Resources */,
 				1F4ABEA61775734F00C4A290 /* NJT_Weather_MoistureIcon@2x.png in Resources */,
+				1F10336D17759731001DB673 /* BusInfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2525,6 +2544,9 @@
 				1F4BC984177288EA00CE5D4C /* TFHppleElement.m in Sources */,
 				1F4BC985177288EA00CE5D4C /* XPathQuery.m in Sources */,
 				1F45CAFA17753FD200CBECC6 /* TransferDateToWeekday.m in Sources */,
+				1F10336C17759731001DB673 /* BusInfoViewController.m in Sources */,
+				1F10337217759906001DB673 /* AnswerCell.m in Sources */,
+				1F10337317759906001DB673 /* DropDownCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

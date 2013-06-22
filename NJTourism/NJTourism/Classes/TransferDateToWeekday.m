@@ -28,7 +28,7 @@
     NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
     [outputFormatter setDateFormat:@"EEEE"];
     NSString *newDateString = [outputFormatter stringFromDate:formatterDate];
-    //    NSLog(@"%@",newDateString);
+    //    DLog(@"%@",newDateString);
     if ([newDateString isEqualToString:@"Monday"])
     {
         return L(@"星期一");

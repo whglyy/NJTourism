@@ -113,15 +113,15 @@
 	@try {
 		if(![NSFm fileExistsAtPath:filepath isDirectory:&isDir]){
 			if(![NSFm createDirectoryAtPath:filepath withIntermediateDirectories:YES attributes:nil error:nil]){
-				////NSLog(@"Error: Create folder failed");	
+				////DLog(@"Error: Create folder failed");	
 			}						
 		}
 	} 
 	@catch (id theException) {
-		////NSLog(@"%@", theException);
+		////DLog(@"%@", theException);
 	} 
 	@finally {
-		////NSLog(@"This always happens.");
+		////DLog(@"This always happens.");
 	}
 	
 }

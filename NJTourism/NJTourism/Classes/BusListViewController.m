@@ -8,12 +8,14 @@
 
 #import "BusListViewController.h"
 
+#import "BusInfoViewController.h"
+
 #import "BusSelectScrollView.h"
 
 @interface BusListViewController ()
 
 @property (strong, nonatomic) BusSelectScrollView *busSelectScrollView;
-@property (strong, nonatomic, readonly) AibangApi *abApi;
+@property (strong, nonatomic) AibangApi *abApi;
 
 @end
 
@@ -37,6 +39,16 @@
 
 #pragma mark-
 #pragma mark Init & Add
+- (AibangApi *)abApi
+{
+    if (!_abApi)
+    {
+        _abApi = [[AibangApi alloc] init];
+        _abApi.delegate = self;
+        [AibangApi setAppkey:@"f946549e05f316f49ba667d9629ea1e3"];
+    }
+    return _abApi;
+}
 - (BusSelectScrollView *)busSelectScrollView
 {
     if (!_busSelectScrollView)
@@ -52,6 +64,8 @@
         _busSelectScrollView.bounces = NO;
         _busSelectScrollView.userInteractionEnabled = YES;
         _busSelectScrollView.contentSize = CGSizeMake(960, 240);
+        
+        _busSelectScrollView.changeBusView.cDelegate = self;
         [self.view addSubview:_busSelectScrollView];
     }
     return _busSelectScrollView;
@@ -68,10 +82,7 @@
     [self.busSelectScrollView setAllFrames];
     _btnImageView.image = [UIImage imageNamed:@"btn_first_select.png"];
     
-    _abApi = [[AibangApi alloc] init];
-    [AibangApi setAppkey:@"f41c8afccc586de03a99c86097e98ccb"];
-    _abApi.delegate = self;
-    [_abApi busStatsWithCity:@"南京" Keyword:@"珠江路"];
+    
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -79,13 +90,21 @@
 }
 #pragma mark-
 #pragma mark Delegate
--(void) requestDidFinishWithDictionary:(NSDictionary *)dict aibangApi:(id)aibangApi
+- (void)requestDidFinishWithDictionary:(NSDictionary *)dict aibangApi:(id)aibangApi
 {
-    DLog(@"msg_lyywhg:r~data%@", dict);
+    [self removeOverFlowActivityView];
+    DLog(@"msg_lyywhg:%@", dict);
+    @autoreleasepool
+    {
+        BusInfoViewController *busInfoVC = [[BusInfoViewController alloc] initWithNibName:@"BusInfoViewController'" bundle:nil];
+        busInfoVC.busDict = dict;
+        [self.navigationController pushViewController:busInfoVC animated:YES];
+    }
 }
--(void) requestDidFailedWithError:(NSError*)error aibangApi:(id)aibangApi
+- (void)requestDidFailedWithError:(NSError*)error aibangApi:(id)aibangApi
 {
     DLog(@"msg_lyywhg:r~error%@", error);
+    [self removeOverFlowActivityView];
 }
 - (void)viewDidUnload
 {
@@ -118,6 +137,26 @@
         default:
             break;
     }
+}
+
+- (void)checkBusLine
+{
+    NSString *startString = self.busSelectScrollView.changeBusView.startPointTextField.text;
+    NSString *endString = self.busSelectScrollView.changeBusView.endPointTextField.text;
+    NSString *startLngString = nil;
+    NSString *startLatString = nil;
+    [self displayOverFlowActivityView];
+    
+    [self.abApi busTransferWithCity:@"南京"
+                          StartAddr:startString
+                            EndAddr:endString
+                           StartLng:startLngString
+                           StartLat:startLatString
+                             EndLng:nil
+                             EndLat:nil
+                                 Rc:@"1"
+                              Count:@"10"
+                            Withxys:@"0"];
 }
 
 @end

@@ -102,11 +102,10 @@
 - ( void )requestFailed:( ASIHTTPRequest *)request
 
 {
-	
 	NSError *error = [request error ];
 	
-	NSLog ( @"%@" ,error. userInfo );
-	NSLog(@"链接网络失败");
+	DLog ( @"%@" ,error. userInfo );
+	DLog(@"链接网络失败");
     [_delegate getweatherfaild];
     
 } 

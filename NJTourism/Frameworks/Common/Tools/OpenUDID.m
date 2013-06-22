@@ -20,8 +20,6 @@
 #import <AppKit/NSPasteboard.h>
 #endif
 #define OpenUDIDLog(fmt, ...)
-//#define OpenUDIDLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
-//#define OpenUDIDLog(fmt, ...) NSLog((@"[Line %d] " fmt), __LINE__, ##__VA_ARGS__);
 static NSString * kOpenUDIDSessionCache = nil;
 static NSString * const kOpenUDIDDescription = @"OpenUDID_with_iOS6_Support";
 static NSString * const kOpenUDIDKey = @"OpenUDID";

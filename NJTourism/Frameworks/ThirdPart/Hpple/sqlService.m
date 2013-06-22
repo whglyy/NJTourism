@@ -22,7 +22,7 @@
 	
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSLog(@"%@",documentsDirectory);
+    DLog(@"%@",documentsDirectory);
 	return [documentsDirectory stringByAppendingPathComponent:kFilename];
 	
 }
@@ -40,7 +40,7 @@
 	//如果数据库存在，则用sqlite3_open直接打开（不要担心，如果数据库不存在sqlite3_open会自动创建）
 	if (find) {
 		
-		NSLog(@"Database file have already existed.");
+		DLog(@"Database file have already existed.");
 		
 		//打开数据库，这里的[path UTF8String]是将NSString转换为C字符串，因为SQLite3是采用可移植的C(而不是
 		//Objective-C)编写的，它不知道什么是NSString.
@@ -48,7 +48,7 @@
 			
 			//如果打开数据库失败则关闭数据库
 			sqlite3_close(self._database);
-			NSLog(@"Error: open database file.");
+			DLog(@"Error: open database file.");
 			return NO;
 		}
 		
@@ -66,7 +66,7 @@
     } else {
 		//如果创建并打开数据库失败则关闭数据库
 		sqlite3_close(self._database);
-		NSLog(@"Error: open database file.");
+		DLog(@"Error: open database file.");
 		return NO;
     }
 	return NO;
@@ -90,7 +90,7 @@
 	
 	//如果SQL语句解析出错的话程序返回
 	if(sqlReturn != SQLITE_OK) {
-		NSLog(@"Error: failed to prepare statement:create test table");
+		DLog(@"Error: failed to prepare statement:create test table");
 		return NO;
 	}
 	
@@ -101,10 +101,10 @@
 	
 	//执行SQL语句失败
 	if ( success != SQLITE_DONE) {
-		NSLog(@"Error: failed to dehydrate:create table test");
+		DLog(@"Error: failed to dehydrate:create table test");
 		return NO;
 	}
-	NSLog(@"Create table 'weatherTable' successed.");
+	DLog(@"Create table 'weatherTable' successed.");
 	return YES;
 }
 
@@ -116,8 +116,8 @@
     NSMutableArray *hisvalue=[[NSMutableArray alloc]init ];
     for (int i=0; i<[tempdata count]; i++) {
         [hisvalue addObject:((ModelWeather *)[tempdata objectAtIndex:i])._1CityName];
-        NSLog(@"%@",[hisvalue objectAtIndex:i]);
-        NSLog(@"%@",((ModelWeather *)[tempdata objectAtIndex:i])._2CityCode);
+        DLog(@"%@",[hisvalue objectAtIndex:i]);
+        DLog(@"%@",((ModelWeather *)[tempdata objectAtIndex:i])._2CityCode);
     }
     //如果本地有,则不插入新的数据
     if (![hisvalue containsObject:insertList._1CityName]) {
@@ -131,7 +131,7 @@
 		
 		int success2 = sqlite3_prepare_v2(_database, sql, -1, &statement, NULL);
 		if (success2 != SQLITE_OK) {
-			NSLog(@"Error: failed to insert:weatherTable");
+			DLog(@"Error: failed to insert:weatherTable");
 			sqlite3_close(_database);
 			return NO;
 		}
@@ -163,7 +163,7 @@
 		
 		//如果插入失败
 		if (success2 == SQLITE_ERROR) {
-			NSLog(@"Error: failed to insert into the database with message.");
+			DLog(@"Error: failed to insert into the database with message.");
 			//关闭数据库
 			sqlite3_close(_database);
 			return NO;
@@ -190,7 +190,7 @@
 		char *sql = "SELECT * FROM weatherTable";
 		
 		if (sqlite3_prepare_v2(_database, sql, -1, &statement, NULL) != SQLITE_OK) {
-			NSLog(@"Error: failed to prepare statement with message:get testValue.");
+			DLog(@"Error: failed to prepare statement with message:get testValue.");
 			return NO;
 		}
 		else {
@@ -234,7 +234,7 @@
 		//将SQL语句放入sqlite3_stmt中
 		int success = sqlite3_prepare_v2(_database, sql, -1, &statement, NULL);
 		if (success != SQLITE_OK) {
-			NSLog(@"Error: failed to delete:weatherTable");
+			DLog(@"Error: failed to delete:weatherTable");
 			sqlite3_close(_database);
 			return NO;
 		}
@@ -251,7 +251,7 @@
 		
 		//如果执行失败
 		if (success == SQLITE_ERROR) {
-			NSLog(@"Error: failed to delete the database with message.");
+			DLog(@"Error: failed to delete the database with message.");
 			//关闭数据库
 			sqlite3_close(_database);
 			return NO;
@@ -277,7 +277,7 @@
 		//将SQL语句放入sqlite3_stmt中
 		int success = sqlite3_prepare_v2(_database, sql, -1, &statement, NULL);
 		if (success != SQLITE_OK) {
-			NSLog(@"Error: failed to update:testTable");
+			DLog(@"Error: failed to update:testTable");
 			sqlite3_close(_database);
 			return NO;
 		}
@@ -309,7 +309,7 @@
 		
 		//如果执行失败
 		if (success == SQLITE_ERROR) {
-			NSLog(@"Error: failed to update the database with message.");
+			DLog(@"Error: failed to update the database with message.");
 			//关闭数据库
 			sqlite3_close(_database);
 			return NO;
@@ -337,7 +337,7 @@
 	
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSLog(@"%@",documentsDirectory);
+    DLog(@"%@",documentsDirectory);
 	return [documentsDirectory stringByAppendingPathComponent:kCitydata];
 	
 }
@@ -355,7 +355,7 @@
 	//如果数据库存在，则用sqlite3_open直接打开（不要担心，如果数据库不存在sqlite3_open会自动创建）
 	if (find) {
 		
-		NSLog(@"Database file have already existed.");
+		DLog(@"Database file have already existed.");
 		
 		//打开数据库，这里的[path UTF8String]是将NSString转换为C字符串，因为SQLite3是采用可移植的C(而不是
 		//Objective-C)编写的，它不知道什么是NSString.
@@ -363,7 +363,7 @@
 			
 			//如果打开数据库失败则关闭数据库
 			sqlite3_close(self._database);
-			NSLog(@"Error: open database file.");
+			DLog(@"Error: open database file.");
 			return NO;
 		}
 		
@@ -381,7 +381,7 @@
     } else {
 		//如果创建并打开数据库失败则关闭数据库
 		sqlite3_close(self._database);
-		NSLog(@"Error: open database file.");
+		DLog(@"Error: open database file.");
 		return NO;
     }
 	return NO;
@@ -405,7 +405,7 @@
 	
 	//如果SQL语句解析出错的话程序返回
 	if(sqlReturn != SQLITE_OK) {
-		NSLog(@"Error: failed to prepare statement:create test table");
+		DLog(@"Error: failed to prepare statement:create test table");
 		return NO;
 	}
 	
@@ -416,10 +416,10 @@
 	
 	//执行SQL语句失败
 	if ( success != SQLITE_DONE) {
-		NSLog(@"Error: failed to dehydrate:create table citydata");
+		DLog(@"Error: failed to dehydrate:create table citydata");
 		return NO;
 	}
-	NSLog(@"Create table 'citydata' successed.");
+	DLog(@"Create table 'citydata' successed.");
 	return YES;
 }
 
@@ -434,7 +434,7 @@
                 static char *sql = "INSERT INTO Citydata(CityName) VALUES(?)";
                 int success2 = sqlite3_prepare_v2(_database, sql, -1, &statement, NULL);
                 if (success2 != SQLITE_OK) {
-                    NSLog(@"Error: failed to insert:Citydata");
+                    DLog(@"Error: failed to insert:Citydata");
                     sqlite3_close(_database);
                     return NO;
                 }
@@ -447,7 +447,7 @@
                 
                 //如果插入失败
                 if (success2 == SQLITE_ERROR) {
-                    NSLog(@"Error: failed to insert into the database with message.");
+                    DLog(@"Error: failed to insert into the database with message.");
                     //关闭数据库
                     sqlite3_close(_database);
                     return NO;
@@ -473,7 +473,7 @@
 		char *sql = "SELECT * FROM Citydata";
 		
 		if (sqlite3_prepare_v2(_database, sql, -1, &statement, NULL) != SQLITE_OK) {
-			NSLog(@"Error: failed to prepare statement with message:get testValue.");
+			DLog(@"Error: failed to prepare statement with message:get testValue.");
 			return NO;
 		}
 		else {

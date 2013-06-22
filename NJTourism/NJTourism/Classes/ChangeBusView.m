@@ -155,6 +155,10 @@
 }
 - (void)queryBusLine
 {
+    if (_cDelegate && [_cDelegate respondsToSelector:@selector(checkBusLine)])
+    {
+        [_cDelegate checkBusLine];
+    }
 }
 
 
