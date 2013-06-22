@@ -40,9 +40,8 @@
 		1F38EEF017694C9B00D5A96C /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F38EEE817694C9B00D5A96C /* libbaidumapapi.a */; };
 		1F38EEF117694C9B00D5A96C /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1F38EEE917694C9B00D5A96C /* mapapi.bundle */; };
 		1F45CAD417752C2100CBECC6 /* WeatherViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F45CAD317752C2100CBECC6 /* WeatherViewController.xib */; };
-		1F45CAE31775311200CBECC6 /* NJT_Weather_Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F45CAD51775311200CBECC6 /* NJT_Weather_Background.png */; };
 		1F45CAE41775311200CBECC6 /* NJT_Weather_Background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F45CAD61775311200CBECC6 /* NJT_Weather_Background@2x.png */; };
-		1F45CAE51775311200CBECC6 /* NJT_Weather_Background@568.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F45CAD71775311200CBECC6 /* NJT_Weather_Background@568.png */; };
+		1F45CAE51775311200CBECC6 /* NJT_Weather_Background-568@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F45CAD71775311200CBECC6 /* NJT_Weather_Background-568@2x.png */; };
 		1F45CAE61775311200CBECC6 /* NJT_Weather_CloudydayIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F45CAD81775311200CBECC6 /* NJT_Weather_CloudydayIcon.png */; };
 		1F45CAE71775311200CBECC6 /* NJT_Weather_LightraindayIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F45CAD91775311200CBECC6 /* NJT_Weather_LightraindayIcon.png */; };
 		1F45CAE81775311200CBECC6 /* NJT_Weather_NullIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F45CADA1775311200CBECC6 /* NJT_Weather_NullIcon.png */; };
@@ -55,6 +54,8 @@
 		1F45CAEF1775311200CBECC6 /* NJT_Weather_WindIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F45CAE11775311200CBECC6 /* NJT_Weather_WindIcon.png */; };
 		1F45CAF01775311200CBECC6 /* NJT_Weather_WindIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F45CAE21775311200CBECC6 /* NJT_Weather_WindIcon@2x.png */; };
 		1F45CAF2177531AD00CBECC6 /* NJT_Weather_OtherdayLines.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F45CAF1177531AD00CBECC6 /* NJT_Weather_OtherdayLines.png */; };
+		1F45CAF51775350600CBECC6 /* NJT_Weather_Background-568.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F45CAF31775350500CBECC6 /* NJT_Weather_Background-568.png */; };
+		1F45CAF61775350600CBECC6 /* NJT_Weather_Background.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F45CAF41775350600CBECC6 /* NJT_Weather_Background.png */; };
 		1F4BC974177288C000CE5D4C /* weatherResoure.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4BC971177288C000CE5D4C /* weatherResoure.m */; };
 		1F4BC975177288C000CE5D4C /* WeatherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4BC973177288C000CE5D4C /* WeatherViewController.m */; };
 		1F4BC981177288EA00CE5D4C /* ChineseToPinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4BC978177288EA00CE5D4C /* ChineseToPinyin.m */; };
@@ -398,9 +399,8 @@
 		1F38EEE817694C9B00D5A96C /* libbaidumapapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbaidumapapi.a; sourceTree = "<group>"; };
 		1F38EEE917694C9B00D5A96C /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
 		1F45CAD317752C2100CBECC6 /* WeatherViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WeatherViewController.xib; sourceTree = "<group>"; };
-		1F45CAD51775311200CBECC6 /* NJT_Weather_Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NJT_Weather_Background.png; sourceTree = "<group>"; };
 		1F45CAD61775311200CBECC6 /* NJT_Weather_Background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NJT_Weather_Background@2x.png"; sourceTree = "<group>"; };
-		1F45CAD71775311200CBECC6 /* NJT_Weather_Background@568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NJT_Weather_Background@568.png"; sourceTree = "<group>"; };
+		1F45CAD71775311200CBECC6 /* NJT_Weather_Background-568@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NJT_Weather_Background-568@2x.png"; sourceTree = "<group>"; };
 		1F45CAD81775311200CBECC6 /* NJT_Weather_CloudydayIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NJT_Weather_CloudydayIcon.png; sourceTree = "<group>"; };
 		1F45CAD91775311200CBECC6 /* NJT_Weather_LightraindayIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NJT_Weather_LightraindayIcon.png; sourceTree = "<group>"; };
 		1F45CADA1775311200CBECC6 /* NJT_Weather_NullIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NJT_Weather_NullIcon.png; sourceTree = "<group>"; };
@@ -413,6 +413,8 @@
 		1F45CAE11775311200CBECC6 /* NJT_Weather_WindIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NJT_Weather_WindIcon.png; sourceTree = "<group>"; };
 		1F45CAE21775311200CBECC6 /* NJT_Weather_WindIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NJT_Weather_WindIcon@2x.png"; sourceTree = "<group>"; };
 		1F45CAF1177531AD00CBECC6 /* NJT_Weather_OtherdayLines.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NJT_Weather_OtherdayLines.png; sourceTree = "<group>"; };
+		1F45CAF31775350500CBECC6 /* NJT_Weather_Background-568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NJT_Weather_Background-568.png"; sourceTree = "<group>"; };
+		1F45CAF41775350600CBECC6 /* NJT_Weather_Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NJT_Weather_Background.png; sourceTree = "<group>"; };
 		1F4BC970177288C000CE5D4C /* weatherResoure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = weatherResoure.h; sourceTree = "<group>"; };
 		1F4BC971177288C000CE5D4C /* weatherResoure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = weatherResoure.m; sourceTree = "<group>"; };
 		1F4BC972177288C000CE5D4C /* WeatherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherViewController.h; sourceTree = "<group>"; };
@@ -1050,10 +1052,11 @@
 		1F4BC986177288FA00CE5D4C /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				1F45CAF31775350500CBECC6 /* NJT_Weather_Background-568.png */,
+				1F45CAF41775350600CBECC6 /* NJT_Weather_Background.png */,
 				1F45CAF1177531AD00CBECC6 /* NJT_Weather_OtherdayLines.png */,
-				1F45CAD51775311200CBECC6 /* NJT_Weather_Background.png */,
 				1F45CAD61775311200CBECC6 /* NJT_Weather_Background@2x.png */,
-				1F45CAD71775311200CBECC6 /* NJT_Weather_Background@568.png */,
+				1F45CAD71775311200CBECC6 /* NJT_Weather_Background-568@2x.png */,
 				1F45CAD81775311200CBECC6 /* NJT_Weather_CloudydayIcon.png */,
 				1F45CAD91775311200CBECC6 /* NJT_Weather_LightraindayIcon.png */,
 				1F45CADA1775311200CBECC6 /* NJT_Weather_NullIcon.png */,
@@ -2318,9 +2321,8 @@
 				1F4BC9D1177288FA00CE5D4C /* tm-011-01.png in Resources */,
 				1F4BC9D2177288FA00CE5D4C /* ybk-01.png in Resources */,
 				1F45CAD417752C2100CBECC6 /* WeatherViewController.xib in Resources */,
-				1F45CAE31775311200CBECC6 /* NJT_Weather_Background.png in Resources */,
 				1F45CAE41775311200CBECC6 /* NJT_Weather_Background@2x.png in Resources */,
-				1F45CAE51775311200CBECC6 /* NJT_Weather_Background@568.png in Resources */,
+				1F45CAE51775311200CBECC6 /* NJT_Weather_Background-568@2x.png in Resources */,
 				1F45CAE61775311200CBECC6 /* NJT_Weather_CloudydayIcon.png in Resources */,
 				1F45CAE71775311200CBECC6 /* NJT_Weather_LightraindayIcon.png in Resources */,
 				1F45CAE81775311200CBECC6 /* NJT_Weather_NullIcon.png in Resources */,
@@ -2333,6 +2335,8 @@
 				1F45CAEF1775311200CBECC6 /* NJT_Weather_WindIcon.png in Resources */,
 				1F45CAF01775311200CBECC6 /* NJT_Weather_WindIcon@2x.png in Resources */,
 				1F45CAF2177531AD00CBECC6 /* NJT_Weather_OtherdayLines.png in Resources */,
+				1F45CAF51775350600CBECC6 /* NJT_Weather_Background-568.png in Resources */,
+				1F45CAF61775350600CBECC6 /* NJT_Weather_Background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,7 +23,17 @@
     [super didReceiveMemoryWarning];
 }
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+#pragma mark-
+#pragma mark Init & Add
+- (UIImageView *)backgroundImageView
+{
+    if (!_backgroundImageView)
+    {
+        _backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+    }
+    return _backgroundImageView;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -402,6 +412,7 @@
 
 - (void)viewDidUnload
 {
+    [self setBackgroundImageView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

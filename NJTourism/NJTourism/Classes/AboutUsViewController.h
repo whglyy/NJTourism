@@ -11,10 +11,10 @@
 {
 }
 
-@property (nonatomic, retain) UILabel *versionLabel;
-@property (nonatomic, retain) UILabel *textLabel;
-@property (nonatomic, retain) UIImageView *logoImageView;
-@property (nonatomic, retain) UILabel *allRightLabel;
+@property (nonatomic, strong) UILabel *versionLabel;
+@property (nonatomic, strong) UILabel *textLabel;
+@property (nonatomic, strong) UIImageView *logoImageView;
+@property (nonatomic, strong) UILabel *allRightLabel;
 
 @end
 
