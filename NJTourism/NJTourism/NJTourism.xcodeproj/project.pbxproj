@@ -97,9 +97,6 @@
 		1F4BC9CC177288FA00CE5D4C /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F4BC9A6177288FA00CE5D4C /* 9.png */; };
 		1F4BC9CD177288FA00CE5D4C /* bg_wtx.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F4BC9A7177288FA00CE5D4C /* bg_wtx.jpg */; };
 		1F4BC9CE177288FA00CE5D4C /* bj-01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F4BC9A8177288FA00CE5D4C /* bj-01.jpg */; };
-		1F4BC9CF177288FA00CE5D4C /* mianban.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F4BC9A9177288FA00CE5D4C /* mianban.png */; };
-		1F4BC9D0177288FA00CE5D4C /* tm-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F4BC9AA177288FA00CE5D4C /* tm-01.png */; };
-		1F4BC9D1177288FA00CE5D4C /* tm-011-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F4BC9AB177288FA00CE5D4C /* tm-011-01.png */; };
 		1F4BC9D2177288FA00CE5D4C /* ybk-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F4BC9AC177288FA00CE5D4C /* ybk-01.png */; };
 		1F5FAC22176AE5390029CB4F /* BusListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAC20176AE5390029CB4F /* BusListViewController.m */; };
 		1F5FAC23176AE5390029CB4F /* BusListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F5FAC21176AE5390029CB4F /* BusListViewController.xib */; };
@@ -463,9 +460,6 @@
 		1F4BC9A6177288FA00CE5D4C /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
 		1F4BC9A7177288FA00CE5D4C /* bg_wtx.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_wtx.jpg; sourceTree = "<group>"; };
 		1F4BC9A8177288FA00CE5D4C /* bj-01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "bj-01.jpg"; sourceTree = "<group>"; };
-		1F4BC9A9177288FA00CE5D4C /* mianban.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mianban.png; sourceTree = "<group>"; };
-		1F4BC9AA177288FA00CE5D4C /* tm-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tm-01.png"; sourceTree = "<group>"; };
-		1F4BC9AB177288FA00CE5D4C /* tm-011-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tm-011-01.png"; sourceTree = "<group>"; };
 		1F4BC9AC177288FA00CE5D4C /* ybk-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ybk-01.png"; sourceTree = "<group>"; };
 		1F5FAC1F176AE5390029CB4F /* BusListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusListViewController.h; sourceTree = "<group>"; };
 		1F5FAC20176AE5390029CB4F /* BusListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusListViewController.m; sourceTree = "<group>"; };
@@ -1102,9 +1096,6 @@
 				1F4BC9A6177288FA00CE5D4C /* 9.png */,
 				1F4BC9A7177288FA00CE5D4C /* bg_wtx.jpg */,
 				1F4BC9A8177288FA00CE5D4C /* bj-01.jpg */,
-				1F4BC9A9177288FA00CE5D4C /* mianban.png */,
-				1F4BC9AA177288FA00CE5D4C /* tm-01.png */,
-				1F4BC9AB177288FA00CE5D4C /* tm-011-01.png */,
 				1F4BC9AC177288FA00CE5D4C /* ybk-01.png */,
 			);
 			name = Weather;
@@ -2316,9 +2307,6 @@
 				1F4BC9CC177288FA00CE5D4C /* 9.png in Resources */,
 				1F4BC9CD177288FA00CE5D4C /* bg_wtx.jpg in Resources */,
 				1F4BC9CE177288FA00CE5D4C /* bj-01.jpg in Resources */,
-				1F4BC9CF177288FA00CE5D4C /* mianban.png in Resources */,
-				1F4BC9D0177288FA00CE5D4C /* tm-01.png in Resources */,
-				1F4BC9D1177288FA00CE5D4C /* tm-011-01.png in Resources */,
 				1F4BC9D2177288FA00CE5D4C /* ybk-01.png in Resources */,
 				1F45CAD417752C2100CBECC6 /* WeatherViewController.xib in Resources */,
 				1F45CAE41775311200CBECC6 /* NJT_Weather_Background@2x.png in Resources */,

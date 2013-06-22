@@ -29,7 +29,8 @@
 {
     if (!_backgroundImageView)
     {
-        _backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@""]];
+        _backgroundImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"NJT_Weather_Background.png"]];
+        
     }
     return _backgroundImageView;
 }
@@ -37,17 +38,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self canPush];
     
-    //背景图片
-    UIImageView *bgImg=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 768, 1004)];
-    bgImg.tag=999;
-    [bgImg setContentMode:UIViewContentModeScaleAspectFill];
-    bgImg.autoresizesSubviews=YES;
-    bgImg.opaque=YES;
-    bgImg.clearsContextBeforeDrawing=YES;
-    [bgImg setImage:[UIImage imageNamed:@"bg_wtx.jpg"]];
-    [self.view addSubview:bgImg];
+    self.backgroundImageView.frame = self.view.frame;
+    self.backgroundImageView.image = [UIImage imageNamed:@"NJT_Weather_Background.png"];
+    
+    [self canPush];
+   
+    
     [self initalToolbar];
     //实例化 获取天气的实例类
     resoure=[[weatherResoure alloc]init];
