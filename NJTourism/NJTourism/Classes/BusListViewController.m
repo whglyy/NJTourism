@@ -9,10 +9,13 @@
 #import "BusListViewController.h"
 
 #import "BusLineInfoViewController.h"
+#import "BusInfoListViewController.h"
 
 #import "BusSelectScrollView.h"
 
 @interface BusListViewController ()
+
+@property (assign, nonatomic) NSInteger checkIndex;
 
 @property (strong, nonatomic) BusSelectScrollView *busSelectScrollView;
 @property (strong, nonatomic) AibangApi *abApi;
@@ -66,6 +69,8 @@
         _busSelectScrollView.contentSize = CGSizeMake(960, 240);
         
         _busSelectScrollView.changeBusView.cDelegate = self;
+        _busSelectScrollView.busLineView.bDelegate = self;
+        
         [self.view addSubview:_busSelectScrollView];
     }
     return _busSelectScrollView;
@@ -91,16 +96,16 @@
 - (void)requestDidFinishWithDictionary:(NSDictionary *)dict aibangApi:(id)aibangApi
 {
     [self removeOverFlowActivityView];
-    @autoreleasepool
+    switch (_checkIndex)
     {
-        BusLineInfoViewController *busInfoVC = [[BusLineInfoViewController alloc] init];
-        busInfoVC.startString = @"桥北站";
-        busInfoVC.endString = @"月苑小区";
-        
-        busInfoVC.busesArray = [[dict objectForKey:@"buses"] objectForKey:@"bus"];
-        DLog(@"msg_lyywhg:%@", busInfoVC.busesArray);
-        
-        [self.navigationController pushViewController:busInfoVC animated:YES];
+        case 1001:
+            [self gotoGetBusInfoView:dict];
+            break;
+        case 2001:
+            [self gotoBusLineInfoView:dict];
+            break;
+        default:
+            break;
     }
 }
 - (void)requestDidFailedWithError:(NSError*)error aibangApi:(id)aibangApi
@@ -143,6 +148,7 @@
 
 - (void)checkBusLine
 {
+    _checkIndex = 1001;
     NSString *startString = self.busSelectScrollView.changeBusView.startPointTextField.text;
     NSString *endString = self.busSelectScrollView.changeBusView.endPointTextField.text;
     NSString *startLngString = nil;
@@ -150,8 +156,8 @@
     [self displayOverFlowActivityView];
     
     [self.abApi busTransferWithCity:@"南京"
-                          StartAddr:@"桥北站"
-                            EndAddr:@"月苑小区"
+                          StartAddr:startString
+                            EndAddr:endString
                            StartLng:startLngString
                            StartLat:startLatString
                              EndLng:nil
@@ -160,5 +166,38 @@
                               Count:@"10"
                             Withxys:@"0"];
 }
+- (void)getBusLine
+{
+    _checkIndex = 2001;
+    NSString *busLineString = self.busSelectScrollView.busLineView.busLineTextField.text;
+    [self.abApi buslinesWithCity:@"南京" KeyWord:busLineString Withxys:nil];
+}
+#pragma mark-
+#pragma mark 
+- (void)gotoGetBusInfoView:(NSDictionary *)dict
+{
+    @autoreleasepool
+    {
+        BusLineInfoViewController *busInfoVC = [[BusLineInfoViewController alloc] init];
+        busInfoVC.startString = self.busSelectScrollView.changeBusView.startPointTextField.text;
+        busInfoVC.endString = self.busSelectScrollView.changeBusView.endPointTextField.text;
+        
+        busInfoVC.busesArray = [[dict objectForKey:@"buses"] objectForKey:@"bus"];
+        DLog(@"msg_lyywhg:%@", busInfoVC.busesArray);
+        
+        [self.navigationController pushViewController:busInfoVC animated:YES];
+    }
+}
+- (void)gotoBusLineInfoView:(NSDictionary *)dict
+{
+    @autoreleasepool
+    {
+        DLog(@"msg_lyywhg:%@", dict);
+        BusInfoListViewController *busInfoVC = [[BusInfoListViewController alloc] init];
+        busInfoVC.busLineArray = [[dict objectForKey:@"lines"] objectForKey:@"line"];
+        busInfoVC.busLineInfoArray = [[dict objectForKey:@"lines"] objectForKey:@"line"];
 
+        [self.navigationController pushViewController:busInfoVC animated:YES];
+    }
+}
 @end

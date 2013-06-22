@@ -116,11 +116,12 @@
     self.backgroundColor = [UIColor clearColor];
 }
 
-- (void)getLocalStation
-{
-}
 - (void)queryBusLine
 {
+    if (_bDelegate && [_bDelegate respondsToSelector:@selector(getBusLine)])
+    {
+        [_bDelegate getBusLine];
+    }
 }
 
 @end

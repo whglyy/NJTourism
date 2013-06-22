@@ -8,9 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol BusLineDelegate <NSObject>
+@optional
+- (void)getBusLine;
+@end
+
 @interface BusLineView : UIView<UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, retain) UITableView *busLineTableView;
+@property (weak, nonatomic) id<BusLineDelegate> bDelegate;
+
+@property (strong, nonatomic) UITableView *busLineTableView;
 @property (strong, nonatomic) UITextField *busLineTextField;
 @property (strong, nonatomic) UIButton *queryBtn;
 

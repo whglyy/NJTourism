@@ -7,10 +7,12 @@
 //
 
 #import "CommonViewController.h"
+
 #import "ChangeBusView.h"
+#import "BusLineView.h"
 
 
-@interface BusListViewController : CommonViewController<AibangApiDelegate, UITextFieldDelegate, ChangeBusDelegate>
+@interface BusListViewController : CommonViewController<AibangApiDelegate, UITextFieldDelegate, ChangeBusDelegate, BusLineDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *btnImageView;
