@@ -10,4 +10,9 @@
 
 @interface BusInfoViewController : CommonViewController
 
+@property (strong, nonatomic) NSDictionary *busDict;
+
+@property (nonatomic, retain) NSMutableArray *questionsArray;
+@property (nonatomic, retain) NSArray *answerArray;
+
 @end
