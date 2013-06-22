@@ -21,6 +21,7 @@
     float ScreenHeight;
     UIAlertView *baseAlert;
 }
+
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundImageView;
 
 @property (nonatomic,retain) UIPopoverController *popoverCityController;

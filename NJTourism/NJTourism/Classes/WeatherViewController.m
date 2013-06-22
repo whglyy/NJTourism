@@ -8,6 +8,37 @@
 
 #import "WeatherViewController.h"
 
+#import "TransferDateToWeekday.h"
+
+
+@interface WeatherViewController()
+
+@property (weak, nonatomic) IBOutlet UILabel *cityNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *weekdayLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *todayWeatherImageView;
+@property (weak, nonatomic) IBOutlet UILabel *weatherLabel;
+@property (weak, nonatomic) IBOutlet UILabel *temptureLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalTemptureLabel;
+@property (weak, nonatomic) IBOutlet UILabel *moistureLabel;
+@property (weak, nonatomic) IBOutlet UILabel *windLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *ultravioletRaysLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *onedayAfterLabel;
+@property (weak, nonatomic) IBOutlet UILabel *twodayAfterLabel;
+@property (weak, nonatomic) IBOutlet UILabel *threedayAfterLabel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *onedayAfterWeatherImage;
+@property (weak, nonatomic) IBOutlet UIImageView *twodayAfterWeatherImage;
+@property (weak, nonatomic) IBOutlet UIImageView *threedayAfterWeatherImage;
+@property (weak, nonatomic) IBOutlet UILabel *onedayAfterTemptureLabel;
+@property (weak, nonatomic) IBOutlet UILabel *twodayAfterTemptureLabel;
+@property (weak, nonatomic) IBOutlet UILabel *threedayAfterTemptureLabel;
+
+
+@end
+
 @implementation WeatherViewController
 
 @synthesize popoverCityController;
@@ -42,6 +73,8 @@
     self.backgroundImageView.frame = self.view.frame;
     self.backgroundImageView.image = [UIImage imageNamed:@"NJT_Weather_Background.png"];
     
+    
+    
     [self canPush];
    
     
@@ -56,22 +89,11 @@
     
 }
 
-
-
 //初始化工具条
 - (void)initalToolbar
 {
-    UIToolbar* tools = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 110, 45)]; 
-    [tools setBarStyle:UIBarStyleBlack];
-    NSMutableArray* buttons = [[NSMutableArray alloc] initWithCapacity:2];
-	
 	UIBarButtonItem *btnRefresh = [[UIBarButtonItem alloc]initWithTitle:@"更新" style:UITabBarSystemItemContacts target:self action:@selector(refreshCityBtnClicked:)];
-
-    [buttons addObject:btnRefresh]; 
-    
-	[tools setItems:buttons animated:NO]; 
-    
-    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithCustomView:tools];
+    self.navigationItem.rightBarButtonItem =btnRefresh;
 }
 
 -(void)loading
@@ -210,206 +232,84 @@
     [scrollView setContentOffset:CGPointMake(0, 0)];
 }
 
--(UIView *)DrawScrollerViews:(float)width WithLength :(float)height WithPosition :(NSInteger)position
+- (void)updateWeather
 {
-    /*
-     数据处理过程
-     */
+    _cityNameLabel.text = L(@"南京");
+    
+    //设置日期
+    _dateLabel.text = [TransferDateToWeekday getLocalTodayDate];
+    _weekdayLabel.text = [TransferDateToWeekday getWeek:_dateLabel.text];
+    
     //天气模型
     ModelWeather *model=[[ModelWeather alloc]init];
-    model=[remainCityModel objectAtIndex:position];
-    //截取相应数据 实况数据
-    //    NSLog(@"%@",model._8ToForcast);
-    NSArray *forcastweather=[model._8ToForcast componentsSeparatedByString:@"；"];
-    //现在温度
-    NSString *NowTemp=[[forcastweather objectAtIndex:0]substringFromIndex:[[forcastweather  objectAtIndex:0] rangeOfString:@"气温：" ].location+3];
-    //现在风向风力
-    NSString *NowWind=[[forcastweather objectAtIndex:1]substringFromIndex:[[forcastweather  objectAtIndex:1] rangeOfString:@"风向/风力：" ].location+6];
-    //现在湿度
-    NSString *NowHumidity=[[forcastweather objectAtIndex:2]substringFromIndex:[[forcastweather  objectAtIndex:2] rangeOfString:@"湿度：" ].location+3];
-    
-    //空气质量
-    NSString *NowAirQuality=[[forcastweather objectAtIndex:3]substringFromIndex:[[forcastweather  objectAtIndex:3] rangeOfString:@"空气质量：" ].location+5];
-    //紫外线强度
-    NSString *UV=[[forcastweather objectAtIndex:4]substringFromIndex:[[forcastweather  objectAtIndex:4] rangeOfString:@"紫外线强度：" ].location+6];
-    //今日总体风向风速
-    NSRange rangewind24=[model._6ToWind rangeOfString:@"转"];
-    int length24=rangewind24.length;
-    if (length24==0) length24=0;
-    else length24=rangewind24.location+1;
-    NSString *toWind24=[model._6ToWind substringFromIndex:length24];
-    //第二天风向风速
-    NSRange rangewind48=[model._12SecWind rangeOfString:@"转"];
-    int length48=rangewind48.length;
-    if (length48==0) length48=0;
-    else length48=rangewind48.location+1;
-    NSString *toWind48=[model._12SecWind substringFromIndex:length48];
-    //第三天风向风速
-    NSRange rangewind72=[model._16ThiWind rangeOfString:@"转"];
-    int length72=rangewind72.length;
-    if (length72==0) length72=0;
-    else length72=rangewind72.location+1;
-    NSString *toWind72=[model._16ThiWind substringFromIndex:length72];
+    model=[remainCityModel objectAtIndex:0];
     
     //今天的天气状况
     NSString *ToWeatherState24;
     NSRange rangestate24=[model._5ToInfo rangeOfString:@"转"];
     int lengthstate24=rangestate24.length;
-    if (lengthstate24==0) 
-        ToWeatherState24=[model._5ToInfo substringFromIndex:[model._5ToInfo rangeOfString:@"日" ].location+1];
-    else
-        ToWeatherState24=[model._5ToInfo substringFromIndex:[model._5ToInfo rangeOfString:@"转" ].location+1];
-    ToWeatherState24=[ToWeatherState24 stringByReplacingOccurrencesOfString:@" " withString:@""];
-    //第二天的天气状态
-    NSString *ToWeatherState48;
-    NSRange rangestate48=[model._11SecInfo rangeOfString:@"转"];
-    int lengthstate48=rangestate48.length;
-    if (lengthstate48==0) 
-        ToWeatherState48=[model._11SecInfo substringFromIndex:[model._11SecInfo rangeOfString:@"日" ].location+1];
-    else
-        ToWeatherState48=[model._11SecInfo substringFromIndex:[model._11SecInfo rangeOfString:@"转" ].location+1];
-    ToWeatherState48=[ToWeatherState48 stringByReplacingOccurrencesOfString:@" " withString:@""];
-    
-    //第三天天气状态
-    NSString *ToWeatherState72;
-    NSRange rangestate72=[model._15ThiInfo rangeOfString:@"转"];
-    int lengthstate72=rangestate72.length;
-    if (lengthstate72==0) 
-        ToWeatherState72=[model._15ThiInfo substringFromIndex:[model._15ThiInfo rangeOfString:@"日" ].location+1];
-    else
-        ToWeatherState72=[model._15ThiInfo substringFromIndex:[model._15ThiInfo rangeOfString:@"转" ].location+1];
-    ToWeatherState72=[ToWeatherState72 stringByReplacingOccurrencesOfString:@" " withString:@""];
-    
-    /*
-     数据可视化过程
-     */
-    UIView *uv=[[UIView alloc]initWithFrame:CGRectMake(width*position, 0, width, height)];
-    uv.tag=1000+position;
-    //竖屏
+    if (lengthstate24==0)
     {
-        //城市名字
-        UILabel *cityLabel =[[UILabel alloc] initWithFrame:CGRectMake(20, 30, 50, 30)];
-        cityLabel.font=[UIFont fontWithName:@"Helvetica" size:20];
-        cityLabel.text=[NSString stringWithFormat:@"南京"];
-        cityLabel.backgroundColor=[UIColor clearColor];
-        cityLabel.textColor=[UIColor whiteColor];
-        [cityLabel setAdjustsFontSizeToFitWidth:YES];
-        [uv addSubview:cityLabel];
-        
-        //天气更新时间
-        UILabel *updateTime=[[UILabel alloc] initWithFrame:CGRectMake(20, 162, 250, 30)];
-        updateTime.font=[UIFont fontWithName:@"Helvetica" size:17];
-        updateTime.text=[NSString stringWithFormat:@"更新时间：%@",model._3UpdateTime];
-        updateTime.backgroundColor=[UIColor clearColor];
-        updateTime.textColor=[UIColor whiteColor];
-        [updateTime setAdjustsFontSizeToFitWidth:YES];
-        [uv addSubview:updateTime];
-        
-        //今天温度
-        UILabel *ToTemp=[[UILabel alloc] initWithFrame:CGRectMake(20, 65, 139, 21)];
-        ToTemp.font=[UIFont fontWithName:@"Helvetica" size:25];
-        ToTemp.text=[NSString stringWithFormat:@"温度: %@",model._4ToTemp];
-        ToTemp.backgroundColor=[UIColor clearColor];
-        ToTemp.textColor=[UIColor whiteColor];
-        [ToTemp setAdjustsFontSizeToFitWidth:YES];
-        [uv addSubview:ToTemp];
-        
-        //今天实况风向风速
-        UILabel *ToWind=[[UILabel alloc] initWithFrame:CGRectMake(20, 90, 175, 30)];
-        ToWind.font=[UIFont fontWithName:@"Helvetica" size:25];
-        ToWind.text=[NSString stringWithFormat:@"风力:%@",NowWind];
-        ToWind.backgroundColor=[UIColor clearColor];
-        ToWind.textColor=[UIColor whiteColor];
-        [ToWind setAdjustsFontSizeToFitWidth:YES];
-        [uv addSubview:ToWind];
-        
-        //今天湿度
-        UILabel *ToHumidity=[[UILabel alloc] initWithFrame:CGRectMake(20, 128, 139, 21)];
-        ToHumidity.font=[UIFont fontWithName:@"Helvetica" size:18];
-        ToHumidity.text=[NSString stringWithFormat:@"湿度:%@",NowHumidity];
-        ToHumidity.backgroundColor=[UIColor clearColor];
-        ToHumidity.textColor=[UIColor whiteColor];
-        [ToHumidity setAdjustsFontSizeToFitWidth:YES];
-        [uv addSubview:ToHumidity];
-        
-        //今天的天气状况
-        UILabel *ToweatherState=[[UILabel alloc] initWithFrame:CGRectMake(200, 10, 128, 97)];
-        ToweatherState.font=[UIFont fontWithName:@"Helvetica" size:45];
-        ToweatherState.text=ToWeatherState24;
-        ToweatherState.backgroundColor=[UIColor clearColor];
-        ToweatherState.textColor=[UIColor whiteColor];
-        [ToweatherState setAdjustsFontSizeToFitWidth:YES];
-        [uv addSubview:ToweatherState];
-        
-        //目前的温度实况
-        UILabel *Temp=[[UILabel alloc] initWithFrame:CGRectMake( 510, 360, 92, 43)];
-        Temp.font=[UIFont fontWithName:@"Helvetica" size:40];
-        Temp.text=[NSString stringWithFormat:@"%@",NowTemp];
-        Temp.backgroundColor=[UIColor clearColor];
-        Temp.textColor=[UIColor colorWithRed:246.0f/255.0f green:131.0f/255.0f blue:22.0f/255.0f alpha:1.0f];
-        [Temp setAdjustsFontSizeToFitWidth:YES];
-        [uv addSubview:Temp];
-        
-        
-        //今天天气的图片资源
-        UIImageView *ToimgView=[[UIImageView alloc] initWithFrame:CGRectMake(220, 100, 60, 60)];
-        ToimgView.image=[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[model._7ToImgState substringToIndex:[model._7ToImgState rangeOfString:@"." ].location]]];
-        
-        //第一天数据背景图
-        [uv addSubview:ToimgView];        
+        ToWeatherState24=[model._5ToInfo substringFromIndex:[model._5ToInfo rangeOfString:@"日" ].location+1];
     }
+    else
+    {
+        ToWeatherState24=[model._5ToInfo substringFromIndex:[model._5ToInfo rangeOfString:@"转" ].location+1];
+    }
+    ToWeatherState24=[ToWeatherState24 stringByReplacingOccurrencesOfString:@" " withString:@""];
+    _weatherLabel.text = ToWeatherState24;
     
-    return uv;
+    //今天天气的图片资源
+    _todayWeatherImageView.image=[UIImage imageNamed:[NSString stringWithFormat:@"%@.png",[model._7ToImgState substringToIndex:[model._7ToImgState rangeOfString:@"." ].location]]];
+    //气温
+    _temptureLabel.text = model._4ToTemp;
+    NSArray *tmpArray = [model._4ToTemp componentsSeparatedByString:@"/"];
+    _totalTemptureLabel.text = [tmpArray lastObject];
+    
+    //现在湿度
+    NSArray *forcastweather=[model._8ToForcast componentsSeparatedByString:@"；"];
+    NSString *NowHumidity=[[forcastweather objectAtIndex:2]substringFromIndex:[[forcastweather  objectAtIndex:2] rangeOfString:@"湿度：" ].location+3];
+    _moistureLabel.text = NowHumidity;
+    
+    //现在风向风力
+    NSString *nowWind=[[forcastweather objectAtIndex:1]substringFromIndex:[[forcastweather  objectAtIndex:1] rangeOfString:@"风向/风力：" ].location+6];
+    _windLabel.text = nowWind;
+    
+    //紫外线强度
+    NSString *UV=[[forcastweather objectAtIndex:4]substringFromIndex:[[forcastweather  objectAtIndex:4] rangeOfString:@"紫外线强度：" ].location+6];
+    _ultravioletRaysLabel.text = [NSString stringWithFormat:@"%@  %@", L(@"紫外线"), UV];
 }
 
 
-//对星期进行数据解析翻译
--(NSString *)getWeek:(NSString *)date
+-(UIView *)DrawScrollerViews:(float)width WithLength :(float)height WithPosition :(NSInteger)position
 {
-    NSDateFormatter *inputFormatter = [[NSDateFormatter alloc] init];
-    [inputFormatter setDateFormat:@"yyyy-MM-dd" ];
-    NSDate *formatterDate = [inputFormatter dateFromString:date];
-    NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
-    [outputFormatter setDateFormat:@"EEEE"];
-    NSString *newDateString = [outputFormatter stringFromDate:formatterDate];
-    //    NSLog(@"%@",newDateString);
-    if ([newDateString isEqualToString:@"Monday"])
-    {
-        return @"星期一";
-    }
-    else if([newDateString isEqualToString:@"Tuesday"])
-    {
-        return @"星期二";
-    }
-    else if([newDateString isEqualToString:@"Wednesday"])
-    {
-      return @"星期三";  
-    }
-    else if([newDateString isEqualToString:@"Thursday"])
-    {
-        return @"星期四";
-    }
-    else if([newDateString isEqualToString:@"Friday"])
-    {
-        return @"星期五";
-    }
-    else if([newDateString isEqualToString:@"Saturday"])
-    {
-        return @"星期六";
-    }
-    else if([newDateString isEqualToString:@"Sunday"])
-    {
-        return @"星期日";
-    }
-    else
-    {
-        return newDateString;
-    }
+    [self updateWeather];
+    return nil;
 }
 
 - (void)viewDidUnload
 {
     [self setBackgroundImageView:nil];
+    [self setCityNameLabel:nil];
+    [self setDateLabel:nil];
+    [self setWeekdayLabel:nil];
+    [self setTodayWeatherImageView:nil];
+    [self setWeatherLabel:nil];
+    [self setTemptureLabel:nil];
+    [self setTotalTemptureLabel:nil];
+    [self setMoistureLabel:nil];
+    [self setWindLabel:nil];
+    [self setUltravioletRaysLabel:nil];
+    [self setOnedayAfterLabel:nil];
+    [self setTwodayAfterLabel:nil];
+    [self setThreedayAfterLabel:nil];
+    [self setOnedayAfterWeatherImage:nil];
+    [self setTwodayAfterWeatherImage:nil];
+    [self setThreedayAfterWeatherImage:nil];
+    [self setOnedayAfterTemptureLabel:nil];
+    [self setTwodayAfterTemptureLabel:nil];
+    [self setThreedayAfterTemptureLabel:nil];
+    
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
