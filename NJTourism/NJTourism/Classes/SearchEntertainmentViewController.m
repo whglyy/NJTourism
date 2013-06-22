@@ -7,6 +7,7 @@
 //
 
 #import "SearchEntertainmentViewController.h"
+#import "EntertainmentListViewController.h"
 
 #import "AibangApi.h"
 
@@ -52,7 +53,7 @@
 - (void)requestDidFinishWithDictionary:(NSDictionary *)dict aibangApi:(id)aibangApi
 {
     [self removeOverFlowActivityView];
-    
+    [self gotoSearchListView:dict];
 }
 - (void)requestDidFailedWithError:(NSError*)error aibangApi:(id)aibangApi
 {
@@ -72,6 +73,17 @@
                          Rankcode:@"0"
                              From:@"1"
                                To:@"10"];
+}
+
+- (void)gotoSearchListView:(NSDictionary *)dict
+{
+    @autoreleasepool
+    {
+        EntertainmentListViewController *entertainmentListVC = [[EntertainmentListViewController alloc] init];
+        entertainmentListVC.entertainmentList = [[dict objectForKey:@"bizs"] objectForKey:@"biz"];
+        
+        [self.navigationController pushViewController:entertainmentListVC animated:YES];
+    }
 }
 
 @end

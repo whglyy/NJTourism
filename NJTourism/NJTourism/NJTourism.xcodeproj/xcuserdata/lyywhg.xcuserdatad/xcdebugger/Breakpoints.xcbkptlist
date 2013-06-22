@@ -29,12 +29,12 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Classes/SearchEntertainmentViewController.m"
-         timestampString = "393609793.028908"
+         filePath = "Classes/EntertainmentListViewController.m"
+         timestampString = "393610783.241191"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "54"
-         endingLineNumber = "54"
+         startingLineNumber = "76"
+         endingLineNumber = "76"
          landmarkName = "-requestDidFinishWithDictionary:aibangApi:"
          landmarkType = "5">
       </FileBreakpoint>

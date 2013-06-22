@@ -8,6 +8,8 @@
 
 #import "CommonViewController.h"
 
-@interface EntertainmentListViewController : CommonViewController
+@interface EntertainmentListViewController : CommonViewController<AibangApiDelegate>
+
+@property (strong, nonatomic) NSArray *entertainmentList;
 
 @end
