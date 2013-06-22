@@ -154,7 +154,7 @@
 {
     @autoreleasepool
     {
-        WeatherViewController *weatherListVC = [[WeatherViewController alloc] init];
+        WeatherViewController *weatherListVC = [[WeatherViewController alloc] initWithNibName:@"WeatherViewController" bundle:nil];
         UINavigationController *weatherListNaviController = [[UINavigationController alloc] initWithRootViewController:weatherListVC];
         [self.revealController setFrontViewController:weatherListNaviController animated:NO];
     }
