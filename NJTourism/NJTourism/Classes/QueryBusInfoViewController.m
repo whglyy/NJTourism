@@ -8,8 +8,9 @@
 
 #import "QueryBusInfoViewController.h"
 
+#import "ChangeBusLineListViewController.h"
 #import "BusLineInfoViewController.h"
-#import "BusInfoListViewController.h"
+#import "BusLineInfoListViewController.h"
 
 #import "BusSelectScrollView.h"
 
@@ -178,7 +179,7 @@
 {
     @autoreleasepool
     {
-        BusLineInfoViewController *busInfoVC = [[BusLineInfoViewController alloc] init];
+        ChangeBusLineListViewController *busInfoVC = [[ChangeBusLineListViewController alloc] init];
         busInfoVC.startString = self.busSelectScrollView.changeBusView.startPointTextField.text;
         busInfoVC.endString = self.busSelectScrollView.changeBusView.endPointTextField.text;
         
@@ -193,8 +194,7 @@
     @autoreleasepool
     {
         DLog(@"msg_lyywhg:%@", dict);
-        BusInfoListViewController *busInfoVC = [[BusInfoListViewController alloc] init];
-        busInfoVC.busLineArray = [[dict objectForKey:@"lines"] objectForKey:@"line"];
+        BusLineInfoListViewController *busInfoVC = [[BusLineInfoListViewController alloc] init];
         busInfoVC.busLineInfoArray = [[dict objectForKey:@"lines"] objectForKey:@"line"];
 
         [self.navigationController pushViewController:busInfoVC animated:YES];

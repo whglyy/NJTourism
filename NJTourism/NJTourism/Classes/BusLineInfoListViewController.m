@@ -7,6 +7,7 @@
 //
 
 #import "BusLineInfoListViewController.h"
+#import "BusLineInfoViewController.h"
 
 @interface BusLineInfoListViewController ()
 
@@ -23,14 +24,6 @@
     return self;
 }
 
-- (NSMutableArray *)busLineArray
-{
-    if (!_busLineArray)
-    {
-        _busLineArray = [[NSMutableArray alloc] init];
-    }
-    return _busLineArray;
-}
 - (NSMutableArray *)busLineInfoArray
 {
     if (!_busLineInfoArray)
@@ -65,7 +58,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.busLineArray count];
+    return [self.busLineInfoArray count];
 }
 
 // Customize the appearance of table view cells.
@@ -80,14 +73,22 @@
             
     }
     customCell.selectionStyle = UITableViewCellSelectionStyleNone;
-    customCell.textLabel.text = [self.busLineArray[indexPath.row] objectForKey:@"name"];
+    customCell.textLabel.text = [self.busLineInfoArray[indexPath.row] objectForKey:@"name"];
         
     return customCell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self gotoBusLineInfoView:self.busLineInfoArray[indexPath.row]];
     
 }
-
+- (void)gotoBusLineInfoView:(NSDictionary *)dict
+{
+    @autoreleasepool
+    {
+        BusLineInfoViewController *busLineInfoVC = [[BusLineInfoViewController alloc] init];
+        busLineInfoVC.busInfoDict = dict;
+    }
+}
 @end

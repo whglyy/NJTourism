@@ -9,7 +9,7 @@
 #import "BusLineInfoViewController.h"
 
 @interface BusLineInfoViewController ()
-
+@property (strong, nonatomic) NSArray *busLineInfoArray;
 @end
 
 @implementation BusLineInfoViewController
@@ -33,6 +33,23 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (NSArray *)busLineInfoArray
+{
+    if (!_busLineInfoArray)
+    {
+        _busLineInfoArray = [[NSArray alloc] init];
+    }
+    return _busLineInfoArray;
+}
+- (NSDictionary *)busInfoDict
+{
+    if (!_busInfoDict)
+    {
+        _busInfoDict = [[NSDictionary alloc] init];
+    }
+    return _busInfoDict;
 }
 
 @end

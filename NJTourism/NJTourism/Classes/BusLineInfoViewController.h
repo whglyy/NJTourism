@@ -10,4 +10,6 @@
 
 @interface BusLineInfoViewController : CommonViewController
 
+@property (strong, nonatomic) NSDictionary *busInfoDict;
+
 @end
