@@ -8,12 +8,36 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/BusInfoViewController.m"
-         timestampString = "393595278.580883"
+         timestampString = "393598521.260806"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "54"
-         endingLineNumber = "54"
-         landmarkName = "-busesLineArray"
+         startingLineNumber = "99"
+         endingLineNumber = "99">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/BusLineInfoViewController.m"
+         timestampString = "393599257.634722"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "159"
+         endingLineNumber = "159"
+         landmarkName = "-transferBusInfo:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/BusLineInfoViewController.m"
+         timestampString = "393599257.634722"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "200"
+         endingLineNumber = "200"
+         landmarkName = "-transferBusInfo:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

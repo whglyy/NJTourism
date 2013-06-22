@@ -94,6 +94,9 @@
     @autoreleasepool
     {
         BusLineInfoViewController *busInfoVC = [[BusLineInfoViewController alloc] init];
+        busInfoVC.startString = @"桥北站";
+        busInfoVC.endString = @"月苑小区";
+        
         busInfoVC.busesArray = [[dict objectForKey:@"buses"] objectForKey:@"bus"];
         DLog(@"msg_lyywhg:%@", busInfoVC.busesArray);
         

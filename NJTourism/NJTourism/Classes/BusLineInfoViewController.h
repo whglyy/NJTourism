@@ -13,4 +13,7 @@
 @property (strong, nonatomic) NSArray *busesArray;
 @property (strong, nonatomic) NSMutableArray *busesLineArray;
 
+@property (strong, nonatomic) NSString *startString;
+@property (strong, nonatomic) NSString *endString;
+
 @end

@@ -10,4 +10,6 @@
 
 @interface BusInfoViewController : CommonViewController
 
+@property (strong, nonatomic) NSArray *busInfoArray;
+
 @end
