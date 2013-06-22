@@ -6,13 +6,13 @@
 //
 //
 
-#import "BusInfoListViewController.h"
+#import "BusLineInfoListViewController.h"
 
-@interface BusInfoListViewController ()
+@interface BusLineInfoListViewController ()
 
 @end
 
-@implementation BusInfoListViewController
+@implementation BusLineInfoListViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

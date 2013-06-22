@@ -8,7 +8,7 @@
 
 #import "CommonViewController.h"
 
-@interface BusInfoListViewController : CommonViewController
+@interface BusLineInfoListViewController : CommonViewController
 
 @property (strong, nonatomic) NSMutableArray *busLineArray;
 @property (strong, nonatomic) NSMutableArray *busLineInfoArray;
