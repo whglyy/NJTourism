@@ -10,7 +10,7 @@
 #import "GetLocalLanguage.h"
 
 #import "RevealController.h"
-#import "BusListViewController.h"
+#import "QueryBusInfoViewController.h"
 #import "RearViewController.h"
 
 @implementation AppDelegate
@@ -26,7 +26,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {	
-	BusListViewController *busListViewController = [[BusListViewController alloc] initWithNibName:@"BusListViewController" bundle:nil];
+	QueryBusInfoViewController *busListViewController = [[QueryBusInfoViewController alloc] initWithNibName:@"BusListViewController" bundle:nil];
 	RearViewController *rearViewController = [[RearViewController alloc] initWithNibName:@"RearViewController" bundle:nil];
     
 	UINavigationController *firstNavController = [[UINavigationController alloc] initWithRootViewController:busListViewController];

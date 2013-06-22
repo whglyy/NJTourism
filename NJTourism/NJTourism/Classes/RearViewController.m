@@ -3,7 +3,7 @@
 
 #import "RevealController.h"
 
-#import "BusListViewController.h"
+#import "QueryBusInfoViewController.h"
 #import "TaxiViewController.h"
 #import "WeatherViewController.h"
 
@@ -136,7 +136,7 @@
 {
     @autoreleasepool
     {
-        BusListViewController *busListVC = [[BusListViewController alloc] initWithNibName:@"BusListViewController" bundle:nil];
+        QueryBusInfoViewController *busListVC = [[QueryBusInfoViewController alloc] initWithNibName:@"BusListViewController" bundle:nil];
         UINavigationController *busListNaviController = [[UINavigationController alloc] initWithRootViewController:busListVC];
         [self.revealController setFrontViewController:busListNaviController animated:NO];
     }

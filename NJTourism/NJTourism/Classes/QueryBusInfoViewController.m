@@ -6,14 +6,14 @@
 //
 //
 
-#import "BusListViewController.h"
+#import "QueryBusInfoViewController.h"
 
 #import "BusLineInfoViewController.h"
 #import "BusInfoListViewController.h"
 
 #import "BusSelectScrollView.h"
 
-@interface BusListViewController ()
+@interface QueryBusInfoViewController ()
 
 @property (assign, nonatomic) NSInteger checkIndex;
 
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation BusListViewController
+@implementation QueryBusInfoViewController
 #pragma mark-
 #pragma mark Init & Dealloc
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
