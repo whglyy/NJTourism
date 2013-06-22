@@ -6,20 +6,20 @@
 //
 //
 
-#import "BusLineInfoViewController.h"
+#import "ChangeBusLineListViewController.h"
 
-#import "BusInfoViewController.h"
+#import "ChangeBusLineInfoViewController.h"
 
 #import "DropDownCell.h"
 
 #define FONTSIZE 12
 #define CELLHEIGTH 50
 
-@interface BusLineInfoViewController ()
+@interface ChangeBusLineListViewController ()
 
 @end
 
-@implementation BusLineInfoViewController
+@implementation ChangeBusLineListViewController
 
 - (id)init
 {
@@ -147,7 +147,7 @@
 {
     @autoreleasepool
     {
-        BusInfoViewController *busInfoVC = [[BusInfoViewController alloc] init];
+        ChangeBusLineInfoViewController *busInfoVC = [[ChangeBusLineInfoViewController alloc] init];
         busInfoVC.busInfoArray = [self transferBusInfo:dict];
         [self.navigationController pushViewController:busInfoVC animated:YES];
     }
