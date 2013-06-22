@@ -88,7 +88,9 @@
     @autoreleasepool
     {
         BusLineInfoViewController *busLineInfoVC = [[BusLineInfoViewController alloc] init];
+        DLog(@"msg_lyywhg:busdict%@", dict);
         busLineInfoVC.busInfoDict = dict;
+        [self.navigationController pushViewController:busLineInfoVC animated:YES];
     }
 }
 @end

@@ -7,34 +7,36 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Classes/BusInfoViewController.m"
-         timestampString = "393598521.260806"
+         filePath = "Classes/BusLineInfoViewController.m"
+         timestampString = "393608062.961327"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "99"
-         endingLineNumber = "99">
+         startingLineNumber = "213"
+         endingLineNumber = "213">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/BusLineInfoViewController.m"
-         timestampString = "393599257.634722"
+         timestampString = "393608062.961327"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "159"
-         endingLineNumber = "159">
+         startingLineNumber = "254"
+         endingLineNumber = "254">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "Classes/BusLineInfoViewController.m"
-         timestampString = "393599257.634722"
+         filePath = "Classes/SearchEntertainmentViewController.m"
+         timestampString = "393609793.028908"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "200"
-         endingLineNumber = "200">
+         startingLineNumber = "54"
+         endingLineNumber = "54"
+         landmarkName = "-requestDidFinishWithDictionary:aibangApi:"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
    <ExceptionBreakpoints>

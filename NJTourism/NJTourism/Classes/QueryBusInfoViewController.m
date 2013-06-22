@@ -193,10 +193,10 @@
 {
     @autoreleasepool
     {
-        DLog(@"msg_lyywhg:%@", dict);
+        
         BusLineInfoListViewController *busInfoVC = [[BusLineInfoListViewController alloc] init];
         busInfoVC.busLineInfoArray = [[dict objectForKey:@"lines"] objectForKey:@"line"];
-
+        DLog(@"msg_lyywhg:busline~%@", busInfoVC.busLineInfoArray);
         [self.navigationController pushViewController:busInfoVC animated:YES];
     }
 }

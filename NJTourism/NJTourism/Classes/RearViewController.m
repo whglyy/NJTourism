@@ -6,6 +6,7 @@
 #import "QueryBusInfoViewController.h"
 #import "TaxiViewController.h"
 #import "WeatherViewController.h"
+#import "SearchEntertainmentViewController.h"
 
 #import "SettingViewController.h"
 
@@ -106,6 +107,9 @@
             [self getTaxiInfo];
         case 2:
             [self getWeatherInfo];
+        case 3:
+            [self getNJEnter];
+            break;
         default:
             break;
     }
@@ -157,6 +161,15 @@
         WeatherViewController *weatherListVC = [[WeatherViewController alloc] initWithNibName:@"WeatherViewController" bundle:nil];
         UINavigationController *weatherListNaviController = [[UINavigationController alloc] initWithRootViewController:weatherListVC];
         [self.revealController setFrontViewController:weatherListNaviController animated:NO];
+    }
+}
+- (void)getNJEnter
+{
+    @autoreleasepool
+    {
+        SearchEntertainmentViewController *searchEnterListVC = [[SearchEntertainmentViewController alloc] init];
+        UINavigationController *searchEnterListNaviController = [[UINavigationController alloc] initWithRootViewController:searchEnterListVC];
+        [self.revealController setFrontViewController:searchEnterListNaviController animated:NO];
     }
 }
 - (void)checkVersion

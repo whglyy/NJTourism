@@ -17,6 +17,9 @@
 		1F10337C1775CB50001DB673 /* ChangeBusLineInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F10337A1775CB4F001DB673 /* ChangeBusLineInfoViewController.m */; };
 		1F1033811775EA47001DB673 /* BusLineInfoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F10337F1775EA46001DB673 /* BusLineInfoListViewController.m */; };
 		1F1033861775F4FC001DB673 /* BusLineInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1033841775F4FA001DB673 /* BusLineInfoViewController.m */; };
+		1F10338F1775FE2B001DB673 /* SearchEntertainmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F10338D1775FE2A001DB673 /* SearchEntertainmentViewController.m */; };
+		1F103394177602C6001DB673 /* EntertainmentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F103392177602C6001DB673 /* EntertainmentInfoViewController.m */; };
+		1F103399177602F5001DB673 /* EntertainmentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F103397177602F5001DB673 /* EntertainmentListViewController.m */; };
 		1F16C9591770A8A700D1E8C9 /* button_d_search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F16C9581770A8A700D1E8C9 /* button_d_search@2x.png */; };
 		1F38EEA717694AD900D5A96C /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F38EE9517694AD900D5A96C /* chat.png */; };
 		1F38EEA817694AD900D5A96C /* chat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F38EE9617694AD900D5A96C /* chat@2x.png */; };
@@ -352,6 +355,12 @@
 		1F10337F1775EA46001DB673 /* BusLineInfoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusLineInfoListViewController.m; sourceTree = "<group>"; };
 		1F1033831775F4F9001DB673 /* BusLineInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusLineInfoViewController.h; sourceTree = "<group>"; };
 		1F1033841775F4FA001DB673 /* BusLineInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusLineInfoViewController.m; sourceTree = "<group>"; };
+		1F10338C1775FE2A001DB673 /* SearchEntertainmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchEntertainmentViewController.h; sourceTree = "<group>"; };
+		1F10338D1775FE2A001DB673 /* SearchEntertainmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchEntertainmentViewController.m; sourceTree = "<group>"; };
+		1F103391177602C6001DB673 /* EntertainmentInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntertainmentInfoViewController.h; sourceTree = "<group>"; };
+		1F103392177602C6001DB673 /* EntertainmentInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntertainmentInfoViewController.m; sourceTree = "<group>"; };
+		1F103396177602F4001DB673 /* EntertainmentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntertainmentListViewController.h; sourceTree = "<group>"; };
+		1F103397177602F5001DB673 /* EntertainmentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntertainmentListViewController.m; sourceTree = "<group>"; };
 		1F16C9581770A8A700D1E8C9 /* button_d_search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button_d_search@2x.png"; path = "../Resources/Images/button_d_search@2x.png"; sourceTree = "<group>"; };
 		1F38EE9517694AD900D5A96C /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chat.png; path = ../Resources/Images/chat.png; sourceTree = "<group>"; };
 		1F38EE9617694AD900D5A96C /* chat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chat@2x.png"; path = "../Resources/Images/chat@2x.png"; sourceTree = "<group>"; };
@@ -960,6 +969,57 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		1F1033881775FC31001DB673 /* Bus */ = {
+			isa = PBXGroup;
+			children = (
+				1F5FAC1F176AE5390029CB4F /* QueryBusInfoViewController.h */,
+				1F5FAC20176AE5390029CB4F /* QueryBusInfoViewController.m */,
+				1F5FAC21176AE5390029CB4F /* QueryBusInfoViewController.xib */,
+				1F10336917759731001DB673 /* ChangeBusLineListViewController.h */,
+				1F10336A17759731001DB673 /* ChangeBusLineListViewController.m */,
+				1F1033791775CB4F001DB673 /* ChangeBusLineInfoViewController.h */,
+				1F10337A1775CB4F001DB673 /* ChangeBusLineInfoViewController.m */,
+				1F10337E1775EA45001DB673 /* BusLineInfoListViewController.h */,
+				1F10337F1775EA46001DB673 /* BusLineInfoListViewController.m */,
+				1F1033831775F4F9001DB673 /* BusLineInfoViewController.h */,
+				1F1033841775F4FA001DB673 /* BusLineInfoViewController.m */,
+			);
+			name = Bus;
+			sourceTree = "<group>";
+		};
+		1F1033891775FC65001DB673 /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				1F4BC972177288C000CE5D4C /* WeatherViewController.h */,
+				1F4BC973177288C000CE5D4C /* WeatherViewController.m */,
+				1F45CAD317752C2100CBECC6 /* WeatherViewController.xib */,
+			);
+			name = Weather;
+			sourceTree = "<group>";
+		};
+		1F10338A1775FC77001DB673 /* Enjoys */ = {
+			isa = PBXGroup;
+			children = (
+				1F10338C1775FE2A001DB673 /* SearchEntertainmentViewController.h */,
+				1F10338D1775FE2A001DB673 /* SearchEntertainmentViewController.m */,
+				1F103396177602F4001DB673 /* EntertainmentListViewController.h */,
+				1F103397177602F5001DB673 /* EntertainmentListViewController.m */,
+				1F103391177602C6001DB673 /* EntertainmentInfoViewController.h */,
+				1F103392177602C6001DB673 /* EntertainmentInfoViewController.m */,
+			);
+			name = Enjoys;
+			sourceTree = "<group>";
+		};
+		1F10338B1775FC82001DB673 /* Taxi */ = {
+			isa = PBXGroup;
+			children = (
+				1F5FAC4A176AFEBA0029CB4F /* TaxiViewController.h */,
+				1F5FAC4B176AFEBB0029CB4F /* TaxiViewController.m */,
+				1F5FAC4C176AFEBB0029CB4F /* TaxiViewController.xib */,
+			);
+			name = Taxi;
+			sourceTree = "<group>";
+		};
 		1F38EEB917694C9B00D5A96C /* AibangApi */ = {
 			isa = PBXGroup;
 			children = (
@@ -1181,23 +1241,10 @@
 		1F5FAC24176AE5480029CB4F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1F4BC972177288C000CE5D4C /* WeatherViewController.h */,
-				1F4BC973177288C000CE5D4C /* WeatherViewController.m */,
-				1F45CAD317752C2100CBECC6 /* WeatherViewController.xib */,
-				1F5FAC1F176AE5390029CB4F /* QueryBusInfoViewController.h */,
-				1F5FAC20176AE5390029CB4F /* QueryBusInfoViewController.m */,
-				1F5FAC21176AE5390029CB4F /* QueryBusInfoViewController.xib */,
-				1F10336917759731001DB673 /* ChangeBusLineListViewController.h */,
-				1F10336A17759731001DB673 /* ChangeBusLineListViewController.m */,
-				1F1033791775CB4F001DB673 /* ChangeBusLineInfoViewController.h */,
-				1F10337A1775CB4F001DB673 /* ChangeBusLineInfoViewController.m */,
-				1F10337E1775EA45001DB673 /* BusLineInfoListViewController.h */,
-				1F10337F1775EA46001DB673 /* BusLineInfoListViewController.m */,
-				1F1033831775F4F9001DB673 /* BusLineInfoViewController.h */,
-				1F1033841775F4FA001DB673 /* BusLineInfoViewController.m */,
-				1F5FAC4A176AFEBA0029CB4F /* TaxiViewController.h */,
-				1F5FAC4B176AFEBB0029CB4F /* TaxiViewController.m */,
-				1F5FAC4C176AFEBB0029CB4F /* TaxiViewController.xib */,
+				1F10338B1775FC82001DB673 /* Taxi */,
+				1F10338A1775FC77001DB673 /* Enjoys */,
+				1F1033891775FC65001DB673 /* Weather */,
+				1F1033881775FC31001DB673 /* Bus */,
 				1F5FAC54176AFEF20029CB4F /* SettingViewController.h */,
 				1F5FAC55176AFEF20029CB4F /* SettingViewController.m */,
 				1F5FAC56176AFEF20029CB4F /* SettingViewController.xib */,
@@ -2555,6 +2602,9 @@
 				1F10337C1775CB50001DB673 /* ChangeBusLineInfoViewController.m in Sources */,
 				1F1033811775EA47001DB673 /* BusLineInfoListViewController.m in Sources */,
 				1F1033861775F4FC001DB673 /* BusLineInfoViewController.m in Sources */,
+				1F10338F1775FE2B001DB673 /* SearchEntertainmentViewController.m in Sources */,
+				1F103394177602C6001DB673 /* EntertainmentInfoViewController.m in Sources */,
+				1F103399177602F5001DB673 /* EntertainmentListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
