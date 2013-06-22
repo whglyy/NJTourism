@@ -8,7 +8,7 @@
 
 #import "BusListViewController.h"
 
-#import "BusInfoViewController.h"
+#import "BusLineInfoViewController.h"
 
 #import "BusSelectScrollView.h"
 
@@ -81,8 +81,6 @@
     self.busSelectScrollView.contentSize = CGSizeMake(0, 0);
     [self.busSelectScrollView setAllFrames];
     _btnImageView.image = [UIImage imageNamed:@"btn_first_select.png"];
-    
-    
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -93,11 +91,12 @@
 - (void)requestDidFinishWithDictionary:(NSDictionary *)dict aibangApi:(id)aibangApi
 {
     [self removeOverFlowActivityView];
-    DLog(@"msg_lyywhg:%@", dict);
     @autoreleasepool
     {
-        BusInfoViewController *busInfoVC = [[BusInfoViewController alloc] initWithNibName:@"BusInfoViewController'" bundle:nil];
-        busInfoVC.busDict = dict;
+        BusLineInfoViewController *busInfoVC = [[BusLineInfoViewController alloc] init];
+        busInfoVC.busesArray = [[dict objectForKey:@"buses"] objectForKey:@"bus"];
+        DLog(@"msg_lyywhg:%@", busInfoVC.busesArray);
+        
         [self.navigationController pushViewController:busInfoVC animated:YES];
     }
 }
@@ -148,8 +147,8 @@
     [self displayOverFlowActivityView];
     
     [self.abApi busTransferWithCity:@"南京"
-                          StartAddr:startString
-                            EndAddr:endString
+                          StartAddr:@"桥北站"
+                            EndAddr:@"月苑小区"
                            StartLng:startLngString
                            StartLat:startLatString
                              EndLng:nil
