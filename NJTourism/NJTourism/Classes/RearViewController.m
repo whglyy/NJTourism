@@ -74,7 +74,7 @@
 	{
 		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
 	}
-	
+	cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"NJT_System_TableViewCell_Icon.png"]];
 	cell.textLabel.text = [self.tableList objectAtIndex:(indexPath.section * 4 + indexPath.row)];
 	
 	return cell;

@@ -182,6 +182,7 @@
 		1FAC52FD173CF53D00EA2BD8 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAC52FC173CF53900EA2BD8 /* CoreText.framework */; };
 		1FAC52FF173CF6A800EA2BD8 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAC52FE173CF6A400EA2BD8 /* MessageUI.framework */; };
 		1FAC5301173CF76300EA2BD8 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAC5300173CF75F00EA2BD8 /* CoreMotion.framework */; };
+		1FC26AB0177886B400B6A1F2 /* NJT_System_TableViewCell_Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FC26AAF177886B400B6A1F2 /* NJT_System_TableViewCell_Icon@2x.png */; };
 		1FC9218A1771D9BE002A8D0C /* FindNearbyTaxi.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC921891771D9BE002A8D0C /* FindNearbyTaxi.m */; };
 		1FEB2544176B52BB00C93780 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FEB2543176B52BB00C93780 /* MainWindow.xib */; };
 		1FF3963F176B480700DBB52A /* ZUUIRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF3963E176B480700DBB52A /* ZUUIRevealController.m */; };
@@ -607,6 +608,7 @@
 		1FAC52FC173CF53900EA2BD8 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		1FAC52FE173CF6A400EA2BD8 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		1FAC5300173CF75F00EA2BD8 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		1FC26AAF177886B400B6A1F2 /* NJT_System_TableViewCell_Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "NJT_System_TableViewCell_Icon@2x.png"; path = "../Resources/Images/NJT_System_TableViewCell_Icon@2x.png"; sourceTree = "<group>"; };
 		1FC921881771D9BE002A8D0C /* FindNearbyTaxi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindNearbyTaxi.h; sourceTree = "<group>"; };
 		1FC921891771D9BE002A8D0C /* FindNearbyTaxi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindNearbyTaxi.m; sourceTree = "<group>"; };
 		1FEB2543176B52BB00C93780 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
@@ -1201,6 +1203,7 @@
 		1F5BF9F7173BE43E00B12EAA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1FC26AAF177886B400B6A1F2 /* NJT_System_TableViewCell_Icon@2x.png */,
 				1F4BC986177288FA00CE5D4C /* Weather */,
 				1F6ED6121770B3C2002D3C92 /* btn_first_select@2x.png */,
 				1F6ED6131770B3C2002D3C92 /* btn_second_select@2x.png */,
@@ -2414,6 +2417,7 @@
 				1F4ABEA51775734F00C4A290 /* NJT_Weather_MoistureIcon.png in Resources */,
 				1F4ABEA61775734F00C4A290 /* NJT_Weather_MoistureIcon@2x.png in Resources */,
 				1F38AE361777C93400E733E0 /* ChangeBusLineListViewController.xib in Resources */,
+				1FC26AB0177886B400B6A1F2 /* NJT_System_TableViewCell_Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
