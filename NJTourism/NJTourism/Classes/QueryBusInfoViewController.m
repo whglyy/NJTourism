@@ -129,19 +129,13 @@
             _btnImageView.image = [UIImage imageNamed:@"btn_first_select.png"];
             [self.busSelectScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
         }
-        break;
+            break;
         case 2002:
         {
             _btnImageView.image = [UIImage imageNamed:@"btn_second_select.png"];
             [self.busSelectScrollView setContentOffset:CGPointMake(320, 0) animated:YES];
         }
-        break;
-        case 2003:
-        {
-            _btnImageView.image = [UIImage imageNamed:@"btn_third_select.png"];
-            [self.busSelectScrollView setContentOffset:CGPointMake(640, 0) animated:YES];
-        }
-        break;
+            break;
         default:
             break;
     }
