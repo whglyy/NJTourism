@@ -25,7 +25,7 @@
     if (self) {
         _homeController = homeController;
         if ([self.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
-            UIImage *image = [UIImage imageNamed:@"system_nav_bg.png"];
+            UIImage *image = [UIImage imageNamed:@"NJT_System_NavImage.png"];
             
             UIImage *streImage = [image stretchableImageWithLeftCapWidth:image.size.width/2 topCapHeight:0];
             [self.navigationBar setBackgroundImage:streImage forBarMetrics:UIBarMetricsDefault];

@@ -9,7 +9,7 @@
 //=================================常用资源名信息==============================//
 #pragma mark - Common ImageName 
 #pragma mark   常用图片名
-#define kNavigationBarBackgroundImage       @"system_nav_bg.png"
+#define kNavigationBarBackgroundImage       @"NJT_System_NavImage.png"
 #define kNavControllerBackgroundImage       @"home_system_background.png"
 //=================================常用提示信息===============================//
 #pragma mark -  UserInfo Alert Message
