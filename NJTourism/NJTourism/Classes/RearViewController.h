@@ -2,7 +2,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RearViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface RearViewController : CommonViewController <UITableViewDelegate, UITableViewDataSource>
 
 
 @property (nonatomic, retain) IBOutlet UITableView *rearTableView;
