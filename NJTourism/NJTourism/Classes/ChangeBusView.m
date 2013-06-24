@@ -143,6 +143,22 @@
     
     return cell;
 }
+
+#pragma mark-
+#pragma mark TextFeild
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == self.startPointTextField)
+    {
+        [self.endPointTextField becomeFirstResponder];
+    }
+    else
+    {
+        [textField resignFirstResponder];
+    }
+    return YES;
+}
+
 #pragma mark-
 #pragma mark Method
 - (void)setAllFrame

@@ -149,6 +149,13 @@
 
 - (void)checkBusLine
 {
+    if ( (self.busSelectScrollView.changeBusView.startPointTextField.text == nil) || ([self.busSelectScrollView.changeBusView.startPointTextField.text length] == 0) || (self.busSelectScrollView.changeBusView.endPointTextField.text == nil) || ([self.busSelectScrollView.changeBusView.endPointTextField.text length] == 0) )
+    {
+        UIAlertView *tmpAlertView = [[UIAlertView alloc] initWithTitle:L(@"警告") message:L(@"请输入起止公交站") delegate:nil cancelButtonTitle:L(@"取消") otherButtonTitles:nil, nil];
+        [tmpAlertView show];
+        return;
+    }
+    
     _checkIndex = 1001;
     NSString *startString = self.busSelectScrollView.changeBusView.startPointTextField.text;
     NSString *endString = self.busSelectScrollView.changeBusView.endPointTextField.text;
@@ -169,6 +176,12 @@
 }
 - (void)getBusLine
 {
+    if ( (self.busSelectScrollView.busLineView.busLineTextField.text == nil) || ([self.busSelectScrollView.busLineView.busLineTextField.text length] == 0) )
+    {
+        UIAlertView *tmpAlertView = [[UIAlertView alloc] initWithTitle:L(@"警告") message:L(@"请输入公交线路名称") delegate:nil cancelButtonTitle:L(@"取消") otherButtonTitles:nil, nil];
+        [tmpAlertView show];
+        return;
+    }
     _checkIndex = 2001;
     NSString *busLineString = self.busSelectScrollView.busLineView.busLineTextField.text;
     [self.abApi buslinesWithCity:@"南京" KeyWord:busLineString Withxys:nil];
@@ -193,7 +206,6 @@
 {
     @autoreleasepool
     {
-        
         BusLineInfoListViewController *busInfoVC = [[BusLineInfoListViewController alloc] init];
         busInfoVC.busLineInfoArray = [[dict objectForKey:@"lines"] objectForKey:@"line"];
         DLog(@"msg_lyywhg:busline~%@", busInfoVC.busLineInfoArray);

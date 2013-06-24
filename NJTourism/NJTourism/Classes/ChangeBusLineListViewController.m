@@ -97,7 +97,6 @@
     
     self.tableView.frame = self.view.bounds;
     [self.view addSubview:self.tableView];
-    
     self.tableView.height = self.view.height - self.tableView.top - 8;
 }
 
