@@ -14,6 +14,8 @@
 #import "AboutUsViewController.h"
 #import "RuleViewController.h"
 
+#import "RevealCell.h"
+
 #import "MobClick.h"
 
 @interface RearViewController()
@@ -54,17 +56,16 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	static NSString *cellIdentifier = @"Cell";
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	static NSString *RevealCellIdentifier = @"RevealCell";
+	RevealCell *revealCell = [tableView dequeueReusableCellWithIdentifier:RevealCellIdentifier];
+    if (revealCell == nil)
+    {
+        revealCell = [[[NSBundle mainBundle] loadNibNamed:RevealCellIdentifier owner:self options:nil] objectAtIndex:0];
+    }
+	revealCell.selectionStyle = UITableViewCellSelectionStyleNone;
+	[revealCell setAllContent:self.tableList[indexPath.row]];
 	
-	if (nil == cell)
-	{
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
-	}
-	cell.textLabel.text = self.tableList[indexPath.row];
-	
-	return cell;
+	return revealCell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

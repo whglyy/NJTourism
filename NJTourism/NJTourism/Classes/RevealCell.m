@@ -8,6 +8,12 @@
 
 #import "RevealCell.h"
 
+@interface RevealCell()
+
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+
+@end
+
 @implementation RevealCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -24,6 +30,11 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)setAllContent:(NSString *)title
+{
+    _titleLabel.text = title;
 }
 
 @end

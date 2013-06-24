@@ -10,4 +10,8 @@
 
 @interface RevealCell : UITableViewCell
 
+
+
+- (void)setAllContent:(NSString *)title;
+
 @end
