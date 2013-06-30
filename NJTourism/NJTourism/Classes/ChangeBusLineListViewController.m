@@ -17,6 +17,10 @@
 
 @interface ChangeBusLineListViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *startLabel;
+@property (weak, nonatomic) IBOutlet UILabel *endLabel;
+@property (weak, nonatomic) IBOutlet UILabel *busLineBriefLabel;
+
 @end
 
 @implementation ChangeBusLineListViewController
@@ -92,6 +96,8 @@
 {
     [super loadView];
     
+    [self showChangeBusViewBrief];
+    
     UIImage *bgImage = [UIImage imageNamed:@""];
     self.view.layer.contents = (id)bgImage.CGImage;
     
@@ -104,6 +110,14 @@
 {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+}
+
+- (void)showChangeBusViewBrief
+{
+    NSString *startBriefString = [NSString stringWithFormat:@"%@%@", L(@"起点:"), self.startString];
+    NSString *endBriefString = [NSString stringWithFormat:@"%@%@", L(@"终点:"), self.endString];
+    _startLabel.text = startBriefString;
+    _endLabel.text = endBriefString;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -197,5 +211,11 @@
         [tmpArray addObject:self.endString];
     }
     return tmpArray;
+}
+- (void)viewDidUnload {
+    [self setStartLabel:nil];
+    [self setEndLabel:nil];
+    [self setBusLineBriefLabel:nil];
+    [super viewDidUnload];
 }
 @end
