@@ -86,7 +86,7 @@
     
     self.busSelectScrollView.contentSize = CGSizeMake(0, 0);
     [self.busSelectScrollView setAllFrames];
-    _btnImageView.image = [UIImage imageNamed:@"btn_first_select.png"];
+    _btnImageView.image = [UIImage imageNamed:@"NJT_System_BtnFirstSelect.png"];
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -126,13 +126,13 @@
     {
         case 2001:
         {
-            _btnImageView.image = [UIImage imageNamed:@"btn_first_select.png"];
+            _btnImageView.image = [UIImage imageNamed:@"NJT_System_BtnFirstSelect.png"];
             [self.busSelectScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
         }
             break;
         case 2002:
         {
-            _btnImageView.image = [UIImage imageNamed:@"btn_second_select.png"];
+            _btnImageView.image = [UIImage imageNamed:@"NJT_System_BtnSecondSelect.png"];
             [self.busSelectScrollView setContentOffset:CGPointMake(320, 0) animated:YES];
         }
             break;

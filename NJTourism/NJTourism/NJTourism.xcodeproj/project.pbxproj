@@ -21,6 +21,8 @@
 		1F103394177602C6001DB673 /* EntertainmentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F103392177602C6001DB673 /* EntertainmentInfoViewController.m */; };
 		1F103399177602F5001DB673 /* EntertainmentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F103397177602F5001DB673 /* EntertainmentListViewController.m */; };
 		1F16C9591770A8A700D1E8C9 /* button_d_search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F16C9581770A8A700D1E8C9 /* button_d_search@2x.png */; };
+		1F24B10B17807E5E003FDBB3 /* NJT_System_BtnFirstSelect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F24B10917807E5E003FDBB3 /* NJT_System_BtnFirstSelect@2x.png */; };
+		1F24B10C17807E5E003FDBB3 /* NJT_System_BtnSecondSelect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F24B10A17807E5E003FDBB3 /* NJT_System_BtnSecondSelect@2x.png */; };
 		1F38AE361777C93400E733E0 /* ChangeBusLineListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F38AE351777C93400E733E0 /* ChangeBusLineListViewController.xib */; };
 		1F38EEA717694AD900D5A96C /* chat.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F38EE9517694AD900D5A96C /* chat.png */; };
 		1F38EEA817694AD900D5A96C /* chat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F38EE9617694AD900D5A96C /* chat@2x.png */; };
@@ -127,9 +129,6 @@
 		1F5FAC4E176AFEBD0029CB4F /* TaxiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F5FAC4C176AFEBB0029CB4F /* TaxiViewController.xib */; };
 		1F5FAC57176AFEF30029CB4F /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5FAC55176AFEF20029CB4F /* SettingViewController.m */; };
 		1F5FAC58176AFEF30029CB4F /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F5FAC56176AFEF20029CB4F /* SettingViewController.xib */; };
-		1F6ED6151770B3C2002D3C92 /* btn_first_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F6ED6121770B3C2002D3C92 /* btn_first_select@2x.png */; };
-		1F6ED6161770B3C2002D3C92 /* btn_second_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F6ED6131770B3C2002D3C92 /* btn_second_select@2x.png */; };
-		1F6ED6171770B3C2002D3C92 /* btn_third_select@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F6ED6141770B3C2002D3C92 /* btn_third_select@2x.png */; };
 		1F78F246173C9BA1002DC1AF /* test.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F78F245173C9BA1002DC1AF /* test.strings */; };
 		1F78F249173C9BE9002DC1AF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F78F24B173C9BE9002DC1AF /* Localizable.strings */; };
 		1F7FB600176C85F80093F88D /* MyRule.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1F7FB5FF176C85F80093F88D /* MyRule.plist */; };
@@ -368,6 +367,8 @@
 		1F103396177602F4001DB673 /* EntertainmentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntertainmentListViewController.h; sourceTree = "<group>"; };
 		1F103397177602F5001DB673 /* EntertainmentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntertainmentListViewController.m; sourceTree = "<group>"; };
 		1F16C9581770A8A700D1E8C9 /* button_d_search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button_d_search@2x.png"; path = "../Resources/Images/button_d_search@2x.png"; sourceTree = "<group>"; };
+		1F24B10917807E5E003FDBB3 /* NJT_System_BtnFirstSelect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NJT_System_BtnFirstSelect@2x.png"; sourceTree = "<group>"; };
+		1F24B10A17807E5E003FDBB3 /* NJT_System_BtnSecondSelect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NJT_System_BtnSecondSelect@2x.png"; sourceTree = "<group>"; };
 		1F38AE351777C93400E733E0 /* ChangeBusLineListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChangeBusLineListViewController.xib; sourceTree = "<group>"; };
 		1F38EE9517694AD900D5A96C /* chat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chat.png; path = ../Resources/Images/chat.png; sourceTree = "<group>"; };
 		1F38EE9617694AD900D5A96C /* chat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chat@2x.png"; path = "../Resources/Images/chat@2x.png"; sourceTree = "<group>"; };
@@ -532,9 +533,6 @@
 		1F5FAC54176AFEF20029CB4F /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		1F5FAC55176AFEF20029CB4F /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		1F5FAC56176AFEF20029CB4F /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
-		1F6ED6121770B3C2002D3C92 /* btn_first_select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_first_select@2x.png"; path = "../Resources/Images/btn_first_select@2x.png"; sourceTree = "<group>"; };
-		1F6ED6131770B3C2002D3C92 /* btn_second_select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_second_select@2x.png"; path = "../Resources/Images/btn_second_select@2x.png"; sourceTree = "<group>"; };
-		1F6ED6141770B3C2002D3C92 /* btn_third_select@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "btn_third_select@2x.png"; path = "../Resources/Images/btn_third_select@2x.png"; sourceTree = "<group>"; };
 		1F78F245173C9BA1002DC1AF /* test.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = test.strings; sourceTree = "<group>"; };
 		1F78F24A173C9BE9002DC1AF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		1F78F24C173C9BF0002DC1AF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1212,14 +1210,13 @@
 		1F5BF9F7173BE43E00B12EAA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1F24B10917807E5E003FDBB3 /* NJT_System_BtnFirstSelect@2x.png */,
+				1F24B10A17807E5E003FDBB3 /* NJT_System_BtnSecondSelect@2x.png */,
 				1FC26ABA1778909C00B6A1F2 /* NJT_System_NavImage.png */,
 				1FC26ABB1778909C00B6A1F2 /* NJT_System_NavImage@2x.png */,
 				1FC26AB817788C2100B6A1F2 /* NJT_System_TableViewCell_Icon.png */,
 				1FC26AAF177886B400B6A1F2 /* NJT_System_TableViewCell_Icon@2x.png */,
 				1F4BC986177288FA00CE5D4C /* Weather */,
-				1F6ED6121770B3C2002D3C92 /* btn_first_select@2x.png */,
-				1F6ED6131770B3C2002D3C92 /* btn_second_select@2x.png */,
-				1F6ED6141770B3C2002D3C92 /* btn_third_select@2x.png */,
 				1F16C9581770A8A700D1E8C9 /* button_d_search@2x.png */,
 				1F97D6FA17709F6900F509BC /* stop_locate.png */,
 				1F97D6FB17709F6900F509BC /* stop_locate@2x.png */,
@@ -2388,9 +2385,6 @@
 				1F97D6FC17709F6900F509BC /* stop_locate.png in Resources */,
 				1F97D6FD17709F6900F509BC /* stop_locate@2x.png in Resources */,
 				1F16C9591770A8A700D1E8C9 /* button_d_search@2x.png in Resources */,
-				1F6ED6151770B3C2002D3C92 /* btn_first_select@2x.png in Resources */,
-				1F6ED6161770B3C2002D3C92 /* btn_second_select@2x.png in Resources */,
-				1F6ED6171770B3C2002D3C92 /* btn_third_select@2x.png in Resources */,
 				1F4BC9AD177288FA00CE5D4C /* 0.png in Resources */,
 				1F4BC9AE177288FA00CE5D4C /* 1.png in Resources */,
 				1F4BC9AF177288FA00CE5D4C /* 10.png in Resources */,
@@ -2451,6 +2445,8 @@
 				1FC26AB917788C2100B6A1F2 /* NJT_System_TableViewCell_Icon.png in Resources */,
 				1FC26ABC1778909C00B6A1F2 /* NJT_System_NavImage.png in Resources */,
 				1FC26ABD1778909C00B6A1F2 /* NJT_System_NavImage@2x.png in Resources */,
+				1F24B10B17807E5E003FDBB3 /* NJT_System_BtnFirstSelect@2x.png in Resources */,
+				1F24B10C17807E5E003FDBB3 /* NJT_System_BtnSecondSelect@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
