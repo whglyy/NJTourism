@@ -60,7 +60,7 @@
         _textLabel.numberOfLines = 7;
         _textLabel.textColor = [UIColor blackColor];
         _textLabel.textAlignment = UITextAlignmentCenter;
-        _textLabel.text = L(@"DBooks系列是FatFish自主研发的侦探小说阅读系列。阅读DBooks，可以真正实现随时随地舒适体验全球知名侦探作家知名作品！");
+        _textLabel.text = L(@"NJTourism系列是FatFish自主研发的南京观光旅游系列。使用NJTourism，可以真正享受最真实南京！");
     }
     return _textLabel;
 }
