@@ -14,6 +14,8 @@
 #import "AboutUsViewController.h"
 #import "RuleViewController.h"
 
+#import "RevealCell.h"
+
 #import "MobClick.h"
 
 @interface RearViewController()
@@ -25,14 +27,6 @@
 
 #pragma mark-
 #pragma mark Init & Add
-- (NSArray *)sectionTitleList
-{
-    if (!_sectionTitleList)
-    {
-        _sectionTitleList = [[NSArray alloc] initWithObjects:L(@"常用"), L(@"设置"), nil];
-    }
-    return _sectionTitleList;
-}
 - (NSArray *)tableList
 {
     if (!_tableList)
@@ -54,45 +48,29 @@
 #pragma mark TableView Delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-	return 4;
-}
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    return [self.sectionTitleList objectAtIndex:section];
+	return 8;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	static NSString *cellIdentifier = @"Cell";
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+	static NSString *RevealCellIdentifier = @"RevealCell";
+	RevealCell *revealCell = [tableView dequeueReusableCellWithIdentifier:RevealCellIdentifier];
+    if (revealCell == nil)
+    {
+        revealCell = [[[NSBundle mainBundle] loadNibNamed:RevealCellIdentifier owner:self options:nil] objectAtIndex:0];
+    }
+	revealCell.selectionStyle = UITableViewCellSelectionStyleNone;
+	[revealCell setAllContent:self.tableList[indexPath.row]];
 	
-	if (nil == cell)
-	{
-		cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentifier];
-	}
-	
-	cell.textLabel.text = [self.tableList objectAtIndex:(indexPath.section * 4 + indexPath.row)];
-	
-	return cell;
+	return revealCell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (indexPath.section)
-    {
-        case 0:
-            [self getNJThing:indexPath.row];
-            break;
-        case 1:
-            [self settingControllers:indexPath.row];
-            return;
-        default:
-            break;
-    }
+    [self getNJThing:indexPath.row];
 }
 #pragma mark-
 #pragma mark Switch Method
@@ -110,24 +88,16 @@
         case 3:
             [self getNJEnter];
             break;
-        default:
-            break;
-    }
-}
-- (void)settingControllers:(NSInteger)index
-{
-    switch (index)
-    {
-        case 0:
+        case 4:
             [self checkVersion];
             break;
-        case 1:
+        case 5:
             [self feedBack];
             break;
-        case 2:
+        case 6:
             [self aboutUs];
             break;
-        case 3:
+        case 7:
             [self readRule];
             break;
         default:

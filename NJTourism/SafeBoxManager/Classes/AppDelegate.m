@@ -26,7 +26,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {	
-	QueryBusInfoViewController *busListViewController = [[QueryBusInfoViewController alloc] initWithNibName:@"BusListViewController" bundle:nil];
+	QueryBusInfoViewController *busListViewController = [[QueryBusInfoViewController alloc] initWithNibName:@"QueryBusInfoViewController" bundle:nil];
 	RearViewController *rearViewController = [[RearViewController alloc] initWithNibName:@"RearViewController" bundle:nil];
     
 	UINavigationController *firstNavController = [[UINavigationController alloc] initWithRootViewController:busListViewController];

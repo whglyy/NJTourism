@@ -8,6 +8,8 @@
 #import "TPKeyboardAvoidingTableView.h"
 #import "CommonViewController.h"
 #import "MBProgressHUD.h"
+#import "AuthNavigationBar.h"
+
 @implementation CommonViewController
 @synthesize  tableView = _tableView;
 @synthesize  groupTableView = _groupTableView;
@@ -18,12 +20,13 @@
 {
     return [[self alloc] init];
 }
-- (id)init{
+- (id)init
+{
 	
     self = [super init];
 	
-    if (self) {
-		
+    if (self)
+    {
     }
     return self;
 }
@@ -34,8 +37,10 @@
     [self dismissAllCustomAlerts];
 }
 
-- (void)viewWillAppear:(BOOL)animated{
+- (void)viewWillAppear:(BOOL)animated
+{
     [super viewWillAppear:animated];
+    [self setNavigationBarColor];
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -48,17 +53,36 @@
 }
 - (void)setDlgTimer:(NSTimerHelper *)dlgTimer
 {
-    if (dlgTimer != _dlgTimer) {
+    if (dlgTimer != _dlgTimer)
+    {
         [_dlgTimer invalidate];
         _dlgTimer = dlgTimer;
     }
 }
+
+- (void)setNavigationBarColor
+{
+    if ([self.navigationController.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
+    {
+        UIImage *image = [UIImage imageNamed:@"NJT_System_NavImage.png"];
+        
+        UIImage *streImage = [image stretchableImageWithLeftCapWidth:image.size.width / 2 topCapHeight:0];
+        [self.navigationController.navigationBar setBackgroundImage:streImage forBarMetrics:UIBarMetricsDefault];
+    }
+    else
+    {
+        object_setClass(self.navigationController.navigationBar, [AuthNavigationBar class]);
+    }
+    
+    self.navigationController.navigationBar.tintColor = [UIColor navTintColor];
+}
+
 - (void)displayOverFlowActivityView:(NSString*)indiTitle{
 	
 	[self.view showHUDIndicatorViewAtCenter:indiTitle];
 	
-	self.dlgTimer = [NSTimerHelper scheduledTimerWithTimeInterval:HTTP_TIMEOUT 
-                                                           target:self 
+	self.dlgTimer = [NSTimerHelper scheduledTimerWithTimeInterval:HTTP_TIMEOUT
+                                                           target:self
                                                          selector:@selector(timeOutRemoveHUDView)
                                                          userInfo:nil 
                                                           repeats:NO];

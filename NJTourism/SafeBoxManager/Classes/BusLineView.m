@@ -108,6 +108,15 @@
     
     return cell;
 }
+
+#pragma mark-
+#pragma mark TextFeild
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 #pragma mark-
 #pragma mark Method
 - (void)setAllFrame
